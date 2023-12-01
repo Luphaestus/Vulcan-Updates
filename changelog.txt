@@ -1,0 +1,7 @@
+Beta 4.
+
+Fixes:
+- everything
+
+Bugs:
+- phone may explode on startup
