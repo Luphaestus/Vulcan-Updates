@@ -9,6 +9,6 @@
   <CheckMD5>test</CheckMD5>
   <FileSize type="long">990000000</FileSize>
   <WebsiteURL>https://forum.xda-developers.com/apps/magisk/dev-magisk-canary-channel-bleeding-edge-t3839337</WebsiteURL>
-  <ChangelogHeader>https://i.ibb.co/92RxppQ/changelogheader1100.png</ChangelogHeader>
-  <ChangelogURL>https://raw.githubusercontent.com/ShaDisNX255/NcX_OnUpdate/main/a52q/changelog.txt</ChangelogURL>
+  <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
+  <ChangelogURL>https://raw.githubusercontent.com/BotchedRPR/ui6-updates/dev/changelog.txt</ChangelogURL>
 </OnOTAInfo>
