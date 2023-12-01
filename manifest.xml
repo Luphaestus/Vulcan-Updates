@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OnOTAInfo>
+  <RomName>OneUI 6 (beta)</RomName>
+  <VersionName>Beta 4</VersionName>
+  <BuildNumber type="integer">20231201</BuildNumber>
+  <DownloadURL>https://example.com</DownloadURL>
+  <AndroidVer>14</AndroidVer>
+  <OneUIVer>6.0</OneUIVer>
+  <CheckMD5>test</CheckMD5>
+  <FileSize type="long">990000000</FileSize>
+  <WebsiteURL>https://forum.xda-developers.com/apps/magisk/dev-magisk-canary-channel-bleeding-edge-t3839337</WebsiteURL>
+  <ChangelogHeader>https://i.ibb.co/92RxppQ/changelogheader1100.png</ChangelogHeader>
+  <ChangelogURL>https://raw.githubusercontent.com/ShaDisNX255/NcX_OnUpdate/main/a52q/changelog.txt</ChangelogURL>
+</OnOTAInfo>
