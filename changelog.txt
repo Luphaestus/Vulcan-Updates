@@ -1,7 +1,22 @@
 Beta 4.
+Security Patch: December
+
+Added:
+- bootanimation.zip support
+- Note20 Ultra (c2s) support
 
 Fixes:
-- everything
+- Smart View
+- SELinux Enforcing
+- Refresh rate on startup
+- Flashable ZIP
+- Haptics
+- Stock kernel, finally
 
 Bugs:
-- phone may explode on startup
+- Encryption
+- FaceUnlock
+
+THANK YOU:
+- BlackMesa123 - SELinux patches
+- ExtremeXT - haptic patches
