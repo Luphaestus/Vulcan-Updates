@@ -2,7 +2,7 @@
 <OnOTAInfo>
   <RomName>OneUI 6 (beta)</RomName>
   <VersionName>Beta 4</VersionName>
-  <BuildNumber type="integer">20231225</BuildNumber>
+  <BuildNumber type="integer">20231226</BuildNumber>
   <DownloadURL>https://chleb.me/current-ui6.zip</DownloadURL>
   <AndroidVer>14</AndroidVer>
   <OneUIVer>6.0</OneUIVer>
