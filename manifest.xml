@@ -3,12 +3,12 @@
   <RomName>OneUI 6 (beta)</RomName>
   <VersionName>Beta 4</VersionName>
   <BuildNumber type="integer">20231225</BuildNumber>
-  <DownloadURL>https://example.com</DownloadURL>
+  <DownloadURL>https://chleb.me/current-ui6.zip</DownloadURL>
   <AndroidVer>14</AndroidVer>
   <OneUIVer>6.0</OneUIVer>
-  <CheckMD5>test</CheckMD5>
-  <FileSize type="long">990000000</FileSize>
-  <WebsiteURL>https://forum.xda-developers.com/apps/magisk/dev-magisk-canary-channel-bleeding-edge-t3839337</WebsiteURL>
+  <CheckMD5>d25ffc2d068e4cebf661785245e356dd</CheckMD5>
+  <FileSize type="long">4378308164</FileSize>
+  <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
   <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
   <ChangelogURL>https://raw.githubusercontent.com/BotchedRPR/ui6-updates/dev/changelog.txt</ChangelogURL>
 </OnOTAInfo>
