@@ -2,7 +2,6 @@ Beta 4.
 Security Patch: December
 
 Added:
-- bootanimation.zip support
 - Note20 Ultra (c2s) support
 
 Fixes:
