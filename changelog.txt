@@ -1,21 +1,22 @@
-Beta 4.
+Beta 5.
 Security Patch: December
 
 Added:
-- Note20 Ultra (c2s) support
+- Bootanimation zip format
+- New tooling, new zip format
+- Common Vendor
 
 Fixes:
-- Smart View
-- SELinux Enforcing
-- Refresh rate on startup
-- Flashable ZIP
-- Haptics
-- Stock kernel, finally
+- Installation on Note20 Ultra
+- Face Unlock
+- Overall optimization (i.e background services crashing)
+- Haptics (vibrations)
+- Build number in OTA app (so you actually get update notifications)
 
 Bugs:
 - Encryption
-- FaceUnlock
+- Bootanimation scaling :(
+- SELinux
 
 THANK YOU:
-- BlackMesa123 - SELinux patches
 - ExtremeXT - haptic patches
