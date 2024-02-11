@@ -1,12 +1,12 @@
 <?xml version="1.01" encoding="UTF-8"?>
 <OnOTAInfo>
   <RomName>OneUI 6.000000 (beta)</RomName>
-  <VersionName>Beta 0</VersionName>
+  <VersionName>Beta 0.0</VersionName>
   <BuildNumber type="integer">20231226</BuildNumber>
   <DownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
   <AndroidVer>14</AndroidVer>
   <OneUIVer>6.0</OneUIVer>
-  <CheckMD5>933c3a5a0124c7db2482c0d44ebfffcb</CheckMD5>
+  <CheckMD5>b41ea2e551d740c450c2a0fa05653189</CheckMD5>
   <FileSize type="long">1</FileSize>
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
   <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
