@@ -7,7 +7,7 @@
   <AndroidVer>14</AndroidVer>
   <OneUIVer>6.0</OneUIVer>
   <CheckMD5>933c3a5a0124c7db2482c0d44ebfffcb</CheckMD5>
-  <FileSize type="long">5000000000</FileSize>
+  <FileSize type="long">1</FileSize>
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
   <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
   <ChangelogURL>https://raw.githubusercontent.com/BotchedRPR/ui6-updates/dev/changelog.txt</ChangelogURL>
