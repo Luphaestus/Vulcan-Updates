@@ -1,22 +1,25 @@
-Beta 5.
-Security Patch: December
-
-Added:
-- Bootanimation zip format
-- New tooling, new zip format
+====================================================~
+Vulcan Rom 
+Version V0.0
+Features
+- Knox Patch
+- Added some CSC features
+- Remved UWB
 - Common Vendor
+- S21 Ultra camera proccessing
+- Selinux Enforcing
+- Colourfull Boot Animations (optional)
+- Kernel options (KernelSu or Extreme) (optional)
 
 Fixes:
-- Installation on Note20 Ultra
-- Face Unlock
-- Overall optimization (i.e background services crashing)
+- Spen
+- Biometrics (Face Unlock and Finger Print)
+- Camera
 - Haptics (vibrations)
-- Build number in OTA app (so you actually get update notifications)
 
 Bugs:
-- Encryption
-- Bootanimation scaling :(
-- SELinux
+- Probably something
 
 THANK YOU:
-- ExtremeXT - haptic patches
+- ExtremeXT
+- Igor
