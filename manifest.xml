@@ -1,7 +1,7 @@
 <?xml version="1.00" encoding="UTF-8"?>
 <OnOTAInfo>
   <RomName>Vulkan Rom (One UI 6)</RomName>
-  <VersionName>Beta V0</VersionName>
+  <VersionName>Beta V00</VersionName>
   <BuildNumber type="integer">20231226</BuildNumber>
   <DownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip>
   <AndroidVer>14</AndroidVer>
