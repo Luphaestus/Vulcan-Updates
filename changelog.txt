@@ -1,6 +1,3 @@
-====================================================~
-Vulcan Rom 
-Version V0.0
 Features
 - Knox Patch
 - Added some CSC features
