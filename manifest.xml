@@ -16,23 +16,23 @@
   <VersionName>0.4</VersionName>
   <BuildNumber type="integer">20240213</BuildNumber>
 
-  <BootName>Colourfull Boot Animations</RomName>
-  <BootDescription>Chanegs boot animations to colourfull ones</Description>
-  <BootFileSize type="long">40000</FileSize>
-  <BootVersionName>0.6</VersionName>
-  <BOOTBuildNumber type="integer">20240213</BuildNumber>
+  <BootName>Colourfull Boot Animations</BootName>
+  <BootDescription>Chanegs boot animations to colourfull ones</BootDescription>
+  <BootFileSize type="long">40000</BootFileSize>
+  <BootVersionName>0.6</BootVersionName>
+  <BOOTBuildNumber type="integer">20240213</BOOTBuildNumber>
 
-  <EKName>Extreme Kernel</RomName>
-  <EKDescription>Stock kernel with some tweaks by ExtremeXT</Description>
-  <EKFileSize type="long">400000</FileSize>
-  <EKVersionName>0.4</VersionName>
-  <EKBuildNumber type="integer">20240213</BuildNumber>
+  <EKName>Extreme Kernel</EKName>
+  <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
+  <EKFileSize type="long">400000</EKFileSize>
+  <EKVersionName>0.4</EKVersionName>
+  <EKBuildNumber type="integer">20240213</EKBuildNumber>
 
-  <SUName>Kernel SU</RomName>
-  <SUDescription>Better Rooting method than Magisk</Description>
-  <SUFileSize type="long">40000000000</FileSize>
-  <SUVersionName>0.4</VersionName>
-  <SUBuildNumber type="integer">20240213</BuildNumber>
+  <SUName>Kernel SU</SUName>
+  <SUDescription>Better Rooting method than Magisk</SUDescription>
+  <SUFileSize type="long">40000000000</SUFileSize>
+  <SUVersionName>0.4</SUVersionName>
+  <SUBuildNumber type="integer">20240213</SUBuildNumber>
 
 
 
