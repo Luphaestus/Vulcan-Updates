@@ -11,10 +11,10 @@
   <ChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
   
   <RomName>Vulcan Rom (One UI 6)</RomName>
-  <Description>Click to download Vulcan Rom - A one UI 6 port for Samsung Note 20 series using the software from s21U</Description>
-  <FileSize type="long">40000000000</FileSize>
-  <VersionName>0.4</VersionName>
-  <BuildNumber type="integer">20240213</BuildNumber>
+  <RomDescription>Click to download Vulcan Rom - A one UI 6 port for Samsung Note 20 series using the software from s21U</RomDescription>
+  <RomFileSize type="long">40000000000</RomFileSize>
+  <RomVersionName>0.4</RomVersionName>
+  <RomBuildNumber type="integer">20240213</RomBuildNumber>
 
   <BootName>Colourfull Boot Animations</BootName>
   <BootDescription>Chanegs boot animations to colourfull ones</BootDescription>
