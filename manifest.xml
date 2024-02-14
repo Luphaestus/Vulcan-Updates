@@ -1,15 +1,37 @@
 <?xml version="1" encoding="UTF-8"?>
 <OnOTAInfo>
-  <RomName>Vulcan Rom (One UI 6)</RomName>
-  <VersionName>0.4</VersionName>
-  <BuildNumber type="integer">20240213</BuildNumber>
-  <DownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
   <AndroidVer>14</AndroidVer>
   <OneUIVer>6.0</OneUIVer>
-  <CheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
-  <FileSize type="long">40000000000</FileSize>
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
+
+  <DownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
+  <CheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
+  <BuildNumber type="integer">20240213</BuildNumber>
+
   <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
   <ChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
+  
+  <RomName>Vulcan Rom (One UI 6)</RomName>
   <Description>Click to download Vulcan Rom - A one UI 6 port for Samsung Note 20 series using the software from s21U</Description>
+  <FileSize type="long">40000000000</FileSize>
+  <VersionName>0.4</VersionName>
+
+  <BootName>Colourfull Boot Animations</RomName>
+  <BootDescription>Chanegs boot animations to colourfull ones</Description>
+  <BootFileSize type="long">40000</FileSize>
+  <BootVersionName>0.6</VersionName>
+
+  <EKName>Extreme Kernel</RomName>
+  <EKDescription>Stock kernel with some tweaks by ExtremeXT</Description>
+  <EKFileSize type="long">400000</FileSize>
+  <EKVersionName>0.4</VersionName>
+
+  <SUName>Kernel SU</RomName>
+  <SUDescription>Better Rooting method than Magisk</Description>
+  <SUFileSize type="long">40000000000</FileSize>
+  <SUVersionName>0.4</VersionName>
+
+
+
+
 </OnOTAInfo>
