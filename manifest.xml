@@ -28,8 +28,8 @@
   <EKVersionName>0.4</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
 
-  <SUName>Kernel SU</SUName>
-  <SUDescription>Better Rooting method than Magisk</SUDescription>
+  <SUName>Kernel SU - HK systems</SUName>
+  <SUDescription>Better Rooting method than Magisk and tweaks made by Deny</SUDescription>
   <SUFileSize type="long">40000000000</SUFileSize>
   <SUVersionName>0.4</SUVersionName>
   <SUBuildNumber type="integer">20240213</SUBuildNumber>
