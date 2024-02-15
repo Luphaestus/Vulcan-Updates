@@ -29,8 +29,8 @@
   <EKFileSize type="long">400000</EKFileSize>
   <EKVersionName>0.4</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
-  <EKDownloadURL>https://download1654.mediafire.com/8ixx4xtag5fgvg5_WlXBPh66_dSbnmpl-RqCEOmWOYolqP8yT9chbRYRUHoyRy8jX7lqU5mzE_3lYPCUBTYBXj7QnoVTg_rkjb9DjVLbtHaTz6rkkhYZj4E3e9lOmO8smmBWXf-y4sauemAUxHaAP7ghKpxHv9evIAfm5Jt8IVcA3w/swts1y45mzu72um/KernelSU.zip"           id="downloadButton</EKDownloadURL>
-  <EKCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</EKCheckMD5>
+  <EKDownloadURL>https://download1979.mediafire.com/7y17ybpsu7agF76166GH3D_BRg5tZ7IS6f2x12G0th2bOVq7RTmLSCcqESSqy3a8xYr-jnMsuJ6rz6D_avJVMgYvp_VLQPzbD1p5nYaHSluYG_tFONDaBkDnd_6izmvJvbhFHfiPlZpZsJj8ZHNC9CaX0AcFoVP8cH0GcS2nXVHfZg/lyrn1bkemzg74n4/ExtremeKernel.zip"           id="downloadButton</EKDownloadURL>
+  <EKCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
   
@@ -40,7 +40,7 @@
   <SUVersionName>0.4</SUVersionName>
   <SUBuildNumber type="integer">20240213</SUBuildNumber>
   <SUDownloadURL>https://download1654.mediafire.com/8ixx4xtag5fgvg5_WlXBPh66_dSbnmpl-RqCEOmWOYolqP8yT9chbRYRUHoyRy8jX7lqU5mzE_3lYPCUBTYBXj7QnoVTg_rkjb9DjVLbtHaTz6rkkhYZj4E3e9lOmO8smmBWXf-y4sauemAUxHaAP7ghKpxHv9evIAfm5Jt8IVcA3w/swts1y45mzu72um/KernelSU.zip"           id="downloadButton</SUDownloadURL>
-  <SUCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</SUCheckMD5>
+  <SUCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
   
