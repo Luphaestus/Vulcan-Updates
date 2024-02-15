@@ -29,6 +29,7 @@
   <EKFileSize type="long">400000</EKFileSize>
   <EKVersionName>0.4</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
+  <EKDownloadURL>https://download1654.mediafire.com/8ixx4xtag5fgvg5_WlXBPh66_dSbnmpl-RqCEOmWOYolqP8yT9chbRYRUHoyRy8jX7lqU5mzE_3lYPCUBTYBXj7QnoVTg_rkjb9DjVLbtHaTz6rkkhYZj4E3e9lOmO8smmBWXf-y4sauemAUxHaAP7ghKpxHv9evIAfm5Jt8IVcA3w/swts1y45mzu72um/KernelSU.zip"           id="downloadButton</EKDownloadURL>
   <EKCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
