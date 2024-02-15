@@ -9,7 +9,7 @@
   <RomFileSize type="long">40000000000</RomFileSize>
   <RomVersionName>0.4</RomVersionName>
   <RomBuildNumber type="integer">20240213</RomBuildNumber>
-  <RomDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</RomDownloadURL>
+  <RomDownloadURL>https://download1073.mediafire.com/chdwk5lrytnggV5zScx656KZFZuKqCYxVLR9U9uy1DV7hcBAG8BZ-RJ_9Cb9PLDXApXyJj-0dObYG9tkpk3EZ2QhXf82fuMCgYJ4PfGPNOi0sCqGdQvIeNZsYJ1cQWG_RO1fBrMARsHBHFs_TM2eQabzfoXV6O_Xn_1CYNSvGJ-Kgg/2ncw574lxtdx4k7/oneUI6.zip"           id="downloadButton</RomDownloadURL>
   <RomCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</RomCheckMD5>
   <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</RomChangelogURL>
@@ -29,7 +29,7 @@
   <EKFileSize type="long">400000</EKFileSize>
   <EKVersionName>0.4</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
-  <EKDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</EKDownloadURL>
+  <EKDownloadURLhttps://download1530.mediafire.com/h7ht8kpnymegrdV6MsSS_oVRS1CP06TJXlxDwxFbYVnIvKeKVanqDxi57Bzh7e_pM87i2BiG7BLNVEVVi1HDUQW5SkO5Xjme4kgqPImoGw1EY1aDGILeGvILNx4H8bXYiYz6y5TfCvhgWgV6c98BJQfZ20Ini2us21VcI2Bx4pU/ovxz3xe0ewkiqch/ExtremeKernel.zip"           id="downloadButton</EKDownloadURL>
   <EKCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
@@ -39,7 +39,7 @@
   <SUFileSize type="long">40000000000</SUFileSize>
   <SUVersionName>0.4</SUVersionName>
   <SUBuildNumber type="integer">20240213</SUBuildNumber>
-  <SUDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</SUDownloadURL>
+  <SUDownloadURL>https://download1654.mediafire.com/8ixx4xtag5fgvg5_WlXBPh66_dSbnmpl-RqCEOmWOYolqP8yT9chbRYRUHoyRy8jX7lqU5mzE_3lYPCUBTYBXj7QnoVTg_rkjb9DjVLbtHaTz6rkkhYZj4E3e9lOmO8smmBWXf-y4sauemAUxHaAP7ghKpxHv9evIAfm5Jt8IVcA3w/swts1y45mzu72um/KernelSU.zip"           id="downloadButton</SUDownloadURL>
   <SUCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
