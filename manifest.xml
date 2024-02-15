@@ -27,7 +27,7 @@
   <EKName>Extreme Kernel</EKName>
   <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
   <EKFileSize type="long">400000</EKFileSize>
-  <EKVersionName>0.4</EKVersionName>
+  <EKVersionName>1.00.12</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
   <EKDownloadURL>https://download1979.mediafire.com/7y17ybpsu7agF76166GH3D_BRg5tZ7IS6f2x12G0th2bOVq7RTmLSCcqESSqy3a8xYr-jnMsuJ6rz6D_avJVMgYvp_VLQPzbD1p5nYaHSluYG_tFONDaBkDnd_6izmvJvbhFHfiPlZpZsJj8ZHNC9CaX0AcFoVP8cH0GcS2nXVHfZg/lyrn1bkemzg74n4/ExtremeKernel.zip"           id="downloadButton</EKDownloadURL>
   <EKCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</EKCheckMD5>
