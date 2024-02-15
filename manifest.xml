@@ -11,7 +11,7 @@
   <RomBuildNumber type="integer">20240213</RomBuildNumber>
   <RomDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</RomDownloadURL>
   <RomCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</RomCheckMD5>
-  <RomChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
+  <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</RomChangelogURL>
   
   <BootName>Colourfull Boot Animations</BootName>
