@@ -4,36 +4,46 @@
   <OneUIVer>6.0</OneUIVer>
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
 
-  <DownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
-  <CheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
-
-  <ChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
-  <ChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
-  
   <RomName>Vulcan Rom (One UI 6)</RomName>
   <RomDescription>Click to download Vulcan Rom - A one UI 6 port for Samsung Note 20 series using the software from s21U</RomDescription>
   <RomFileSize type="long">40000000000</RomFileSize>
   <RomVersionName>0.4</RomVersionName>
   <RomBuildNumber type="integer">20240213</RomBuildNumber>
-
+  <RomDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
+  <RomCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
+  <RomChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
+  <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
+  
   <BootName>Colourfull Boot Animations</BootName>
   <BootDescription>Chanegs boot animations to colourfull ones</BootDescription>
   <BootFileSize type="long">40000</BootFileSize>
   <BootVersionName>0.6</BootVersionName>
-  <BOOTBuildNumber type="integer">20240213</BOOTBuildNumber>
-
+  <BootBuildNumber type="integer">20240213</BootBuildNumber>
+  <BootDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
+  <BootCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
+  <BootChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
+  <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
+  
   <EKName>Extreme Kernel</EKName>
   <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
   <EKFileSize type="long">400000</EKFileSize>
   <EKVersionName>0.4</EKVersionName>
   <EKBuildNumber type="integer">20240213</EKBuildNumber>
-
+  <EKDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
+  <EKCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
+  <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
+  <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
+  
   <SUName>Kernel SU - HK systems</SUName>
   <SUDescription>Better Rooting method than Magisk with tweaks | made by Hagriv</SUDescription>
   <SUFileSize type="long">40000000000</SUFileSize>
   <SUVersionName>0.4</SUVersionName>
   <SUBuildNumber type="integer">20240213</SUBuildNumber>
-
+  <SUDownloadURL>https://github.com/BlackMesa123/KnoxPatch/releases/download/v0.6.8/KnoxPatch-Enhancer-v0.4.zip</DownloadURL>
+  <SUCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</CheckMD5>
+  <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</ChangelogHeader>
+  <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</ChangelogURL>
+  
 
 
 
