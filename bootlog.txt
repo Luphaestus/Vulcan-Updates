@@ -1,0 +1,5 @@
+Features:
+  - Removed Bootloader unlock warning
+  - Added colourfull adnroid 
+  - Used boot animanitation from samsung s5 (BUG: low fps)
+  
