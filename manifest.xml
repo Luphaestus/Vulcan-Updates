@@ -27,9 +27,9 @@
   <EKName>Extreme Kernel</EKName>
   <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
   <EKFileSize type="long">30860972</EKFileSize>
-  <EKVersionName>1.00.13</EKVersionName>
-  <EKBuildNumber type="integer">20240213</EKBuildNumber>
-  <EKDownloadURL>https://download1979.mediafire.com/jarr02467cdgdGIkFeO_wzGmFqNF9Gam6Mv_ZYcdb_zY8qW8WzdlG8r9UxO3puqxKhjyxpyOcyFcviVtwgXCV-TOez2pnkqFoVwEkE82kiWOKIrqcTYL0I-IaQ609gGLOzHPCf_GjdafgTjpp6r93pZFcCPxnI4zUfxjfRzxGBcm4g/lyrn1bkemzg74n4/ExtremeKernel.zip"           id="downloadButton</EKDownloadURL>
+  <EKVersionName>1.00.14</EKVersionName>
+  <EKBuildNumber type="integer">20240216</EKBuildNumber>
+  <EKDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel.zip</EKDownloadURL>
   <EKCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
@@ -37,9 +37,9 @@
   <SUName>Kernel SU - HK systems</SUName>
   <SUDescription>Better Rooting method than Magisk with tweaks | made by Hagriv</SUDescription>
   <SUFileSize type="long">16390253</SUFileSize>
-  <SUVersionName>0.4</SUVersionName>
-  <SUBuildNumber type="integer">20240213</SUBuildNumber>
-  <SUDownloadURL>https://download2300.mediafire.com/7lhe3t4cyw2gyhv_jtcpr-pCzflvGpSeGogqOq_9hdD9DbrZmREHmmHSM8G98M2KG2QrhZcZ3xoO_9MHllrc6es4oIRlTvlHkkpG62810YdEpHxujmkYK0gvPOqM-PO7jh43GWY65jgN978_MdoCbFAVdQY4-EQLB6hDD5xXn--9/swts1y45mzu72um/KernelSU.zip"           id="downloadButton</SUDownloadURL>
+  <SUVersionName>0.5</SUVersionName>
+  <SUBuildNumber type="integer">20240216</SUBuildNumber>
+  <SUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</SUDownloadURL>
   <SUCheckMD5>13c91cf211a35a5c873fc82ab376d5fd</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
