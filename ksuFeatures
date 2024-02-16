@@ -1,5 +1,20 @@
-ksu
-ositneaoseint
-rsoietn
-osritne
-oastnre
+================ Features =================
+• KernelSu support       
+• Wireguard support
+• Disabled Samsung SECURITY DEFEX
+• NTFS add read write             
+• Boeffla wakelocks        
+• Kernel integrity notification disabled          
+• Disable Samsung mor security
+• Disabled samsung drivers debug
+• Fix yylloc
+• Disable Samsung KNOX
+• Enable I/O Schedulers and Governors
+• Enable p2p mac randomization
+• Remove samsung secyrity drivers
+• Usb gadget fix
+• Add fsync on/off support
+• Fix force loading of modules
+• Add switchable crc control
+• Lock TCP size to 64K
+• Remove Fstab  Vbmeta
