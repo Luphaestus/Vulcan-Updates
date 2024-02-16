@@ -28,7 +28,7 @@
   <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
   <EKFileSize type="long">30860972</EKFileSize>
   <EKVersionName>1.00.14</EKVersionName>
-  <EKBuildNumber type="integer">20240216</EKBuildNumber>
+  <EKBuildNumber type="integer">20240215</EKBuildNumber>
   <EKDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel.zip</EKDownloadURL>
   <EKCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
@@ -38,7 +38,7 @@
   <SUDescription>Better Rooting method than Magisk with tweaks | made by Hagriv</SUDescription>
   <SUFileSize type="long">16390253</SUFileSize>
   <SUVersionName>0.5</SUVersionName>
-  <SUBuildNumber type="integer">20240216</SUBuildNumber>
+  <SUBuildNumber type="integer">20240215</SUBuildNumber>
   <SUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</SUDownloadURL>
   <SUCheckMD5>13c91cf211a35a5c873fc82ab376d5fd</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
