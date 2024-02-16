@@ -47,7 +47,7 @@
   <appName>Vulcan Updates</appName>
   <appDescription>A hub where you can download Vulcan ROM and tweaks compatible with Vulcan ROM</appDescription>
   <appFileSize type="long">0</appFileSize>
-  <appVersionName>0</appVersionName>
+  <appVersionName>-1</appVersionName>
   <appBuildNumber type="integer">20240215</appBuildNumber>
   <appDownloadURL>https://gitlab.com/Luphaestus/ui6-updat/raw/dev/KernelSU.z</appDownloadURL>
   <appCheckMD5>13c91cf211a35a5c873fc82ab376d5fd</appCheckMD5>
