@@ -1,1 +1,20 @@
-Hagriv needs to send me it
+Changelog​
+-- Add KernelSu support
+-- Disabled samsung drivers debug
+-- Fix yylloc
+-- NTFS add read write
+-- Disable Samsung SECURITY DEFEX
+-- Add Wireguard support
+-- Disable Samsung KNOX
+-- Add Boeffla wakelocks
+-- Disable Samsung mor security
+-- Kernel integrity notification disabled
+-- Enable I/O Schedulers and Governors
+-- Enable p2p mac randomization
+-- Remove samsung secyrity drivers
+-- Usb gadget fix
+-- Add fsync on/off support
+-- Fix force loading of modules
+-- Add switchable crc control
+-- Lock TCP size to 64K
+-- Remove Fstab  Vbmeta
