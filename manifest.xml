@@ -45,7 +45,7 @@
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
 
   <appName>Vulcan Updates</appName>
-  <appDescription>This App</appDescription>
+  <appDescription>App to Download and update Vulcan ROM and compatible tweaks!</appDescription>
   <appFileSize type="long">0</appFileSize>
   <appVersionName>0</appVersionName>
   <appBuildNumber type="integer">-1</appBuildNumber>
