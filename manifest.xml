@@ -5,7 +5,7 @@
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
 
   <RomName>Vulcan ROM (One UI 6)</RomName>
-  <RomDescription>Click to download Vulcan ROM - A one UI 6 port for Samsung Note 20 series using the software from s21U</RomDescription>
+  <RomDescription>A one UI 6 port for Samsung Note 20 series using the software from s21U</RomDescription>
   <RomFileSize type="long">5587633330</RomFileSize>
   <RomVersionName>0.4</RomVersionName>
   <RomBuildNumber type="integer">20240213</RomBuildNumber>
@@ -35,7 +35,7 @@
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
   
   <SUName>Kernel SU - HK systems</SUName>
-  <SUDescription>Better Rooting method than Magisk with tweaks | made by Hagriv</SUDescription>
+  <SUDescription>Better Rooting method than Magisk</SUDescription>
   <SUFileSize type="long">16390253</SUFileSize>
   <SUVersionName>0.5</SUVersionName>
   <SUBuildNumber type="integer">20240215</SUBuildNumber>
@@ -45,7 +45,7 @@
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
 
   <appName>Vulcan Updates</appName>
-  <appDescription>A hub where you can download Vulcan ROM and tweaks compatible with Vulcan ROM</appDescription>
+  <appDescription>This App</appDescription>
   <appFileSize type="long">0</appFileSize>
   <appVersionName>0</appVersionName>
   <appBuildNumber type="integer">-1</appBuildNumber>
