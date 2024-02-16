@@ -5,7 +5,7 @@
   <WebsiteURL>https://xdaforums.com/t/experimental-exynos-port-oneui-6-0-stable-for-galaxy-note20-5g-4g.4641404</WebsiteURL>
 
   <RomName>Vulcan ROM (One UI 6)</RomName>
-  <RomDescription>A one UI 6 port for Samsung Note 20 series using the software from s21U</RomDescription>
+  <RomDescription>A one UI 6 port for Samsung Note 20 series.</RomDescription>
   <RomFileSize type="long">5587633330</RomFileSize>
   <RomVersionName>0.4</RomVersionName>
   <RomBuildNumber type="integer">20240213</RomBuildNumber>
@@ -15,7 +15,7 @@
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</RomChangelogURL>
   
   <BootName>Colourfull Boot Animations</BootName>
-  <BootDescription>Chanegs boot animations to colourfull ones</BootDescription>
+  <BootDescription>Chanegs boot animations to colourful ones</BootDescription>
   <BootFileSize type="long">40000</BootFileSize>
   <BootVersionName>0.6</BootVersionName>
   <BootBuildNumber type="integer">4370078</BootBuildNumber>
@@ -25,7 +25,7 @@
   <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/bootlog.txt</BootChangelogURL>
   
   <EKName>Extreme Kernel</EKName>
-  <EKDescription>Stock kernel with some tweaks by ExtremeXT</EKDescription>
+  <EKDescription>Stock kernel with some tweaks</EKDescription>
   <EKFileSize type="long">30860972</EKFileSize>
   <EKVersionName>1.00.14</EKVersionName>
   <EKBuildNumber type="integer">20240215</EKBuildNumber>
@@ -45,7 +45,7 @@
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
 
   <appName>Vulcan Updates</appName>
-  <appDescription>App to Download and update Vulcan ROM and compatible tweaks!</appDescription>
+  <appDescription>ROM and tweaks update app.</appDescription>
   <appFileSize type="long">0</appFileSize>
   <appVersionName>0</appVersionName>
   <appBuildNumber type="integer">-1</appBuildNumber>
