@@ -53,7 +53,7 @@
   <appDescription>ROM and tweaks update app.</appDescription>
   <appFileSize type="long">0</appFileSize>
   <appVersionName>0</appVersionName>
-  <appBuildNumber type="integer">-1</appBuildNumber>
+  <appBuildNumber type="integer">20240222</appBuildNumber>
   <appDownloadURL>https://gitlab.com/Luphaestus/ui6-updat/raw/dev/KernelSU.z</appDownloadURL>
   <appCheckMD5>13c91cf211a35a5c873fc82ab376d5fd</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
