@@ -51,8 +51,8 @@
 
   <appName>Vulcan Updates</appName>
   <appDescription>ROM and tweaks update app.</appDescription>
-  <appFileSize type="long">0</appFileSize>
-  <appVersionName>1.0.04</appVersionName>
+  <appFileSize type="long">50000</appFileSize>
+  <appVersionName>1.0.05</appVersionName>
   <appBuildNumber type="integer">20240223</appBuildNumber>
   <appDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/app.zip</appDownloadURL>
   <appCheckMD5>b7b632155f5cf7ea3352f75b00dcb055</appCheckMD5>
