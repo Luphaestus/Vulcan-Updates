@@ -7,8 +7,8 @@
   <RomName>Vulcan ROM (One UI 6)</RomName>
   <RomDescription>A one UI 6 port for Samsung Note 20 series.</RomDescription>
   <RomFileSize type="long">5587633330</RomFileSize>
-  <RomVersionName>0.4</RomVersionName>
-  <RomBuildNumber type="integer">20240213</RomBuildNumber>
+  <RomVersionName>1.0.00</RomVersionName>
+  <RomBuildNumber type="integer">20240224</RomBuildNumber>
   <RomDownloadURL>https://download1073.mediafire.com/chdwk5lrytnggV5zScx656KZFZuKqCYxVLR9U9uy1DV7hcBAG8BZ-RJ_9Cb9PLDXApXyJj-0dObYG9tkpk3EZ2QhXf82fuMCgYJ4PfGPNOi0sCqGdQvIeNZsYJ1cQWG_RO1fBrMARsHBHFs_TM2eQabzfoXV6O_Xn_1CYNSvGJ-Kgg/2ncw574lxtdx4k7/oneUI6.zip"           id="downloadButton</RomDownloadURL>
   <RomCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</RomCheckMD5>
   <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
@@ -16,46 +16,46 @@
   <RomFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/romFeatures</RomFeatureURL>
 
   
-  <BootName>Colourfull Boot Animations</BootName>
-  <BootDescription>Chanegs boot animations to colourful ones</BootDescription>
-  <BootFileSize type="long">40000</BootFileSize>
-  <BootVersionName>0.6</BootVersionName>
-  <BootBuildNumber type="integer">4370078</BootBuildNumber>
-  <BootDownloadURL>https://download1591.mediafire.com/zk69r8bxdojgKkCQHR8QPiulUOryHRjx9n8rf1g2-wzSlGqXaxABybTwB-FqQ7rwWt-NcCLlZsoJa8JSFDj0pzJyDlL6pU0INE3ocvAcpagXbDPZgP9WnNdAnJNeOsJoWq9abSyLKyP2WvFkSa9y4RDlyJlXtz7PtsISZUMR7duS5A/oc5ovzivcjb030c/colourfullbootanim.zip"           id="downloadButton</BootDownloadURL>
-  <BootCheckMD5>d1e11f8766c434cbda671310e95463d8</BootCheckMD5>
+  <BootName>Colourful Boot Animations</BootName>
+  <BootDescription>Chaneges boot animations to colourful ones.</BootDescription>
+  <BootFileSize type="long">4370124</BootFileSize>
+  <BootVersionName>1.0.00</BootVersionName>
+  <BootBuildNumber type="integer">20240224</BootBuildNumber>
+  <BootDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/colourfullbootanim.zip</BootDownloadURL>
+  <BootCheckMD5>3024e1ac98dc8a658041a8d4ce2af44b</BootCheckMD5>
   <BootChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/OIG3.jpg?raw=true</BootChangelogHeader>
   <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/bootlog.txt</BootChangelogURL>
   <BootFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/bootFeatures</BootFeatureURL>
   
   <EKName>Extreme Kernel</EKName>
-  <EKDescription>Stock kernel with some tweaks</EKDescription>
-  <EKFileSize type="long">30860972</EKFileSize>
-  <EKVersionName>1.00.14</EKVersionName>
-  <EKBuildNumber type="integer">20240215</EKBuildNumber>
+  <EKDescription>Stock kernel with some tweaks.</EKDescription>
+  <EKFileSize type="long">16152622</EKFileSize>
+  <EKVersionName>1.0.00</EKVersionName>
+  <EKBuildNumber type="integer">20240224</EKBuildNumber>
   <EKDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel.zip</EKDownloadURL>
-  <EKCheckMD5>2f39d9995fe3c5c6abceab63ffbbd120</EKCheckMD5>
+  <EKCheckMD5>b19d160694a9ea12fe3a08870c5a98ea</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
   <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ekFeatures</EKFeatureURL>
 
   <SUName>Kernel SU - HK systems</SUName>
-  <SUDescription>Better Rooting method than Magisk</SUDescription>
-  <SUFileSize type="long">16390253</SUFileSize>
-  <SUVersionName>0.5</SUVersionName>
-  <SUBuildNumber type="integer">20240215</SUBuildNumber>
+  <SUDescription>Better Rooting method than Magisk.</SUDescription>
+  <SUFileSize type="long">16021054</SUFileSize>
+  <SUVersionName>1.0.00</SUVersionName>
+  <SUBuildNumber type="integer">20240224</SUBuildNumber>
   <SUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</SUDownloadURL>
-  <SUCheckMD5>13c91cf211a35a5c873fc82ab376d5fd</SUCheckMD5>
+  <SUCheckMD5>dcf44491d9098df41438ebc7cfa1f49d</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
   <SUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ksuFeatures</SUFeatureURL>
 
   <appName>Vulcan Updates</appName>
   <appDescription>ROM and tweaks update app.</appDescription>
-  <appFileSize type="long">50000</appFileSize>
-  <appVersionName>1.0.06</appVersionName>
-  <appBuildNumber type="integer">20240223</appBuildNumber>
+  <appFileSize type="long">5828693</appFileSize>
+  <appVersionName>1.0.00</appVersionName>
+  <appBuildNumber type="integer">20240224</appBuildNumber>
   <appDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/app.zip</appDownloadURL>
-  <appCheckMD5>8d1ba8746dda6939ccb009bfecb9cd41</appCheckMD5>
+  <appCheckMD5>cb63e4420c7cddce27d3e42aa869ad82</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
   <appChangelogURL>https://raw.githubusercontent.com/Luphaestus/uiupdates/dev/su</appChangelogURL>
   <appFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/appfeatures</appFeatureURL>
