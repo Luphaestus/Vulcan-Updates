@@ -28,7 +28,7 @@
   <BootFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/bootFeatures</BootFeatureURL>
   
   <EKName>Extreme Kernel</EKName>
-  <EKDescription>Stock kernel with some tweaks.</EKDescription>
+  <EKDescription>Stock kernel with tweaks.</EKDescription>
   <EKFileSize type="long">16152622</EKFileSize>
   <EKVersionName>1.0.00</EKVersionName>
   <EKBuildNumber type="integer">20240224</EKBuildNumber>
@@ -39,7 +39,7 @@
   <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ekFeatures</EKFeatureURL>
 
   <SUName>Kernel SU - HK systems</SUName>
-  <SUDescription>Better Rooting method than Magisk.</SUDescription>
+  <SUDescription>Kernel SU with tweaks.</SUDescription>
   <SUFileSize type="long">16021054</SUFileSize>
   <SUVersionName>1.0.00</SUVersionName>
   <SUBuildNumber type="integer">20240224</SUBuildNumber>
@@ -61,16 +61,16 @@
   <appFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/appfeatures</appFeatureURL>
 
 
-  <KSUName>Kernel SU - HK systems</KSUName>
-  <KSUDescription>Better Rooting method than Magisk.</KSUDescription>
+  <KSUName>Kernel SU - ExtremeXT</KSUName>
+  <KSUDescription>Kernel SU with tweaks.</KSUDescription>
   <KSUFileSize type="long">16021054</KSUFileSize>
   <KSUVersionName>1.0.00</KSUVersionName>
   <KSUBuildNumber type="integer">20240224</KSUBuildNumber>
-  <KSUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</KSUDownloadURL>
-  <KSUCheckMD5>dcf44491d9098df41438ebc7cfa1f49d</SUCheckMD5>
+  <KSUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
+  <KSUCheckMD5>2d6a21f4c8ff4d014098e42252a45cc5</SUCheckMD5>
   <KSUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</KSUChangelogHeader>
-  <KSUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</KSUChangelogURL>
-  <KSUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ksuFeatures</KSUFeatureURL>
+  <KSUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/eksu</KSUChangelogURL>
+  <KSUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/eksuFeatures</KSUFeatureURL>
 
 
 </OnOTAInfo>
