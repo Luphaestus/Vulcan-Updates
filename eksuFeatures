@@ -1,0 +1,16 @@
+`Features
+
+- Linux 4.19.87​
+- OneUI 5.1 and OneUI 6.0 support​
+- Based on the latest Samsung source for S20​
+- Optional KernelSU (version 11457) support with safe mode​
+- Fixed all compilation warnings and some Samsung bugs​
+- Disabled most of Samsung anti-rooting protection​
+- SELinux Enforcing​
+- Boeffla Wakelock Blocker support with a decent default list​
+- Wireguard support​
+- Bypass Charging support​
+- ZSTD ZRAM compression by default​
+- Removed VBMETA definitions from DTBO​
+- Easy to modify and compile for developers​
+- Kernel Source: https://github.com/ExtremeXT/exynos990​
