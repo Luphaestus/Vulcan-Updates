@@ -7,10 +7,10 @@
   <RomName>Vulcan ROM (One UI 6)</RomName>
   <RomDescription>A one UI 6 port for Samsung Note 20 series.</RomDescription>
   <RomFileSize type="long">5587633330</RomFileSize>
-  <RomVersionName>1.0.00</RomVersionName>
+  <RomVersionName>1.0.01</RomVersionName>
   <RomBuildNumber type="integer">20240224</RomBuildNumber>
-  <RomDownloadURL>https://download1073.mediafire.com/chdwk5lrytnggV5zScx656KZFZuKqCYxVLR9U9uy1DV7hcBAG8BZ-RJ_9Cb9PLDXApXyJj-0dObYG9tkpk3EZ2QhXf82fuMCgYJ4PfGPNOi0sCqGdQvIeNZsYJ1cQWG_RO1fBrMARsHBHFs_TM2eQabzfoXV6O_Xn_1CYNSvGJ-Kgg/2ncw574lxtdx4k7/oneUI6.zip"           id="downloadButton</RomDownloadURL>
-  <RomCheckMD5>e74b0694b58cf2fdb2c786e25b0eec57</RomCheckMD5>
+  <RomDownloadURL>https://download1509.mediafire.com/nbzatdqeyh1gxztGwMZiTGPxyJqk6mSweIk-sV091rTuQ-fNwufP_yNRB8RbyV6-7J290u5yELFWPFdkVIcpqQbyp7cN6owVhz5oZjoIzjEg2hoyaEfGTT4vjYBepq9ZTgDHOAfT6KkgTJJRQh7iqFCqsnWz5MGISuZZrK1AYiW1tQ/rvjozlz5a8k8ueo/oneUI6.zip"           id="downloadButton</RomDownloadURL>
+  <RomCheckMD5>c6b846ab8a8a57a8b738685665b9b068</RomCheckMD5>
   <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/changelog.txt</RomChangelogURL>
   <RomFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/romFeatures</RomFeatureURL>
