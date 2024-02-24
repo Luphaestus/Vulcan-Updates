@@ -1,1 +1,21 @@
-`Ask ExtremeXT to send me feature list... if needed spam him!
+`Features
+
+• KernelSu support       
+• Wireguard support
+• Disabled Samsung SECURITY DEFEX
+• NTFS add read write             
+• Boeffla wakelocks        
+• Kernel integrity notification disabled          
+• Samsung mor security Disabled
+• samsung drivers debug Disabled
+• yylloc Fix
+• Samsung KNOX Disabled
+• Enabled I/O Schedulers and Governors
+• Enabled p2p mac randomization
+• Removed samsung secyrity drivers
+• Usb gadget fix
+• Add fsync on/off support
+• Fix force loading of modules
+• Add switchable crc control
+• Lock TCP size to 64K
+• Remove Fstab  Vbmeta
