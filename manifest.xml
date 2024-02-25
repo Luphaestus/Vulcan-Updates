@@ -18,11 +18,11 @@
   
   <BootName>Colourful Boot Animations</BootName>
   <BootDescription>Chaneges boot animations to colourful ones.</BootDescription>
-  <BootFileSize type="long">4370124</BootFileSize>
+  <BootFileSize type="long">4407733</BootFileSize>
   <BootVersionName>1.0.00</BootVersionName>
   <BootBuildNumber type="integer">20240224</BootBuildNumber>
   <BootDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/colourfullbootanim.zip</BootDownloadURL>
-  <BootCheckMD5>3024e1ac98dc8a658041a8d4ce2af44b</BootCheckMD5>
+  <BootCheckMD5>4a0db8f58aa2544a3c0cb9c87d3b2ec0</BootCheckMD5>
   <BootChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/boot/OIG3.jpg?raw=true</BootChangelogHeader>
   <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootlog.txt</BootChangelogURL>
   <BootFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootFeatures</BootFeatureURL>
