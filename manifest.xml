@@ -44,7 +44,7 @@
   <SUVersionName>1.0.00</SUVersionName>
   <SUBuildNumber type="integer">20240224</SUBuildNumber>
   <SUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</SUDownloadURL>
-  <SUCheckMD5>3ffde0a64c0b5dc0df72a05241882fd5</SUCheckMD5>
+  <SUCheckMD5>6b29794a5d75117b9586117e1215e081</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/su</SUChangelogURL>
   <SUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ksuFeatures</SUFeatureURL>
