@@ -21,7 +21,7 @@
   <BootFileSize type="long">4407733</BootFileSize>
   <BootVersionName>1.0.00</BootVersionName>
   <BootBuildNumber type="integer">20240224</BootBuildNumber>
-  <BootDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/colourfullbootanim.zip</BootDownloadURL>
+  <BootDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/colourfullbootanim.zip</BootDownloadURL>
   <BootCheckMD5>4a0db8f58aa2544a3c0cb9c87d3b2ec0</BootCheckMD5>
   <BootChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/boot/OIG3.jpg?raw=true</BootChangelogHeader>
   <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootlog.txt</BootChangelogURL>
@@ -32,7 +32,7 @@
   <EKFileSize type="long">16692935</EKFileSize>
   <EKVersionName>1.0.00</EKVersionName>
   <EKBuildNumber type="integer">20240224</EKBuildNumber>
-  <EKDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel.zip</EKDownloadURL>
+  <EKDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/ExtremeKernel.zip</EKDownloadURL>
   <EKCheckMD5>c580faac093c9e0324dc2832a8114d02</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/ek/ek</EKChangelogURL>
@@ -43,7 +43,7 @@
   <SUFileSize type="long">16552722</SUFileSize>
   <SUVersionName>1.0.00</SUVersionName>
   <SUBuildNumber type="integer">20240224</SUBuildNumber>
-  <SUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/KernelSU.zip?ref_type=heads</SUDownloadURL>
+  <SUDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/KernelSU.zip</SUDownloadURL>
   <SUCheckMD5>934dae2e56fcc0cadb4b0192554d6c22</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/hk/su</SUChangelogURL>
@@ -54,7 +54,7 @@
   <appFileSize type="long">5870290</appFileSize>
   <appVersionName>1.0.00</appVersionName>
   <appBuildNumber type="integer">20240224</appBuildNumber>
-  <appDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/app.zip</appDownloadURL>
+  <appDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/app.zip</appDownloadURL>
   <appCheckMD5>ff169fb2a8a6300a9de3d407a97487c3</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
   <appChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/applog</appChangelogURL>
@@ -66,7 +66,7 @@
   <KSUFileSize type="long">16705448</KSUFileSize>
   <KSUVersionName>1.0.00</KSUVersionName>
   <KSUBuildNumber type="integer">20240224</KSUBuildNumber>
-  <KSUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
+  <KSUDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
   <KSUCheckMD5>44bdba9a28aa40edbe5f27fa26514484</KSUCheckMD5>
   <KSUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</KSUChangelogHeader>
   <KSUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/eksu/eksu</KSUChangelogURL>
