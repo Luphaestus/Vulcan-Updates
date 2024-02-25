@@ -7,9 +7,9 @@
   <RomName>Vulcan ROM (One UI 6)</RomName>
   <RomDescription>A one UI 6 port for Samsung Note 20 series.</RomDescription>
   <RomFileSize type="long">5587633330</RomFileSize>
-  <RomVersionName>1.0.01</RomVersionName>
-  <RomBuildNumber type="integer">20240224</RomBuildNumber>
-  <RomDownloadURL>https://download1349.mediafire.com/k7r2dy1cglkg0h0l-4PflEGr1E-SQcTxuJaR581DnmaN-O4ImSMTG27glIN3Int4vUzsCM3UrOxV76KxMf3Qwe45SM4ITffvJdhdjauMsyW8g8hptjr1bsVIsqif7dAQHqDEmAAg2ty4ti8IaXvTdjTrOvt0dmLQxyadx2ndKpZ9qw/9bw50ax07so1arr/oneUI6.zip"           id="downloadButton</RomDownloadURL>
+  <RomVersionName>1.0.02</RomVersionName>
+  <RomBuildNumber type="integer">20240225</RomBuildNumber>
+  <RomDownloadURL>https://download1349.mediafire.com/ucc85052h4hgY_5y6m2Hdj78fe4FowM3kK5gv6QmPSflFMFcH15cQBLET_z-rJKDtIxD2VxdpgJ1bJIBNIX2A4Jmp34HeK4cUIA3QxaQ-gAX-ckfZa8RwhXpGDalQFfXFmq8-LUWYaYTg_PbybB3dUMwWaF8daK4lVIBno1r-Xwj4Q/9bw50ax07so1arr/oneUI6.zip"           id="downloadButton</RomDownloadURL>
   <RomCheckMD5>0eccf53e8f2ece4267f0915bf578da41</RomCheckMD5>
   <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/rom/changelog.txt</RomChangelogURL>
@@ -52,8 +52,8 @@
   <appName>Vulcan Updates</appName>
   <appDescription>ROM and tweaks update app.</appDescription>
   <appFileSize type="long">5870290</appFileSize>
-  <appVersionName>1.0.00</appVersionName>
-  <appBuildNumber type="integer">20240224</appBuildNumber>
+  <appVersionName>0.8.0</appVersionName>
+  <appBuildNumber type="integer">20240225</appBuildNumber>
   <appDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/app.zip</appDownloadURL>
   <appCheckMD5>ff169fb2a8a6300a9de3d407a97487c3</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
@@ -64,8 +64,8 @@
   <KSUName>Kernel SU - ExtremeXT</KSUName>
   <KSUDescription>Kernel SU with tweaks.</KSUDescription>
   <KSUFileSize type="long">16519658</KSUFileSize>
-  <KSUVersionName>1.0.00</KSUVersionName>
-  <KSUBuildNumber type="integer">20240224</KSUBuildNumber>
+  <KSUVersionName>0.8.0</KSUVersionName>
+  <KSUBuildNumber type="integer">20240225</KSUBuildNumber>
   <KSUDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
   <KSUCheckMD5>efbbaf2b4bef7eaf5d8a293c193c2c3e</KSUCheckMD5>
   <KSUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</KSUChangelogHeader>
