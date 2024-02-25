@@ -36,7 +36,7 @@
   <EKCheckMD5>0c1d0076ba416bfecf4999226cad5c36</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
-  <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ekFeatures</EKFeatureURL>
+  <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/eksuFeatures</EKFeatureURL>
 
   <SUName>Kernel SU - HK systems</SUName>
   <SUDescription>Kernel SU with tweaks.</SUDescription>
