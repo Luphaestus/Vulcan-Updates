@@ -67,7 +67,7 @@
   <KSUVersionName>1.0.00</KSUVersionName>
   <KSUBuildNumber type="integer">20240224</KSUBuildNumber>
   <KSUDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
-  <KSUCheckMD5>7b749cf4cd17d83db61ed9ab5f6313bb</KSUCheckMD5>
+  <KSUCheckMD5>2b0b84ae706af0dc4d75409c4969213f</KSUCheckMD5>
   <KSUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</KSUChangelogHeader>
   <KSUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/eksu</KSUChangelogURL>
   <KSUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/eksuFeatures</KSUFeatureURL>
