@@ -29,11 +29,11 @@
   
   <EKName>Extreme Kernel</EKName>
   <EKDescription>Stock kernel with tweaks.</EKDescription>
-  <EKFileSize type="long">16152622</EKFileSize>
+  <EKFileSize type="long">16691993</EKFileSize>
   <EKVersionName>1.0.00</EKVersionName>
   <EKBuildNumber type="integer">20240224</EKBuildNumber>
   <EKDownloadURL>https://gitlab.com/Luphaestus/ui6-updates/-/raw/dev/ExtremeKernel.zip</EKDownloadURL>
-  <EKCheckMD5>b19d160694a9ea12fe3a08870c5a98ea</EKCheckMD5>
+  <EKCheckMD5>b78aaffb8ab0214a44d5e3c54f4093cb</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ek</EKChangelogURL>
   <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/ekFeatures</EKFeatureURL>
