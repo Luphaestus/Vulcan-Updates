@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<apps>
-    <app>
-        <packageName>com.mesalabs.ten.update</packageName>
-        <versionNumber>10</versionNumber>
-        <downloadLink>https://example.com/app1.apk</downloadLink>
-    </app>
-</apps>
