@@ -1,0 +1,22 @@
+Features
+- Knox Patch
+- Added some CSC features
+- Remved UWB
+- Common Vendor
+- S21 Ultra camera proccessing
+- Selinux Enforcing
+- Colourfull Boot Animations (optional)
+- Kernel options (KernelSu or Extreme) (optional)
+
+Fixes:
+- Spen
+- Biometrics (Face Unlock and Finger Print)
+- Camera
+- Haptics (vibrations)
+
+Bugs:
+- Probably something
+
+THANK YOU:
+- ExtremeXT
+- Igor
