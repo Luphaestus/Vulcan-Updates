@@ -25,7 +25,7 @@
   <BootCheckMD5>4a0db8f58aa2544a3c0cb9c87d3b2ec0</BootCheckMD5>
   <BootChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/boot/OIG3.jpg?raw=true</BootChangelogHeader>
   <BootChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootlog.txt</BootChangelogURL>
-  <BootFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootFeaturesRevert</BootFeatureURL>
+  <BootFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootFeatures</BootFeatureURL>
 
   <BootRevertName></BootRevertName>
   <BootRevertDescription></BootRevertDescription>
@@ -36,7 +36,7 @@
   <BootRevertCheckMD5>4a0db8f58aa2544a3c0cb9c87d3b2ec0</BootRevertCheckMD5>
   <BootRevertChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/boot/OIG3.jpg?raw=true</BootRevertChangelogHeader>
   <BootRevertChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootlog.txt</BootRevertChangelogURL>
-  <BootRevertFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootFeatures</BootRevertFeatureURL>
+  <BootRevertFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootFeaturesRevert</BootRevertFeatureURL>
   
   <EKName>Extreme Kernel</EKName>
   <EKDescription>Stock kernel with tweaks.</EKDescription>
