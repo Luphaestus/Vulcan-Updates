@@ -30,9 +30,9 @@
   <BootRevertName></BootRevertName>
   <BootRevertDescription></BootRevertDescription>
   <BootRevertFileSize type="long">4611524</BootRevertFileSize>
-  <BootRevertVersionName>1.12.00</BootRevertVersionName>
+  <BootRevertVersionName>1.00.00</BootRevertVersionName>
   <BootRevertBuildNumber type="integer">20240224</BootRevertBuildNumber>
-  <BootRevertDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/colourfullbootanim.zip</BootRevertDownloadURL>
+  <BootRevertDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/bootrevert.zip</BootRevertDownloadURL>
   <BootRevertCheckMD5>8c5aeda10802620992c9faf4d6bcbf66</BootRevertCheckMD5>
   <BootRevertChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/boot/OIG3.jpg?raw=true</BootRevertChangelogHeader>
   <BootRevertChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/boot/bootlog.txt</BootRevertChangelogURL>
