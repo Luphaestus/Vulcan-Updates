@@ -74,11 +74,11 @@
 
   <KSUName>Kernel SU - ExtremeXT</KSUName>
   <KSUDescription>Kernel SU with tweaks.</KSUDescription>
-  <KSUFileSize type="long">16519658</KSUFileSize>
+  <KSUFileSize type="long">23047071</KSUFileSize>
   <KSUVersionName>0.8.0</KSUVersionName>
   <KSUBuildNumber type="integer">20240224</KSUBuildNumber>
   <KSUDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/ExtremeKernel_UNOFFICIAL_KSU_c2s_24-02-2024_14-24-00.zip</KSUDownloadURL>
-  <KSUCheckMD5>efbbaf2b4bef7eaf5d8a293c193c2c3e</KSUCheckMD5>
+  <KSUCheckMD5>92c44b43ea490e71b779db940cdf19e8</KSUCheckMD5>
   <KSUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</KSUChangelogHeader>
   <KSUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/eksu/eksu</KSUChangelogURL>
   <KSUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/eksu/eksuFeatures</KSUFeatureURL>
