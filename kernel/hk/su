@@ -1,2 +1,6 @@
 == v1.0.00 - 20240224 ==
 • Initial Release
+
+== v1.0.10 - 20240227 ==
+• Installs KernelSU application
+• Fixed login bug (Updated OS Patch Level)
