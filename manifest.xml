@@ -51,11 +51,11 @@
 
   <SUName>Kernel SU - HK systems</SUName>
   <SUDescription>Kernel SU with tweaks.</SUDescription>
-  <SUFileSize type="long">23082212</SUFileSize>
+  <SUFileSize type="long">23022475</SUFileSize>
   <SUVersionName>1.0.10</SUVersionName>
   <SUBuildNumber type="integer">20240227</SUBuildNumber>
   <SUDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/KernelSU.zip</SUDownloadURL>
-  <SUCheckMD5>0ca54046844294bde29c4fcb69adabf8</SUCheckMD5>
+  <SUCheckMD5>565ea91246cc6a543c48d6367cb2c3ca</SUCheckMD5>
   <SUChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</SUChangelogHeader>
   <SUChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/hk/su</SUChangelogURL>
   <SUFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/hk/ksuFeatures</SUFeatureURL>
