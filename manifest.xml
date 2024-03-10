@@ -44,7 +44,7 @@
   <EKVersionName>0.8.0</EKVersionName>
   <EKBuildNumber type="integer">20240224</EKBuildNumber>
   <EKDownloadURL>httpsstrtd://github.com/Luphaestus/ui6-updates/raw/dev/Files/ExtremeKernel.zip</EKDownloadURL>
-  <EKCheckMD5>c580faac093c9e0324dc2832a8114d02</EKCheckMD5>
+  <EKCheckMD5>242e04be2e8a3b205c090c43e5293c00</EKCheckMD5>
   <EKChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</EKChangelogHeader>
   <EKChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/ek/ek</EKChangelogURL>
   <EKFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/kernel/ek/ekFeatures</EKFeatureURL>
