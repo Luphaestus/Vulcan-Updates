@@ -66,7 +66,7 @@
   <appVersionName>1.0.11</appVersionName>
   <appBuildNumber type="integer">20240225</appBuildNumber>
   <appDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/app.zip</appDownloadURL>
-  <appCheckMD5>cde2d583330bd9d10fbc6150a287362b</appCheckMD5>
+  <appCheckMD5>264fe71c73c9b98421cc64ed80e920c5</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
   <appChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/applog</appChangelogURL>
   <appFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/appfeatures</appFeatureURL>
