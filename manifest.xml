@@ -62,11 +62,11 @@
 
   <appName>Vulcan Updates</appName>
   <appDescription>ROM and tweaks update app.</appDescription>
-  <appFileSize type="long">5870290</appFileSize>
-  <appVersionName>1.0.10</appVersionName>
+  <appFileSize type="long">5870250</appFileSize>
+  <appVersionName>1.0.11</appVersionName>
   <appBuildNumber type="integer">20240225</appBuildNumber>
   <appDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/app.zip</appDownloadURL>
-  <appCheckMD5>6c80ee0bbfad0f19bd09ceef521cda4b</appCheckMD5>
+  <appCheckMD5>cde2d583330bd9d10fbc6150a287362b</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
   <appChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/applog</appChangelogURL>
   <appFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/appfeatures</appFeatureURL>
