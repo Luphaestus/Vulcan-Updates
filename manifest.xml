@@ -17,7 +17,7 @@
 
   
   <BootName>Colourful Boot Animations</BootName>
-  <BootDescription>Chaneges boot animations to colourful ones.</BootDescription>
+  <BootDescription>Changes boot animations to colourful ones.</BootDescription>
   <BootFileSize type="long">4407733</BootFileSize>
   <BootVersionName>1.0.00</BootVersionName>
   <BootBuildNumber type="integer">20240224</BootBuildNumber>
@@ -62,11 +62,11 @@
 
   <appName>Vulcan Updates</appName>
   <appDescription>ROM and tweaks update app.</appDescription>
-  <appFileSize type="long">5870250</appFileSize>
-  <appVersionName>1.0.11</appVersionName>
-  <appBuildNumber type="integer">20240225</appBuildNumber>
+  <appFileSize type="long">5871167</appFileSize>
+  <appVersionName>2.0.00</appVersionName>
+  <appBuildNumber type="integer">20240325</appBuildNumber>
   <appDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/app.zip</appDownloadURL>
-  <appCheckMD5>264fe71c73c9b98421cc64ed80e920c5</appCheckMD5>
+  <appCheckMD5>6a0db6976482e524bccbe8b6b5d3597e</appCheckMD5>
   <appChangelogHeader>https://github.com/BotchedRPR/ui6-updates/blob/dev/header.png?raw=true</appChangelogHeader>
   <appChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/applog</appChangelogURL>
   <appFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/app/appfeatures</appFeatureURL>
