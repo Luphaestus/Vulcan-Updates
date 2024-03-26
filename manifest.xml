@@ -9,8 +9,8 @@
   <RomFileSize type="long">994325</RomFileSize>
   <RomVersionName>1.1.00</RomVersionName>
   <RomBuildNumber type="integer">20240326</RomBuildNumber>
-  <RomDownloadURL>https://download1349.mediafire.com/ucc85052h4hgY_5y6m2Hdj78fe4FowM3kK5gv6QmPSflFMFcH15cQBLET_z-rJKDtIxD2VxdpgJ1bJIBNIX2A4Jmp34HeK4cUIA3QxaQ-gAX-ckfZa8RwhXpGDalQFfXFmq8-LUWYaYTg_PbybB3dUMwWaF8daK4lVIBno1r-Xwj4Q/9bw50ax07so1arr/oneUI6.zip"           id="downloadButton</RomDownloadURL>
-  <RomCheckMD5>a9b7e3f2ddcf431649b08642a48cbe5c</RomCheckMD5>
+  <RomDownloadURL>https://github.com/Luphaestus/ui6-updates/raw/dev/Files/Rom.zip</RomDownloadURL>
+  <RomCheckMD5>dbd2f2452ca746891e4922c05abead10</RomCheckMD5>
   <RomChangelogHeader>https://github.com/Luphaestus/ui6-updates/blob/dev/header.png?raw=true</RomChangelogHeader>
   <RomChangelogURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/rom/changelog.txt</RomChangelogURL>
   <RomFeatureURL>https://raw.githubusercontent.com/Luphaestus/ui6-updates/dev/rom/romFeatures</RomFeatureURL>
