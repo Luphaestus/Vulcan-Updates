@@ -1,2 +1,6 @@
 == v1.0.00 - 20240224 ==
 • Initial Release
+== v1.1.00 - 20240326 ==
+• Added Google Discovery
+• Fixed device showing as 5G for 4G devices
+
