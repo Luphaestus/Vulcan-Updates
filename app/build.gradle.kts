@@ -34,6 +34,10 @@ android {
         }
     }
 
+    configurations.all {
+        exclude("org.jetbrains", "annotations-java5")
+    }
+
     buildTypes {
         getByName("debug") {
 
