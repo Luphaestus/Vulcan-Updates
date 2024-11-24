@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Updates</string>
+
+    <string name="no_network">Keine Netzwerke verfügbar</string>
+
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+
+    <string name="color_and_style"><![CDATA[Farbe & Stil]]></string>
+    <string name="colour_and_style_desc">Passen Sie das Aussehen und das Gefühl der App an.</string>
+    <string name="theme_preview">Themenvorschau</string>
+    <string name="me_msg_1">Hast du von Vulcan ROM gehört??</string>
+    <string name="me_msg_2">Ich habe gehört, es ist sehr bombig! 🤯</string>
+    <string name="mez_msg_1">Ja, sehr bombiges ROM</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh Gespräch\"</string>
+    <string name="dynamic_colours_option">Dynamische Farben</string>
+    <string name="static_colours_option">Statische Farben</string>
+    <string name="system_dark_theme_title">System-Dunkelmodus</string>
+    <string name="system_dark_theme_desc">Dunkelmodus basierend auf Systemeinstellungen anwenden</string>
+    <string name="dark_theme_title">Dunkelmodus</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Dunkelmodus basierend auf Hintergrundbild anwenden</string>
+    <string name="apply_dark_theme">Dunkelmodus %1$s anwenden</string>
+    <string name="contrast">%1$s Kontrast</string>
+    <string name="low_contrast">Niedrig</string>
+    <string name="medium_contrast">Mittel</string>
+    <string name="high_contrast">Hoch</string>
+
+    <string name="language">Sprache</string>
+    <string name="language_desc">Ändern Sie die Sprache der App</string>
+
+    <!-- Home -->
+    <string name="home_title">Startseite</string>
+
+    <!-- Updates -->
+    <string name="updates_title">Updates</string>
+    <string name="core_title">Kern-Updates</string>
+    <string name="installed_title">Installiert</string>
+
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Keine weiteren Bilder nach links.</string>
+    <string name="no_more_images_to_the_right">Keine weiteren Bilder nach rechts.</string>
+
+    <!-- Info -->
+    <string name="mod_info_title">Mod-Info</string>
+    <string name="uninstall">Deinstallieren</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="install">Installieren</string>
+    <string name="open">Öffnen</string>
+    <string name="update">Aktualisieren</string>
+    <string name="mod_size">Größe</string>
+    <string name="mod_source_code_link_button">Quellcode</string>
+</resources>

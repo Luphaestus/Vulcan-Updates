@@ -21,7 +21,9 @@ fun ImageCarousel(imageUrls: List<String>, modifier: Modifier = Modifier) {
     LazyRow {
         items(imageUrls.size) { index ->
             Image(
-                painter = rememberImagePainter(data = imageUrls[index], builder = {size(OriginalSize)}),
+                painter = rememberImagePainter(
+                    data = imageUrls[index],
+                    builder = { size(OriginalSize) }),
                 contentDescription = "Photo $index",
                 modifier = modifier
                     .fillMaxHeight()

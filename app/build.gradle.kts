@@ -1,5 +1,5 @@
-
-plugins { alias(libs.plugins.android.application)
+plugins {
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose)
@@ -17,6 +17,7 @@ android {
         versionName = "1.0"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
     }
 
     signingConfigs {
@@ -45,8 +46,10 @@ android {
         getByName("release") {
             isMinifyEnabled = true
             signingConfig = signingConfigs.getByName("release")
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -90,6 +93,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.ui.text.google.fonts)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material3.adaptive.navigationSuite)
@@ -103,9 +107,7 @@ dependencies {
     implementation(libs.androidx.window)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.core.splashscreen)
-
-    // Firebase Libraries
-    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.androidx.paging.compose)
 
     // Kotlin Libraries
     implementation(libs.kotlin.stdlib)
@@ -117,23 +119,6 @@ dependencies {
     val composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
-    implementation(libs.compose.shimmer)
-
-    // Testing Libraries
-    androidTestImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.test.core)
-    androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.androidx.test.espresso.core)
-    androidTestImplementation(libs.androidx.test.rules)
-    androidTestImplementation(libs.androidx.test.ext.junit)
-    androidTestImplementation(libs.kotlinx.coroutines.test)
-    androidTestImplementation(libs.androidx.compose.ui.test)
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-
-    // Accompanist Libraries
-    implementation(libs.accompanist.adaptive.v0262beta)
-    implementation(libs.accompanist.navigation.animation)
 
     // Jetpack Libraries
     implementation(libs.jetpack.loading)
@@ -142,18 +127,12 @@ dependencies {
     // Photo Libraries
     implementation(libs.photo.compos)
     implementation(libs.photo.zoomable)
+    implementation(libs.coil.kt)
+    implementation(libs.coil.kt.base)
     implementation(libs.coil.kt.compose)
 
-    // Markwon Libraries
-    implementation(libs.markwon.core)
-    implementation(libs.markwon.ext.tables)
-    implementation(libs.markwon.ext.tasklist)
-    implementation(libs.markwon.html)
-    implementation(libs.markwon.image)
-    implementation(libs.markwon.inline.parser)
-    implementation(libs.markwon.linkify)
-    implementation(libs.markwon.coil)
-    implementation(libs.markwon.syntax.highlight)
+    // Markdown
+    implementation(libs.compose.markdown)
 
     // Ktor Libraries
     implementation(libs.ktor.core)

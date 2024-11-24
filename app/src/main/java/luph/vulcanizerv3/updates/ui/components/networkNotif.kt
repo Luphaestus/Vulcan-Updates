@@ -1,15 +1,16 @@
 package luph.vulcanizerv3.updates.ui.components
+
 import android.Manifest
-import android.content.Context
-import androidx.work.Worker
-import androidx.work.WorkerParameters
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.work.Worker
+import androidx.work.WorkerParameters
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 
 class NetworkChangeWorker(appContext: Context, workerParams: WorkerParameters) :
@@ -25,8 +26,10 @@ class NetworkChangeWorker(appContext: Context, workerParams: WorkerParameters) :
     private fun showNotification() {
         val channelId = "network_status"
         val channelName = "Network Status"
-        val channel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-        val manager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel =
+            NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+        val manager =
+            applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         manager.createNotificationChannel(channel)
 
         val notification = NotificationCompat.Builder(applicationContext, channelId)

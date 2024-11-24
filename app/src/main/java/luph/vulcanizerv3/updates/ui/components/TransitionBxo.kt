@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
 
-private fun Offset.toIntOffset() = IntOffset(x.toInt(), y.toInt())
+fun Offset.toIntOffset() = IntOffset(x.toInt(), y.toInt())
 
 @Composable
 fun TransitionBox(
@@ -52,7 +52,9 @@ fun TransitionBox(
     Box(
         modifier = modifier
             .onGloballyPositioned { coordinates ->
-                boxPosition.value = coordinates.positionInWindow().toIntOffset()
+                boxPosition.value = coordinates
+                    .positionInWindow()
+                    .toIntOffset()
                 boxSize.value = coordinates.size
             }
             .indication(interactionSource = interactionSource, LocalIndication.current)
@@ -73,16 +75,23 @@ fun TransitionBox(
                         val transformOriginY = adjustedY / screenHeight
 
                         onClick()
-                        OpenRoute(destination, navController, view,
+                        OpenRoute(
+                            destination, navController, view,
                             enter = scaleIn(
                                 animationSpec = tween(700),
-                                transformOrigin = TransformOrigin(transformOriginX, transformOriginY)
+                                transformOrigin = TransformOrigin(
+                                    transformOriginX,
+                                    transformOriginY
+                                )
                             ),
                             exit = ExitTransition.None,
                             popEnter = EnterTransition.None,
                             popExit = scaleOut(
                                 animationSpec = tween(500),
-                                transformOrigin = TransformOrigin(transformOriginX, transformOriginY)
+                                transformOrigin = TransformOrigin(
+                                    transformOriginX,
+                                    transformOriginY
+                                )
                             )
                         )
                     }

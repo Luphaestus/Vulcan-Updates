@@ -14,6 +14,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import coil.compose.rememberImagePainter
 import de.mr_pine.zoomables.rememberZoomableState
+import luph.vulcanizerv3.updates.R
 
 @Composable
 fun FullScreenImageDialog(
@@ -23,7 +24,10 @@ fun FullScreenImageDialog(
 ) {
     val context = LocalContext.current
 
-    Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -38,14 +42,22 @@ fun FullScreenImageDialog(
                     if (selectedImageIndex.intValue > 0) {
                         selectedImageIndex.intValue -= 1
                     } else {
-                        Toast.makeText(context, "No more images to the right", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.no_more_images_to_the_right),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 },
                 onSwipeLeft = {
                     if (selectedImageIndex.intValue < imageUrls.size - 1) {
                         selectedImageIndex.intValue += 1
                     } else {
-                        Toast.makeText(context, "No more images to the left", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.no_more_images_to_the_left)
+                            , Toast.LENGTH_SHORT
+                        ).show()
                     }
                 },
                 modifier = Modifier.fillMaxSize()

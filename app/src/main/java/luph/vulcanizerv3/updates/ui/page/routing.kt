@@ -33,20 +33,29 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.data.NavigationAnim
+import luph.vulcanizerv3.updates.data.NavigationAnimClass
 import luph.vulcanizerv3.updates.data.Route
-import luph.vulcanizerv3.updates.data.routes
+import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
 
 enum class NavigationType {
     BAR, RAIL
 }
+
 data object showNavigation {
-    var show  =  mutableStateOf(true)
+    private val _show = mutableStateOf(true)
+    var show: Boolean
+        get() = _show.value
+        set(value) {
+            _show.value = value
+        }
 }
 
 
@@ -68,21 +77,21 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
     }
 
     AnimatedVisibility(
-        visible = showNavigation.show.value,
+        visible = showNavigation.show,
         enter = slideInVertically(animationSpec = tween(700)) { it },
         exit = slideOutVertically(animationSpec = tween(700)) { it }
     ) {
         when (navigationType) {
             NavigationType.BAR -> {
                 NavigationBar {
-                    routes.forEachIndexed { index, route ->
+                    Routes.forEachIndexed { index, route ->
                         if (route.showInMenu) {
                             NavigationBarItem(
                                 icon = { NavigationItemContent(index, route) },
                                 label = { Text(route.name) },
                                 selected = selectedItem == index,
                                 onClick = {
-                                    var navigated : Boolean = false
+                                    var navigated: Boolean = false
                                     if (selectedItem < index)
                                         navigated = OpenRoute(
                                             route.name,
@@ -106,7 +115,7 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
                                             ExitTransition.None
                                         )
 
-                                    if (navigated)  selectedItem = index
+                                    if (navigated) selectedItem = index
                                 }
                             )
                         }
@@ -116,11 +125,11 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
 
             NavigationType.RAIL -> {
                 NavigationRail {
-                    routes.forEachIndexed { index, route ->
+                    Routes.forEachIndexed { index, route ->
                         if (route.showInMenu) {
                             NavigationRailItem(
                                 icon = { NavigationItemContent(index, route) },
-                                label = { Text(route.name) },
+                                label = { Text(stringResource(route.stringResource)) },
                                 selected = selectedItem == index,
                                 onClick = {
                                     if (selectedItem < index)
@@ -158,7 +167,15 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
 
 var isAnimating = false
 
-fun OpenRoute(name: String, navController: NavController, view: View, enter: EnterTransition, exit: ExitTransition, popEnter: EnterTransition? = null, popExit: ExitTransition? = null) : Boolean {
+fun OpenRoute(
+    name: String,
+    navController: NavController,
+    view: View,
+    enter: EnterTransition,
+    exit: ExitTransition,
+    popEnter: EnterTransition? = null,
+    popExit: ExitTransition? = null
+): Boolean {
     if (isAnimating) return false
 
     isAnimating = true
@@ -166,11 +183,21 @@ fun OpenRoute(name: String, navController: NavController, view: View, enter: Ent
     navController.navigate(name)
     NavigationAnim.enter.value = enter
     NavigationAnim.exit.value = exit
-    if (popEnter != null) NavigationAnim.popEnter.value = popEnter else NavigationAnim.popEnter.value = enter
-    if (popExit != null) NavigationAnim.popExit.value = popExit else NavigationAnim.popExit.value = exit
+    if (popEnter != null) NavigationAnim.popEnter.value =
+        popEnter else NavigationAnim.popEnter.value = enter
+    if (popExit != null) NavigationAnim.popExit.value = popExit else NavigationAnim.popExit.value =
+        exit
 
     val animationDuration = 700L
     view.postDelayed({ isAnimating = false }, animationDuration)
+    RouteParams.push(
+        NavigationAnimClass(
+            enter = NavigationAnim.enter.value,
+            exit = NavigationAnim.exit.value,
+            popEnter = NavigationAnim.popEnter.value,
+            popExit = NavigationAnim.popExit.value
+        )
+    )
     return true
 }
 
@@ -178,6 +205,21 @@ fun OpenRoute(name: String, navController: NavController, view: View, enter: Ent
 fun NavBarHandler(windowSize: WindowSizeClass) {
     val isCompact = windowSize.widthSizeClass == Compact
     val navController = rememberNavController()
+
+//    BackHandler{
+//        Log.e("BackHandler", "BackHandler")
+//        if (navController.previousBackStackEntry != null) {
+//            val animation = RouteParams.pop(NavigationAnimClass::class.java)
+//            navController.popBackStack()
+//            Log.e("BackHandler", "BackHandler ${animation?.enter}")
+//            if (animation != null) {
+//                NavigationAnim.enter.value = animation.enter
+//                NavigationAnim.exit.value = animation.exit
+//                NavigationAnim.popEnter.value = animation.popEnter
+//                NavigationAnim.popExit.value = animation.popExit
+//            }
+//        }
+//    }
 
     Scaffold(
         bottomBar = {
@@ -206,11 +248,11 @@ fun NavBarHandler(windowSize: WindowSizeClass) {
             startDestination = "Home",
             modifier = Modifier.padding(innerPadding),
 
-        ) {
-            routes.forEach { route ->
+            ) {
+            Routes.forEach { route ->
                 composable(route.name,
                     enterTransition = { NavigationAnim.enter.value },
-                    exitTransition = {NavigationAnim.exit.value },
+                    exitTransition = { NavigationAnim.exit.value },
                     popEnterTransition = { NavigationAnim.popEnter.value },
                     popExitTransition = { NavigationAnim.popExit.value }) { _ ->
 
@@ -218,6 +260,8 @@ fun NavBarHandler(windowSize: WindowSizeClass) {
                 }
             }
         }
+        navController.setLifecycleOwner(MainActivity.instance!!)
+
     }
 }
 
