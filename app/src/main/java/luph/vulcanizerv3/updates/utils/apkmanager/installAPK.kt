@@ -2,6 +2,8 @@ package luph.vulcanizerv3.updates.utils.apkmanager
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.utils.root.isRooted
@@ -11,6 +13,7 @@ import java.io.File
 fun installAPKNoRoot(path: String): Boolean {
     val file = File(path)
     if (!file.exists()) {
+        Toast.makeText(MainActivity.applicationContext(), "File does not exist", Toast.LENGTH_SHORT).show()
         return false
     }
     return try {
@@ -26,6 +29,7 @@ fun installAPKNoRoot(path: String): Boolean {
         MainActivity.applicationContext().startActivity(intent)
         true
     } catch (e: Exception) {
+        Log.e("installAPKNoRoot", e.toString())
         false
     }
 }
@@ -33,6 +37,7 @@ fun installAPKNoRoot(path: String): Boolean {
 fun installAPKRoot(path: String): Boolean {
     val file = File(path)
     if (!file.exists()) {
+        Toast.makeText(MainActivity.applicationContext(), "File does not exist", Toast.LENGTH_SHORT).show()
         return false
     }
     return runRootShellCommand("pm install -r $path").value.contains("Success")

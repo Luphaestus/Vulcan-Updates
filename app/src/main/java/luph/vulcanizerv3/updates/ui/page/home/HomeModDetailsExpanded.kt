@@ -1,11 +1,14 @@
 package luph.vulcanizerv3.updates.ui.page.home
 
 import android.view.View
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -33,22 +36,30 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.common.reflect.TypeToken
+import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
+import luph.vulcanizerv3.updates.data.NavigationAnim
 import luph.vulcanizerv3.updates.ui.components.HomeModDetailsCard
 import luph.vulcanizerv3.updates.ui.components.ImageCarousel
 import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 
+data class modList (
+    val modlist: List<ModDetails>
+)
+
 @Composable
 fun HomeModDetailsExpanded(navController: NavController, view: View) {
     val modCategoriesState = ModDetailsStore.getAllModKeywords()
     val modDetailString =
-        remember { mutableStateOf(RouteParams.pop(String::class.java) ?: "All Mods") }
+        remember { mutableStateOf(RouteParams.peek(String::class.java) ?: "All Mods") }
     val modDetails = remember {
         derivedStateOf {
-            modCategoriesState.value[modDetailString.value] ?: emptyList()
+            modCategoriesState.value[modDetailString.value] ?: RouteParams.pop(modList::class.java)?.modlist ?:  emptyList()
         }
     }
+
 
     val searchQuery = remember { mutableStateOf("") }
     val filteredModDetails = remember { mutableStateOf(modDetails.value) }
@@ -56,7 +67,14 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
 
     showNavigation.show = false
 
-    Column(Modifier.background(MaterialTheme.colorScheme.surface)) {
+
+    BackHandler {
+        RouteParams.pop(String::class.java)
+        NavigationAnim.popExit.value = shrinkVertically()
+        navController.popBackStack()
+    }
+
+    Column(Modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize()) {
         Row(
             modifier = Modifier
                 .padding(16.dp)
@@ -112,7 +130,11 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
                 }
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(onClick = {
+                    RouteParams.pop(String::class.java)
+                    NavigationAnim.popExit.value = shrinkVertically()
+                    navController.popBackStack()
+                }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back"

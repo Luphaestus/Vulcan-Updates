@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose)
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")
 }
 
 android {
@@ -14,7 +17,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "1.0"
+        versionName = "v3a1"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -109,6 +112,17 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.paging.compose)
 
+    // Google Libraries
+    implementation(libs.translate)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.appcheck.playintegrity)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.perf)
+    implementation(libs.firebase.dynamic.links)
+
+
+
     // Kotlin Libraries
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.android)
@@ -124,12 +138,13 @@ dependencies {
     implementation(libs.jetpack.loading)
     implementation(libs.pencilloader)
 
-    // Photo Libraries
+    // download Libraries
     implementation(libs.photo.compos)
     implementation(libs.photo.zoomable)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.base)
     implementation(libs.coil.kt.compose)
+    implementation(libs.ketch)
 
     // Markdown
     implementation(libs.compose.markdown)
@@ -140,6 +155,11 @@ dependencies {
     implementation(libs.ktor.negotiation)
     implementation(libs.ktor.json)
 
-    // download Libraries
-    implementation(libs.ketch)
+    //shimmer
+    implementation(libs.compose.shimmer)
+
+
+    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+
+
 }

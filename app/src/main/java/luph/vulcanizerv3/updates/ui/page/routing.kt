@@ -1,5 +1,7 @@
 package luph.vulcanizerv3.updates.ui.page
 
+import android.content.Intent
+import android.net.Uri
 import android.view.HapticFeedbackConstants
 import android.view.View
 import androidx.compose.animation.AnimatedVisibility
@@ -7,6 +9,7 @@ import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
@@ -38,12 +41,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.NavigationAnim
 import luph.vulcanizerv3.updates.data.NavigationAnimClass
 import luph.vulcanizerv3.updates.data.Route
 import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
+import luph.vulcanizerv3.updates.ui.components.ModInfo
 
 enum class NavigationType {
     BAR, RAIL
@@ -177,7 +183,9 @@ fun OpenRoute(
     popExit: ExitTransition? = null
 ): Boolean {
     if (isAnimating) return false
-
+    MainActivity.getFirebaseAnalytics().logEvent("navigation") {
+        param("page", name)
+    }
     isAnimating = true
     view.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
     navController.navigate(name)
@@ -202,9 +210,10 @@ fun OpenRoute(
 }
 
 @Composable
-fun NavBarHandler(windowSize: WindowSizeClass) {
+fun NavBarHandler(windowSize: WindowSizeClass): NavController {
     val isCompact = windowSize.widthSizeClass == Compact
     val navController = rememberNavController()
+
 
 //    BackHandler{
 //        Log.e("BackHandler", "BackHandler")
@@ -262,7 +271,38 @@ fun NavBarHandler(windowSize: WindowSizeClass) {
         }
         navController.setLifecycleOwner(MainActivity.instance!!)
 
+        // app link stuff
+        var openMod by remember { mutableStateOf<String?>(null) }
+        var lastNavigated = remember { mutableStateOf<String>("null") }
+        val appLinkIntent: Intent = MainActivity.instance!!.intent
+        val appLinkData: Uri? = appLinkIntent.data
+        if (appLinkData != null) {
+            val segments = appLinkData.pathSegments
+            if (segments.isNotEmpty() && segments[0] == "mod") {
+                if (segments.size > 1) {
+                    openMod = segments[1]
+                }
+            }
+        }
+
+        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value && openMod!=null && lastNavigated.value != openMod) {
+            openMod?.let {
+                ModDetailsStore.getModDetails(it)?.let {
+                    RouteParams.push(it)
+                    lastNavigated.value = openMod!!
+                    OpenRoute(
+                        "Mod Info",
+                        navController = navController,
+                        view = MainActivity.instance!!.window.decorView,
+                        enter = fadeIn(),
+                        exit = fadeOut(),
+                    )
+                }
+            }
+        }
     }
+
+    return navController
 }
 
 @Suppress("UNCHECKED_CAST")

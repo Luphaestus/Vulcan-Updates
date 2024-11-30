@@ -67,11 +67,11 @@ fun SettingsPage(navController: NavController, view: View) {
                 }
                 item {
                     SelectableSettingGroupItem(
-                        "temp",
-                        title = "stringResource(R.string.troubleshooting)",
+                        "Feedback",
+                        title = "Feedback",
                         navController,
                         view,
-                        desc = "stringResource(R.string.troubleshooting_desc)",
+                        desc = "Report Bugs and request features.",
                         icon = Icons.Outlined.BugReport,
                     ) {
 

@@ -43,7 +43,6 @@ fun ClickableOverlay(
                         interactionSource.emit(PressInteraction.Release(press))
                     },
                     onTap = { offset ->
-                        // Adjust the tap coordinates to the screen coordinates
                         val adjustedX = offset.x + boxPosition.value.x
                         val adjustedY = offset.y + boxPosition.value.y
 
@@ -52,7 +51,6 @@ fun ClickableOverlay(
                 )
             }
     ) {
-        // Your content goes here
         content()
     }
 }

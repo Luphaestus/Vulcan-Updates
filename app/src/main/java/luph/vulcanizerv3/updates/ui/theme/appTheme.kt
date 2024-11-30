@@ -18,6 +18,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.ui.theme.brown.darkScheme
 import luph.vulcanizerv3.updates.ui.theme.brown.lightScheme
@@ -82,10 +83,9 @@ fun changeStatusBarColor(view: View, newColor: Int) {
     val window = (view.context as Activity).window
     val currentColor = window.statusBarColor
 
-    // Only animate if the new color is different from the current color
     if (currentColor != newColor) {
         val colorAnimation = ObjectAnimator.ofArgb(currentColor, newColor)
-        colorAnimation.duration = 500 // Duration in milliseconds
+        colorAnimation.duration = 500
         colorAnimation.setEvaluator(ArgbEvaluator())
         colorAnimation.addUpdateListener { animator ->
             window.statusBarColor = animator.animatedValue as Int
@@ -101,6 +101,12 @@ fun ContrastAwareTheme(
     contrast: Float? = null,
     content: @Composable() () -> Unit
 ) {
+    MainActivity.getFirebaseAnalytics().logEvent("theme") {
+        param("dark", darkTheme.toString())
+        param("theme", theme.toString())
+        param("contrast", contrast.toString())
+    }
+
     val isDark = darkTheme ?: isSystemInDarkTheme()
     val colourScheme = getColourScheme(isDark, theme, contrast)
     val view = LocalView.current

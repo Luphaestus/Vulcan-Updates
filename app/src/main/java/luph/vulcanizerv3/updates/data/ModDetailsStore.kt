@@ -1,14 +1,19 @@
 package luph.vulcanizerv3.updates.data
 
 import android.util.Log
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import getAPKUpdateStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
+import luph.vulcanizerv3.updates.utils.apkmanager.isAPKInstalled
+import luph.vulcanizerv3.updates.utils.download.fetchModDetails
 import luph.vulcanizerv3.updates.utils.download.getModDetails
 import luph.vulcanizerv3.updates.utils.download.getModList
 import luph.vulcanizerv3.updates.utils.download.parseModKeywords
@@ -35,6 +40,7 @@ data class ModDetails(
     val changeLog: String = "error: change log not found",
     val READMEsummary: String = "error: README summary not found",
     val changeLogSummary: String = "error: change log summary not found",
+    val timestamp: Long = 0,
 
     //Calculated
     var url: String = "error: url not found",
@@ -48,14 +54,24 @@ enum class DETAILFILE(val type: String) {
 }
 
 object ModDetailsStore {
+    private const val MOD_LIST_FILE = "mod_list.dat"
+
     private var modDetails = mutableStateOf<MutableList<ModDetails>>(mutableListOf())
     private var keywords =
         mutableStateOf<MutableMap<String, MutableList<ModDetails>>>(mutableMapOf())
+    private var appDetails = mutableStateOf<ModDetails?>(null)
+
+
     private var modList = mutableStateOf<Map<String, String>>(emptyMap())
-    private var newMods = mutableStateOf<List<String>>(listOf())
-    private var offline = mutableStateOf(false)
-    private const val MOD_LIST_FILE = "mod_list.dat"
     private val serializableManager = SerializableManager<String>()
+
+    private var offline = mutableStateOf(false)
+
+    private var packageToModMap = mutableMapOf<String, ModDetails>()
+    private var newMods = mutableStateOf<List<String>>(listOf())
+    private var installedMods = mutableStateOf<List<String>>(listOf())
+    private var installedModsUpdate =mutableStateOf<List<String>>(listOf())
+    private var isUpdating = mutableStateOf(false)
 
     init {
         refresh()
@@ -69,6 +85,19 @@ object ModDetailsStore {
         return keywords
     }
 
+    fun getAppDetails(): State<ModDetails?> {
+        return appDetails
+    }
+
+    fun isAppUpdatedNeeded(): State<Boolean> {
+        return mutableStateOf(getAppVersion() != appDetails.value?.version && appDetails.value?.version != null)
+    }
+
+    fun isAppUpdateForced(): State<Boolean> {
+        Log.e("isAppUpdateForced", "require: ${appDetails.value?.require}")
+        return mutableStateOf(appDetails.value?.require == "force" && isAppUpdatedNeeded().value)
+    }
+
     fun getAllModKeywords(): State<Map<String, MutableList<ModDetails>>> {
         val currentModKeywords = keywords
         if (currentModKeywords.value.isEmpty()) return currentModKeywords
@@ -80,12 +109,24 @@ object ModDetailsStore {
         return newMods
     }
 
+    fun getModDetails(packageName: String): ModDetails? {
+        return packageToModMap[packageName]
+    }
+
     fun isOffline(): State<Boolean> {
         return offline
     }
 
     fun setOffline(value: Boolean) {
         offline.value = value
+    }
+
+    fun getInstalledMods(): State<List<String>> {
+        return installedMods
+    }
+
+    fun getInstalledModsUpdate(): State<List<String>> {
+        return installedModsUpdate
     }
 
     private fun saveModList() {
@@ -101,18 +142,20 @@ object ModDetailsStore {
         val savedModList = loadModList() ?: emptyMap()
         val modListPaths = mutableListOf<String>()
         modList.value.forEach { (key, value) ->
-            Log.e("ModDetailsStore", "key: $key, value: $value")
-            Log.e("ModDetailsStore", "savedModList[key]: ${savedModList[key]}")
             if (!savedModList.containsKey(key) || savedModList[key] != value) {
                 modListPaths.add(key.split("/").last())
             }
         }
-        Log.e("modlist[aths", modListPaths.toString())
         return modListPaths
+    }
+
+    fun isUpdating(): State<Boolean> {
+        return isUpdating
     }
 
     fun refresh() {
         CoroutineScope(Dispatchers.Default).launch {
+            isUpdating.value = true
             modList.value = getModList()
             offline.value = modList.value.isEmpty()
             newMods.value = newMods()
@@ -122,11 +165,27 @@ object ModDetailsStore {
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
+            appDetails.value = fetchModDetails("core/app")
 
             keywords.value = parseModKeywords(modDetails.value)
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
+
+            installedMods.value = listOf()
+            installedModsUpdate.value = listOf()
+            getModKeywords().value.get("Apk")?.forEach() {
+                val status = getAPKUpdateStatus(it.packageName, it.version)
+                if (status != APKUpdateStatus.NOT_INSTALLED) {
+                    installedMods.value += it.packageName
+                }
+                if (status == APKUpdateStatus.UPDATE_NEEDED) {
+
+                    installedModsUpdate.value += it.packageName
+                }
+            }
+            packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
+            isUpdating.value = false
         }
         return
     }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "677481802433",
+    "project_id": "vulcanupdates",
+    "storage_bucket": "vulcanupdates.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677481802433:android:7846549c5b89f506d10240",
+        "android_client_info": {
+          "package_name": "luph.vulcanizerv3.updates"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqGIKsV77IDa1HKf3KdDAAJklLEG6s7lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

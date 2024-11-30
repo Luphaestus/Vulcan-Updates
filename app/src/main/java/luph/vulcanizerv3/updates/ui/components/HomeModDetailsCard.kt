@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -28,6 +29,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -45,6 +48,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.google.firebase.analytics.logEvent
+import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.data.DETAILFILE
 import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
@@ -92,67 +97,88 @@ fun HomeModDetailsCard(
     modDetails: ModDetails,
     padding: Dp = 16.dp,
     navController: NavController,
-    view: View
+    view: View,
+    screenReader: Boolean = false
 ) {
-    TransitionBox(
-        "Mod Info",
-        navController = navController,
-        view = view,
-        onClick = { RouteParams.push(modDetails) }) {
-        Row(
-            modifier = Modifier
-                .padding(end = padding)
-                .width(336.dp)
-        ) {
-            Image(
-                painter = rememberImagePainter(data = modDetails.url + DETAILFILE.ICON.type),
-                contentDescription = "Mod Icon",
+    if (!screenReader) {
+        TransitionBox(
+            "Mod Info",
+            navController = navController,
+            view = view,
+            onClick = { RouteParams.push(modDetails) }) {
+            Row(
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
-                    .size(56.dp)
-                    .clip(RoundedCornerShape(18.dp))
-            )
+                    .padding(end = padding)
+                    .width(336.dp)
+            ) {
+                Image(
+                    painter = rememberImagePainter(data = modDetails.url + DETAILFILE.ICON.type),
+                    contentDescription = "Mod Icon",
+                    modifier = Modifier
+                        .padding(start = 20.dp, end = 20.dp)
+                        .size(56.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                )
 
-            Column {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = modDetails.name,
-                        style = MaterialTheme.typography.bodyMedium,
+                Column {
+                    val isInstalled = ModDetailsStore.getInstalledMods().value.contains(
+                        modDetails.packageName
                     )
-                    if (ModDetailsStore.getNewMods().value.contains(
-                            modDetails.url.dropLast(1).substringAfterLast("/")
+                    val needsUpdate = ModDetailsStore.getInstalledModsUpdate().value.contains(
+                        modDetails.packageName
+                    )
+
+                    val isNew = ModDetailsStore.getNewMods().value.contains(
+                        modDetails.url.dropLast(1).substringAfterLast("/")
+                    )
+
+                    if (isNew || needsUpdate || isInstalled) {
+                        BadgedBox(
+                            badge = {
+                                Badge(
+                                    modifier = Modifier.offset(x = 12.dp),
+                                    content = {
+                                        Text(
+                                            text = if (needsUpdate) "Update" else if (isInstalled) "Installed" else  "New",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onPrimary,
+                                            modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
+                                        )
+                                    },
+                                    containerColor = MaterialTheme.colorScheme.primary,
+                                )
+                            }
                         )
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .padding(start = 8.dp)
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(MaterialTheme.colorScheme.primary)
-                                .padding(horizontal = 8.dp, vertical = 4.dp)
-                        ) {
+                        {
                             Text(
-                                text = "New",
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onPrimary
+                                text = modDetails.name,
+                                style = MaterialTheme.typography.bodyMedium,
                             )
                         }
                     }
+                    else {
+                        Text(
+                            text = modDetails.name,
+                            style = MaterialTheme.typography.bodyMedium,
+                        )
+                    }
+
+                    Text(
+                        text = "by ${modDetails.author}", // todo
+                        modifier = Modifier.padding(top = 8.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    )
+                    ConcatenateStringsWithColors(
+                        bulletColor = Color.Gray,
+                        modifier = Modifier.padding(top = 8.dp),
+                        style = MaterialTheme.typography.bodySmall,
+                        modDetails.author to MaterialTheme.colorScheme.onSurface,
+                        *modDetails.keywords.take(2)
+                            .map { it to MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f) }
+                            .toTypedArray()
+                    )
                 }
-                Text(
-                    text = "by ${modDetails.author}", // todo
-                    modifier = Modifier.padding(top = 8.dp),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                )
-                ConcatenateStringsWithColors(
-                    bulletColor = Color.Gray,
-                    modifier = Modifier.padding(top = 8.dp),
-                    style = MaterialTheme.typography.bodySmall,
-                    modDetails.author to MaterialTheme.colorScheme.onSurface,
-                    *modDetails.keywords.take(2)
-                        .map { it to MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f) }
-                        .toTypedArray()
-                )
             }
         }
     }
@@ -163,8 +189,10 @@ fun HomeModDetailsCardCarousel(
     modDetails: List<ModDetails>,
     categoryName: String,
     navController: NavController,
-    view: View
+    view: View,
+    screenReader: Boolean = false
 ) {
+
     val gridState = rememberLazyGridState()
     val snapFlingBehavior =
         rememberSnapFlingBehavior(lazyGridState = gridState, snapPosition = SnapPosition.Start)
@@ -172,6 +200,9 @@ fun HomeModDetailsCardCarousel(
     Column(verticalArrangement = Arrangement.Center) {
         Box(Modifier.roundClick {
             RouteParams.push(categoryName)
+            MainActivity.getFirebaseAnalytics().logEvent("opened_mod_category") {
+                param("category", categoryName)
+            }
             OpenRoute(
                 "Home Details Expanded",
                 navController,
@@ -201,7 +232,7 @@ fun HomeModDetailsCardCarousel(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height((100 * min(3, modDetails.size)).dp)
+                .height((if (screenReader) 0 else 100 * min(3, modDetails.size)).dp)
         ) {
             LazyHorizontalGrid(
                 rows = GridCells.Fixed(min(3, modDetails.size)),
@@ -220,7 +251,8 @@ fun HomeModDetailsCardCarousel(
                         modDetails = modDetail,
                         if (isLastColumn) 76.dp else 32.dp,
                         navController,
-                        view
+                        view,
+                        screenReader,
                     )
                 }
             }

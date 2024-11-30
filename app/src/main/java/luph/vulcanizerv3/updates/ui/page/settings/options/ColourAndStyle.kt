@@ -404,13 +404,13 @@ fun ColorAndStyleOption(
                         )
                         .animateContentSize(animationSpec = tween(durationMillis = 300))
                         .fillMaxWidth()
-                        .height(IntrinsicSize.Min) // Ensure the height is the same as the button
+                        .height(IntrinsicSize.Min)
                 ) {
                     Text(
                         stringResource(R.string.dynamic_colours_option),
                         Modifier
                             .padding(vertical = 8.dp)
-                            .align(Alignment.Center), // Center the text
+                            .align(Alignment.Center),
                         color = animateColorAsState(
                             if (isDynamic.value) textSelected else textDeselected,
                             animationSpec = tween(durationMillis = 300), label = ""
@@ -454,13 +454,13 @@ fun ColorAndStyleOption(
                         )
                         .animateContentSize(animationSpec = tween(durationMillis = 300))
                         .fillMaxWidth()
-                        .height(IntrinsicSize.Min) // Ensure the height is the same as the button
+                        .height(IntrinsicSize.Min)
                 ) {
                     Text(
                         text = stringResource(R.string.static_colours_option),
                         modifier = Modifier
                             .padding(vertical = 8.dp)
-                            .align(Alignment.Center), // Center the text
+                            .align(Alignment.Center),
                         color = animateColorAsState(
                             if (!isDynamic.value) textSelected else textDeselected,
                             animationSpec = tween(durationMillis = 300), label = ""

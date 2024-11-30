@@ -63,9 +63,8 @@ private suspend fun animateCircleSize(onSizeChange: (Float) -> Unit) {
     val size = Point()
     display.getSize(size)
     val targetSize = Math.sqrt((size.x * size.x + size.y * size.y).toDouble()).toInt()
-    val animationDuration = 300 // Duration in milliseconds
+    val animationDuration = 300
 
-    // Animate the circle size
     for (i in 0..targetSize step 10) {
         onSizeChange(i.toFloat())
         delay(animationDuration / (targetSize / 10).toLong())
@@ -77,7 +76,7 @@ private fun DrawScope.drawExpandingCircle(size: Float, color: Color, offset: Off
     drawCircle(
         color = color,
         radius = size,
-        center = Offset(offset.x, offset.y) // Top right corner
+        center = Offset(offset.x, offset.y)
     )
 }
 
