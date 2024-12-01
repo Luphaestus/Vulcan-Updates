@@ -14,6 +14,7 @@ import kotlinx.serialization.json.Json
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.apkmanager.isAPKInstalled
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
+import luph.vulcanizerv3.updates.utils.download.getHelpList
 import luph.vulcanizerv3.updates.utils.download.getModDetails
 import luph.vulcanizerv3.updates.utils.download.getModList
 import luph.vulcanizerv3.updates.utils.download.parseModKeywords
@@ -64,6 +65,7 @@ object ModDetailsStore {
 
     private var modList = mutableStateOf<Map<String, String>>(emptyMap())
     private val serializableManager = SerializableManager<String>()
+    private val helpList = mutableStateOf<List<String>>(listOf())
 
     private var offline = mutableStateOf(false)
 
@@ -94,8 +96,7 @@ object ModDetailsStore {
     }
 
     fun isAppUpdateForced(): State<Boolean> {
-        Log.e("isAppUpdateForced", "require: ${appDetails.value?.require}")
-        return mutableStateOf(appDetails.value?.require == "force" && isAppUpdatedNeeded().value)
+        return mutableStateOf(appDetails.value?.require !=  getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value)
     }
 
     fun getAllModKeywords(): State<Map<String, MutableList<ModDetails>>> {
@@ -149,6 +150,10 @@ object ModDetailsStore {
         return modListPaths
     }
 
+    fun getHelpList(): State<List<String>> {
+        return helpList
+    }
+
     fun isUpdating(): State<Boolean> {
         return isUpdating
     }
@@ -184,6 +189,9 @@ object ModDetailsStore {
                     installedModsUpdate.value += it.packageName
                 }
             }
+
+            helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList()
+
             packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
             isUpdating.value = false
         }

@@ -1,4 +1,4 @@
-package luph.vulcanizerv3.updates.ui.page.settings
+package luph.vulcanizerv3.updates.ui.page.misc
 
 import android.view.View
 import androidx.activity.compose.BackHandler
@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.Help
+import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.outlined.BugReport
+import androidx.compose.material.icons.outlined.Help
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.TipsAndUpdates
@@ -26,24 +29,25 @@ import luph.vulcanizerv3.updates.ui.components.SelectableSettingGroupItem
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 
 @Composable
-fun SettingsPage(navController: NavController, view: View) {
+fun MiscPage(navController: NavController, view: View) {
     showNavigation.show = true
     BackHandler {}
+
 
     RYScaffold(
         content = {
             LazyColumn {
                 item {
-                    DisplayText(text = stringResource(R.string.settings_title), desc = "")
+                    DisplayText(text = "Misc", desc = "")
                 }
                 item {
                     SelectableSettingGroupItem(
-                        "Colour and Style",
-                        title = stringResource(R.string.color_and_style),
+                        "Help",
+                        title = "Help",
                         navController,
                         view,
-                        desc = stringResource(R.string.colour_and_style_desc),
-                        icon = Icons.Outlined.Palette,
+                        desc = "Help Documentation.",
+                        icon = Icons.AutoMirrored.Outlined.HelpOutline,
                     )
                 }
                 item {

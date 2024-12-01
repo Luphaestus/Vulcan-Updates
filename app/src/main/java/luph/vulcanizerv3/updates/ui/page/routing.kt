@@ -50,6 +50,7 @@ import luph.vulcanizerv3.updates.data.Route
 import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
 import luph.vulcanizerv3.updates.ui.components.ModInfo
+import luph.vulcanizerv3.updates.ui.page.misc.options.helpItem
 
 enum class NavigationType {
     BAR, RAIL
@@ -214,22 +215,6 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
     val isCompact = windowSize.widthSizeClass == Compact
     val navController = rememberNavController()
 
-
-//    BackHandler{
-//        Log.e("BackHandler", "BackHandler")
-//        if (navController.previousBackStackEntry != null) {
-//            val animation = RouteParams.pop(NavigationAnimClass::class.java)
-//            navController.popBackStack()
-//            Log.e("BackHandler", "BackHandler ${animation?.enter}")
-//            if (animation != null) {
-//                NavigationAnim.enter.value = animation.enter
-//                NavigationAnim.exit.value = animation.exit
-//                NavigationAnim.popEnter.value = animation.popEnter
-//                NavigationAnim.popExit.value = animation.popExit
-//            }
-//        }
-//    }
-
     Scaffold(
         bottomBar = {
             if (isCompact) {
@@ -264,7 +249,6 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                     exitTransition = { NavigationAnim.exit.value },
                     popEnterTransition = { NavigationAnim.popEnter.value },
                     popExitTransition = { NavigationAnim.popExit.value }) { _ ->
-
                     route.content(navController, LocalView.current)
                 }
             }
@@ -273,25 +257,47 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
 
         // app link stuff
         var openMod by remember { mutableStateOf<String?>(null) }
-        var lastNavigated = remember { mutableStateOf<String>("null") }
+        var lastNavigated = remember { mutableStateOf("null") }
+
+        var openHelp by remember { mutableStateOf<String?>(null) }
+        var lastNavigatedHelp = remember { mutableStateOf("null") }
+
         val appLinkIntent: Intent = MainActivity.instance!!.intent
         val appLinkData: Uri? = appLinkIntent.data
         if (appLinkData != null) {
             val segments = appLinkData.pathSegments
-            if (segments.isNotEmpty() && segments[0] == "mod") {
-                if (segments.size > 1) {
+            if (segments.size > 1) {
+                if (segments[0] == "mod") {
                     openMod = segments[1]
+                }
+                else if (segments[0] == "help") {
+                    openHelp = segments[1]
                 }
             }
         }
 
-        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value && openMod!=null && lastNavigated.value != openMod) {
-            openMod?.let {
-                ModDetailsStore.getModDetails(it)?.let {
-                    RouteParams.push(it)
-                    lastNavigated.value = openMod!!
+        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value) {
+            if ( openMod!=null && lastNavigated.value != openMod) {
+                openMod?.let {
+                    ModDetailsStore.getModDetails(it)?.let {
+                        RouteParams.push(it)
+                        lastNavigated.value = openMod!!
+                        OpenRoute(
+                            "Mod Info",
+                            navController = navController,
+                            view = MainActivity.instance!!.window.decorView,
+                            enter = fadeIn(),
+                            exit = fadeOut(),
+                        )
+                    }
+                }
+            }
+            if ( openHelp!=null && lastNavigatedHelp.value != openHelp) {
+                openHelp?.let {
+                    RouteParams.push(helpItem(it.replace("%20", " ") + ".md"))
+                    lastNavigatedHelp.value = openHelp!!
                     OpenRoute(
-                        "Mod Info",
+                        "ShowHelp",
                         navController = navController,
                         view = MainActivity.instance!!.window.decorView,
                         enter = fadeIn(),

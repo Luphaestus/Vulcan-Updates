@@ -28,6 +28,10 @@ import luph.vulcanizerv3.updates.ui.VulcanApp
 import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
 import android.content.Intent
 import android.net.Uri
+import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
+import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
+import luph.vulcanizerv3.updates.utils.download.getHelpList
+import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 
 
 class MainActivity : ComponentActivity() {
@@ -54,7 +58,8 @@ class MainActivity : ComponentActivity() {
         fun getOpenMod(): String? {
             return instance!!.openMod
         }
-        fun resetOpenMod(){
+
+        fun resetOpenMod() {
             instance!!.openMod = null
         }
     }
@@ -62,22 +67,6 @@ class MainActivity : ComponentActivity() {
     init {
         instance = this
     }
-
-    override fun onNewIntent(intent: Intent, caller: ComponentCaller) {
-        super.onNewIntent(intent, caller)
-        Log.e("onNewIntent", "onNewIntent")
-        // Handle the new intent here
-        val appLinkData: Uri? = intent?.data
-        if (appLinkData != null) {
-            val segments = appLinkData.pathSegments
-            if (segments.isNotEmpty() && segments[0] == "mod") {
-                if (segments.size > 1) {
-                    openMod = segments[1]
-                }
-            }
-        }
-    }
-
 
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -121,17 +110,5 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
-        // ATTENTION: This was auto-generated to handle app links.
-        val appLinkIntent: Intent = intent
-        val appLinkData: Uri? = appLinkIntent.data
-        if (appLinkData != null) {
-            val segments = appLinkData.pathSegments
-            if (segments.isNotEmpty() && segments[0] == "mod") {
-                if (segments.size > 1) {
-                    openMod = segments[1]
-                }
-            }
-        }
     }
-
 }

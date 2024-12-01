@@ -7,10 +7,12 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Handyman
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.QuestionMark
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Handyman
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.QuestionMark
 import androidx.compose.material.icons.outlined.Settings
@@ -25,6 +27,9 @@ import luph.vulcanizerv3.updates.ui.components.BadgeContent
 import luph.vulcanizerv3.updates.ui.components.ModInfo
 import luph.vulcanizerv3.updates.ui.page.home.HomeModDetailsExpanded
 import luph.vulcanizerv3.updates.ui.page.home.HomePage
+import luph.vulcanizerv3.updates.ui.page.misc.MiscPage
+import luph.vulcanizerv3.updates.ui.page.misc.options.HelpOption
+import luph.vulcanizerv3.updates.ui.page.misc.options.ShowHelp
 import luph.vulcanizerv3.updates.ui.page.settings.SettingsPage
 import luph.vulcanizerv3.updates.ui.page.settings.options.AcknowledgementOption
 import luph.vulcanizerv3.updates.ui.page.settings.options.ColorAndStyleOption
@@ -60,6 +65,22 @@ val Routes = listOf(
     Route(
         "Home Details Expanded",
         content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
+
+    Route(
+        "Misc",
+        Icons.Filled.Handyman,
+        Icons.Outlined.Handyman,
+        { navController, view -> MiscPage(navController, view) },
+        showBadge = {
+            ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value
+        },
+        badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) },
+        showInMenu = true,
+        stringResource = R.string.updates_title
+    ),
+    Route("Help", content = { navController, view -> HelpOption(navController, view) }),
+    Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
+
 
     Route(
         "Updates",
