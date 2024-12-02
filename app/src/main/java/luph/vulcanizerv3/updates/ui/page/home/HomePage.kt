@@ -2,6 +2,7 @@ package luph.vulcanizerv3.updates.ui.page.home
 
 import android.content.Context
 import android.content.Context.ACCESSIBILITY_SERVICE
+import android.util.Log
 import android.view.View
 import android.view.accessibility.AccessibilityManager
 import androidx.activity.compose.BackHandler
@@ -16,6 +17,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -73,7 +76,7 @@ import luph.vulcanizerv3.updates.ui.page.showNavigation
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePage(navController: NavController, view: View) {
-    val modDetailsState = ModDetailsStore.getAllModKeywords()
+    var modDetailsState = ModDetailsStore.getAllModKeywords()
     val listState = rememberLazyListState()
     showNavigation.show = true
     val am = MainActivity.applicationContext()
@@ -97,6 +100,7 @@ fun HomePage(navController: NavController, view: View) {
                             RandomIndicator()
                         }
                     } else {
+                        modDetailsState = ModDetailsStore.getAllModKeywords()
                         PullToRefreshBox(ModDetailsStore.isUpdating().value, {ModDetailsStore.refresh()}) {
                             LazyColumn(state = listState) {
                                 item {

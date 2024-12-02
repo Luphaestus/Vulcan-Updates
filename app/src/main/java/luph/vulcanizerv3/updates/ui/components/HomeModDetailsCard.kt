@@ -234,6 +234,7 @@ fun HomeModDetailsCardCarousel(
                 .fillMaxWidth()
                 .height((if (screenReader) 0 else 100 * min(3, modDetails.size)).dp)
         ) {
+            if (modDetails.isNotEmpty())
             LazyHorizontalGrid(
                 rows = GridCells.Fixed(min(3, modDetails.size)),
                 state = gridState,

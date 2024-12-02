@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import compareVersionNames
 import getAPKUpdateStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +19,9 @@ import luph.vulcanizerv3.updates.utils.download.getHelpList
 import luph.vulcanizerv3.updates.utils.download.getModDetails
 import luph.vulcanizerv3.updates.utils.download.getModList
 import luph.vulcanizerv3.updates.utils.download.parseModKeywords
+import luph.vulcanizerv3.updates.utils.modulemanager.getModuleInstalledList
+import luph.vulcanizerv3.updates.utils.modulemanager.getModuleVersions
+import luph.vulcanizerv3.updates.utils.root.isRooted
 
 enum class ModType {
     APK, TWRP, MODULE
@@ -51,7 +55,6 @@ data class ModDetails(
 enum class DETAILFILE(val type: String) {
     ICON("icon.jpg"),
     FILE("file"),
-    VERSION("version.json")
 }
 
 object ModDetailsStore {
@@ -160,22 +163,33 @@ object ModDetailsStore {
 
     fun refresh() {
         CoroutineScope(Dispatchers.Default).launch {
+            val hasRoot = isRooted()
+
             isUpdating.value = true
             modList.value = getModList()
             offline.value = modList.value.isEmpty()
             newMods.value = newMods()
             saveModList()
 
-            modDetails.value = getModDetails(modList.value)
+            val tmpModDetails = emptyList<ModDetails>().toMutableList()
+            getModDetails(modList.value).forEach {
+                if (!(!hasRoot && "Module" in it.keywords))
+                {
+                    tmpModDetails.add(it)
+                }
+            }
+
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
+
             appDetails.value = fetchModDetails("core/app")
 
-            keywords.value = parseModKeywords(modDetails.value)
-            if (modList.value.isEmpty()) {
-                offline.value = true
-            }
+
+            keywords.value = parseModKeywords(tmpModDetails)
+            modDetails.value = tmpModDetails
+
+            packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
 
             installedMods.value = listOf()
             installedModsUpdate.value = listOf()
@@ -185,14 +199,25 @@ object ModDetailsStore {
                     installedMods.value += it.packageName
                 }
                 if (status == APKUpdateStatus.UPDATE_NEEDED) {
-
                     installedModsUpdate.value += it.packageName
                 }
             }
 
+            val moduleList =   getModuleVersions(getModuleInstalledList())
+
+            moduleList.forEach {
+                if (it.key in packageToModMap.keys) {
+                    installedMods.value += it.key
+                    if (compareVersionNames(it.value,packageToModMap[it.key]?.version?: "Not Found")) {
+                        installedModsUpdate.value += it.key
+                    }
+                }
+            }
+
+
+
             helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList()
 
-            packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
             isUpdating.value = false
         }
         return

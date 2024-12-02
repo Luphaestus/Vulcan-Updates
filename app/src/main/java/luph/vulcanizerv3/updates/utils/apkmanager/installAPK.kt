@@ -36,11 +36,12 @@ fun installAPKNoRoot(path: String): Boolean {
 
 fun installAPKRoot(path: String): Boolean {
     val file = File(path)
+    Log.e("installAPKRoot", file.toString())
     if (!file.exists()) {
         Toast.makeText(MainActivity.applicationContext(), "File does not exist", Toast.LENGTH_SHORT).show()
         return false
     }
-    return runRootShellCommand("pm install -r $path").value.contains("Success")
+    return runRootShellCommand("pm install -r \"$path\"").value.contains("Success")
 }
 
 fun installAPK(path: String): Boolean {

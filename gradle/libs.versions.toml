@@ -19,6 +19,7 @@ gradle-versions = "0.51.0"
 jetpackLoading = "1.1.0"
 ketch = "2.0.2"
 khttp = "1.0.0"
+konfettiCompose = "2.0.4"
 kotlin = "2.0.20"
 kotlinx-serialization-json = "1.7.3"
 kotlinxSerializationCore = "1.7.3"
@@ -68,6 +69,7 @@ firebase-perf = { module = "com.google.firebase:firebase-perf" }
 jetpack-loading = { module = "com.github.MahboubehSeyedpour:jetpack-loading", version.ref = "jetpackLoading" }
 ketch = { module = "com.github.khushpanchal:Ketch", version.ref = "ketch" }
 khttp = { module = "khttp:khttp", version.ref = "khttp" }
+konfetti-compose = { module = "nl.dionsegijn:konfetti-compose", version.ref = "konfettiCompose" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }

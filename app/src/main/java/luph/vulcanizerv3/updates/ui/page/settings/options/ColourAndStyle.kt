@@ -118,7 +118,7 @@ fun ColorButtonRow(
                 val itemsOnPage = Themes.keys.toList().subList(startIndex, endIndex)
                 Row {
                     itemsOnPage.forEachIndexed { index, tonalPalettes ->
-                        ClickableOverlay(Modifier.weight(1f), onClick = { offset: Offset ->
+                        ClickableOverlay(Modifier.padding(4.dp), onClick = { offset: Offset ->
                             animation.add(
                                 CircleStore(
                                     offset = offset,
@@ -231,7 +231,7 @@ fun Message(message: String, drawable: Int? = null) =
     }
 
 @Composable
-fun RowScope.ColorButtonImpl(
+fun ColorButtonImpl(
     modifier: Modifier = Modifier,
     isSelected: () -> Boolean = { false },
     tonalPalettes: TonalPalettes,
@@ -250,7 +250,6 @@ fun RowScope.ColorButtonImpl(
     Surface(
         modifier = modifier
             .sizeIn(maxHeight = 74.dp, maxWidth = 80.dp, minHeight = 74.dp, minWidth = 64.dp)
-            .weight(1f, false)
             .aspectRatio(1f),
         shape = RoundedCornerShape(16.dp),
         color = cardColor,
