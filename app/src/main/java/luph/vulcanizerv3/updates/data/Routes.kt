@@ -47,68 +47,26 @@ data class Route(
     val stringResource: Int = 0, )
 
 val Routes = listOf(
-    Route("Home",
-        Icons.Filled.Home,
-        Icons.Outlined.Home,
-        { navController, view -> HomePage(navController, view) },
-        showBadge = {
-            ModDetailsStore.getNewMods().value.isNotEmpty()
-        },
-        badgeContent = { BadgeContent.Text("New") },
-        showInMenu = true,
-        stringResource = R.string.home_title
-    ),
+    Route("Home", Icons.Filled.Home, Icons.Outlined.Home, { navController, view -> HomePage(navController, view) }, showBadge = { ModDetailsStore.getNewMods().value.isNotEmpty() }, badgeContent = { BadgeContent.Text("New") }, showInMenu = true, stringResource = R.string.home_title),
+    Route("Home Details Expanded", content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
 
-    Route(
-        "Home Details Expanded",
-        content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
-
-    Route(
-        "Misc",
-        Icons.Filled.Handyman,
-        Icons.Outlined.Handyman,
-        { navController, view -> MiscPage(navController, view) },
-        showInMenu = true,
-        stringResource = R.string.updates_title
-    ),
+    Route("Misc", Icons.Filled.Handyman, Icons.Outlined.Handyman, { navController, view -> MiscPage(navController, view) }, showInMenu = true, stringResource = R.string.updates_title),
+    Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
+    //    Route("Change Boot Animation", content = { navController, view -> ChangeBootAnimation(navController, view) }),
+    Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
+    Route("Advanced Reboot Options", content = { navController, view -> AdvancedReboot(navController, view) }),
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),
     Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
-    Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
-    Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
-//    Route("Change Boot Animation", content = { navController, view -> ChangeBootAnimation(navController, view) }),
-//    Route("Change System Font", content = { navController, view -> ChangeSystemFont(navController, view) }),
-    Route("Advanced Reboot Options", content = { navController, view -> AdvancedReboot(navController, view) }),
 
+    Route("Updates", Icons.Filled.Star, Icons.Outlined.Star, { navController, view -> UpdatesPage(navController, view) }, showBadge = { ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value }, badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) }, showInMenu = true, stringResource = R.string.updates_title),
 
-    Route(
-        "Updates",
-        Icons.Filled.Star,
-        Icons.Outlined.Star,
-        { navController, view -> UpdatesPage(navController, view) },
-        showBadge = {
-            ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value
-        },
-        badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) },
-        showInMenu = true,
-        stringResource = R.string.updates_title
-    ),
+    Route("Settings", Icons.Filled.Settings, Icons.Outlined.Settings, content = { navController, view -> SettingsPage(navController, view) }, showInMenu = true, stringResource = R.string.settings_title),
 
-    Route(
-        "Settings",
-        Icons.Filled.Settings,
-        Icons.Outlined.Settings,
-        content = { navController, view -> SettingsPage(navController, view) },
-        showInMenu = true,
-        stringResource = R.string.settings_title
-    ),
-
-    Route(
-        "Colour and Style",
-        content = { navController, view -> ColorAndStyleOption(navController, view) }),
+    Route("Colour and Style", content = { navController, view -> ColorAndStyleOption(navController, view) }),
+    Route("Notifications & Internet", content = { navController, view -> NotificationAndInternet(navController, view) }),
     Route("Language", content = { navController, view -> LanguageOption(navController, view) }),
     Route("Feedback", content = { navController, view -> FeedbackOption(navController, view) }),
     Route("Acknowledgement", content = { navController, view -> AcknowledgementOption(navController, view) }),
-
 
     Route("Mod Info", content = { navController, view -> ModInfo(navController, view) })
 )
