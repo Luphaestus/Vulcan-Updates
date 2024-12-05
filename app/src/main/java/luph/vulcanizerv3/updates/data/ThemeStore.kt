@@ -11,6 +11,7 @@ import luph.vulcanizerv3.updates.ui.theme.green.greenTheme
 import luph.vulcanizerv3.updates.ui.theme.red.redTheme
 import luph.vulcanizerv3.updates.ui.theme.red2.tmpTheme
 import luph.vulcanizerv3.updates.ui.theme.yellow.yellowTheme
+import luph.vulcanizerv3.updates.utils.SerializableManager
 
 val Themes = mapOf(
     "blue" to blueTheme,

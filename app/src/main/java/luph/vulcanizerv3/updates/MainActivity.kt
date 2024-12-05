@@ -17,8 +17,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.appcheck.ktx.appCheck
-import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.ketch.Ketch
@@ -31,8 +29,9 @@ import android.net.Uri
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
 import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.utils.download.getHelpList
-import luph.vulcanizerv3.updates.utils.root.isRooted
+import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
+import org.json.JSONArray
 
 
 class MainActivity : ComponentActivity() {
@@ -74,10 +73,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        Firebase.initialize(context = this)
-        Firebase.appCheck.installAppCheckProviderFactory(
-            PlayIntegrityAppCheckProviderFactory.getInstance(),
-        )
         firebaseAnalytics = Firebase.analytics
         ketch = Ketch.builder().setNotificationConfig(
             config = NotificationConfig(

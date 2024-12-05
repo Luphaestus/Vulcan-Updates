@@ -4,7 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import luph.vulcanizerv3.updates.MainActivity
-import luph.vulcanizerv3.updates.utils.root.isRooted
+import luph.vulcanizerv3.updates.utils.root.ROOTStatus
+import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 
 fun uninstallAPKNoRoot(packageName: String): Boolean {
@@ -21,11 +22,11 @@ fun uninstallAPKNoRoot(packageName: String): Boolean {
 }
 
 fun uninstallApkRoot(packageName: String): Boolean {
-    return runRootShellCommand("pm uninstall $packageName").value.contains("Success")
+    return runRootShellCommand("pm uninstall $packageName").value.second
 }
 
 fun uninstallAPK(packageName: String): Boolean {
-    return if (isRooted()) {
+    return if (getROOTStatus() != ROOTStatus.NONE) {
         uninstallApkRoot(packageName)
     } else {
         uninstallAPKNoRoot(packageName)

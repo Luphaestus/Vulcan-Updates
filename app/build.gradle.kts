@@ -3,9 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.compose)
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
-    id("com.google.firebase.firebase-perf")
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.google.crashlytics)
 }
 
 android {
@@ -17,7 +16,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "v3a2.000001"
+        versionName = "v3a3.4"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -113,13 +112,9 @@ dependencies {
     implementation(libs.androidx.paging.compose)
 
     // Google Libraries
-    implementation(libs.translate)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
-    implementation(libs.firebase.appcheck.playintegrity)
     implementation(libs.firebase.crashlytics)
-    implementation(libs.firebase.perf)
-    implementation(libs.firebase.dynamic.links)
 
     // Kotlin Libraries
     implementation(libs.kotlin.stdlib)
@@ -153,6 +148,7 @@ dependencies {
     implementation(libs.compose.shimmer)
     implementation(libs.konfetti.compose)
     implementation(libs.compose.markdown)
-
+    implementation(libs.library)
+    implementation(libs.lottie.compose)
 
 }

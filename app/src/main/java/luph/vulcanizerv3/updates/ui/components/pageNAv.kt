@@ -28,11 +28,14 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun PageNAv(title: String, navController: NavController) {
+@Preview(showBackground = true)
+fun PageNAv(title: String="Title", navController: NavController=rememberNavController()) {
     Row(
         modifier = Modifier
+            .padding(vertical = 16.dp)
             .fillMaxWidth()
             .background(
                 MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
@@ -67,6 +70,7 @@ fun PageNavProgress(title: String="Title", navController: NavController? = null,
 
     Box(
         modifier = Modifier
+            .padding(vertical = 16.dp)
             .fillMaxWidth()
             .height(56.dp)
             .background(

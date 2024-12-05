@@ -91,10 +91,8 @@ fun ShowHelp(navController: NavController = rememberNavController(),
     }
 
     if (view != null && remoteText.isEmpty()) {
-        Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(16.dp)) {
-            Spacer(modifier = Modifier.height(32.dp))
+        Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background) .padding(start = 16.dp, end=16.dp, bottom=16.dp)) {
             PageNAv(name.substring(0, name.length - 3), navController)
-            Spacer(modifier = Modifier.height(8.dp))
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -104,11 +102,9 @@ fun ShowHelp(navController: NavController = rememberNavController(),
         }
     } else {
         LazyColumn(
-            Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(16.dp)
+            Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(start = 16.dp, end=16.dp, bottom=16.dp)
         ) {
-            item { Spacer(modifier = Modifier.height(32.dp)) }
             item { PageNAv(name.substring(0, name.length - 3), navController) }
-            item { Spacer(modifier = Modifier.height(8.dp)) }
 
             item {
                 Column(Modifier.fillMaxWidth().padding(16.dp)) {
@@ -156,11 +152,9 @@ fun HelpOption(
     showNavigation.show = false
     PullToRefreshBox(ModDetailsStore.isUpdating().value, { ModDetailsStore.refresh() }) {
         LazyColumn(
-            Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(16.dp)
+            Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(start = 16.dp, end=16.dp, bottom=16.dp)
         ) {
-            item { Spacer(modifier = Modifier.height(32.dp)) }
             item { PageNAv("Help Documentation", navController) }
-            item { Spacer(modifier = Modifier.height(8.dp)) }
 
             ModDetailsStore.getHelpList().value.forEach { helpName ->
                 item {

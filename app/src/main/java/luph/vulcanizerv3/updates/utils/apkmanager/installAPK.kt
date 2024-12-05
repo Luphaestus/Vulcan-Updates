@@ -6,7 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import luph.vulcanizerv3.updates.MainActivity
-import luph.vulcanizerv3.updates.utils.root.isRooted
+import luph.vulcanizerv3.updates.utils.root.ROOTStatus
+import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import java.io.File
 
@@ -38,14 +39,13 @@ fun installAPKRoot(path: String): Boolean {
     val file = File(path)
     Log.e("installAPKRoot", file.toString())
     if (!file.exists()) {
-        Toast.makeText(MainActivity.applicationContext(), "File does not exist", Toast.LENGTH_SHORT).show()
         return false
     }
-    return runRootShellCommand("pm install -r \"$path\"").value.contains("Success")
+    return runRootShellCommand("pm install -r \"$path\"").value.second
 }
 
 fun installAPK(path: String): Boolean {
-    return if (isRooted()) {
+    return if (ROOTStatus.NONE != getROOTStatus()) {
         installAPKRoot(path)
     } else {
         installAPKNoRoot(path)

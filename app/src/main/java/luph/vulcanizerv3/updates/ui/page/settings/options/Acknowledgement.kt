@@ -106,11 +106,61 @@ fun AcknowledgementOption(
     showNavigation.show = false
 
     LazyColumn(
-        Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(16.dp)
+        Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
     ) {
-        item { Spacer(modifier = Modifier.height(32.dp)) }
         item { PageNAv(stringResource(R.string.acknowledgments_title), navController) }
-        item { Spacer(modifier = Modifier.height(8.dp)) }
+
+        item {
+            Column(
+                modifier = Modifier
+                    .padding(top = 16.dp, bottom = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "VulcanROM links",
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+        }
+
+        item {
+            ClickableOverlay(onClick = {openUrl("https://t.me/note20updates") }) {
+                personAck(
+                    "VulcanROM Announcement channel",
+                    "Progress updates and future releases",
+                    R.drawable.vulcanannoince
+                )
+            }
+        }
+        item {
+            ClickableOverlay(onClick = {openUrl("https://t.me/VulcanROM") }) {
+                personAck(
+                    "VulcanROM Support group",
+                    "For help, feedback, and general samsung discussions",
+                    R.drawable.vulcandiscussion
+                )
+            }
+        }
+
+        item {
+            ClickableOverlay(onClick = {openUrl("https://xdaforums.com/t/vulcan-rom-one-ui-6-port.4658874/") }) {
+                personAck(
+                    "VulcanROM XDA thread",
+                    "",
+                    R.drawable.xda
+                )
+            }
+        }
+
+        item {
+            ClickableOverlay(onClick = {openUrl("https://www.paypal.com/donate/?hosted_button_id=XNSUWAEZ9WVJA") }) {
+                personAck(
+                    "Sponsor VulcanROM",
+                    "Help me keep the project free and open-source",
+                    R.drawable.paypal
+                )
+            }
+        }
 
         item {
             Column(
