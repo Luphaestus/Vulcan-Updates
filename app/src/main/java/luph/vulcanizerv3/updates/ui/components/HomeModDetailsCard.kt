@@ -164,8 +164,8 @@ fun HomeModDetailsCard(
                     }
 
                     Text(
-                        text = "by ${modDetails.author}", // todo
-                        modifier = Modifier.padding(top = 8.dp),
+                        text = "Version ${modDetails.version}", // todo
+                        modifier = Modifier.padding(top = 4.dp),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                     )

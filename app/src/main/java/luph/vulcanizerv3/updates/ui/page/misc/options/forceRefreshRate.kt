@@ -213,7 +213,7 @@ fun ForceRefreshRate(
 ) {
     showNavigation.show = false
 
-   LazyColumn(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+   LazyColumn(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(horizontal = 16.dp)) {
         item {
             PageNAv("Force Refresh Rate", navController)
         }

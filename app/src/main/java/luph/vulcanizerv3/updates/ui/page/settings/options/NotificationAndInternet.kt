@@ -1,13 +1,15 @@
 package luph.vulcanizerv3.updates.ui.page.settings.options
 
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.LocalIndication
+import luph.vulcanizerv3.updates.MessageService
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.indication
@@ -51,11 +53,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
+import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
+import luph.vulcanizerv3.updates.data.ModDetails
+import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.ThemeManager
 import luph.vulcanizerv3.updates.data.Themes
-import luph.vulcanizerv3.updates.ui.components.CircleStore
-import luph.vulcanizerv3.updates.ui.components.ClickableOverlay
 import luph.vulcanizerv3.updates.ui.components.MultipleExpandingCircleAnimations
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.SettingsElementBase
@@ -72,6 +77,29 @@ object NotificationAndInternetPreferences {
     var notifyCoreUpdates by mutableStateOf(false)
     var notifyAppUpdates by mutableStateOf(false)
 }
+
+fun subsvribe(topic: String) {
+    Firebase.messaging.subscribeToTopic(topic)
+        .addOnCompleteListener { task ->
+            var msg = "Subscribed"
+            if (!task.isSuccessful) {
+                msg = "Subscribe failed"
+            }
+            Log.d("Internet and wa", msg)
+        }
+}
+
+fun unSubsvribe(topic: String) {
+    Firebase.messaging.unsubscribeFromTopic(topic)
+        .addOnCompleteListener { task ->
+            var msg = "Unsubscribed"
+            if (!task.isSuccessful) {
+                msg = "Unsubscribe failed"
+            }
+            Log.d("Internet and wa", msg)
+        }
+}
+
 
 @Composable
 @Preview(showBackground = true)
@@ -109,7 +137,10 @@ fun NotificationAndInternet(
 
                 SwitchPreference(
                     value = NotificationAndInternetPreferences.notifyCoreUpdates,
-                    onValueChange = { NotificationAndInternetPreferences.notifyCoreUpdates = it },
+                    onValueChange = {
+                        NotificationAndInternetPreferences.notifyCoreUpdates = it
+                        if (it) subsvribe("Core") else unSubsvribe("Core")
+                    },
                     title = { Text("Notify Core Updates") },
                     summary = { Text("Enable or disable notifications for core updates") },
                     icon = { Icon(Icons.Outlined.Wifi, contentDescription = null) }
@@ -117,7 +148,13 @@ fun NotificationAndInternet(
 
                 SwitchPreference(
                     value = NotificationAndInternetPreferences.notifyAppUpdates,
-                    onValueChange = { NotificationAndInternetPreferences.notifyAppUpdates = it },
+                    onValueChange = {
+                        NotificationAndInternetPreferences.notifyAppUpdates = it
+                        ModDetailsStore.getInstalledMods().value.forEach {packageName ->
+                            if (it) subsvribe(packageName)
+                            else unSubsvribe(packageName)
+                        }
+                    },
                     title = { Text("Notify App Updates") },
                     summary = { Text("Enable or disable notifications for app updates") },
                     icon = { Icon(Icons.Outlined.Wifi, contentDescription = null) }
