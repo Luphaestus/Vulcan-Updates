@@ -124,7 +124,7 @@ fun HomePage(navController: NavController, view: View) {
                         }
                     }
                 } else {
-                    NoInternet()
+                    NoInternet(navController, view)
                 }
             }
         })
