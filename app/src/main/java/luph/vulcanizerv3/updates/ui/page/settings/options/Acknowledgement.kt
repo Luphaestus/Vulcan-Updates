@@ -197,8 +197,8 @@ fun AcknowledgementOption(
                 )
             }
         }
-        item { personAck("Oskar", "Tester ● Translator ● File Hoster ● ASS GAPER", R.drawable.oskar) }
-        item { personAck("Mesazane", "Tester ● Translator ● ASS GAPER", R.drawable.mez) }
+        item { personAck("Oskar", "Tester ● Translator ● File Hoster ● FJORD GAPER", R.drawable.oskar) }
+        item { personAck("Mesazane", "Tester ● Translator ● FJORD GAPER", R.drawable.mez) }
         item { personAck("Ciprian Dinca", "Tester ● Translator") }
         item { personAck("Jaola Tymon", "Tester") }
         item { personAck("Vlad", "Tester") }
@@ -216,7 +216,7 @@ fun AcknowledgementOption(
         item { personAck("Rick Sanchez", "Translator", R.drawable.rick) }
         item { personAck("El Vettorato", "Translator", R.drawable.ttorato) }
         item { personAck("Emre Kesin", "Translator", R.drawable.kesin) }
-        item { personAck("Boyan", "Translator", R.drawable.boyan) }
+        item { personAck("Boyan", "Translator ● Gwałt w fiordzie", R.drawable.boyan) }
 
         item {
             Column(
