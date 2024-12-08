@@ -16,7 +16,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "v3a3.4b"
+        versionName = "v3a3.5b2"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -152,5 +152,6 @@ dependencies {
     implementation(libs.compose.markdown)
     implementation(libs.library)
     implementation(libs.lottie.compose)
+    implementation(libs.versioncompare)
 
 }

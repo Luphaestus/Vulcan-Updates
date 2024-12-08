@@ -85,6 +85,7 @@ import luph.vulcanizerv3.updates.ui.page.OpenRoute
 import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.home.modList
 import luph.vulcanizerv3.updates.ui.page.showNavigation
+import luph.vulcanizerv3.updates.utils.apkmanager.getAPKVersion
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
 import java.time.Instant
@@ -220,7 +221,8 @@ fun ModUpdateCard(
     navController: NavController,
     view: View,
     modifier: Modifier = Modifier,
-    end: Int = 0
+    end: Int = 0,
+    showInstalledVersion: Boolean = false
 ) {
 
     TransitionBox(destination = "Mod Info", navController = navController, onClick = {
@@ -255,7 +257,7 @@ fun ModUpdateCard(
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Text(
-                        text = modDetails.version,
+                        text = if(showInstalledVersion) getAPKVersion(modDetails.packageName)?: modDetails.version else modDetails.version,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                     )
@@ -273,7 +275,7 @@ fun ModUpdateCard(
     }
 }
 @Composable
-fun updateCarousel(modPackageNames: List<String>, navController: NavController, view: View): List<ModDetails>{
+fun updateCarousel(modPackageNames: List<String>, navController: NavController, view: View, showInstalledVersion: Boolean): List<ModDetails>{
     showNavigation.show = true
     val modDetailsList = remember { mutableStateOf<List<ModDetails>>(listOf()) }
     Box {
@@ -285,7 +287,8 @@ fun updateCarousel(modPackageNames: List<String>, navController: NavController, 
                         modDetails = modDetails,
                         navController = navController,
                         view = view,
-                        end = if (index == modPackageNames.size - 1) 16 else 0
+                        end = if (index == modPackageNames.size - 1) 16 else 0,
+                        showInstalledVersion = showInstalledVersion
                     )
                 }
             }
@@ -385,7 +388,7 @@ fun UpdatesPage(navController: NavController, view: View) {
                             }
                             val updateMods by remember { ModDetailsStore.getInstalledModsUpdate() }
                             updatedModsList.value =
-                                updateCarousel(updateMods.toList(), navController, view)
+                                updateCarousel(updateMods.toList(), navController, view, false)
                         }
                     }
                     if (ModDetailsStore.getInstalledMods().value.isNotEmpty()) {
@@ -437,7 +440,7 @@ fun UpdatesPage(navController: NavController, view: View) {
                             }
                             val installedMods by remember { ModDetailsStore.getInstalledMods() }
                             installedDetailsList.value =
-                                updateCarousel(installedMods.toList(), navController, view)
+                                updateCarousel(installedMods.toList(), navController, view, true)
                         }
                     }
                     item {

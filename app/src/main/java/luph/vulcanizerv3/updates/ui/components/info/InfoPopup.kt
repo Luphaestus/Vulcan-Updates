@@ -66,7 +66,8 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         },
         positiveClick = {
             infoAlert.noDetachPositiveLambda.value()
-        }
+        },
+        positiveClickText = "Install Detach"
     )
 
     UpdateAlert(
@@ -78,7 +79,8 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         },
         positiveClick = {
             infoAlert.noLsposedPositiveLambda.value()
-        }
+        },
+        positiveClickText = "Install LSPosed"
     )
 
     UpdateAlert(
@@ -90,6 +92,7 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         },
         positiveClick = {
             infoAlert.noZygiskPositiveLambda.value()
-        }
+        },
+        positiveClickText = "Install Zygisk"
     )
 }
