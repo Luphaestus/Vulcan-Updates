@@ -7,12 +7,15 @@ on:
 
 permissions:
   contents: write
+  packages: write
+  deployments: write
+  issues: write
+  pull-requests: write
+  secrets: read
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
