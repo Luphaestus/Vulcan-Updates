@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-
 permissions:
   contents: write
   packages: write
@@ -46,16 +45,20 @@ jobs:
           git log --format="- %s" $(git describe --tags --abbrev=0)..HEAD >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-  release:
-    name: Release pushed tag
-    runs-on: ubuntu-22.04
-    steps:
+      - name: Get version from build.gradle
+        id: get_version
+        run: |
+          VERSION=$(grep 'version ' app/build.gradle | awk '{print $2}' | tr -d "'\"")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
+          tag: ${{ env.VERSION }}
         run: |
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag}" \
+              --body="${{ env.COMMIT_MESSAGES }}" \
+              app/build/outputs/apk/debug/app-debug.apk \
               --generate-notes
