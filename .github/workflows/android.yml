@@ -40,6 +40,12 @@ jobs:
       - name: Cloning Data Repo
         run: git clone https://huggingface.co/datasets/Luphaestus/VulcanUpdates3Data
 
+      - name: asdadasd
+        run: |
+          ls VulcanUpdates3Data
+          ls VulcanUpdates3Data/core
+          ls VulcanUpdates3Data/Vulcan-Updates
+
       - name: Copy build into data Repo
         run: cp -r app/build/outputs/apk/debug/app-debug.apk VulcanUpdates3Data/core/Vulcan-Updates/file
 
