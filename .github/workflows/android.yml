@@ -2,9 +2,8 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - v*
 
 permissions:
   contents: write
@@ -43,14 +42,16 @@ jobs:
           git log --format="- %s" $(git describe --tags --abbrev=0)..HEAD >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+  release:
+    name: Release pushed tag
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: ${{ env.COMMIT_MESSAGES }}
-          draft: false
-          prerelease: false
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
