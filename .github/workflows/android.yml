@@ -34,7 +34,7 @@ jobs:
 
       - name: Get Firebase secret
         run: |
-          echo "${{ secrets.FIREBASE_JSON }}" > /firebase.json
+          echo "${{ secrets.FIREBASE_JSON }}" > firebase.json
           chmod 777 /firebase.json
 
       - name: Cloning Data Repo
