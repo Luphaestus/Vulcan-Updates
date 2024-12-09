@@ -23,8 +23,11 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Rename Secretes
-        run: mv app/src/main/java/luph/vulcanizerv3/updates/data/sectrets.kt.tmp app/src/main/java/luph/vulcanizerv3/updates/data/sectrets.kt
+      - name: Replace secrets in Secrets.kt
+        run: |
+          cp app/src/main/java/luph/vulcanizerv3/updates/data/secrets.kt.tmp app/src/main/java/luph/vulcanizerv3/updates/data/secrets.kt
+          sed -i "s|val TELEGRAM_BOT_API = \"\"|val TELEGRAM_BOT_API = \"${{ secrets.TELEGRAM_BOT_TOKEN }}\"|" app/src/main/java/luph/vulcanizerv3/updates/data/secrets.kt
+          sed -i "s|val TELEGRAM_FEEDBACK_CHANNEL = \"\"|val TELEGRAM_FEEDBACK_CHANNEL = \"${{ secrets.TELEGRAM_FEEDBACK_CHANNEL }}\"|" app/src/main/java/luph/vulcanizerv3/updates/data/secrets.kt
 
       - name: Build with Gradle (Debug)
         run: ./gradlew assembleDebug
