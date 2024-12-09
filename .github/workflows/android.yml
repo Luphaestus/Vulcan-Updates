@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
 
@@ -40,21 +43,14 @@ jobs:
           git log --format="- %s" $(git describe --tags --abbrev=0)..HEAD >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Create Tag
-        id: create_tag
-        run: |
-          TAG_NAME="v1.0.0" # Change this to your desired tag name
-          git tag $TAG_NAME
-          git push origin $TAG_NAME
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.0
-          release_name: Release v1.0.0
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           body: ${{ env.COMMIT_MESSAGES }}
           draft: false
           prerelease: false
