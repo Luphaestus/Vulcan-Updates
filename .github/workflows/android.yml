@@ -11,7 +11,7 @@ permissions:
   deployments: write
   issues: write
   pull-requests: write
-  secrets: read
+
 
 
 jobs:
