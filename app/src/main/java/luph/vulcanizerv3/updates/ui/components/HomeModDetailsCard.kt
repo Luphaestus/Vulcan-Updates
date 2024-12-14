@@ -136,7 +136,7 @@ fun HomeModDetailsCard(
                         BadgedBox(
                             badge = {
                                 Badge(
-                                    modifier = Modifier.offset(x = 12.dp),
+                                    modifier = Modifier.offset(x = 18.dp),
                                     content = {
                                         Text(
                                             text = if (needsUpdate) "Update" else if (isInstalled) "Installed" else  "New",
@@ -164,7 +164,7 @@ fun HomeModDetailsCard(
                     }
 
                     Text(
-                        text = "Version ${modDetails.version}", // todo
+                        text = "Version ${modDetails.version}",
                         modifier = Modifier.padding(top = 4.dp),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)

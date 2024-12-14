@@ -153,5 +153,6 @@ dependencies {
     implementation(libs.library)
     implementation(libs.lottie.compose)
     implementation(libs.versioncompare)
+    implementation(libs.twyper)
 
 }

@@ -15,6 +15,7 @@ fun VulcanApp(
         ModInfo(passedModDetails = ModDetailsStore.getAppDetails().value)
         return
     }
+//    ForceRefreshRate()
     NavBarHandler(windowSize)
 }
 
