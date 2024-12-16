@@ -61,12 +61,15 @@ import luph.vulcanizerv3.updates.data.SurveyQuestion
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
 import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.ui.components.SurveyTextINput
+import luph.vulcanizerv3.updates.ui.components.TelegramVerification
 import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 import nl.dionsegijn.konfetti.compose.KonfettiView
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
 import nl.dionsegijn.konfetti.core.emitter.Emitter
 import java.util.concurrent.TimeUnit
+import java.security.MessageDigest
+
 
 const val stronglyDeemphasizedAlpha = 0.6f
 const val slightlyDeemphasizedAlpha = 0.87f
@@ -105,7 +108,13 @@ fun FeedbackOption(
                     "Username can contain only letters, numbers, and underscores" to Regex("[a-zA-Z0-9_]+")
                 )
             ),
-            remember { mutableStateOf("") }),
+            remember { mutableStateOf("") }
+        ),
+        SurveyQuestion(
+            "Telegram Verification Code",
+            "To ensure you have entered a valid Telegram username, please enter the verification code. The code will be valid for 1 hour.",
+            Options.TelegramVerification()
+        ),
     )
 
     val formPages = mapOf<String, MutableList<SurveyQuestion>>(
@@ -234,6 +243,7 @@ fun FeedbackOption(
                         Button(
 
                             onClick = {
+                                Log.e("anal sex my ass whole", pageNumber.toString())
                                 pageNumber += 1
                                 canContinue = false
                             },
@@ -315,6 +325,9 @@ fun FeedbackOption(
                                             onValidationError = {
                                                 currentQuestion.canContinue.value = false
                                             })
+                                    }
+                                    is Options.TelegramVerification -> {
+                                        TelegramVerification(sharedForm[pageNumber + sharedForm.size- 1].value, {canContinue = true})
                                     }
 
                                     else -> {

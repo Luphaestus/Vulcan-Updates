@@ -52,7 +52,7 @@ val Routes = listOf(
 
     Route("Misc", Icons.Filled.Handyman, Icons.Outlined.Handyman, { navController, view -> MiscPage(navController, view) }, showInMenu = true, stringResource = R.string.updates_title),
     Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
-    //    Route("Change Boot Animation", content = { navController, view -> ChangeBootAnimation(navController, view) }),
+    Route("Change Boot Animation", content = { navController, view -> ChangeBootOption(navController, view) }),
     Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
     Route("Advanced Reboot Options", content = { navController, view -> AdvancedReboot(navController, view) }),
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),

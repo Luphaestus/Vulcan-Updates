@@ -16,7 +16,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "v3a3.5b2"
+        versionName = "v3a3.5b3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -112,6 +112,7 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.paging.compose)
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 
     // Google Libraries
     implementation(platform(libs.firebase.bom))
@@ -154,5 +155,9 @@ dependencies {
     implementation(libs.lottie.compose)
     implementation(libs.versioncompare)
     implementation(libs.twyper)
+    implementation("com.github.jakhongirmadaminov:glassmorphic-composables:0.0.7")
+    implementation("com.github.composeuisuite:ohteepee:1.1.0")
+
+
 
 }

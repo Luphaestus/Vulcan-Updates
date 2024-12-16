@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Options{
     data class SingleChoice(val options: Map<String, ImageVector>): Options()
     data class TextInput(val hint: String, val lines: Int?=null, val icon: ImageVector?=null, val regex: Map<String, Regex> = mapOf()): Options()
+    data class TelegramVerification(val username: MutableState<String> = mutableStateOf("")): Options()
 
     data class MultipleChoice(val options: List<String>): Options()
     object DateChoice: Options()
