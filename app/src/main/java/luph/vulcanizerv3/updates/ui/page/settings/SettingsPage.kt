@@ -2,6 +2,12 @@ package luph.vulcanizerv3.updates.ui.page.settings
 
 import android.view.View
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi
+import androidx.compose.animation.graphics.res.animatedVectorResource
+import androidx.compose.animation.graphics.res.rememberAnimatedVectorPainter
+import androidx.compose.animation.graphics.vector.AnimatedImageVector
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.height
@@ -15,7 +21,12 @@ import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.TipsAndUpdates
 import androidx.compose.material.icons.outlined.TouchApp
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -24,7 +35,11 @@ import luph.vulcanizerv3.updates.ui.components.DisplayText
 import luph.vulcanizerv3.updates.ui.components.RYScaffold
 import luph.vulcanizerv3.updates.ui.components.SelectableSettingGroupItem
 import luph.vulcanizerv3.updates.ui.page.showNavigation
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import kotlinx.coroutines.delay
 
+@OptIn(ExperimentalAnimationGraphicsApi::class)
 @Composable
 fun SettingsPage(navController: NavController, view: View) {
     showNavigation.show = true

@@ -24,11 +24,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.info.UpdateAlert
@@ -52,24 +54,31 @@ fun AdvancedReboot(
     if (selectedLocation.isNotEmpty())
         AlertDialog(
             onDismissRequest = { },
-            title = { Text("Confirm Reboot") },
-            text = { Text("Are you sure you want to reboot to $selectedLocation?") },
+            title = { Text(stringResource(R.string.confirm_reboot)) },
+            text = { Text(
+                stringResource(
+                    R.string.are_you_sure_you_want_to_reboot_to,
+                    selectedLocation
+                )) },
             confirmButton = {
                 Button(onClick = {
                     runRootShellCommand("reboot $selectedLocation", false)
                 })
-                { Text("Reboot") }
+                { Text(stringResource(R.string.reboot)) }
             },
             dismissButton = {
                 TextButton(onClick = {selectedLocation = ""}){
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel))
                 }
             }
         )
 
 
     LazyColumn(
-        Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+        Modifier
+            .background(MaterialTheme.colorScheme.background)
+            .fillMaxSize()
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
     ) {
         item { PageNAv("Advanced Reboot", navController) }
         item {
@@ -80,7 +89,12 @@ fun AdvancedReboot(
                         onClick = {
                             selectedLocation = it
                         },
-                        modifier = Modifier.padding(vertical = 8.dp).background(MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp), MaterialTheme.shapes.small),
+                        modifier = Modifier
+                            .padding(vertical = 8.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp),
+                                MaterialTheme.shapes.small
+                            ),
                     )
                 }
             }

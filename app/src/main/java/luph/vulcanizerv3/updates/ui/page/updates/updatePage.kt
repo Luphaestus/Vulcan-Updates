@@ -88,6 +88,7 @@ import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.apkmanager.getAPKVersion
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
+import luph.vulcanizerv3.updates.utils.root.runShellCommand
 import java.time.Instant
 import kotlin.time.Duration
 
@@ -140,13 +141,15 @@ fun VersionCard(
                     onClick = { RouteParams.push(modDetails) }) {
                     Column(
                         verticalArrangement = Arrangement.Center,
-                        modifier = Modifier.background(
-                            color = MaterialTheme.colorScheme.secondaryContainer,
-                            shape = MaterialTheme.shapes.medium
-                        ).padding(vertical = 8.dp, horizontal = 16.dp)
+                        modifier = Modifier
+                            .background(
+                                color = MaterialTheme.colorScheme.secondaryContainer,
+                                shape = MaterialTheme.shapes.medium
+                            )
+                            .padding(vertical = 8.dp, horizontal = 16.dp)
                     ) {
                         Text(
-                            text = if (currentVersion == modDetails.version) "Info" else "Update",
+                            text = if (currentVersion.trim() == modDetails.version.trim()) "Info" else "Update",
                             color = MaterialTheme.colorScheme.secondary
                         )
                     }
@@ -168,31 +171,50 @@ fun VersionCard(
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.padding(8.dp).fillMaxWidth().weight(2.5f).shimmer()
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .fillMaxWidth()
+                        .weight(2.5f)
+                        .shimmer()
                 ) {
                     Box(
-                        Modifier.padding(8.dp).fillMaxWidth().height(16.dp).background(
-                            MaterialTheme.colorScheme.surfaceColorAtElevation(30.dp),
-                            shape = MaterialTheme.shapes.small
-                        )
+                        Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth()
+                            .height(16.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceColorAtElevation(30.dp),
+                                shape = MaterialTheme.shapes.small
+                            )
                     )
                     Box(
-                        Modifier.padding(8.dp).fillMaxWidth().height(12.dp).background(
-                            MaterialTheme.colorScheme.surfaceColorAtElevation(15.dp),
-                            shape = MaterialTheme.shapes.small
-                        )
+                        Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth()
+                            .height(12.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceColorAtElevation(15.dp),
+                                shape = MaterialTheme.shapes.small
+                            )
                     )
                 }
 
                 Column(
                     verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.weight(1f).padding(8.dp).shimmer()
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(8.dp)
+                        .shimmer()
                 ) {
                     Box(
-                        Modifier.padding(8.dp).fillMaxWidth().height(32.dp).background(
-                            MaterialTheme.colorScheme.surfaceColorAtElevation(15.dp),
-                            shape = MaterialTheme.shapes.large
-                        )
+                        Modifier
+                            .padding(8.dp)
+                            .fillMaxWidth()
+                            .height(32.dp)
+                            .background(
+                                MaterialTheme.colorScheme.surfaceColorAtElevation(15.dp),
+                                shape = MaterialTheme.shapes.large
+                            )
                     )
                 }
             }
@@ -206,12 +228,12 @@ fun timeAgo(unixTimestamp: Long): String {
     val duration = java.time.Duration.between(past, now)
 
     return when {
-        duration.toMinutes() < 1 -> "Just now"
-        duration.toMinutes() < 60 -> "${duration.toMinutes()} minutes ago"
-        duration.toHours() < 24 -> "${duration.toHours()} hours ago"
-        duration.toDays() < 30 -> "${duration.toDays()} days ago"
-        duration.toDays() < 365 -> "${duration.toDays() / 30} months ago"
-        else -> "${duration.toDays() / 365} years ago"
+        duration.toMinutes() < 1 -> MainActivity.applicationContext().getString(R.string.just_now)
+        duration.toMinutes() < 60 -> MainActivity.applicationContext().getString(R.string.minutes_ago, duration.toMinutes())
+        duration.toHours() < 24 -> MainActivity.applicationContext().getString(R.string.hours_ago, duration.toHours())
+        duration.toDays() < 30 -> MainActivity.applicationContext().getString(R.string.days_ago, duration.toDays())
+        duration.toDays() < 365 -> MainActivity.applicationContext().getString(R.string.months_ago, duration.toDays() / 30)
+        else -> MainActivity.applicationContext().getString(R.string.years_ago, duration.toDays() / 365)
     }
 }
 
@@ -236,7 +258,7 @@ fun ModUpdateCard(
                     color = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
                     shape = ShapeDefaults.Medium
                 )
-                .padding(top=8.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
+                .padding(top = 8.dp, bottom = 16.dp, start = 16.dp, end = 16.dp)
         ) {
             Row(
                 modifier = modifier,
@@ -315,24 +337,27 @@ fun UpdatesPage(navController: NavController, view: View) {
                     }
                     item {
                         Subheading(stringResource(R.string.core_title))
+                        val modetails2 = ModDetailsStore.getCoreDetails().value["app"]?.copy()
+                        modetails2?.name  = "Vulcan ROM"
+
 
                         VersionCard(
-                            ModDetailsStore.getAppDetails().value,
+                            modetails2,
+                            "V3",
+                            navController,
+                            view
+                        )
+
+                        VersionCard(
+                            ModDetailsStore.getCoreDetails().value["app"],
                             getAppVersion(view.context),
                             navController,
                             view
                         )
 
                         VersionCard(
-                            ModDetailsStore.getAppDetails().value,
-                            getAppVersion(view.context),
-                            navController,
-                            view
-                        )
-
-                        VersionCard(
-                            ModDetailsStore.getAppDetails().value,
-                            "1.0.0",
+                            ModDetailsStore.getCoreDetails().value["pif"],
+                            runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["pif"]?.packageName}").value.first,
                             navController,
                             view
                         )

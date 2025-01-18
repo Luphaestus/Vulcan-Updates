@@ -18,10 +18,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.infoBoxesData
 import luph.vulcanizerv3.updates.ui.components.MarkdownGenerator
@@ -42,7 +44,7 @@ fun InfoBoxes(
             .clickable { infoBoxesData.showDescription.value = true }
     ) {
         Text(
-            text = "Description",
+            text = stringResource(R.string.description),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.padding(start = 16.dp, top = 16.dp)
@@ -83,7 +85,7 @@ fun InfoBoxes(
                     ) {
                         append(infoBoxesData.modDetails.READMEsummary[infoBoxesData.modDetails.READMEsummary.length - 1])
                     }
-                    append("...more")
+                    append(stringResource(R.string.more))
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
@@ -105,10 +107,10 @@ fun InfoBoxes(
                 color = MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
                 shape = ShapeDefaults.Large
             )
-            .clickable {infoBoxesData.showVersion.value = true }
+            .clickable { infoBoxesData.showVersion.value = true }
     ) {
         Text(
-            text = "Change Log",
+            text = stringResource(R.string.change_log),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.padding(start = 16.dp, top = 16.dp)
@@ -149,7 +151,7 @@ fun InfoBoxes(
                     ) {
                         append(infoBoxesData.modDetails.changeLogSummary[infoBoxesData.modDetails.changeLogSummary.length - 1])
                     }
-                    append("...more")
+                    append(stringResource(R.string.more))
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
@@ -171,11 +173,10 @@ fun InfoBoxes(
                         item { MarkdownGenerator(markdown = infoBoxesData.modDetails.README) }
                     else if (infoBoxesData.showVersion.value) {
                         item {
-                            val versionHtml = """
-<h2 style="text-align:center;">Version ${infoBoxesData.modDetails.version}</h2>
-<hr>
-<br>
-""" + infoBoxesData.modDetails.changeLog
+                            val versionHtml = stringResource(
+                                R.string.h2_style_text_align_center_version_h2_hr_br,
+                                infoBoxesData.modDetails.version
+                            ) + infoBoxesData.modDetails.changeLog
                             MarkdownGenerator(markdown = versionHtml)
                         }
                     } else if (infoBoxesData.showErrorText.value.isNotEmpty()) {

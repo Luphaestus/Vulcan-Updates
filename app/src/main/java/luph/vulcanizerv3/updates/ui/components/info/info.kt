@@ -44,6 +44,8 @@ import luph.vulcanizerv3.updates.ui.page.settings.options.subscribe
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.apkmanager.installAPK
 import luph.vulcanizerv3.updates.utils.modulemanager.installModule
+import luph.vulcanizerv3.updates.utils.root.runShellCommand
+import java.io.File
 
 @Composable
 fun ModInfo(navController: NavController = NavController(MainActivity.applicationContext()),
@@ -59,7 +61,7 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
 
     showNavigation.show = false
 
-    val corePackages = arrayOf("luph.vulcanizerv3.updates")
+    val corePackages = arrayOf("luph.vulcanizerv3.updates", "persist.sys.vulcan.pif.version")
 
     val infoAlert = infoAlert()
     val buttonData = buttonData(modDetails, infoState, downloadId, changeUpdateType = { updateStatus, buttonData -> changeUpdateType(updateStatus, buttonData) }, infoAlert, navController, view)
@@ -67,20 +69,25 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
 
 
     fun goBack(){
-        when(infoState.value) {
-            UpdateStatus.INSTALLED -> {
-                ModDetailsStore.installedMods.value += modDetails.packageName
-                ModDetailsStore.installedModsUpdate.value -= modDetails.packageName
+        if (ModDetailsStore.getAllPackages().contains(modDetails.packageName)) {
+            when (infoState.value) {
+                UpdateStatus.INSTALLED -> {
+                    ModDetailsStore.installedMods.value += modDetails.packageName
+                    ModDetailsStore.installedModsUpdate.value -= modDetails.packageName
+                }
+
+                UpdateStatus.UPDATE_AVAILABLE -> {
+                    ModDetailsStore.installedMods.value += modDetails.packageName
+                    ModDetailsStore.installedModsUpdate.value += modDetails.packageName
+                }
+
+                UpdateStatus.NOT_INSTALLED -> {
+                    ModDetailsStore.installedMods.value -= modDetails.packageName
+                    ModDetailsStore.installedModsUpdate.value -= modDetails.packageName
+                }
+
+                else -> {}
             }
-            UpdateStatus.UPDATE_AVAILABLE -> {
-                ModDetailsStore.installedMods.value += modDetails.packageName
-                ModDetailsStore.installedModsUpdate.value += modDetails.packageName
-            }
-            UpdateStatus.NOT_INSTALLED -> {
-                ModDetailsStore.installedMods.value -= modDetails.packageName
-                ModDetailsStore.installedModsUpdate.value -= modDetails.packageName
-            }
-            else -> {}
         }
         navController.popBackStack()
     }
@@ -88,8 +95,6 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
     BackHandler {
         goBack()
     }
-
-
 
     LaunchedEffect(downloadId.intValue) {
         if (infoState.value != UpdateStatus.UPDATING) {
@@ -102,9 +107,18 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                             changeUpdateType(UpdateStatus.INSTALLED, buttonData)
                         }
                     }
-
                     else -> {
-                        changeUpdateType(UpdateStatus.NOT_INSTALLED, buttonData)
+                        when (modDetails.updateType) {
+                            ModType.SHELL -> {
+                                if (runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["pif"]?.packageName}").value.first.trim() == modDetails.version.trim())
+                                    changeUpdateType(UpdateStatus.INSTALLED, buttonData)
+                                else changeUpdateType(UpdateStatus.UPDATE_AVAILABLE, buttonData)
+                            }
+
+                            else -> {
+                                changeUpdateType(UpdateStatus.INSTALLED, buttonData)
+                            }
+                        }
                     }
                 }
             else {
@@ -156,7 +170,14 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                                     success = result.second
                                     if (!success) infoBoxesData.showErrorText.value = result.first
                                     buttonData.canCancel = true
+                                }
 
+                                ModType.SHELL -> {
+                                    val shellFile = File(downloadModel.path, "shell.sh")
+                                    shellFile.writeText("FILEPATH=\"${downloadModel.path + "/${modDetails.name}"}\"\n" + modDetails.shell)
+                                    val res = runShellCommand("sh ${shellFile.absolutePath}").value
+                                    success = res.second
+                                    buttonData.canCancel = true
                                 }
 
                                 else -> {}

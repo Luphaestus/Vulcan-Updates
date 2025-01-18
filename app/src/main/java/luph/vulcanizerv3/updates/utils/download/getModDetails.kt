@@ -47,6 +47,7 @@ fun fetchModDetails(
         "apk" -> ModType.APK
         "twrp" -> ModType.TWRP
         "module" -> ModType.MODULE
+        "shell" -> ModType.SHELL
         else -> null
     }
     SerializableManager<String>().save("$repoName.dat", json.encodeToString(details))

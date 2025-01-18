@@ -137,7 +137,7 @@ fun InfoPane(modDetails: ModDetails, downloadProgressPercentage: MutableIntState
         Spacer(modifier = Modifier.height(3.dp))
         Text(
             text = buildAnnotatedString {
-                append("By ")
+                append(text = stringResource(R.string.by))
                 withStyle(style = SpanStyle(fontWeight = FontWeight.Medium)) {
                     append(modDetails.author)
                 }
@@ -160,7 +160,7 @@ fun InfoPane(modDetails: ModDetails, downloadProgressPercentage: MutableIntState
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Version", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
+                Text(text = stringResource(R.string.version), style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface)
                 Text(
                     text = modDetails.version,
                     style = MaterialTheme.typography.bodyMedium,

@@ -15,7 +15,7 @@ fun VulcanApp(
     windowSize: WindowSizeClass,
 ) {
     if (ModDetailsStore.isAppUpdateForced().value) {
-        ModInfo(passedModDetails = ModDetailsStore.getAppDetails().value)
+        ModInfo(passedModDetails = ModDetailsStore.getCoreDetails().value["app"])
         return
     }
 

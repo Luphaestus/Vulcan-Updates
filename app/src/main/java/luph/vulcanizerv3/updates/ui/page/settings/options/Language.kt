@@ -28,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
+import com.crowdin.platform.Crowdin
 import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
@@ -93,12 +94,14 @@ fun LanguageOption(
     showNavigation.show = false
     val selectedLanguage = remember { mutableStateOf(getLocale()) }
 
-    val languages = mapOf(
-        "de" to "Deutsch",
-        "en" to "English",
-        "iw" to "עברית",
-        "in" to "हिन्दी"
-    )
+    val supportedLanguages = Crowdin.getSupportedLanguages()?.data
+
+    val languages = mutableMapOf<String, String>()
+    supportedLanguages?.forEach {
+        languages[it.data.locale] = it.data.name
+    }
+
+
 
     LazyColumn(
         Modifier

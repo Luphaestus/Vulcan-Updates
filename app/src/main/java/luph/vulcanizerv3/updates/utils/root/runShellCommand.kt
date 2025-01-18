@@ -7,6 +7,8 @@ import com.google.firebase.crashlytics.internal.model.CrashlyticsReport
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlin.collections.plusAssign
+import kotlin.io.inputStream
 
 fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<Pair<String, Boolean>> {
     var output = ""
@@ -15,14 +17,19 @@ fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<P
         val process = Runtime.getRuntime().exec(command)
         if (waitForCompletion) {
             val reader = process.inputStream.bufferedReader()
-            val result = reader.readText()
+            val errorReader = process.errorStream.bufferedReader()
+            val result = reader.readText() + errorReader.readText()
             output = result
             success = process.waitFor() == 0
             return mutableStateOf(Pair(output, success))
         } else {
             GlobalScope.launch(Dispatchers.IO) {
                 val reader = process.inputStream.bufferedReader()
+                val errorReader = process.errorStream.bufferedReader()
                 reader.forEachLine { line ->
+                    output += line + "\n"
+                }
+                errorReader.forEachLine { line ->
                     output += line + "\n"
                 }
                 success = process.waitFor() == 0

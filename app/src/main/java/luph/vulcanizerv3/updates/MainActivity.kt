@@ -28,11 +28,16 @@ import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.appcompat.app.BaseContextWrappingDelegate
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.core.app.OnNewIntentProvider
+import com.crowdin.platform.Crowdin
+import com.crowdin.platform.CrowdinConfig
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
@@ -42,9 +47,12 @@ import luph.vulcanizerv3.updates.utils.download.getHelpList
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 import org.json.JSONArray
+import kotlin.collections.remove
 
 
 class MainActivity : ComponentActivity() {
+
+
     private lateinit var ketch: Ketch
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
@@ -75,6 +83,12 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("InlinedApi")
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().apply {
+
+//            setKeepOnScreenCondition { true }
+
+        }
+
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         firebaseAnalytics = Firebase.analytics
@@ -84,6 +98,11 @@ class MainActivity : ComponentActivity() {
                 smallIcon = R.drawable.logo
             )
         ).build(this)
+
+        Crowdin.init(applicationContext,
+            CrowdinConfig.Builder()
+                .withDistributionHash("705a4bb530c8bbe03ca1219wwip")
+                .build())
 
         var showNotif = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -100,7 +119,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             var showNotifAlert = remember { mutableStateOf(showNotif) }
-            UpdateAlert("Please Enable Notifications", "Turn on notifications to receive updates on download progress and MOD updates.", showNotifAlert, "Deny", positiveClickText = "Allow", positiveClick = {
+            UpdateAlert(stringResource(R.string.please_enable_notifications),
+                stringResource(R.string.notification_request_desc), showNotifAlert, "Deny", positiveClickText = "Allow", positiveClick = {
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.POST_NOTIFICATIONS),
@@ -119,4 +139,9 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Crowdin.wrapContext(newBase))
+    }
+
 }

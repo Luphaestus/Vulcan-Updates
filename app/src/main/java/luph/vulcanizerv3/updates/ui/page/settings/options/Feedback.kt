@@ -243,7 +243,6 @@ fun FeedbackOption(
                         Button(
 
                             onClick = {
-                                Log.e("anal sex my ass whole", pageNumber.toString())
                                 pageNumber += 1
                                 canContinue = false
                             },
@@ -327,7 +326,9 @@ fun FeedbackOption(
                                             })
                                     }
                                     is Options.TelegramVerification -> {
-                                        TelegramVerification(sharedForm[pageNumber + sharedForm.size- 1].value, {canContinue = true})
+                                        TelegramVerification(sharedForm[pageNumber + sharedForm.size- 1].value, {
+                                            pageNumber += 1
+                                            canContinue = false})
                                     }
 
                                     else -> {
@@ -351,7 +352,7 @@ fun FeedbackOption(
                     modifier = Modifier
                         .weight(1f)
                         .padding(16.dp),
-                    enabled = pageNumber > -sharedForm.size
+                    enabled = false
                 ) {
                     Text("Previous")
                 }

@@ -258,8 +258,6 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
         navController.setLifecycleOwner(MainActivity.instance!!)
 
 
-
-
         // app link stuff
         var openMod by remember { mutableStateOf<String?>(null) }
         var lastNavigated = remember { mutableStateOf("null") }
@@ -295,11 +293,12 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
             }
         }
 
-        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value && ModDetailsStore.getAppDetails().value != null) {
+        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value && ModDetailsStore.getCoreDetails().value["app"] != null) {
             if (openMod != null && lastNavigated.value != openMod) {
                 openMod?.let {
                     val modDetails = when (it) {
-                        "Vulcan-Updates" -> ModDetailsStore.getAppDetails().value
+                        "Vulcan-Updates" -> ModDetailsStore.getCoreDetails().value["app"]
+                        "Keybox" -> ModDetailsStore.getCoreDetails().value["pif"]
                         else -> ModDetailsStore.getModDetails(it)
                     }
                     modDetails?.let {
