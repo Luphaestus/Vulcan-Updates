@@ -61,7 +61,7 @@ fun generateCodeAndValidity(username: String, floor: Long): String {
 
 @Composable
 fun TelegramVerification(username: MutableState<String>, onCompleted: () -> Unit) {
-    var hasRequestedCode by remember { mutableStateOf(true) }
+    var hasRequestedCode by remember { mutableStateOf(false) }
     val hasRequestedCodeVisibility by animateFloatAsState(if (hasRequestedCode) 1f else 0f)
 
     val url = "https://t.me/VulcanROM_helper_bot?start=Auth"

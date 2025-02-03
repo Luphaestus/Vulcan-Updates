@@ -19,7 +19,6 @@ fun VulcanApp(
         return
     }
 
-    FeedbackOption()
-//    NavBarHandler(windowSize)
+    NavBarHandler(windowSize)
 }
 
