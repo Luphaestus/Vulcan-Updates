@@ -64,10 +64,10 @@ fun SettingsPage(navController: NavController, view: View) {
                 item {
                     SelectableSettingGroupItem(
                         "Notifications & Internet",
-                        title = "Notifications & Internet",
+                        title = stringResource(R.string.notifications_internet),
                         navController,
                         view,
-                        desc = "Manage your notification preferences and internet settings.",
+                        desc = stringResource(R.string.manage_your_notification_preferences_and_internet_settings),
                         icon = Icons.Outlined.TouchApp,
                     )
                 }
@@ -87,7 +87,7 @@ fun SettingsPage(navController: NavController, view: View) {
                         title = "Feedback",
                         navController,
                         view,
-                        desc = "Report Bugs and request features.",
+                        desc = stringResource(R.string.report_bugs_and_request_features),
                         icon = Icons.Outlined.BugReport,
                     )
                 }
@@ -97,7 +97,7 @@ fun SettingsPage(navController: NavController, view: View) {
                         title = stringResource(R.string.acknowledgments_title),
                         navController,
                         view,
-                        desc = "Acknowledging resources and contributions.",
+                        desc = stringResource(R.string.acknowledging_resources_and_contributions),
                         icon = Icons.Outlined.TipsAndUpdates,
                     )
                 }

@@ -71,6 +71,10 @@ data class infoAlert(
     var noLsposedNegativeLambda: MutableState<() -> Unit> = mutableStateOf({}),
     var noLsposedPositiveLambda: MutableState<() -> Unit> = mutableStateOf({}),
 
+    val rootRequiredDialog: MutableState<Boolean> =  mutableStateOf(false),
+    var rootRequiredNegativeLambda: MutableState<() -> Unit> = mutableStateOf({}),
+    var rootRequiredPositiveLambda: MutableState<() -> Unit> = mutableStateOf({}),
+
     val noZygiskDialog: MutableState<Boolean> =  mutableStateOf(false),
     var noZygiskNegativeLambda: MutableState<() -> Unit> = mutableStateOf({}),
     var noZygiskPositiveLambda: MutableState<() -> Unit> = mutableStateOf({}),

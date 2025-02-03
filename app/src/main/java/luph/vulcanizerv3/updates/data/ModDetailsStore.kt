@@ -60,7 +60,7 @@ data class ModDetails(
 )
 
 enum class DETAILFILE(val type: String) {
-    ICON("icon.jpg"),
+    ICON("icon.png"),
     FILE("file"),
 }
 
@@ -269,19 +269,13 @@ object ModDetailsStore {
             if (notificationAndInternetPreferences.value.notifyCoreUpdates.value) subscribe("Core")
             isUpdating.value = true
 
-
-            val hasRoot = getROOTStatus() != ROOTStatus.NONE
-
             modList.value = getModList()
             offline.value = modList.value.isEmpty()
             newMods.value = newMods()
 
             val tmpModDetails = emptyList<ModDetails>().toMutableList()
             getModDetails(modList.value).forEach {
-                if (!(!hasRoot && it.updateType == ModType.MODULE))
-                {
                     tmpModDetails.add(it)
-                }
             }
 
             if (modList.value.isEmpty()) {
@@ -291,6 +285,7 @@ object ModDetailsStore {
                 saveModList()
             }
 
+            coreDetails.value["rom"] = fetchModDetails("core/Vulcan-ROM")
             coreDetails.value["app"] = fetchModDetails("core/Vulcan-Updates")
             coreDetails.value["pif"] = fetchModDetails("core/Keybox")
 

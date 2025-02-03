@@ -3,12 +3,16 @@ package luph.vulcanizerv3.updates.ui.page
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.View
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -30,10 +34,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass.Companion.Compact
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,6 +52,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.NavigationAnim
 import luph.vulcanizerv3.updates.data.NavigationAnimClass
@@ -52,6 +60,7 @@ import luph.vulcanizerv3.updates.data.Route
 import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
 import luph.vulcanizerv3.updates.ui.page.misc.options.helpItem
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 
 
 enum class NavigationType {
@@ -76,51 +85,80 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
 
 
     @Composable
-    fun NavigationItemContent(index: Int, route: Route) {
+    fun NavigationItemContent(index: Int, route: Route, iconSizeOffset: Float = 0f) {
         badgeFormatter.badge(
             enabled = route.showBadge(),
             icon = if (selectedItem == index) route.selectedIcon else route.unselectedIcon,
             contentDescription = route.name,
             badgeContent = route.badgeContent(),
+            iconSizeOffset
         )()
     }
 
     AnimatedVisibility(
         visible = showNavigation.show,
-        enter = slideInVertically(animationSpec = tween(700)) { it },
-        exit = slideOutVertically(animationSpec = tween(700)) { it }
+        enter = slideInVertically(animationSpec = tween(getStandardAnimationSpeed())) { it },
+        exit = slideOutVertically(animationSpec = tween(getStandardAnimationSpeed())) { it }
     ) {
         when (navigationType) {
+
             NavigationType.BAR -> {
+
+
                 NavigationBar {
+                    val iconOffsets = remember { mutableStateListOf<MutableState<Float>>() }
                     Routes.forEachIndexed { index, route ->
+
                         if (route.showInMenu) {
+                            var iconSizeOffset = remember { mutableStateOf(0f) }
+                            if (!iconOffsets.contains(iconSizeOffset)) {
+                                iconOffsets.add(iconSizeOffset)
+                            }
+
+
+                            val animatedIconOffset by animateFloatAsState(
+                                targetValue = iconSizeOffset.value,
+                                animationSpec = if (iconSizeOffset.value > 0) {
+                                    spring(dampingRatio = Spring.DampingRatioHighBouncy, stiffness = Spring.StiffnessLow)
+                                } else {
+                                    tween(durationMillis = 3000)
+                                }
+                            )
+
                             NavigationBarItem(
-                                icon = { NavigationItemContent(index, route) },
-                                label = { Text(route.name) },
+                                icon = { NavigationItemContent(index, route, animatedIconOffset) },
+                                label = { Text(route.localName?:route.name) },
                                 selected = selectedItem == index,
                                 onClick = {
+                                    for (iconOffset in iconOffsets) {
+
+                                        iconOffset.value = 0f
+                                    }
+                                    iconSizeOffset.value = 3f
+
+
+
                                     var navigated: Boolean = false
                                     if (selectedItem < index)
                                         navigated = OpenRoute(
                                             route.name,
                                             navController,
                                             view,
-                                            slideInHorizontally(animationSpec = tween(700)) { it },
-                                            slideOutHorizontally(animationSpec = tween(700)) { -it })
+                                            slideInHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { it },
+                                            slideOutHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { -it })
                                     else if (selectedItem > index)
                                         navigated = OpenRoute(
                                             route.name,
                                             navController,
                                             view,
-                                            slideInHorizontally(animationSpec = tween(700)) { -it },
-                                            slideOutHorizontally(animationSpec = tween(700)) { it })
+                                            slideInHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { -it },
+                                            slideOutHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { it })
                                     else
                                         navigated = OpenRoute(
                                             route.name,
                                             navController,
                                             view,
-                                            fadeIn(animationSpec = tween(700)),
+                                            fadeIn(animationSpec = tween(getStandardAnimationSpeed())),
                                             ExitTransition.None
                                         )
 
@@ -146,15 +184,15 @@ fun NavBarGenerator(navigationType: NavigationType, navController: NavController
                                             route.name,
                                             navController,
                                             view,
-                                            slideInHorizontally(animationSpec = tween(700)) { it },
-                                            slideOutHorizontally(animationSpec = tween(700)) { -it })
+                                            slideInHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { it },
+                                            slideOutHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { -it })
                                     else if (selectedItem > index)
                                         OpenRoute(
                                             route.name,
                                             navController,
                                             view,
-                                            slideInHorizontally(animationSpec = tween(700)) { -it },
-                                            slideOutHorizontally(animationSpec = tween(700)) { it })
+                                            slideInHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { -it },
+                                            slideOutHorizontally(animationSpec = tween(getStandardAnimationSpeed())) { it })
                                     else
                                         OpenRoute(
                                             route.name,
@@ -199,7 +237,7 @@ fun OpenRoute(
     if (popExit != null) NavigationAnim.popExit.value = popExit else NavigationAnim.popExit.value =
         exit
 
-    val animationDuration = 700L
+    val animationDuration = 0L
     view.postDelayed({ isAnimating = false }, animationDuration)
     RouteParams.push(
         NavigationAnimClass(
@@ -241,7 +279,7 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
         }
         NavHost(
             navController,
-            startDestination = "Home",
+            startDestination = "home",
             modifier = Modifier.padding(innerPadding),
 
             ) {

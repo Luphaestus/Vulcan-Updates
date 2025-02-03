@@ -4,13 +4,17 @@ import android.R.attr.value
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -35,6 +39,7 @@ import java.util.regex.Pattern
 import java.time.Instant
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.alpha
 
 fun hashToAlphanumeric(inputString: String): String {
     val hashObject = MessageDigest.getInstance("SHA-256").digest(inputString.toByteArray())
@@ -55,60 +60,81 @@ fun generateCodeAndValidity(username: String, floor: Long): String {
 
 
 @Composable
-fun TelegramVerification(username: MutableState<String>, onCompleted: () -> Unit){
-    Column {
-        Button(onClick = {
-            val context = MainActivity.applicationContext()
-            val url = "https://t.me/VulcanROM_helper_bot?start=Auth"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+fun TelegramVerification(username: MutableState<String>, onCompleted: () -> Unit) {
+    var hasRequestedCode by remember { mutableStateOf(true) }
+    val hasRequestedCodeVisibility by animateFloatAsState(if (hasRequestedCode) 1f else 0f)
+
+    val url = "https://t.me/VulcanROM_helper_bot?start=Auth"
+    val context = MainActivity.applicationContext()
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    }
+
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Box {
+            if (hasRequestedCodeVisibility != 1f) {
+                Button(
+                    onClick = {
+                        hasRequestedCode = true
+                        context.startActivity(intent)
+                    },
+                    modifier = Modifier.alpha(1 - hasRequestedCodeVisibility)
+                ) {
+                    Text("Request Verification Code")
+                }
             }
-            context.startActivity(intent)
-        }){
-            Text("Request Verification Code")
-        }
-        var otpValue = remember { mutableStateOf("") }
-        var isOtpValid by remember { mutableStateOf(true) }
+            if (hasRequestedCodeVisibility != 0f) {
+                var otpValue = remember { mutableStateOf("") }
+                var isOtpValid by remember { mutableStateOf(true) }
 
-        val defaultCellConfig = OhTeePeeDefaults.cellConfiguration(
-            borderColor = Color.LightGray,
-            borderWidth = 1.dp,
-            shape = RoundedCornerShape(16.dp),
+                val defaultCellConfig = OhTeePeeDefaults.cellConfiguration(
+                    borderColor = Color.LightGray,
+                    borderWidth = 1.dp,
+                    shape = RoundedCornerShape(16.dp),
 
-        )
+                    )
+                Column {
+                    OhTeePeeInput(
+                        value = otpValue.value,
+                        onValueChange = { newValue, isValid ->
+                            isOtpValid = newValue != ""
 
-        OhTeePeeInput(
-            value = otpValue.value,
-            onValueChange = { newValue, isValid ->
-                isOtpValid = newValue != ""
+                            otpValue.value = newValue
 
-                otpValue.value = newValue
-
-                if (isValid){
-                    val generatedCode = generateCodeAndValidity(username.value, 3600)
-Log.e("Generated Code", generatedCode)
-                    if (otpValue.value == generatedCode){
-                        isOtpValid = true
-                        onCompleted()
-                    }
-                    else
-                    {
-                        isOtpValid = false
+                            if (isValid) {
+                                val generatedCode = generateCodeAndValidity(username.value, 3600)
+                                Log.e("Generated Code", generatedCode)
+                                if (otpValue.value == generatedCode) {
+                                    isOtpValid = true
+                                    onCompleted()
+                                } else {
+                                    isOtpValid = false
+                                }
+                            }
+                        },
+                        isValueInvalid = !isOtpValid,
+                        configurations = OhTeePeeDefaults.inputConfiguration(
+                            cellsCount = 6,
+                            emptyCellConfig = defaultCellConfig,
+                            cellModifier = Modifier.size(48.dp),
+                        ),
+                        keyboardType = KeyboardType.Text,
+                        modifier = Modifier.alpha(hasRequestedCodeVisibility)
+                    )
+                    TextButton(
+                        onClick = {
+                            context.startActivity(intent)
+                        },
+                        modifier = Modifier.alpha(hasRequestedCodeVisibility)
+                            .align(Alignment.End)
+                    ) {
+                        Text("Request New Code")
                     }
                 }
-            },
-            isValueInvalid = !isOtpValid,
-            configurations = OhTeePeeDefaults.inputConfiguration(
-                cellsCount = 6,
-                emptyCellConfig = defaultCellConfig,
-                cellModifier = Modifier.size(48.dp),
-            ),
-            keyboardType = KeyboardType.Text
-        )
-
+            }
+        }
     }
 }
-
 
 @Composable
 @Preview(showBackground = true)

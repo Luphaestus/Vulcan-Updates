@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 
 fun Offset.toIntOffset() = IntOffset(x.toInt(), y.toInt())
 
@@ -78,7 +79,7 @@ fun TransitionBox(
                         OpenRoute(
                             destination, navController, view,
                             enter = scaleIn(
-                                animationSpec = tween(700),
+                                animationSpec = tween(getStandardAnimationSpeed()),
                                 transformOrigin = TransformOrigin(
                                     transformOriginX,
                                     transformOriginY
@@ -87,7 +88,7 @@ fun TransitionBox(
                             exit = ExitTransition.None,
                             popEnter = EnterTransition.None,
                             popExit = scaleOut(
-                                animationSpec = tween(500),
+                                animationSpec = tween((getStandardAnimationSpeed()*0.7).toInt()),
                                 transformOrigin = TransformOrigin(
                                     transformOriginX,
                                     transformOriginY

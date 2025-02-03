@@ -197,13 +197,14 @@ fun AcknowledgementOption(
                 )
             }
         }
-        item { personAck("Oskar", "Tester ● Translator ● File Hoster ● FJORD GAPER", R.drawable.oskar) }
+        item { personAck("Oskar", "Tester ● Translator ● ODIN Pack ● FJORD GAPER", R.drawable.oskar) }
         item { personAck("Mesazane", "Tester ● Translator ● FJORD GAPER", R.drawable.mez) }
-        item { personAck("Ciprian Dinca", "Tester ● Translator") }
+        item { personAck("Emulond", "Tester ● Prop Prodigy ● Keybox King ● Idea Innovator", R.drawable.emulond) }
+        item { personAck("dupa z lasu", "Tester ● Translator", R.drawable.dzl) }
+        item { personAck("Ciprian Dinca", "Tester ● Translator ● OneUI 7 apps ● Accessibility Advocate") }
         item { personAck("Jaola Tymon", "Tester") }
         item { personAck("Vlad", "Tester") }
         item { personAck("O C", "Tester ● Translator") }
-        item { personAck("dupa z lasu", "Tester ● Translator", R.drawable.dzl) }
         item { personAck("Mirel", "Tester") }
         item { personAck("BlueMech", "Tester", R.drawable.bm) }
         item { personAck("Walter White / Sussy Baka", "Tester", R.drawable.walter) }

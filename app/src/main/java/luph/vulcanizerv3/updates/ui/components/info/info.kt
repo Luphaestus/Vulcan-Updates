@@ -2,6 +2,7 @@ package luph.vulcanizerv3.updates.ui.components.info
 
 import android.util.Log
 import android.view.View
+import android.window.OnBackInvokedCallback
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -91,9 +92,9 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
         }
         navController.popBackStack()
     }
-
-    BackHandler {
+    OnBackInvokedCallback {
         goBack()
+        true
     }
 
     LaunchedEffect(downloadId.intValue) {

@@ -40,6 +40,7 @@ import java.util.Locale
 
 
 fun localeSelection(localeTag: String) {
+    Log.e("hello", "Locale: $localeTag")
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         MainActivity.applicationContext().getSystemService(LocaleManager::class.java).applicationLocales =
             LocaleList.forLanguageTags(localeTag)
@@ -52,9 +53,11 @@ fun localeSelection(localeTag: String) {
 
 fun getLocale(): String {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        Locale.getDefault().language
+        MainActivity.applicationContext().getSystemService(LocaleManager::class.java)
+            .applicationLocales.get(0)?.toLanguageTag() ?: "en"
     } else {
-        LocaleListCompat.getAdjustedDefault().get(0)!!.toLanguageTag()
+        val locales = AppCompatDelegate.getApplicationLocales()
+        if (locales.isEmpty) "en" else locales.get(0)!!.toLanguageTag()
     }
 }
 
@@ -91,18 +94,20 @@ fun LanguageOption(
     navController: NavController = NavController(MainActivity.applicationContext()),
     view: View = MainActivity.instance!!.window.decorView
 ) {
+    Crowdin.forceUpdate(MainActivity.applicationContext())
     showNavigation.show = false
     val selectedLanguage = remember { mutableStateOf(getLocale()) }
 
-    val supportedLanguages = Crowdin.getSupportedLanguages()?.data
-
     val languages = mutableMapOf<String, String>()
-    supportedLanguages?.forEach {
-        languages[it.data.locale] = it.data.name
+    val currentLocal = Locale.getDefault()
+    val defaultLanguage = Locale.forLanguageTag(Crowdin.getManifest()?.mapping?.get(0)?.split("/")?.get(2)?:"en")
+    languages[defaultLanguage.language] = defaultLanguage.getDisplayName(defaultLanguage)
+    Crowdin.getManifest()?.languages?.forEach {
+        val locale = Locale.forLanguageTag(it);
+        val languageName = locale.getDisplayName(locale)
+        languages[it] = languageName
     }
-
-
-
+    Log.e("crowdin", languages.toString())
     LazyColumn(
         Modifier
             .fillMaxSize()
@@ -114,9 +119,10 @@ fun LanguageOption(
         }
 
         items(languages.keys.toList()) { language ->
-            LanguageItem(languages[language]?:language, selectedLanguage.value == language) {
-                selectedLanguage.value = language
-                localeSelection(language)
+            val languageCountry = Crowdin.getSupportedLanguages()?.data?.find { it.data.id == language }?.data?.locale?:language
+            LanguageItem(languages[language]?:language, currentLocal.toLanguageTag() == languageCountry) {
+                selectedLanguage.value = languageCountry
+                localeSelection(languageCountry)
                 MainActivity.getFirebaseAnalytics().logEvent("language") {
                     param("language", languages[language] ?: language)
                 }

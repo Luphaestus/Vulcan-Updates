@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.rememberImagePainter
 import coil.size.OriginalSize
+import coil.size.Size
 
 @Composable
 fun ImageCarousel(imageUrls: List<String>, modifier: Modifier = Modifier) {
@@ -23,7 +24,11 @@ fun ImageCarousel(imageUrls: List<String>, modifier: Modifier = Modifier) {
             Image(
                 painter = rememberImagePainter(
                     data = imageUrls[index],
-                    builder = { size(OriginalSize) }),
+                    builder = {
+                        size(Size.ORIGINAL)
+                        crossfade(true)
+                    }
+                ),
                 contentDescription = "Photo $index",
                 modifier = modifier
                     .fillMaxHeight()

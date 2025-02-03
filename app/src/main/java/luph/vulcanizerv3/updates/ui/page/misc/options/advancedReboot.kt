@@ -32,6 +32,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetailsStore
+import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.info.UpdateAlert
 import luph.vulcanizerv3.updates.ui.page.showNavigation
@@ -46,6 +47,8 @@ fun AdvancedReboot(
     view: View? = null)
 {
     showNavigation.show = false
+
+
 
     val bootLocations =
         arrayOf("system", "recovery", "download", "fastboot", "sideload", "bootloader")

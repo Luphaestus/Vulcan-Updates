@@ -131,7 +131,7 @@ fun NotificationAndInternet(
 ) {
     showNavigation.show = false
 
-    LazyColumn {
+    LazyColumn(Modifier.background(MaterialTheme.colorScheme.surface)) {
         item {
             Column(Modifier.padding(start = 16.dp, end=16.dp, bottom=16.dp)) {
                 PageNAv("Updates", navController)
@@ -149,12 +149,12 @@ fun NotificationAndInternet(
                     onSliderValueChange = {
                         ModDetailsStore.getNotificationAndInternetPreferences().value.wifi.value = it
                         ModDetailsStore.saveNotificationAndInternetPreferences()},
-                    title = { Text("Over Wi-FI")},
+                    title = { Text(stringResource(R.string.over_wi_fi))},
                     summary = {
                         Text(when (ModDetailsStore.getNotificationAndInternetPreferences().value.wifi.value) {
-                            0f -> "Never download anything using Wi-Fi"
-                            1f -> "Only use Wi-FI when downloading mod information"
-                            2f -> "Always use Wi-Fi"
+                            0f -> stringResource(R.string.never_download_anything_using_wi_fi)
+                            1f -> stringResource(R.string.only_use_wi_fi_when_downloading_mod_information)
+                            2f -> stringResource(R.string.always_use_wi_fi)
                             else -> "Unknown"
                         })},
                     valueSteps = 1,
@@ -209,8 +209,8 @@ fun NotificationAndInternet(
                         }
                         ModDetailsStore.saveNotificationAndInternetPreferences()
                     },
-                    title = { Text("Mod Update Notifications") },
-                    summary = { Text("Get notified about updates for installed mods.") },
+                    title = { Text(stringResource(R.string.mod_update_notifications)) },
+                    summary = { Text(stringResource(R.string.get_notified_about_updates_for_installed_mods)) },
                     icon = { Icon(Icons.Outlined.Apps, contentDescription = "Mod Updates Icon") }
                 )
 

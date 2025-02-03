@@ -56,6 +56,7 @@ import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.ui.ext.roundClick
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
 import luph.vulcanizerv3.updates.ui.page.RouteParams
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 import kotlin.math.min
 
 
@@ -207,10 +208,10 @@ fun HomeModDetailsCardCarousel(
                 "Home Details Expanded",
                 navController,
                 view,
-                fadeIn(animationSpec = tween(700)),
+                fadeIn(animationSpec = tween(getStandardAnimationSpeed())),
                 ExitTransition.None,
                 EnterTransition.None,
-                fadeOut(animationSpec = tween(500))
+                fadeOut(animationSpec = tween((getStandardAnimationSpeed()*0.7).toInt()))
             )
         }) {
             Row(
