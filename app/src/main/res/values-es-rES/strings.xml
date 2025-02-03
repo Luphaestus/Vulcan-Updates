@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Actualizaciones Vulcanas</string>
+    <string name="no_network">No hay redes disponibles</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="color_and_style"><![CDATA[Color y estilo]]></string>
+    <string name="colour_and_style_desc">Ajustar la apariencia de la aplicación</string>
+    <string name="theme_preview">Vista previa del tema</string>
+    <string name="me_msg_1">¿Has oído hablar de Vulcan ROM??</string>
+    <string name="me_msg_2">¡He oído que es una bomba! :explosioning_head:</string>
+    <string name="mez_msg_1">Sí, muy bomba ROM fr</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh convo\"</string>
+    <string name="dynamic_colours_option">Colores Dinámicos</string>
+    <string name="static_colours_option">Colores estáticos</string>
+    <string name="system_dark_theme_title">Tema oscuro del sistema</string>
+    <string name="system_dark_theme_desc">Aplicar tema oscuro basado en la configuración del sistema</string>
+    <string name="dark_theme_title">Tema Oscuro</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Aplicar tema oscuro basado en fondo de pantalla</string>
+    <string name="apply_dark_theme">Aplicar tema oscuro %1$s</string>
+    <string name="contrast">%1$s Contrast</string>
+    <string name="low_contrast">Baja</string>
+    <string name="medium_contrast">Medio</string>
+    <string name="high_contrast">Alta</string>
+    <string name="language">Idioma</string>
+    <string name="language_desc">Cambiar el idioma de la aplicación</string>
+    <!-- Home -->
+    <string name="home_title">Inicio</string>
+    <!-- Updates -->
+    <string name="updates_title">Actualizaciones</string>
+    <string name="core_title">Actualizaciones básicas</string>
+    <string name="installed_title">Instalado</string>
+    <string name="just_now">Justo ahora</string>
+    <string name="minutes_ago">Hace %1$s minutos</string>
+    <string name="hours_ago">Hace %1$s horas</string>
+    <string name="days_ago">Hace %1$s días</string>
+    <string name="months_ago">Hace %1$s meses</string>
+    <string name="years_ago">Hace %1$s años</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">No hay más imágenes a la izquierda.</string>
+    <string name="no_more_images_to_the_right">No hay más imágenes a la derecha.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Mod Info</string>
+    <string name="uninstall">Desinstalar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="install">Instalar</string>
+    <string name="open">Abrir</string>
+    <string name="update">Actualizar</string>
+    <string name="mod_size">Tamaño</string>
+    <string name="mod_source_code_link_button">Código fuente</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Reconocimientos</string>
+    <string name="feedback_title">Comentarios</string>
+    <string name="search_placeholder">Buscar</string>
+    <string name="please_enable_notifications">Por favor, habilite las notificaciones</string>
+    <string name="notification_request_desc">Active las notificaciones para recibir actualizaciones sobre el progreso de la descarga y las actualizaciones MOD.</string>
+    <string name="you_re_offline">Estás desconectado</string>
+    <string name="your_network_settings_are">Tus ajustes de red son...</string>
+    <string name="check_your_connection_and_try_again">Compruebe su conexión y vuelva a intentarlo</string>
+    <string name="try_again">Inténtalo de nuevo</string>
+    <string name="network_settings">Configuración de red</string>
+    <string name="change_log">Registro de cambios</string>
+    <string name="more">...más</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Versión %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Descripción</string>
+    <string name="by">"Por "</string>
+    <string name="version">Versión</string>
+    <string name="no_network2">Sin red</string>
+    <string name="network_desc">Es posible que no tenga una conexión activa a internet, o que su configuración de red esté configurada para restringir el acceso. Por favor, compruebe su conexión y vuelva a intentarlo.</string>
+    <string name="detach_module_recommended">Detach module recommended</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Para evitar que Google Play Store sobrescriba %1$s, se recomienda instalar un módulo de desacoplamiento.</string>
+    <string name="install_detach">Install Detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s requiere LSPosed, y no funcionará sin él.</string>
+    <string name="install_lsposed">Instalar LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s requiere Zygisk, y no funcionará sin él.</string>
+    <string name="install_zygisk">Install Zygisk</string>
+    <string name="rezygisk_required">Requiere ReZygisk</string>
+    <string name="lsposed_required">LSPosed Requerido</string>
+    <string name="continue_anyway">Continuar de todos modos</string>
+    <string name="force_refresh_rate">Forzar tasa de actualización</string>
+    <string name="force_the_refresh_rate_of_the_display">Forzar la velocidad de actualización de la pantalla.</string>
+    <string name="change_boot_animation">Cambiar Animación de Arranque</string>
+    <string name="change_the_boot_animation_of_the_device">Cambiar la animación de arranque del dispositivo.</string>
+    <string name="device_info">Información del dispositivo</string>
+    <string name="show_hardware_and_software_information">Mostrar información de hardware y software.</string>
+    <string name="advanced_reboot_options">Opciones avanzadas de reinicio</string>
+    <string name="reboot_into_recovery_download_or_system">Reiniciar en recuperación, descarga o sistema.</string>
+    <string name="help">Ayuda</string>
+    <string name="help_documentation">Ayuda de documentación.</string>
+    <string name="confirm_reboot">Confirmar reinicio</string>
+    <string name="are_you_sure_you_want_to_reboot_to">¿Estás seguro de que quieres reiniciar en %1$s?</string>
+    <string name="reboot">Reboot</string>
+    <string name="file_does_not_exist">El archivo no existe</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Administre sus preferencias de notificación y ajustes de Internet.</string>
+    <string name="report_bugs_and_request_features">Reportar bugs y solicitar características.</string>
+    <string name="acknowledging_resources_and_contributions">Reconocimiento de recursos y contribuciones.</string>
+    <string name="home">Inicio</string>
+    <string name="misc">Misc</string>
+    <string name="updates">Actualizaciones</string>
+    <string name="settings">Ajustes</string>
+    <string name="over_wi_fi">Wi-Fi</string>
+    <string name="never_download_anything_using_wi_fi">Nunca descargar nada usando Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Usar solo Wi-FI al descargar información mod</string>
+    <string name="always_use_wi_fi">Usar siempre Wi-Fi</string>
+    <string name="mod_update_notifications">Notificaciones de actualización de mods</string>
+    <string name="get_notified_about_updates_for_installed_mods">Recibe notificaciones de actualizaciones para los mods instalados.</string>
+</resources>

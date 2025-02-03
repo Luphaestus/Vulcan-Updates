@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Оновлення Vulcan</string>
+    <string name="no_network">Немає доступних мереж</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Налаштування</string>
+    <string name="color_and_style"><![CDATA[Колір і стиль]]></string>
+    <string name="colour_and_style_desc">Налаштуйте зовнішній вигляд програми</string>
+    <string name="theme_preview">Попередній перегляд теми</string>
+    <string name="me_msg_1">Ви чули про Vulcan ROM??</string>
+    <string name="me_msg_2">Я чув, він дуже потужний! 🤯</string>
+    <string name="mez_msg_1">Так, дуже потужний ROM!</string>
+    <string name="oskar_ahh_convo">\"Розмова з Оскаром\"</string>
+    <string name="dynamic_colours_option">Динамічні кольори</string>
+    <string name="static_colours_option">Статичні кольори</string>
+    <string name="system_dark_theme_title">Темна тема системи</string>
+    <string name="system_dark_theme_desc">Використовувати темну тему на основі системних налаштувань</string>
+    <string name="dark_theme_title">Темна тема</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Застосувати темну тему на основі фонів</string>
+    <string name="apply_dark_theme">Застосувати темну тему %1$s</string>
+    <string name="contrast">%1$s Контраст</string>
+    <string name="low_contrast">Низький</string>
+    <string name="medium_contrast">Середній</string>
+    <string name="high_contrast">Високий</string>
+    <string name="language">Мова</string>
+    <string name="language_desc">Змінити мову програми</string>
+    <!-- Home -->
+    <string name="home_title">Домашній екран</string>
+    <!-- Updates -->
+    <string name="updates_title">Оновлення</string>
+    <string name="core_title">Оновлення ядра</string>
+    <string name="installed_title">Встановлено</string>
+    <string name="just_now">Щойно</string>
+    <string name="minutes_ago">%1$s хвилин тому</string>
+    <string name="hours_ago">%1$s годин тому</string>
+    <string name="days_ago">%1$s днів тому</string>
+    <string name="months_ago">%1$s місяців тому</string>
+    <string name="years_ago">%1$s років тому</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Зображень ліворуч відсутні.</string>
+    <string name="no_more_images_to_the_right">Зображень праворуч відсутні.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Інформація про модифікайцію</string>
+    <string name="uninstall">Видалити</string>
+    <string name="cancel">Скасувати</string>
+    <string name="install">Інсталювати</string>
+    <string name="open">Відкрити</string>
+    <string name="update">Оновити</string>
+    <string name="mod_size">Розмір</string>
+    <string name="mod_source_code_link_button">Початковий код</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Дяка</string>
+    <string name="feedback_title">Зворотній зв\'язок</string>
+    <string name="search_placeholder">Пошук</string>
+    <string name="please_enable_notifications">Будь ласка, увімкніть сповіщення</string>
+    <string name="notification_request_desc">Увімкніть сповіщення, щоб відображався хід завантаження та прогрес оновлення модифікації.</string>
+    <string name="you_re_offline">Ви не в мережі</string>
+    <string name="your_network_settings_are">Налаштування вашої мережі...</string>
+    <string name="check_your_connection_and_try_again">Перевірте з\'єднання та спробуйте ще раз</string>
+    <string name="try_again">Спробуйте ще раз</string>
+    <string name="network_settings">Параметри мережі</string>
+    <string name="change_log">Журнал змін</string>
+    <string name="more">...більше</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Версія 
+%1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Опис</string>
+    <string name="by">"Від "</string>
+    <string name="version">Версія</string>
+    <string name="no_network2">Відсутня мережа</string>
+    <string name="network_desc">Можливо, у вас немає активного підключення до Інтернету, або ваші налаштування мережі обмежені. Будь ласка, перевірте підключення і спробуйте ще раз.</string>
+    <string name="detach_module_recommended">Рекомендовано Detach модуль</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Щоб запобігти перезапису %1$s з магазину Google Play, рекомендується встановити модуль Detach.</string>
+    <string name="install_detach">Встановіть Detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s вимагає LSPosed, і без нього не буде функціонувати.</string>
+    <string name="install_lsposed">Встановіть LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s потребує Zygisk, і без нього не буде функціонувати.</string>
+    <string name="install_zygisk">Встановіть Zygisk</string>
+    <string name="rezygisk_required">Необхідний ReZygisk</string>
+    <string name="lsposed_required">Необхідний LSPosed</string>
+    <string name="continue_anyway">Продовжити попри все</string>
+    <string name="force_refresh_rate">Частота оновлення</string>
+    <string name="force_the_refresh_rate_of_the_display">Примусова швидкість оновлення дисплею.</string>
+    <string name="change_boot_animation">Змінити анімацію завантаження</string>
+    <string name="change_the_boot_animation_of_the_device">Змініть анімацію завантаження пристрою.</string>
+    <string name="device_info">Інформація про пристрій</string>
+    <string name="show_hardware_and_software_information">Відомості про програмне та апаратне забезпечення.</string>
+    <string name="advanced_reboot_options">Додаткові параметри перезавантаження</string>
+    <string name="reboot_into_recovery_download_or_system">Перезавантаження до Recovery, Download Mode чи до системи.</string>
+    <string name="help">Допомога</string>
+    <string name="help_documentation">Допоміжна Документація.</string>
+    <string name="confirm_reboot">Підтвердження перезавантаження</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Ви дійсно бажаєте перезавантажити пристрій до %1$s?</string>
+    <string name="reboot">Перезавантаження</string>
+    <string name="file_does_not_exist">Файлу не існує</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Керувати налаштуваннями сповіщень і налаштуваннями Інтернету.</string>
+    <string name="report_bugs_and_request_features">Повідомити про Помилки та запропонувати покращення.</string>
+    <string name="acknowledging_resources_and_contributions">Подяка за ресурси та внески.</string>
+    <string name="home">Домашній екран</string>
+    <string name="misc">Інше</string>
+    <string name="updates">Оновлення</string>
+    <string name="settings">Налаштування</string>
+    <string name="over_wi_fi">Через WiFI</string>
+    <string name="never_download_anything_using_wi_fi">Не завантажувати нічого за допомогою Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Використовувати лише WiFI при завантаженні інформації про модифікацію</string>
+    <string name="always_use_wi_fi">Завжди використовувати Wi-Fi</string>
+    <string name="mod_update_notifications">Сповіщення про оновлення</string>
+    <string name="get_notified_about_updates_for_installed_mods">Отримувати сповіщення про оновлення встановлених модів.</string>
+</resources>

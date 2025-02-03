@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Përditësimet e Vulcan</string>
+    <string name="no_network">Nuk ka rrjet</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Cilësimet</string>
+    <string name="color_and_style"><![CDATA[Colour & style]]></string>
+    <string name="colour_and_style_desc">Adjust the look and feel of the app</string>
+    <string name="theme_preview">Theme Preview</string>
+    <string name="me_msg_1">Have you heard of Vulcan ROM??</string>
+    <string name="me_msg_2">I heard it\'s very bomb! 🤯</string>
+    <string name="mez_msg_1">Yes, very bomb ROM fr</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh convo\"</string>
+    <string name="dynamic_colours_option">Dynamic Colours</string>
+    <string name="static_colours_option">Static Colours</string>
+    <string name="system_dark_theme_title">System Dark Theme</string>
+    <string name="system_dark_theme_desc">Apply dark theme based on system settings</string>
+    <string name="dark_theme_title">Dark Theme</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Apply dark theme based on wallpaper</string>
+    <string name="apply_dark_theme">Apply %1$s dark theme</string>
+    <string name="contrast">%1$s Contrast</string>
+    <string name="low_contrast">Low</string>
+    <string name="medium_contrast">Medium</string>
+    <string name="high_contrast">High</string>
+    <string name="language">Language</string>
+    <string name="language_desc">Change the language of the app</string>
+    <!-- Home -->
+    <string name="home_title">Home</string>
+    <!-- Updates -->
+    <string name="updates_title">Updates</string>
+    <string name="core_title">Core Updates</string>
+    <string name="installed_title">Installed</string>
+    <string name="just_now">Just now</string>
+    <string name="minutes_ago">%1$s minutes ago</string>
+    <string name="hours_ago">%1$s hours ago</string>
+    <string name="days_ago">%1$s days ago</string>
+    <string name="months_ago">%1$s months ago</string>
+    <string name="years_ago">%1$s years ago</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">No more images to the left.</string>
+    <string name="no_more_images_to_the_right">No more images to the right.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Mod Info</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="cancel">Anulo</string>
+    <string name="install">Install</string>
+    <string name="open">Open</string>
+    <string name="update">Update</string>
+    <string name="mod_size">Size</string>
+    <string name="mod_source_code_link_button">Source Code</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Acknowledgments</string>
+    <string name="feedback_title">Feedback</string>
+    <string name="search_placeholder">Search</string>
+    <string name="please_enable_notifications">Please Enable Notifications</string>
+    <string name="notification_request_desc">Turn on notifications to receive updates on download progress and MOD updates.</string>
+    <string name="you_re_offline">You\'re offline</string>
+    <string name="your_network_settings_are">Your network settings are...</string>
+    <string name="check_your_connection_and_try_again">Check your connection and try again</string>
+    <string name="try_again">Try again</string>
+    <string name="network_settings">Network Settings</string>
+    <string name="change_log">Change Log</string>
+    <string name="more">...more</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Version %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Description</string>
+    <string name="by">"By "</string>
+    <string name="version">Version</string>
+    <string name="no_network2">No Network</string>
+    <string name="network_desc">You may not have an active internet connection, or your network settings may be configured to restrict access. Please check your connection and try again.</string>
+    <string name="detach_module_recommended">Detach module recommended</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">To prevent Google Play Store from overwriting %1$s, it is recommended to install a detach module.</string>
+    <string name="install_detach">Install Detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s requires LSPosed, and will not function without it.</string>
+    <string name="install_lsposed">Install LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s requires Zygisk, and will not function without it.</string>
+    <string name="install_zygisk">Install Zygisk</string>
+    <string name="rezygisk_required">ReZygisk Required</string>
+    <string name="lsposed_required">LSPosed Required</string>
+    <string name="continue_anyway">Continue Anyway</string>
+    <string name="force_refresh_rate">Forco shpejtësinë e rifreskimit</string>
+    <string name="force_the_refresh_rate_of_the_display">Force the refresh rate of the display.</string>
+    <string name="change_boot_animation">Change Boot Animation</string>
+    <string name="change_the_boot_animation_of_the_device">Change the boot animation of the device.</string>
+    <string name="device_info">Info për Pajisjen</string>
+    <string name="show_hardware_and_software_information">Show hardware and software information.</string>
+    <string name="advanced_reboot_options">Advanced Reboot Options</string>
+    <string name="reboot_into_recovery_download_or_system">Reboot into recovery, download, or system.</string>
+    <string name="help">Help</string>
+    <string name="help_documentation">Help Documentation.</string>
+    <string name="confirm_reboot">Confirm Reboot</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Are you sure you want to reboot to %1$s?</string>
+    <string name="reboot">Reboot</string>
+    <string name="file_does_not_exist">File does not exist</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Manage your notification preferences and internet settings.</string>
+    <string name="report_bugs_and_request_features">Report Bugs and request features.</string>
+    <string name="acknowledging_resources_and_contributions">Acknowledging resources and contributions.</string>
+    <string name="home">Home</string>
+    <string name="misc">Misc</string>
+    <string name="updates">Updates</string>
+    <string name="settings">Settings</string>
+    <string name="over_wi_fi">Over Wi-FI</string>
+    <string name="never_download_anything_using_wi_fi">Never download anything using Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Only use Wi-FI when downloading mod information</string>
+    <string name="always_use_wi_fi">Always use Wi-Fi</string>
+    <string name="mod_update_notifications">Mod Update Notifications</string>
+    <string name="get_notified_about_updates_for_installed_mods">Get notified about updates for installed mods.</string>
+</resources>

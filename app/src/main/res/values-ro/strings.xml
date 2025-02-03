@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Actualizări VulcanROM</string>
+    <string name="no_network">Nicio rețea disponibilă</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Setări</string>
+    <string name="color_and_style"><![CDATA[Culoare & stil]]></string>
+    <string name="colour_and_style_desc">Reglaţi aspectul şi simţul aplicației</string>
+    <string name="theme_preview">Previzualizare temă</string>
+    <string name="me_msg_1">Ai auzit de Vulcan ROM??</string>
+    <string name="me_msg_2">Am auzit că e foarte bombă! 🤯</string>
+    <string name="mez_msg_1">Da, foarte bombă pentru ROM</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh convo\"</string>
+    <string name="dynamic_colours_option">Culori dinamice</string>
+    <string name="static_colours_option">Culori statice</string>
+    <string name="system_dark_theme_title">Temă de sistem întunecată</string>
+    <string name="system_dark_theme_desc">Aplică tema întunecată bazată pe setările de sistem</string>
+    <string name="dark_theme_title">Temă întunecată</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Aplică tema întunecată pe baza imaginii de fundal</string>
+    <string name="apply_dark_theme">Aplică tema %1$s întunecată</string>
+    <string name="contrast">%1$s Contrast</string>
+    <string name="low_contrast">scazut</string>
+    <string name="medium_contrast">Medie</string>
+    <string name="high_contrast">Ridicat</string>
+    <string name="language">Limba</string>
+    <string name="language_desc">Schimbă limba aplicației</string>
+    <!-- Home -->
+    <string name="home_title">Acasă</string>
+    <!-- Updates -->
+    <string name="updates_title">Actualizări</string>
+    <string name="core_title">Actualizări nucleu</string>
+    <string name="installed_title">Instalat</string>
+    <string name="just_now">Chiar acum</string>
+    <string name="minutes_ago">%1$s minute în urmă</string>
+    <string name="hours_ago">%1$s ore în urmă</string>
+    <string name="days_ago">%1$s zile în urmă</string>
+    <string name="months_ago">%1$s luni în urmă</string>
+    <string name="years_ago">%1$s ani în urmă</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Nu mai sunt imagini la stânga.</string>
+    <string name="no_more_images_to_the_right">Nu mai sunt imagini la dreapta.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Mod Info</string>
+    <string name="uninstall">Dezinstalează</string>
+    <string name="cancel">Anulează</string>
+    <string name="install">Instalează</string>
+    <string name="open">Deschideți</string>
+    <string name="update">Actualizare</string>
+    <string name="mod_size">Dimensiune</string>
+    <string name="mod_source_code_link_button">Cod sursă</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Recunoaștere</string>
+    <string name="feedback_title">Feedback</string>
+    <string name="search_placeholder">Caută</string>
+    <string name="please_enable_notifications">Vă rugăm să activați notificările</string>
+    <string name="notification_request_desc">Activați notificările pentru a primi actualizări la progresul descărcărilor și actualizări MOD.</string>
+    <string name="you_re_offline">Ești offline</string>
+    <string name="your_network_settings_are">Setările de rețea sunt...</string>
+    <string name="check_your_connection_and_try_again">Verificați conexiunea și încercați din nou</string>
+    <string name="try_again">Încercați din nou</string>
+    <string name="network_settings">Setări rețea</string>
+    <string name="change_log">Jurnal de modificări</string>
+    <string name="more">...mai mult</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Versiunea %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Descriere</string>
+    <string name="by">"De "</string>
+    <string name="version">Versiune</string>
+    <string name="no_network2">Nicio rețea</string>
+    <string name="network_desc">Este posibil să nu aveți o conexiune activă la internet sau setările de rețea pot fi configurate pentru a restricționa accesul. Vă rugăm să verificați conexiunea și să încercați din nou.</string>
+    <string name="detach_module_recommended">Detach module recommended</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Pentru a împiedica Google Play să suprascrie %1$s, este recomandat să instalezi un modul detașat.</string>
+    <string name="install_detach">Install Detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s necesită LSPPierdere și nu va funcționa fără ea.</string>
+    <string name="install_lsposed">Instalare LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s necesită Zygisk, şi nu va funcţiona fără ea.</string>
+    <string name="install_zygisk">Install Zygisk</string>
+    <string name="rezygisk_required">ReZygisk necesar</string>
+    <string name="lsposed_required">LSPPierdut Necesar</string>
+    <string name="continue_anyway">Continuă oricum</string>
+    <string name="force_refresh_rate">Rata de reîmprospătare forţată</string>
+    <string name="force_the_refresh_rate_of_the_display">Forțează rata de reîmprospătare a afișajului.</string>
+    <string name="change_boot_animation">Schimbă Animația de Pornire</string>
+    <string name="change_the_boot_animation_of_the_device">Schimbați animația de pornire a dispozitivului.</string>
+    <string name="device_info">Informații dispozitiv</string>
+    <string name="show_hardware_and_software_information">Arată informații despre hardware și software.</string>
+    <string name="advanced_reboot_options">Opțiuni avansate de repornire</string>
+    <string name="reboot_into_recovery_download_or_system">Reporniți în recuperare, descărcare sau sistem.</string>
+    <string name="help">Ajutor</string>
+    <string name="help_documentation">Documentația de asistență.</string>
+    <string name="confirm_reboot">Confirmare repornire</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Sunteţi sigur că doriţi să reporniţi în %1$s?</string>
+    <string name="reboot">Reboot</string>
+    <string name="file_does_not_exist">Fișierul nu există</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Gestionează preferințele de notificare și setările de internet.</string>
+    <string name="report_bugs_and_request_features">Raportează erori și solicită caracteristici.</string>
+    <string name="acknowledging_resources_and_contributions">Recunoaşterea resurselor şi contribuţiilor.</string>
+    <string name="home">Acasă</string>
+    <string name="misc">Diverse</string>
+    <string name="updates">Actualizări</string>
+    <string name="settings">Setări</string>
+    <string name="over_wi_fi">Prin Wi-FI</string>
+    <string name="never_download_anything_using_wi_fi">Nu descărca nimic folosind Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Folosește Wi-Fi-ul doar când descarci informații despre mod</string>
+    <string name="always_use_wi_fi">Utilizaţi întotdeauna Wi-Fi</string>
+    <string name="mod_update_notifications">Notificări actualizări mod</string>
+    <string name="get_notified_about_updates_for_installed_mods">Primește notificări despre actualizările modurilor instalate.</string>
+</resources>

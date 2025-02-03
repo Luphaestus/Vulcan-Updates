@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Updates</string>
+    <string name="no_network">Tidak ada jaringan yang tersedia</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="color_and_style"><![CDATA[Warna & gaya]]></string>
+    <string name="colour_and_style_desc">Ubah rasa dan rupa aplikasi</string>
+    <string name="theme_preview">Tinjauan Tema</string>
+    <string name="me_msg_1">Apakah kamu pernah dengar tentang Vulcan ROM??</string>
+    <string name="me_msg_2">Aku dengar itu sangat bomb! 🤯</string>
+    <string name="mez_msg_1">Ya, benar-benar sangat bom</string>
+    <string name="oskar_ahh_convo">\"Pembicaraan macam Oskar\"</string>
+    <string name="dynamic_colours_option">Warna Dinamis</string>
+    <string name="static_colours_option">Warna Statik</string>
+    <string name="system_dark_theme_title">Tema Gelap Sistem</string>
+    <string name="system_dark_theme_desc">Menerapkan tema gelap berdasarkan pengaturan sistem</string>
+    <string name="dark_theme_title">Tema Gelap</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Terapkan tema gelap berdasarkan gambar latar belakang</string>
+    <string name="apply_dark_theme">Terapkan %1$s tema gelap</string>
+    <string name="contrast">%1$s Kontras</string>
+    <string name="low_contrast">Rendah</string>
+    <string name="medium_contrast">Sedang</string>
+    <string name="high_contrast">Tinggi</string>
+    <string name="language">Bahasa</string>
+    <string name="language_desc">Ubah bahasa aplikasi</string>
+    <!-- Home -->
+    <string name="home_title">Beranda</string>
+    <!-- Updates -->
+    <string name="updates_title">Pembaruan</string>
+    <string name="core_title">Pembaruan Inti</string>
+    <string name="installed_title">Terpasang</string>
+    <string name="just_now">Baru saja</string>
+    <string name="minutes_ago">%1$s menit yang lalu</string>
+    <string name="hours_ago">%1$s jam yang lalu</string>
+    <string name="days_ago">%1$s hari yang lalu</string>
+    <string name="months_ago">%1$s bulan yang lalu</string>
+    <string name="years_ago">%1$s tahun yang lalu</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Tidak ada gambar lagi di sebelah kiri.</string>
+    <string name="no_more_images_to_the_right">Tidak ada gambar lagi di sebelah kanan.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Informasi Mod</string>
+    <string name="uninstall">Hapus</string>
+    <string name="cancel">Batalkan</string>
+    <string name="install">Pasang</string>
+    <string name="open">Buka</string>
+    <string name="update">Perbarui</string>
+    <string name="mod_size">Ukuran</string>
+    <string name="mod_source_code_link_button">Sumber kode</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Pengakuan</string>
+    <string name="feedback_title">Umpan balik</string>
+    <string name="search_placeholder">Pencarian</string>
+    <string name="please_enable_notifications">Tolong Nyalakan Notifikasi</string>
+    <string name="notification_request_desc">Nyalakan notifikasi untuk menerima pembaruan mengenai kemajuan pengunduhan dan pembaruan mod.</string>
+    <string name="you_re_offline">Anda sedang offline</string>
+    <string name="your_network_settings_are">Pengaturan jaringanmu adalah...</string>
+    <string name="check_your_connection_and_try_again">Periksa koneksi Anda dan coba lagi</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="network_settings">Pengaturan Jaringan</string>
+    <string name="change_log">Catatan Perubahan</string>
+    <string name="more">...lebih lanjut</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Versi %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Deskripsi</string>
+    <string name="by">"Oleh "</string>
+    <string name="version">Versi</string>
+    <string name="no_network2">Tidak Ada Jaringan</string>
+    <string name="network_desc">Anda mungkin tidak memiliki koneksi internet aktif, atau pengaturan jaringan anda mungkin telah dikonfigurasi untuk membatasi akses anda. Tolong periksa koneksi anda dan coba lagi.</string>
+    <string name="detach_module_recommended">Modul Detach direkomendasikan</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Untuk mencegah Google Play Store dari menimpa %1$s, direkomendasikan memasang sebuah modul detach.</string>
+    <string name="install_detach">Pasang detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s membutuhkan LSPosed, dan tidak akan berfungsi tanpanya.</string>
+    <string name="install_lsposed">Pasang LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s membutuhkan Zygisk, dan tidak akan berfungsi tanpanya.</string>
+    <string name="install_zygisk">Pasang Zygisk</string>
+    <string name="rezygisk_required">ReZygisk Dibutuhkan</string>
+    <string name="lsposed_required">LSPosed Dibutuhkan</string>
+    <string name="continue_anyway">Tetap lanjutkan</string>
+    <string name="force_refresh_rate">Paksa Refresh Rate</string>
+    <string name="force_the_refresh_rate_of_the_display">Atur paksa refresh rate layar.</string>
+    <string name="change_boot_animation">Ubah Animasi Boot</string>
+    <string name="change_the_boot_animation_of_the_device">Mengubah animasi boot perangkat.</string>
+    <string name="device_info">Informasi Perangkat</string>
+    <string name="show_hardware_and_software_information">Tunjukkan Informasi perangkat lunak dan keras.</string>
+    <string name="advanced_reboot_options">Menu boot ulang lanjutan</string>
+    <string name="reboot_into_recovery_download_or_system">Boot ulang ke recovery, pengunduhan, atau sistem.</string>
+    <string name="help">Bantuan</string>
+    <string name="help_documentation">Dokumentasi Pengunduhan.</string>
+    <string name="confirm_reboot">Konfirmasi boot ulang</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Apakah anda yakin anda ingin boot ulang ke %1$s?</string>
+    <string name="reboot">Nyalakan Ulang</string>
+    <string name="file_does_not_exist">File tidak ada</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Atur preferensi notifikasi dan pengaturan internet.</string>
+    <string name="report_bugs_and_request_features">Laporkan Bug dan meminta fitur-fitur.</string>
+    <string name="acknowledging_resources_and_contributions">Pengakuan sumber daya dan kontribusi.</string>
+    <string name="home">Beranda</string>
+    <string name="misc">Lainnya</string>
+    <string name="updates">Pembaruan</string>
+    <string name="settings">Pengaturan</string>
+    <string name="over_wi_fi">Lewat Wi-Fi</string>
+    <string name="never_download_anything_using_wi_fi">Jangan unduh apapun menggunakan Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Hanha gunakan Wi-Fi saat mengunduh informasi tentang mod</string>
+    <string name="always_use_wi_fi">Selalu gunakan Wi-Fi</string>
+    <string name="mod_update_notifications">Notifikasi Pembaruan Mod</string>
+    <string name="get_notified_about_updates_for_installed_mods">Dapatkan pemberitahuan mengenai pembaruan dari mod yang sudah terpasang.</string>
+</resources>
