@@ -176,7 +176,7 @@ fun NotificationAndInternet(
                     summary = {
                         Text(when (ModDetailsStore.getNotificationAndInternetPreferences().value.data.value) {
                             0f -> "Never download anything using Mobile Data"
-                            1f -> "Only use Wi-FI when downloading mod information"
+                            1f -> "Only use Mobile Data when downloading mod information"
                             2f -> "Always use Mobile Data"
                             else -> "Unknown"
                         })},

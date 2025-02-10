@@ -74,6 +74,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.nio.file.StandardCopyOption
 import androidx.compose.runtime.setValue
+import luph.vulcanizerv3.updates.ui.components.noNetworkAlert
+import luph.vulcanizerv3.updates.ui.components.rootRequiredAlert
 
 fun changePage(
     newPageIndex: Int,
@@ -146,14 +148,6 @@ fun BootAnimationShowcase(
     }
 }
 
-fun getPenultimateSegment(url: String): String {
-    val segments = url.split("/")
-    return if (segments.size > 2) {
-        "${segments[segments.size - 2]}.jpg"
-    } else {
-        ""
-    }
-}
 
 @Composable
 @Preview(showBackground = true)
@@ -192,104 +186,112 @@ fun ChangeBootOption(
 
     var isLoaded by remember { mutableStateOf(false) }
 
-    LaunchedEffect(Unit) {
-        withContext(Dispatchers.IO) {
-            device = runShellCommand("getprop ro.boot.bootloader").value.first.trim().take(5)
-            imageCategories = (getRemoteText("${baseUrl}animations/$device/list") ?: "")
-                .replace("\\s".toRegex(), "")
-                .split(",")
+    val noRoot = rootRequiredAlert(negativeClickLambda = { navController.popBackStack() }, positiveClickLambda = { navController.popBackStack() })
+    val noNetwork = noNetworkAlert(navController, view, negativeClickLambda = { navController.popBackStack() }, positiveClickLambda = { navController.popBackStack() })
 
-            OVERVIEW_INDEX = imageCategories.size
-            END_INDEX = OVERVIEW_INDEX
-
-            val dimensions = getRemoteFile("${baseUrl}animations/$device/dimens").readText().split("\n").mapNotNull {
-                val parts = it.split(":").map { part -> part.trim() }
-                if (parts.size == 2) {
-                    val dims = parts[1].split("x").map { dim -> dim.toIntOrNull() }
-                    if (dims.size == 2 && dims[0] != null && dims[1] != null) {
-                        parts[0] to Pair(dims[0]!!, dims[1]!!)
-                    } else null
-                } else null
-            }.toMutableStateMap()
-
-            val urls = imageCategories.map { category ->
-                (getRemoteText("${baseUrl}animations/$device/$category/list") ?: "")
+    if (!noRoot.value || !noNetwork.value) {
+        LaunchedEffect(Unit) {
+            withContext(Dispatchers.IO) {
+                device = runShellCommand("getprop ro.boot.bootloader").value.first.trim().take(5)
+                imageCategories = (getRemoteText("${baseUrl}animations/$device/list") ?: "")
+                    .replace("\\s".toRegex(), "")
                     .split(",")
-                    .toMutableList()
-                    .apply {
-                        for (i in indices) {
-                            this[i] = "${baseUrl}animations/$device/$category/${this[i]}"
+
+                OVERVIEW_INDEX = imageCategories.size
+                END_INDEX = OVERVIEW_INDEX
+
+                val dimensions =
+                    getRemoteFile("${baseUrl}animations/$device/dimens").readText().split("\n")
+                        .mapNotNull {
+                            val parts = it.split(":").map { part -> part.trim() }
+                            if (parts.size == 2) {
+                                val dims = parts[1].split("x").map { dim -> dim.toIntOrNull() }
+                                if (dims.size == 2 && dims[0] != null && dims[1] != null) {
+                                    parts[0] to Pair(dims[0]!!, dims[1]!!)
+                                } else null
+                            } else null
+                        }.toMutableStateMap()
+
+                val urls = imageCategories.map { category ->
+                    (getRemoteText("${baseUrl}animations/$device/$category/list") ?: "")
+                        .split(",")
+                        .toMutableList()
+                        .apply {
+                            for (i in indices) {
+                                this[i] = "${baseUrl}animations/$device/$category/${this[i]}"
+                            }
+                            add("")
                         }
-                        add("")
+                }
+
+                withContext(Dispatchers.Main) {
+                    imageDimensions = dimensions
+                    UploadConfirmationDialogParams.dimensions = imageDimensions
+                    imageURLS = urls.toMutableList()
+                    if (imageDimensions.isNotEmpty() && imageURLS.isNotEmpty()) {
+                        isLoaded = true
                     }
-            }
-
-            withContext(Dispatchers.Main) {
-                imageDimensions = dimensions
-                imageURLS = urls.toMutableList()
-                if (imageDimensions.isNotEmpty() && imageURLS.isNotEmpty()) {
-                    isLoaded = true
                 }
             }
         }
-    }
-
-    UploadConfirmationDialogParams.dimensions = imageDimensions
 
 
-    InstallConfirmationDialog(
-        showInstallModal = showInstallModal,
-        imageURIS = selectedImageURIS
-    )
 
-    UploadConfirmationDialog(showUploadModal)
+        InstallConfirmationDialog(
+            showInstallModal = showInstallModal,
+            imageURIS = selectedImageURIS
+        )
 
-    UploadErrorDialog(showUploadErrorModal)
+        UploadConfirmationDialog(showUploadModal)
 
-    Scaffold(
-        bottomBar = {
-            if (isLoaded) {
-                NavigationButtons(
-                    pageIndex = pageIndex,
-                    END_INDEX = END_INDEX,
-                    selectedItems = selectedItems,
-                    selectedImageURIS = selectedImageURIS,
-                    currentCardIndex = currentCardIndex,
-                    imageCategories = imageCategories,
-                    imageURLS = imageURLS,
-                    showInstallModal = showInstallModal
-                )
-            }
-        }
-    ) { padding ->
-        Column (
-            Modifier
-                .padding(
-                    top = padding.calculateTopPadding(),
-                    bottom = padding.calculateBottomPadding() + 8.dp + (10f * 5).dp
-                )
-                .background(MaterialTheme.colorScheme.background)) {
-            Box(Modifier.padding(horizontal = 16.dp)) {
-                PageNAv(stringResource(R.string.boot_animation), navController)
-            }
-            if (!isLoaded) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
+        UploadErrorDialog(showUploadErrorModal)
+
+        Scaffold(
+            bottomBar = {
+                if (isLoaded) {
+                    NavigationButtons(
+                        pageIndex = pageIndex,
+                        END_INDEX = END_INDEX,
+                        selectedItems = selectedItems,
+                        selectedImageURIS = selectedImageURIS,
+                        currentCardIndex = currentCardIndex,
+                        imageCategories = imageCategories,
+                        imageURLS = imageURLS,
+                        showInstallModal = showInstallModal
+                    )
                 }
-            } else {
-                MainContent(
-                    pageIndex = pageIndex,
-                    imageCategories = imageCategories,
-                    imageURLS = imageURLS,
-                    currentCardIndex = currentCardIndex,
-                    selectedImageURIS = selectedImageURIS,
-                    OVERVIEW_INDEX = OVERVIEW_INDEX,
-                    showUploadModal = showUploadModal,
-                    imageDimensions = imageDimensions
-                )
+            }
+        ) { padding ->
+            Column(
+                Modifier
+                    .padding(
+                        top = padding.calculateTopPadding(),
+                        bottom = padding.calculateBottomPadding() + 8.dp + (10f * 5).dp
+                    )
+                    .background(MaterialTheme.colorScheme.background)
+            ) {
+                Box(Modifier.padding(horizontal = 16.dp)) {
+                    PageNAv(stringResource(R.string.boot_animation), navController)
+                }
+                if (!isLoaded) {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator()
+                    }
+                } else {
+                    MainContent(
+                        pageIndex = pageIndex,
+                        imageCategories = imageCategories,
+                        imageURLS = imageURLS,
+                        currentCardIndex = currentCardIndex,
+                        selectedImageURIS = selectedImageURIS,
+                        OVERVIEW_INDEX = OVERVIEW_INDEX,
+                        showUploadModal = showUploadModal,
+                        imageDimensions = imageDimensions
+                    )
+                }
             }
         }
     }
@@ -367,6 +369,8 @@ private fun UploadConfirmationDialog(
         if (width != UploadConfirmationDialogParams.dimensions[UploadConfirmationDialogParams.category]?.first
             || height != UploadConfirmationDialogParams.dimensions[UploadConfirmationDialogParams.category]?.second
         ) {
+            Log.e("realdimentions", "${width}x${height}")
+            Log.e("expecteddimentions", UploadConfirmationDialogParams.dimensions.toString())
             UploadConfirmationDialogParams.uploadErrorType.value = UploadErrorType.DIMENSION_MISMATCH
             UploadConfirmationDialogParams.expectedDimensions.value = UploadConfirmationDialogParams.dimensions[UploadConfirmationDialogParams.category] ?: Pair(0, 0)
             UploadConfirmationDialogParams.actualDimensions.value = Pair(width, height)
@@ -422,6 +426,7 @@ private fun NavigationButtons(
     imageURLS:  MutableList<MutableList<String>>,
     showInstallModal: MutableState<Boolean>
 ) {
+
     Column {
         Row {
             OutlinedButton(

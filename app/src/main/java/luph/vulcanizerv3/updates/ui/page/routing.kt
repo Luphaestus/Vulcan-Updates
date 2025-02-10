@@ -44,6 +44,7 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.TestModifierUpdaterLayout
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
@@ -255,6 +256,8 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
     val isCompact = windowSize.widthSizeClass == Compact
     val navController = rememberNavController()
 
+
+
     Scaffold(
         bottomBar = {
             if (isCompact) {
@@ -303,16 +306,18 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
         var openHelp by remember { mutableStateOf<String?>(null) }
         var lastNavigatedHelp = remember { mutableStateOf("null") }
 
+        var openPage by remember { mutableStateOf<String?>(null) }
+        var lastNavigatedPage = remember { mutableStateOf("null") }
+
         val appLinkIntent: Intent = MainActivity.instance!!.intent
         val appLinkData: Uri? = appLinkIntent.data
         if (appLinkData != null) {
             val segments = appLinkData.pathSegments
             if (segments.size > 1) {
-                if (segments[0] == "mod") {
-                    openMod = segments[1]
-                }
-                else if (segments[0] == "help") {
-                    openHelp = segments[1]
+                when (segments[0]) {
+                    "mod" -> openMod = segments[1]
+                    "help" -> openHelp = segments[1]
+                    "page" -> openPage = segments[1]
                 }
             }
         }
@@ -321,11 +326,10 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
             val segments = it.getString("open")?.split("/")
             segments?.let {
                 if (segments.size > 1) {
-                    if (segments[0] == "mod") {
-                        openMod = segments[1]
-                    }
-                    else if (segments[0] == "help") {
-                        openHelp = segments[1]
+                    when (segments[0]) {
+                        "mod" -> openMod = segments[1]
+                        "help" -> openHelp = segments[1]
+                        "page" -> openPage = segments[1]
                     }
                 }
             }
@@ -366,7 +370,22 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                     )
                 }
             }
+            // adb shell am start -a android.intent.action.VIEW -d "https://vulcanupdates.web.app/page/xxx"
+            // xxx = Route Name " " = %20
+            if ( openPage!=null && lastNavigatedPage.value != openPage) {
+                lastNavigatedPage.value = openPage!!
+                OpenRoute(
+                    openPage!!.replace("%20", " "),
+                    navController = navController,
+                    view = MainActivity.instance!!.window.decorView,
+                    enter = fadeIn(),
+                    exit = fadeOut(),
+                )
+            }
         }
+
+        if (ModDetailsStore.getOOBEPreferences().value.version.value == "" )
+            navController.navigate("OOBE")
     }
 
     return navController

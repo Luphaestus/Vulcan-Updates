@@ -199,7 +199,7 @@ fun AcknowledgementOption(
         }
         item { personAck("Oskar", "Tester ● Translator ● ODIN Pack ● FJORD GAPER", R.drawable.oskar) }
         item { personAck("Mesazane", "Tester ● Translator ● FJORD GAPER", R.drawable.mez) }
-        item { personAck("Emulond", "Tester ● Prop Prodigy ● Keybox King ● Idea Innovator", R.drawable.emulond) }
+        item { personAck("Emulond", "Genius ● bllionaire ● playboy ● philanthropist", R.drawable.emulond) }
         item { personAck("dupa z lasu", "Tester ● Translator", R.drawable.dzl) }
         item { personAck("Ciprian Dinca", "Tester ● Translator ● OneUI 7 apps ● Accessibility Advocate") }
         item { personAck("Jaola Tymon", "Tester") }
@@ -212,12 +212,15 @@ fun AcknowledgementOption(
         item { personAck("Denni", "Tester") }
         item { personAck("Javivi", "Tester", R.drawable.javvi) }
         item { personAck("Abode", "Tester", R.drawable.abode) }
-        item { personAck("Leon", "Tester", R.drawable.leon) }
+        item { personAck("Cortex", "Tester", R.drawable.leon) }
+        item { personAck("Niki", "Tester ● Translator", R.drawable.niki2) }
+        item { personAck("Luu Phuong", "Translator", R.drawable.luu) }
         item { personAck("ƬƦΘレ乇メ ༒ \uD83D\uDC51⃤", "Tester", R.drawable.troll) }
         item { personAck("Rick Sanchez", "Translator", R.drawable.rick) }
-        item { personAck("El Vettorato", "Translator", R.drawable.ttorato) }
+        item { personAck("El Vettorato", "Tester ● Translator", R.drawable.ttorato) }
+        item { personAck("Ve", "Tester ● Translator", R.drawable.ve) }
         item { personAck("Emre Kesin", "Translator", R.drawable.kesin) }
-        item { personAck("Boyan", "Translator ● Gwałt w fiordzie", R.drawable.boyan) }
+        item { personAck("Boyan", "Tester ● Translator ● Gwałt w fiordzie", R.drawable.boyan) }
 
         item {
             Column(

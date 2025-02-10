@@ -79,6 +79,9 @@
     <string name="install_zygisk">安装 Zygisk</string>
     <string name="rezygisk_required">需要 ReZygisk</string>
     <string name="lsposed_required">LSPosed 必需的</string>
+    <string name="root_required">需要Root</string>
+    <string name="root_required_desc">此模组需要安装 root 权限。</string>
+    <string name="root_required_guide">根指南</string>
     <string name="continue_anyway">无论如何继续</string>
     <string name="force_refresh_rate">强制刷新率</string>
     <string name="force_the_refresh_rate_of_the_display">强制显示的刷新率。</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">总是使用 Wi-Fi</string>
     <string name="mod_update_notifications">Mod更新通知</string>
     <string name="get_notified_about_updates_for_installed_mods">获取已安装模组的更新通知。</string>
+    <string name="notifications_internet"><![CDATA[通知和Internet]]></string>
+    <string name="upload">上传</string>
+    <string name="don_t_replace">不要替换</string>
+    <string name="or">或</string>
+    <string name="overview">概览</string>
+    <string name="custom_boot_animation">自定义启动动画</string>
+    <string name="invalid_file_type">无效文件类型</string>
+    <string name="dimension_mismatch">尺寸不匹配</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">您上传的文件不是JPEG文件。</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">您上传的图像与 %1$sx%2$s的预期尺寸不匹配。 您上传的图片尺寸为 %3$sx%4$s。</string>
+    <string name="ok">好的</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">刷新自定义图像可能会导致启动循环或积木您的设备。请确保您知道您在做什么。 如果您不确定，请在支持组中寻求帮助。我不会对自定义图像刷新所造成的任何伤害负责。</string>
+    <string name="upload_warning">上传警告</string>
+    <string name="i_understand">我明白了</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">您确定要安装此启动动画吗？</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">这将替换您当前的启动动画。请确保在继续之前备份您当前的启动动画。</string>
+    <string name="install_and_reboot">安装并重启</string>
+    <string name="boot_animation">启动动画</string>
+    <string name="previous">上一个</string>
+    <string name="next">下一个</string>
 </resources>

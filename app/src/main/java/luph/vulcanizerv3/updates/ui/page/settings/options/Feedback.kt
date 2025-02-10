@@ -113,8 +113,10 @@ fun FeedbackOption(
         SurveyQuestion(
             "Telegram Verification Code",
             "To ensure you have entered a valid Telegram username, please enter the verification code. The code will be valid for 1 hour.",
-            Options.TelegramVerification()
+            Options.TelegramVerification(),
+            remember { mutableStateOf("") }
         ),
+
     )
 
     val formPages = mapOf<String, MutableList<SurveyQuestion>>(
@@ -356,17 +358,19 @@ fun FeedbackOption(
                 ) {
                     Text("Previous")
                 }
+                var submited by remember{ mutableStateOf(false)}
                 Button(
+                    enabled = !submited,
                     onClick = {
-
+                        submited = true
                         var feedbackString = "New ${sharedForm[0].value.value}\n"
                         for (question in sharedForm) {
                             val prefix = if (question.question == "Telegram Username") "@" else ""
-                            feedbackString += "${question.question}: $prefix${question.value.value}\n"
+                            feedbackString += "${question.question}: $prefix${question.value.value}\n\n"
                         }
                         for (question in formPage) {
                             val newLine = if (question.options is Options.TextInput) "\n" else " "
-                            feedbackString += "${question.question}:$newLine${question.value.value}\n"
+                            feedbackString += "${question.question}:$newLine${question.value.value}\n\n"
                         }
                         postTelegramMessage(feedbackString, TELEGRAM_FEEDBACK_CHANNEL, TELEGRAM_BOT_API)
                         navController.popBackStack()

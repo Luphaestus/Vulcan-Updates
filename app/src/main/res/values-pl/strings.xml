@@ -79,6 +79,9 @@
     <string name="install_zygisk">Zainstaluj Zygiska</string>
     <string name="rezygisk_required">ReZygisk wymagany</string>
     <string name="lsposed_required">LSPosed wymagane</string>
+    <string name="root_required">Wymagane uprawnienia roota</string>
+    <string name="root_required_desc">Ta modyfikacja wymaga uprawnień roota, aby zostać zainstalowana.</string>
+    <string name="root_required_guide">Przewodnik dla uprawnień roota</string>
     <string name="continue_anyway">Kontynuuj mimo to</string>
     <string name="force_refresh_rate">Wymuś częstotliwość odświeżania</string>
     <string name="force_the_refresh_rate_of_the_display">Wymuś częstotliwość wyświetlania ekranu.</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">Zawsze używaj Wi-Fi</string>
     <string name="mod_update_notifications">Powiadomienia o modyfikacji</string>
     <string name="get_notified_about_updates_for_installed_mods">Otrzymuj powiadomienia o aktualizacjach dla zainstalowanych modyfikacji.</string>
+    <string name="notifications_internet"><![CDATA[Powiadomienia & Internet]]></string>
+    <string name="upload">Wyślij</string>
+    <string name="don_t_replace">Nie zamieniaj</string>
+    <string name="or">albo</string>
+    <string name="overview">Podsumowanie</string>
+    <string name="custom_boot_animation">Niestandardowa animacja uruchamiania</string>
+    <string name="invalid_file_type">Niewłaściwy typ pliku</string>
+    <string name="dimension_mismatch">Niezgodność wymiarów</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Przesłany plik nie jest plikiem JPEG.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Wgrany obraz nie pasuje do oczekiwanych wymiarów %1$sx%2$s. Przesłany obraz ma wymiary %3$sx%4$s.</string>
+    <string name="ok">Ok</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Wgrywanie niestandardowego obrazu może spowodować bootloop lub uceglenie urządzenia. Upewnij się, że wiesz, co robisz. Jeśli nie jesteś pewien, poproś o pomoc w grupie wsparcia. Nie będę odpowiedzialny za żadne uszkodzenia spowodowane przez wgrywanie niestandardowych obrazów.</string>
+    <string name="upload_warning">Ostrzeżenie o przesyłaniu</string>
+    <string name="i_understand">Rozumiem</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Czy na pewno chcesz zainstalować tę animację uruchamiania?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">To zastąpi Twoją aktualną animację rozruchu. Upewnij się, że wykonasz kopię zapasową animacji rozruchu.</string>
+    <string name="install_and_reboot">Zainstaluj i uruchom ponownie</string>
+    <string name="boot_animation">Animacja uruchamiania</string>
+    <string name="previous">Poprzedni</string>
+    <string name="next">Następny</string>
 </resources>

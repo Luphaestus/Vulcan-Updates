@@ -79,6 +79,9 @@
     <string name="install_zygisk">Инсталирайте Zygisk</string>
     <string name="rezygisk_required">Изисква се ReZygisk</string>
     <string name="lsposed_required">LSPosed Задължително</string>
+    <string name="root_required">Изисква се Root</string>
+    <string name="root_required_desc">Този мод изисква инсталиран Root достъп.</string>
+    <string name="root_required_guide">Ръководство за Root достъп</string>
     <string name="continue_anyway">Продължаване въпреки това</string>
     <string name="force_refresh_rate">Force Refresh Rate</string>
     <string name="force_the_refresh_rate_of_the_display">Настройте честотата на опресняване на дисплея.</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">Винаги използвайте Wi-Fi</string>
     <string name="mod_update_notifications">Известия за актуализиране на мода</string>
     <string name="get_notified_about_updates_for_installed_mods">Получавайте известия за актуализации за инсталирани модове.</string>
+    <string name="notifications_internet"><![CDATA[Известия и Интернет]]></string>
+    <string name="upload">Качи</string>
+    <string name="don_t_replace">Не замествай</string>
+    <string name="or">или</string>
+    <string name="overview">Преглед</string>
+    <string name="custom_boot_animation">Персонализирана Анимация при Зареждане</string>
+    <string name="invalid_file_type">Невалиден Тип Файл</string>
+    <string name="dimension_mismatch">Несъответствие на Размерите</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Файлът, който качихте, не е JPEG файл.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Изображението, което качихте, не отговаря на очакваните размери на %1$sx%2$s. Изображението, което качихте, е с размери %3$sx%4$s.</string>
+    <string name="ok">Ок</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Инсталирането на персонализиран образ може да причини непрестанно рестартиране или блокиране на вашето устройство. Уверете се, че знаете какво правите. Ако не сте сигурни, помолете за помощ в групата за поддръжка. Няма да нося отговорност за щети, причинени от мигащи персонализирани изображения.</string>
+    <string name="upload_warning">Предупреждение за качване</string>
+    <string name="i_understand">Разбирам</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Сигурни ли сте, че искате да инсталирате тази стартираща анимация?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Това ще замени текущата ви анимация за зареждане. Уверете се, че сте архивирали текущата си анимация за зареждане, преди да продължите.</string>
+    <string name="install_and_reboot">Инсталирайте и рестартирайте</string>
+    <string name="boot_animation">Анимация при стартиране</string>
+    <string name="previous">Предишен</string>
+    <string name="next">Следващ</string>
 </resources>

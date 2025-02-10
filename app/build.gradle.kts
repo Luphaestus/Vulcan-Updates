@@ -11,6 +11,10 @@ android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     namespace = "luph.vulcanizerv3.updates"
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     defaultConfig {
         applicationId = "luph.vulcanizerv3.updates"
         minSdk = libs.versions.minSdk.get().toInt()
@@ -19,7 +23,12 @@ android {
         versionName = "v3a3.5c6"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
+        resourceConfigurations.plus(
+            listOf(
+                "ar", "cs", "es-rES", "he", "it", "pl", "ro", "sk", "tr", "vi",
+                "bg", "de", "fr", "id", "ko", "pt-rBR", "ru", "sq", "uk", "zh-rCN"
+            )
+        )
     }
 
     signingConfigs {
@@ -39,6 +48,8 @@ android {
     configurations.all {
         exclude("org.jetbrains", "annotations-java5")
     }
+
+
 
     buildTypes {
         getByName("debug") {
@@ -112,9 +123,10 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.paging.compose)
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
-    implementation("androidx.compose.animation:animation-graphics:1.0.0")
-
+    implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.animation.graphics)
+    implementation(libs.androidx.foundation)
+    implementation("com.google.accompanist:accompanist-pager:0.36.0")
 
     // Google Libraries
     implementation(platform(libs.firebase.bom))
@@ -142,6 +154,7 @@ dependencies {
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.base)
     implementation(libs.coil.kt.compose)
+    implementation(libs.coil.gif)
     implementation(libs.ketch)
 
     // Ktor Libraries
@@ -157,8 +170,13 @@ dependencies {
     implementation(libs.lottie.compose)
     implementation(libs.versioncompare)
     implementation(libs.twyper)
-    implementation("com.github.composeuisuite:ohteepee:1.1.0")
-    implementation("com.github.crowdin.mobile-sdk-android:sdk:1.11.1")
-    implementation("dev.chrisbanes.haze:haze:1.3.0")
-    implementation("com.github.starry-shivam:FileUtils:1.0.0")
-}
+    implementation(libs.ohteepee)
+    implementation(libs.sdk)
+    implementation(libs.haze)
+    implementation(libs.fileutils)
+    val ackpineVersion = "0.10.1"
+    implementation("ru.solrudev.ackpine:ackpine-core:$ackpineVersion")
+    implementation("ru.solrudev.ackpine:ackpine-ktx:$ackpineVersion")
+    implementation("ru.solrudev.ackpine:ackpine-splits:$ackpineVersion")
+    implementation("ru.solrudev.ackpine:ackpine-splits-ktx:$ackpineVersion")
+    implementation("ru.solrudev.ackpine:ackpine-assets:$ackpineVersion")}

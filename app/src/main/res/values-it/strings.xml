@@ -79,6 +79,9 @@
     <string name="install_zygisk">Install Zygisk</string>
     <string name="rezygisk_required">Richiesto ReZygisk</string>
     <string name="lsposed_required">LSPosed Richiesto</string>
+    <string name="root_required">Root Richiesto</string>
+    <string name="root_required_desc">Questa mod richiede l\'accesso root per essere installato.</string>
+    <string name="root_required_guide">Guida Root</string>
     <string name="continue_anyway">Continua Comunque</string>
     <string name="force_refresh_rate">Forza il Refresh rate</string>
     <string name="force_the_refresh_rate_of_the_display">Forza la frequenza di aggiornamento del display.</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">Utilizza sempre il Wi-Fi</string>
     <string name="mod_update_notifications">Notifiche aggiornamenti mod</string>
     <string name="get_notified_about_updates_for_installed_mods">Rcevi notifiche sugli aggiornamenti delle mod</string>
+    <string name="notifications_internet"><![CDATA[Notifiche E Internet]]></string>
+    <string name="upload">Carica</string>
+    <string name="don_t_replace">Non sostituire</string>
+    <string name="or">o</string>
+    <string name="overview">Panoramica</string>
+    <string name="custom_boot_animation">Animazione Di Avvio Personalizzata</string>
+    <string name="invalid_file_type">Tipo File Non Valido</string>
+    <string name="dimension_mismatch">Dimensione Non Corrispondente</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Il file caricato non è un file JPEG.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">L\'immagine caricata non corrisponde alle dimensioni previste di %1$sx%2$s. L\'immagine che hai caricato ha dimensioni di %3$sx%4$s.</string>
+    <string name="ok">Ok</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Flashando un\'immagine personalizzata può causare bootloops o brick al tuo dispositivo. Assicurati di sapere cosa stai facendo. Se non sei sicuro, chiedi aiuto nel gruppo di supporto. Non sarò responsabile di alcun danno causato dal flashing di immagini personalizzate.</string>
+    <string name="upload_warning">Carica Avviso</string>
+    <string name="i_understand">Ho capito</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Sei sicuro di voler installare questa boot animation?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Questo sostituirà la boot animation corrente. Assicurati di eseguire il backup della boot animation corrente prima di procedere.</string>
+    <string name="install_and_reboot">Installa E Riavvia</string>
+    <string name="boot_animation">Boot animation</string>
+    <string name="previous">Precedente</string>
+    <string name="next">Successivo</string>
 </resources>

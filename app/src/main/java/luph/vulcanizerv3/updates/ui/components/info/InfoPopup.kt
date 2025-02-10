@@ -25,7 +25,10 @@ fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>,
 ), negativeClick: () -> Unit = {}, positiveClickText: String = "Fix", positiveClick: () -> Unit = {}) {
     if (!show.value) return
     AlertDialog(
-        onDismissRequest = { show.value = false },
+        onDismissRequest = {
+            negativeClick()
+            show.value = false
+                           },
         title = { Text(title) },
         text = { Text(description) },
         confirmButton = {
@@ -45,6 +48,7 @@ fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>,
         }
     )
 }
+
 
 @Composable
 fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavController, view: android.view.View) {

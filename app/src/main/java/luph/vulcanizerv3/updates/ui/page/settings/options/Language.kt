@@ -28,7 +28,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
-import com.crowdin.platform.Crowdin
 import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
@@ -36,35 +35,20 @@ import luph.vulcanizerv3.updates.ui.components.ClickableOverlay
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.SettingsElementBase
 import luph.vulcanizerv3.updates.ui.page.showNavigation
+import org.xmlpull.v1.XmlPullParser
 import java.util.Locale
 
-
 fun localeSelection(localeTag: String) {
-    Log.e("hello", "Locale: $localeTag")
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        MainActivity.applicationContext().getSystemService(LocaleManager::class.java).applicationLocales =
-            LocaleList.forLanguageTags(localeTag)
-    } else {
-        AppCompatDelegate.setApplicationLocales(
-            LocaleListCompat.forLanguageTags(localeTag)
-        )
-    }
+    MainActivity.applicationContext().getSystemService(LocaleManager::class.java).applicationLocales =
+        LocaleList.forLanguageTags(localeTag)
 }
-
 fun getLocale(): String {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-        MainActivity.applicationContext().getSystemService(LocaleManager::class.java)
-            .applicationLocales.get(0)?.toLanguageTag() ?: "en"
-    } else {
-        val locales = AppCompatDelegate.getApplicationLocales()
-        if (locales.isEmpty) "en" else locales.get(0)!!.toLanguageTag()
-    }
+    return MainActivity.applicationContext().getSystemService(LocaleManager::class.java)
+        .applicationLocales.get(0)?.toLanguageTag() ?: "en"
 }
 
 @Composable
 fun LanguageItem(title: String, selected: Boolean, onClick: () -> Unit) {
-
-
     ClickableOverlay(
         modifier = Modifier
             .padding(4.dp)
@@ -89,25 +73,41 @@ fun LanguageItem(title: String, selected: Boolean, onClick: () -> Unit) {
     }
 }
 
+val languages =
+    listOf(Locale("en") ,
+        Locale("iw"),
+        Locale("in"),
+        Locale("de"),
+        Locale("ar"),
+        Locale("cs"),
+        Locale("es", "ES"),
+        Locale("it"),
+        Locale("pl"),
+        Locale("ro"),
+        Locale("sk"),
+        Locale("tr"),
+        Locale("vi"),
+        Locale("bg"),
+        Locale("fr"),
+        Locale("id"),
+        Locale("ko"),
+        Locale("pt", "BR"),
+        Locale("ru"),
+        Locale("sq"),
+        Locale("uk"),
+        Locale("zh", "CN")
+    )
+
+
 @Composable
 fun LanguageOption(
     navController: NavController = NavController(MainActivity.applicationContext()),
     view: View = MainActivity.instance!!.window.decorView
 ) {
-    Crowdin.forceUpdate(MainActivity.applicationContext())
     showNavigation.show = false
-    val selectedLanguage = remember { mutableStateOf(getLocale()) }
 
-    val languages = mutableMapOf<String, String>()
-    val currentLocal = Locale.getDefault()
-    val defaultLanguage = Locale.forLanguageTag(Crowdin.getManifest()?.mapping?.get(0)?.split("/")?.get(2)?:"en")
-    languages[defaultLanguage.language] = defaultLanguage.getDisplayName(defaultLanguage)
-    Crowdin.getManifest()?.languages?.forEach {
-        val locale = Locale.forLanguageTag(it);
-        val languageName = locale.getDisplayName(locale)
-        languages[it] = languageName
-    }
-    Log.e("crowdin", languages.toString())
+
+
     LazyColumn(
         Modifier
             .fillMaxSize()
@@ -118,13 +118,15 @@ fun LanguageOption(
             PageNAv(stringResource(R.string.language), navController)
         }
 
-        items(languages.keys.toList()) { language ->
-            val languageCountry = Crowdin.getSupportedLanguages()?.data?.find { it.data.id == language }?.data?.locale?:language
-            LanguageItem(languages[language]?:language, currentLocal.toLanguageTag() == languageCountry) {
-                selectedLanguage.value = languageCountry
-                localeSelection(languageCountry)
+
+        items(languages) { language ->
+            Log.e("Language1",  Locale(getLocale()).language)
+            Log.e("Language2",  language.language)
+            LanguageItem(language.getDisplayName(language), Locale(getLocale()).language == language.language) {
+                localeSelection(language.language)
+
                 MainActivity.getFirebaseAnalytics().logEvent("language") {
-                    param("language", languages[language] ?: language)
+                    param("language",  language.language)
                 }
             }
         }

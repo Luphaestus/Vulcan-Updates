@@ -32,6 +32,8 @@ data class buttonData(
     val infoAlert: infoAlert,
     val navController: NavController,
     val view: android.view.View,
+    val updateModStatus: () -> Unit
+
 ) {
     var canCancel by mutableStateOf(true)
     var firstButtonVisible by mutableStateOf(false)

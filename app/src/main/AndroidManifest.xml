@@ -58,6 +58,10 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".WelcomeNotificationService"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -65,7 +69,9 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+
+<!--                comment this out-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
             </intent-filter>
             <intent-filter android:autoVerify="true" >
                 <action android:name="android.intent.action.VIEW" />
