@@ -280,7 +280,9 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                 }
             }
         }
-        NavHost(
+
+
+        var host = NavHost(
             navController,
             startDestination = "home",
             modifier = Modifier.padding(innerPadding),
@@ -296,7 +298,6 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                 }
             }
         }
-        navController.setLifecycleOwner(MainActivity.instance!!)
 
 
         // app link stuff

@@ -72,6 +72,7 @@ suspend fun observeDownloadProgress(data: InfoDownloadData) {
                             param("keyword", keyword)
                         }
                     }
+                    Log.e("ModInfo", data.modDetails.updateType.toString())
                     GlobalScope.launch(Dispatchers.IO) {
                         var success = false
                         when (data.modDetails.updateType) {

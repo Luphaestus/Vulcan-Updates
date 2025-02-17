@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan 업데이트</string>
+    <string name="no_network">사용 가능한 네트워크가 없습니다</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">설정</string>
+    <string name="color_and_style"><![CDATA[색상 & 스타일]]></string>
+    <string name="colour_and_style_desc">이 애플리케이션의 스타일을 마음대로 꾸밀 수 있어요</string>
+    <string name="theme_preview">미리 보기</string>
+    <string name="me_msg_1">너 혹시 \'Vulcan 롬\'이라고 들어봤어??</string>
+    <string name="me_msg_2">커스텀 펌웨어인데, 퀄리티 지리는거 있지! 🤯</string>
+    <string name="mez_msg_1">그거 나도 깔아봤어! 정말 좋던데?</string>
+    <string name="oskar_ahh_convo">\"아... 불쌍한 Oskar\"</string>
+    <string name="dynamic_colours_option">시스템 기본 색상</string>
+    <string name="static_colours_option">더 많은 색상</string>
+    <string name="system_dark_theme_title">시스템 테마 설정에 따르기</string>
+    <string name="system_dark_theme_desc">시스템에서 다크 모드를 켜고 끄면, 애플리케이션 색상도 같이 반영돼요</string>
+    <string name="dark_theme_title">다크 모드 켜기</string>
+    <string name="apply_dark_theme_based_on_wallpaper">현재 배경 화면 색상에 맞게 다크 모드가 적용돼요</string>
+    <string name="apply_dark_theme">%1$s 기반의 다크모드가 적용돼요</string>
+    <string name="contrast">%1$s 대비</string>
+    <string name="low_contrast">낮은</string>
+    <string name="medium_contrast">보통</string>
+    <string name="high_contrast">높은</string>
+    <string name="language">언어</string>
+    <string name="language_desc">이 애플리케이션의 언어를 바꿀 수 있어요</string>
+    <!-- Home -->
+    <string name="home_title">홈</string>
+    <!-- Updates -->
+    <string name="updates_title">업데이트</string>
+    <string name="core_title">중요 업데이트</string>
+    <string name="installed_title">설치됨</string>
+    <string name="just_now">방금 전</string>
+    <string name="minutes_ago">%1$s분 전</string>
+    <string name="hours_ago">%1$s시간 전</string>
+    <string name="days_ago">%1$s일 전</string>
+    <string name="months_ago">%1$s달 전</string>
+    <string name="years_ago">%1$s년 전</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">첫 사진입니다．</string>
+    <string name="no_more_images_to_the_right">마지막 사진입니다．</string>
+    <!-- Info -->
+    <string name="mod_info_title">모듈 정보</string>
+    <string name="uninstall">제거</string>
+    <string name="cancel">취소</string>
+    <string name="install">설치</string>
+    <string name="open">열기</string>
+    <string name="update">업데이트</string>
+    <string name="mod_size">용량</string>
+    <string name="mod_source_code_link_button">소스 코드</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">감사한 분들</string>
+    <string name="feedback_title">피드백</string>
+    <string name="search_placeholder">검색</string>
+    <string name="please_enable_notifications">알림 권한을 부여해주세요</string>
+    <string name="notification_request_desc">다운로드 진행 상황과 새로 올라오는 업데이트를 보시려면 알림을 허용해주세요．</string>
+    <string name="you_re_offline">오프라인 상태입니다</string>
+    <string name="your_network_settings_are">현재 네트워크 설정이…</string>
+    <string name="check_your_connection_and_try_again">인터넷 연결을 확인하고 다시 시도해주세요</string>
+    <string name="try_again">다시 시도하세요</string>
+    <string name="network_settings">네트워크 설정</string>
+    <string name="change_log">업데이트 내역</string>
+    <string name="more">...더 보기</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">버전 %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">설명</string>
+    <string name="by">"작성: "</string>
+    <string name="version">버전</string>
+    <string name="no_network2">인터넷 없음</string>
+    <string name="network_desc">인터넷 연결이 활성화되어 있지 않거나 네트워크 설정이 액세스를 제한하도록 구성되어 있을 수 있습니다. 연결 상태를 확인한 후 다시 시도하세요．</string>
+    <string name="detach_module_recommended">모듈 분리 권장됨</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Google Play Store로부터 %1$s 모듈이 덮어 씌워 지는 것을 방지하려면 분리된 모듈로 설치하는 것이 좋습니다．</string>
+    <string name="install_detach">분리된 모듈로 설치</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s 모듈이 LSPosed 모듈을 필요로 합니다. 필요한 모듈을 먼저 설치해주세요．</string>
+    <string name="install_lsposed">LSPosed 설치</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s 모듈이 Zygisk 모듈을 필요로 합니다. 필요한 모듈을 먼저 설치해 주세요．</string>
+    <string name="install_zygisk">Zygisk 설치</string>
+    <string name="rezygisk_required">ReZygisk 필요</string>
+    <string name="lsposed_required">LSPosed 필요</string>
+    <string name="root_required">루트 필요</string>
+    <string name="root_required_desc">이 모듈은 루트된 기기에서만 설치할 수 있어요．</string>
+    <string name="root_required_guide">루트 가이드</string>
+    <string name="continue_anyway">무시하고 진행하기</string>
+    <string name="force_refresh_rate">강제로 주사율 설정</string>
+    <string name="force_the_refresh_rate_of_the_display">디스플레이 주사율을 강제로 설정하거나 변경할 수 있어요．</string>
+    <string name="change_boot_animation">부팅 애니메이션 바꾸기</string>
+    <string name="change_the_boot_animation_of_the_device">기기의 부팅 애니메이션을 바꿀 수 있어요．</string>
+    <string name="device_info">기기 정보</string>
+    <string name="show_hardware_and_software_information">현재 기기의 자세한 정보를 볼 수 있어요．</string>
+    <string name="advanced_reboot_options">다시 시작 옵션</string>
+    <string name="reboot_into_recovery_download_or_system">복구 모드 혹은 다운로드 모드, 시스템 중 한 곳으로 다시 시작 할 수 있어요．</string>
+    <string name="help">도움</string>
+    <string name="help_documentation">문제 해결에 도움 되는 가이드를 한 곳에 모았습니다．</string>
+    <string name="confirm_reboot">다시 시작 확인</string>
+    <string name="are_you_sure_you_want_to_reboot_to">정말 %1$s(으)로 다시 시작 하시겠습니까？</string>
+    <string name="reboot">다시 시작</string>
+    <string name="file_does_not_exist">파일을 찾을 수 없습니다</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">알림 환경 설정과 인터넷 설정을 관리할 수 있어요．</string>
+    <string name="report_bugs_and_request_features">문제가 있거나 건의 사항이 있다면 여기다 제보해주세요．</string>
+    <string name="acknowledging_resources_and_contributions">이 프로젝트에 사용된 리소스와 개발에 도움을 주신 분들을 확인할 수 있어요．</string>
+    <string name="home">홈</string>
+    <string name="misc">도구</string>
+    <string name="updates">업데이트</string>
+    <string name="settings">설정</string>
+    <string name="over_wi_fi">Wi-Fi만 사용하기</string>
+    <string name="never_download_anything_using_wi_fi">다운로드에 Wi-Fi를 절대 사용하지 않기</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">모듈의 정보를 불러올 때만 Wi-Fi 사용하기</string>
+    <string name="always_use_wi_fi">항상 Wi-Fi 사용하기</string>
+    <string name="mod_update_notifications">모듈 업데이트 알림 받기</string>
+    <string name="get_notified_about_updates_for_installed_mods">설치된 모듈의 업데이트가 배포되면 알림을 받습니다．</string>
+    <string name="notifications_internet"><![CDATA[알림 & 인터넷]]></string>
+    <string name="upload">업로드</string>
+    <string name="don_t_replace">바꾸지 않기</string>
+    <string name="or">혹은</string>
+    <string name="overview">미리 보기</string>
+    <string name="custom_boot_animation">사용자 지정 부팅 애니메이션</string>
+    <string name="invalid_file_type">올바르지 않은 파일 종류</string>
+    <string name="dimension_mismatch">치수 불일치</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">선택한 파일의 종류가 JPEG가 아닙니다．</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">이미지 해상도가 %1$sx%2$s이어야 합니다. 선택한 파일의 이미지 해상도는 %3$sx%4$s 입니다．</string>
+    <string name="ok">확인</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">사용자 이미지 파일을 플래시 하면 무한 부팅이 일어나거나, 심지어 기기가 손상될 수도 있습니다. 무슨 작업을 하는 건지 잘 모른다면 하지 않는 것을 권장합니다. 확실치 않다면 지원 커뮤니티에 도움을 요청하세요. 개발자는 사용자가 사용자 이미지 파일을 플래시 함으로써 발생할 수 있는 모든 문제에 대해 일절 책임을 지지 않습니다．</string>
+    <string name="upload_warning">업로드 경고</string>
+    <string name="i_understand">이해했습니다</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">해당 부팅 애니메이션을 정말로 설치하겠습니까？</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">이 작업은 현재 부팅 애니메이션을 대체합니다. 계속 진행하기 전에 현재 부팅 애니메이션을 백업해주세요．</string>
+    <string name="install_and_reboot">설치 및 다시 시작</string>
+    <string name="boot_animation">부팅 애니메이션</string>
+    <string name="previous">이전</string>
+    <string name="next">다음</string>
+</resources>

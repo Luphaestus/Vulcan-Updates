@@ -19,8 +19,8 @@ android {
         applicationId = "luph.vulcanizerv3.updates"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "v3a3.5c6"
+        versionCode = 2
+        versionName = "v3a3.5d6"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(
