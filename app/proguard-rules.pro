@@ -34,7 +34,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# This is generated automatically by the Android Gradle plugin.
 -dontwarn org.bouncycastle.jsse.BCSSLParameters
 -dontwarn org.bouncycastle.jsse.BCSSLSocket
 -dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
@@ -46,5 +45,7 @@
 -dontwarn org.openjsse.net.ssl.OpenJSSE
 -dontwarn okhttp3.**
 -dontwarn okio.**
+-dontwarn org.commonmark.ext.gfm.strikethrough.Strikethrough
+-dontwarn org.slf4j.impl.StaticLoggerBinder
 -keep class com.caverock.androidsvg.** { *; }
 -dontwarn com.caverock.androidsvg.**
