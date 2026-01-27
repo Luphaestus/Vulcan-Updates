@@ -7,6 +7,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import luph.vulcanizerv3.updates.utils.download.getModDetails
 import luph.vulcanizerv3.updates.utils.download.getModList
 import luph.vulcanizerv3.updates.utils.download.parseModKeywords
@@ -14,8 +16,6 @@ import luph.vulcanizerv3.updates.utils.download.parseModKeywords
 enum class ModType {
     APK, TWRP, MODULE
 }
-
-
 
 
 @Serializable
@@ -49,12 +49,13 @@ enum class DETAILFILE(val type: String) {
 
 object ModDetailsStore {
     private var modDetails = mutableStateOf<MutableList<ModDetails>>(mutableListOf())
-    private var keywords = mutableStateOf<MutableMap<String, MutableList<ModDetails>>>(mutableMapOf())
-    private var modList = mutableStateOf<ArrayList<String>>(arrayListOf())
+    private var keywords =
+        mutableStateOf<MutableMap<String, MutableList<ModDetails>>>(mutableMapOf())
+    private var modList = mutableStateOf<Map<String, String>>(emptyMap())
     private var newMods = mutableStateOf<List<String>>(listOf())
     private var offline = mutableStateOf(false)
     private const val MOD_LIST_FILE = "mod_list.dat"
-    private val serializableManager = SerializableManager<ArrayList<String>>()
+    private val serializableManager = SerializableManager<String>()
 
     init {
         refresh()
@@ -83,18 +84,31 @@ object ModDetailsStore {
         return offline
     }
 
-    private fun saveModList() {
-        serializableManager.save(MOD_LIST_FILE, modList.value)
+    fun setOffline(value: Boolean) {
+        offline.value = value
     }
 
-    private fun loadModList(): ArrayList<String>? {
-        return serializableManager.load(MOD_LIST_FILE)
+    private fun saveModList() {
+        serializableManager.save(MOD_LIST_FILE, Json.encodeToString(modList.value))
+    }
+
+    private fun loadModList(): Map<String, String>? {
+        val modListString = serializableManager.load(MOD_LIST_FILE) ?: return null
+        return Json.decodeFromString(modListString)
     }
 
     private fun newMods(): List<String> {
-        val savedModList = loadModList() ?: arrayListOf()
-        val modListPaths = modList.value.filterNot { it in savedModList }
-        return modListPaths.map { it.split("/").last() }
+        val savedModList = loadModList() ?: emptyMap()
+        val modListPaths = mutableListOf<String>()
+        modList.value.forEach { (key, value) ->
+            Log.e("ModDetailsStore", "key: $key, value: $value")
+            Log.e("ModDetailsStore", "savedModList[key]: ${savedModList[key]}")
+            if (!savedModList.containsKey(key) || savedModList[key] != value) {
+                modListPaths.add(key.split("/").last())
+            }
+        }
+        Log.e("modlist[aths", modListPaths.toString())
+        return modListPaths
     }
 
     fun refresh() {
@@ -108,12 +122,11 @@ object ModDetailsStore {
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
+
             keywords.value = parseModKeywords(modDetails.value)
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
-            Log.i("ModDetailsStore", "Refreshed")
-            Log.d("ModDetailsStore", "Mod Details: ${modDetails.value}")
         }
         return
     }

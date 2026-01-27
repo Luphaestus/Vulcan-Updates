@@ -2,6 +2,7 @@ package luph.vulcanizerv3.updates.ui.page.updates
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,30 +16,28 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.components.DisplayText
+import luph.vulcanizerv3.updates.ui.components.MarkDownContentTest
 import luph.vulcanizerv3.updates.ui.components.RYScaffold
 import luph.vulcanizerv3.updates.ui.components.Subheading
 import luph.vulcanizerv3.updates.ui.components.SubheadingButton
-import androidx.compose.foundation.Image
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.res.painterResource
-import androidx.navigation.NavController
-import luph.vulcanizerv3.updates.data.ModDetails
-import luph.vulcanizerv3.updates.ui.components.MarkDownContentTest
 import luph.vulcanizerv3.updates.ui.components.TransitionBox
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 
@@ -155,19 +154,19 @@ fun ModUpdateCard(
 
 @Composable
 fun UpdateCarousel(navController: NavController, view: View) {
-    showNavigation.show.value = true
+    showNavigation.show = true
 
     Box(modifier = Modifier.padding(horizontal = 16.dp)) {
         LazyRow {
             items(10) { index ->
-                ModUpdateCard(
-                    appName = "Vulcan ROM $index",
-                    version = "Version 1.0.0",
-                    description = "Brief description of the updates",
-                    appIcon = R.drawable.avatar_0,
-                    navController = navController,
-                    view = view
-                )
+//                ModUpdateCard(
+//                    appName = "Vulcan ROM $index",
+//                    version = "Version 1.0.0",
+//                    description = "Brief description of the updates",
+//                    appIcon = R.drawable.avatar_0,
+//                    navController = navController,
+//                    view = view
+//                )
             }
         }
     }

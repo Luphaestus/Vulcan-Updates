@@ -1,6 +1,5 @@
 package luph.vulcanizerv3.updates.ui.components
 
-import android.util.Log
 import android.view.View
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -28,34 +27,40 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
-import luph.vulcanizerv3.updates.data.DETAILFILE
-import luph.vulcanizerv3.updates.data.ModDetails
-import androidx.compose.material3.Text
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
-import androidx.compose.material3.Icon
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
+import luph.vulcanizerv3.updates.data.DETAILFILE
+import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.ui.ext.roundClick
-import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
+import luph.vulcanizerv3.updates.ui.page.RouteParams
+import kotlin.math.min
 
 
 @Composable
-fun ConcatenateStringsWithColors(bulletColor: Color, modifier: Modifier = Modifier, style: TextStyle, vararg pairs: Pair<String, Color>) {
+fun ConcatenateStringsWithColors(
+    bulletColor: Color,
+    modifier: Modifier = Modifier,
+    style: TextStyle,
+    vararg pairs: Pair<String, Color>
+) {
     val annotatedString = buildAnnotatedString {
         pairs.forEachIndexed { index, pair ->
             withStyle(style = SpanStyle(color = pair.second)) {
@@ -82,10 +87,18 @@ fun ConcatenateStringsWithColors(bulletColor: Color, modifier: Modifier = Modifi
 }
 
 
-
 @Composable
-fun HomeModDetailsCard(modDetails: ModDetails, padding: Dp = 16.dp, navController: NavController, view: View) {
-    TransitionBox("Mod Info", navController = navController, view = view, onClick = {RouteParams.push(modDetails)}) {
+fun HomeModDetailsCard(
+    modDetails: ModDetails,
+    padding: Dp = 16.dp,
+    navController: NavController,
+    view: View
+) {
+    TransitionBox(
+        "Mod Info",
+        navController = navController,
+        view = view,
+        onClick = { RouteParams.push(modDetails) }) {
         Row(
             modifier = Modifier
                 .padding(end = padding)
@@ -106,7 +119,10 @@ fun HomeModDetailsCard(modDetails: ModDetails, padding: Dp = 16.dp, navControlle
                         text = modDetails.name,
                         style = MaterialTheme.typography.bodyMedium,
                     )
-                    if (ModDetailsStore.getNewMods().value.contains(modDetails.name)) {
+                    if (ModDetailsStore.getNewMods().value.contains(
+                            modDetails.url.dropLast(1).substringAfterLast("/")
+                        )
+                    ) {
                         Box(
                             modifier = Modifier
                                 .padding(start = 8.dp)
@@ -143,14 +159,28 @@ fun HomeModDetailsCard(modDetails: ModDetails, padding: Dp = 16.dp, navControlle
 }
 
 @Composable
-fun HomeModDetailsCardCarousel(modDetails: List<ModDetails>, categoryName: String, navController: NavController, view: View) {
+fun HomeModDetailsCardCarousel(
+    modDetails: List<ModDetails>,
+    categoryName: String,
+    navController: NavController,
+    view: View
+) {
     val gridState = rememberLazyGridState()
     val snapFlingBehavior =
         rememberSnapFlingBehavior(lazyGridState = gridState, snapPosition = SnapPosition.Start)
 
     Column(verticalArrangement = Arrangement.Center) {
         Box(Modifier.roundClick {
-            OpenRoute("Home Details Expanded", navController, view,  fadeIn(animationSpec = tween(700)), ExitTransition.None, EnterTransition.None, fadeOut(animationSpec = tween(500)))
+            RouteParams.push(categoryName)
+            OpenRoute(
+                "Home Details Expanded",
+                navController,
+                view,
+                fadeIn(animationSpec = tween(700)),
+                ExitTransition.None,
+                EnterTransition.None,
+                fadeOut(animationSpec = tween(500))
+            )
         }) {
             Row(
                 modifier = Modifier
@@ -171,10 +201,10 @@ fun HomeModDetailsCardCarousel(modDetails: List<ModDetails>, categoryName: Strin
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
+                .height((100 * min(3, modDetails.size)).dp)
         ) {
             LazyHorizontalGrid(
-                rows = GridCells.Fixed(3),
+                rows = GridCells.Fixed(min(3, modDetails.size)),
                 state = gridState,
                 flingBehavior = snapFlingBehavior,
                 modifier = Modifier

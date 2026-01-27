@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.components.DisplayText
 import luph.vulcanizerv3.updates.ui.components.RYScaffold
+import luph.vulcanizerv3.updates.ui.components.SelectableSettingGroupItem
 
 @Composable
 fun SettingsPage(navController: NavController, view: View) {
@@ -31,18 +32,19 @@ fun SettingsPage(navController: NavController, view: View) {
                     DisplayText(text = stringResource(R.string.settings_title), desc = "")
                 }
                 item {
-                    SelectableSettingGroupItem("Colour and Style",
+                    SelectableSettingGroupItem(
+                        "Colour and Style",
                         title = stringResource(R.string.color_and_style),
                         navController,
                         view,
-                        desc = stringResource(R.string.color_and_style_desc),
+                        desc = stringResource(R.string.colour_and_style_desc),
                         icon = Icons.Outlined.Palette,
                     )
                 }
                 item {
                     SelectableSettingGroupItem(
                         "temp",
-                        title =" stringResource(R.string.interaction)",
+                        title = " stringResource(R.string.interaction)",
                         navController,
                         view,
                         desc = "stringResource(R.string.interaction_desc)",
@@ -53,11 +55,11 @@ fun SettingsPage(navController: NavController, view: View) {
                 }
                 item {
                     SelectableSettingGroupItem(
-                        "temp",
-                        title =" stringResource(R.string.languages)",
+                        "Language",
+                        title = stringResource(R.string.language),
                         navController,
                         view,
-                        desc = "Locale.getDefault().toDisplayName()",
+                        desc = stringResource(R.string.language_desc),
                         icon = Icons.Outlined.Language,
                     ) {
 
@@ -77,11 +79,11 @@ fun SettingsPage(navController: NavController, view: View) {
                 }
                 item {
                     SelectableSettingGroupItem(
-                        "Mod Info",
-                        title = "stringResource(R.string.tips_and_support)",
+                        "Acknowledgement",
+                        title = stringResource(R.string.acknowledgments_title),
                         navController,
                         view,
-                        desc = "stringResource(R.string.tips_and_support_desc)",
+                        desc = "Acknowledging resources and contributions.",
                         icon = Icons.Outlined.TipsAndUpdates,
                     ) {
 

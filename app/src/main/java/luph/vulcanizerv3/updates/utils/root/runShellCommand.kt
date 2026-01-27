@@ -1,13 +1,13 @@
 package luph.vulcanizerv3.updates.utils.root
 
 import android.util.Log
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-fun runShellCommand(command: String, waitForCompletion: Boolean=true): State<String> {
+fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<String> {
     val output = mutableStateOf("")
     try {
         val process = Runtime.getRuntime().exec(command)

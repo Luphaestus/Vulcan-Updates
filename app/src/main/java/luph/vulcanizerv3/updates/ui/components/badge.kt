@@ -30,14 +30,24 @@ class BadgeFormatter {
         badgeContent: BadgeContent?
     ): @Composable () -> Unit {
 
-        if (!enabled || badgeContent == null) return { Icon(imageVector = icon, contentDescription = contentDescription) }
+        if (!enabled || badgeContent == null) return {
+            Icon(
+                imageVector = icon,
+                contentDescription = contentDescription
+            )
+        }
 
         return {
             BadgedBox(badge = {
                 when (badgeContent) {
                     is BadgeContent.Count -> Badge { Text(badgeFormatIntToString(badgeContent.value)) }
                     is BadgeContent.Text -> Badge { Text(badgeContent.text) }
-                    is BadgeContent.Image -> Badge { Icon(imageVector = badgeContent.imageVector, contentDescription = contentDescription) }
+                    is BadgeContent.Image -> Badge {
+                        Icon(
+                            imageVector = badgeContent.imageVector,
+                            contentDescription = contentDescription
+                        )
+                    }
                 }
 
             }) {

@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.components.DisplayText
 import luph.vulcanizerv3.updates.ui.components.RYScaffold
 import luph.vulcanizerv3.updates.ui.components.Subheading
 import luph.vulcanizerv3.updates.ui.components.SubheadingButton
-import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.ui.page.updates.UpdateCarousel
 import luph.vulcanizerv3.updates.ui.page.updates.VersionCard
 

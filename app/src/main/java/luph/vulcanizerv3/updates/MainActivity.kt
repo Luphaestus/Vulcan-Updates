@@ -10,14 +10,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
-import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
-import com.google.accompanist.adaptive.calculateDisplayFeatures
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ketch.Ketch
 import com.ketch.NotificationConfig
+import luph.vulcanizerv3.updates.data.ThemeManager
 import luph.vulcanizerv3.updates.ui.VulcanApp
+import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
+
 
 class MainActivity : ComponentActivity() {
     private lateinit var ketch: Ketch
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
         fun applicationContext(): Context {
             return instance!!.applicationContext
         }
+
         fun getKetch(): Ketch {
             return instance!!.ketch
         }
@@ -46,13 +48,17 @@ class MainActivity : ComponentActivity() {
         ketch = Ketch.builder().setNotificationConfig(
             config = NotificationConfig(
                 enabled = true,
-                smallIcon = R.drawable.ic_launcher_foreground
+                smallIcon = R.drawable.logo
             )
         ).build(this)
         setContent {
-            ContrastAwareTheme {
+            splashScreen.setKeepOnScreenCondition { false }
+            ContrastAwareTheme(
+                ThemeManager.darkTheme,
+                ThemeManager.getThemeTheme(),
+                ThemeManager.contrast
+            ) {
                 val windowSize = calculateWindowSizeClass(this)
-                val displayFeatures = calculateDisplayFeatures(this)
                 VulcanApp(
                     windowSize = windowSize,
                 )
@@ -60,13 +66,17 @@ class MainActivity : ComponentActivity() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), REQUEST_CODE_POST_NOTIFICATIONS)
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    REQUEST_CODE_POST_NOTIFICATIONS
+                )
             }
         }
     }
-
-
-
-
 }

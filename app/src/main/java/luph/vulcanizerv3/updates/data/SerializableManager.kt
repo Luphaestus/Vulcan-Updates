@@ -3,7 +3,11 @@ package luph.vulcanizerv3.updates.data
 import android.content.Context
 import android.util.Log
 import luph.vulcanizerv3.updates.MainActivity
-import java.io.*
+import java.io.File
+import java.io.IOException
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
+import java.io.Serializable
 
 
 class SerializableManager<T : Serializable> {

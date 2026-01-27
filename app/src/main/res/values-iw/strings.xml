@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">עדכוני וולקן</string>
+
+    <string name="no_network">אין רשתות זמינות</string>
+
+
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">הגדרות</string>
+
+    <string name="color_and_style"><![CDATA[צבע וסגנון]]></string>
+    <string name="colour_and_style_desc">התאם את המראה והתחושה של האפליקציה</string>
+    <string name="theme_preview">תצוגה מקדימה של נושא</string>
+    <string name="me_msg_1">שמעת על Vulcan ROM??</string>
+    <string name="me_msg_2">שמעתי שזה ממש פצצה! 🤯</string>
+    <string name="mez_msg_1">כן, ROM ממש פצצה</string>
+    <string name="oskar_ahh_convo">\"שיחה של אוסקר\"</string>
+    <string name="dynamic_colours_option">צבעים דינמיים</string>
+    <string name="static_colours_option">צבעים סטטיים</string>
+    <string name="system_dark_theme_title">נושא כהה מערכת</string>
+    <string name="system_dark_theme_desc">החל נושא כהה על פי הגדרות המערכת</string>
+    <string name="dark_theme_title">נושא כהה</string>
+    <string name="apply_dark_theme_based_on_wallpaper">החל נושא כהה על פי טפט</string>
+    <string name="apply_dark_theme">החל נושא כהה %1$s</string>
+    <string name="contrast">ניגודיות %1$s</string>
+    <string name="low_contrast">נמוכה</string>
+    <string name="medium_contrast">בינונית</string>
+    <string name="high_contrast">גבוהה</string>
+
+    <string name="language">שפה</string>
+    <string name="language_desc">שנה את שפת האפליקציה</string>
+
+    <!-- Home -->
+    <string name="home_title">ב��ת</string>
+
+    <!-- Updates -->
+    <string name="updates_title">עדכונים</string>
+    <string name="core_title">עדכוני ליבה</string>
+    <string name="installed_title">מותקן</string>
+
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">אין עוד תמונות שמאלה.</string>
+    <string name="no_more_images_to_the_right">אין עוד תמונות ימינה.</string>
+
+    <!-- Info -->
+    <string name="mod_info_title">מידע על מוד</string>
+    <string name="uninstall">הסר התקנה</string>
+    <string name="cancel">בטל</string>
+    <string name="install">התקן</string>
+    <string name="open">פתח</string>
+    <string name="update">עדכן</string>
+    <string name="mod_size">גודל</string>
+    <string name="mod_source_code_link_button">קוד מקור</string>
+</resources>

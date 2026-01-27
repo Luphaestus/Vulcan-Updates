@@ -33,47 +33,63 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.ui.components.HomeModDetailsCard
 import luph.vulcanizerv3.updates.ui.components.ImageCarousel
+import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 
 @Composable
 fun HomeModDetailsExpanded(navController: NavController, view: View) {
     val modCategoriesState = ModDetailsStore.getAllModKeywords()
-    val modDetailString = remember { mutableStateOf(RouteParams.pop(String::class.java) ?: "All Mods") }
-    val modDetails = remember { derivedStateOf { modCategoriesState.value[modDetailString.value] ?: emptyList() } }
-    
+    val modDetailString =
+        remember { mutableStateOf(RouteParams.pop(String::class.java) ?: "All Mods") }
+    val modDetails = remember {
+        derivedStateOf {
+            modCategoriesState.value[modDetailString.value] ?: emptyList()
+        }
+    }
+
     val searchQuery = remember { mutableStateOf("") }
     val filteredModDetails = remember { mutableStateOf(modDetails.value) }
     val isSearchVisible = remember { mutableStateOf(false) }
 
-    showNavigation.show.value = false
+    showNavigation.show = false
 
     Column(Modifier.background(MaterialTheme.colorScheme.surface)) {
-    Row(
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth()
-            .height(56.dp)
-            .background(
-                MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
-                shape = ShapeDefaults.Large
-            ),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
+                .height(56.dp)
+                .background(
+                    MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
+                    shape = ShapeDefaults.Large
+                ),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             AnimatedVisibility(
                 visible = isSearchVisible.value
             ) {
-                Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     TextField(
                         value = searchQuery.value,
                         shape = ShapeDefaults.Large,
                         onValueChange = { query ->
                             searchQuery.value = query
                             filteredModDetails.value = modDetails.value.filter {
-                                it.name.contains(query, ignoreCase = true) || it.keywords.any { keyword -> keyword.contains(query, ignoreCase = true) } //todo  || it.briefDescription.contains(query, ignoreCase = true)
+                                it.name.contains(
+                                    query,
+                                    ignoreCase = true
+                                ) || it.keywords.any { keyword ->
+                                    keyword.contains(
+                                        query,
+                                        ignoreCase = true
+                                    )
+                                } //todo  || it.briefDescription.contains(query, ignoreCase = true)
                             }
                         },
                         placeholder = { Text("Search") },
@@ -82,7 +98,7 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
                             unfocusedIndicatorColor = Color.Transparent,
                             disabledIndicatorColor = Color.Transparent,
 
-                        ),
+                            ),
                         modifier = Modifier
                             .weight(1f)
                     )
