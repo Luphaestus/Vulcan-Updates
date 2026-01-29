@@ -53,4 +53,7 @@
     <string name="update">Perbarui</string>
     <string name="mod_size">Ukuran</string>
     <string name="mod_source_code_link_button">Kode Sumber</string>
+
+    <string name="acknowledgments_title">Acknowledgments</string>
+
 </resources>
