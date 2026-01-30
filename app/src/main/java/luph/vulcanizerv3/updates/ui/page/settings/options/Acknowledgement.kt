@@ -3,6 +3,8 @@ package luph.vulcanizerv3.updates.ui.page.settings.options
 
 import android.app.LocaleManager
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
 import android.util.Log
@@ -38,6 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.MainActivity
@@ -48,6 +51,13 @@ import luph.vulcanizerv3.updates.ui.components.SettingsElementBase
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import java.util.Locale
 import kotlin.random.Random
+
+fun openUrl(url: String) {
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    }
+    MainActivity.applicationContext().startActivity(intent)
+}
 
 @Composable
 fun personAck(name: String, role: String, pfp: Int?=null, modifier: Modifier = Modifier) {
@@ -95,7 +105,9 @@ fun AcknowledgementOption(
 ) {
     showNavigation.show = false
 
-    LazyColumn(Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(16.dp)) {
+    LazyColumn(
+        Modifier.background(MaterialTheme.colorScheme.background).fillMaxSize().padding(16.dp)
+    ) {
         item { Spacer(modifier = Modifier.height(32.dp)) }
         item { PageNAv(stringResource(R.string.acknowledgments_title), navController) }
         item { Spacer(modifier = Modifier.height(8.dp)) }
@@ -112,7 +124,13 @@ fun AcknowledgementOption(
                 )
             }
         }
-        item { personAck("Luphaestus", "Developer of Vulcan ROM and Vulcan Updates", R.drawable.luph) }
+        item {
+            personAck(
+                "Luphaestus",
+                "Developer of Vulcan ROM and Vulcan Updates",
+                R.drawable.luph
+            )
+        }
         item { personAck("ExtremeXT", "For his Exynos 990 & s20x fixes", R.drawable.extreme) }
         item { personAck("Igor", "\uD83D\uDC39", R.drawable.igor) }
         item { personAck("BlackMesa", "Misc framework patches", R.drawable.salvo) }
@@ -121,7 +139,7 @@ fun AcknowledgementOption(
             Column(
                 modifier = Modifier
                     .padding(top = 16.dp, bottom = 8.dp),
-                horizontalAlignment =  Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "Contributors",
@@ -131,14 +149,73 @@ fun AcknowledgementOption(
         }
         item { personAck("Oskar", "Tester ● Translator ● File Hoster", R.drawable.oskar) }
         item { personAck("Mesazane", "Tester ● Translator", R.drawable.mez) }
-        item { personAck("Ciprian Dinca", "Tester") }
+        item { personAck("Ciprian Dinca", "Tester ● Translator") }
         item { personAck("Jaola Tymon", "Tester") }
         item { personAck("Vlad", "Tester") }
-        item { personAck("dupa z lasu", "Tester") }
+        item { personAck("O C", "Tester ● Translator") }
+        item { personAck("dupa z lasu", "Tester ● Translator", R.drawable.dzl) }
         item { personAck("Mirel", "Tester") }
-        item { personAck("BlueMech", "Tester") }
-        item { personAck("Walter White / Sussy Baka", "Tester") }
+        item { personAck("BlueMech", "Tester", R.drawable.bm) }
+        item { personAck("Walter White / Sussy Baka", "Tester", R.drawable.walter) }
         item { personAck("Razr1804", "Tester") }
         item { personAck("Denni", "Tester") }
+        item { personAck("Javivi", "Tester", R.drawable.javvi) }
+        item { personAck("Abode", "Tester", R.drawable.abode) }
+        item { personAck("Leon", "Tester", R.drawable.leon) }
+        item { personAck("ƬƦΘレ乇メ ༒ \uD83D\uDC51⃤", "Tester", R.drawable.troll) }
+        item { personAck("Rick Sanchez", "Translator", R.drawable.rick) }
+        item { personAck("El Vettorato", "Translator", R.drawable.ttorato) }
+        item { personAck("Emre Kesin", "Translator", R.drawable.kesin) }
+        item { personAck("Boyan", "Translator", R.drawable.boyan) }
+
+        item {
+            Column(
+                modifier = Modifier
+                    .padding(top = 16.dp, bottom = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Libraries",
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+        }
+
+        item {
+            ClickableOverlay(onClick = {openUrl("https://github.com/fornewid/photo-compose") }) {
+                personAck(
+                    "Photo-compose",
+                    "⚖️ Apache-2.0 license",
+                    R.drawable.photocompose
+                )
+            }
+        }
+        item {
+            ClickableOverlay(onClick = {openUrl("https://github.com/coil-kt/coil") }) {
+                personAck(
+                    "Coil",
+                    "⚖️ Apache-2.0 license",
+                    R.drawable.coil
+                )
+            }
+        }
+        item {
+            ClickableOverlay(onClick = {openUrl("https://github.com/ktorio/ktor") }) {
+                personAck(
+                    "Ktor",
+                    "⚖️ 4CC0-1.0 license",
+                    R.drawable.ktor
+                )
+            }
+        }
+        item {
+            ClickableOverlay(onClick = {openUrl("https://github.com/khushpanchal/Ketch") }) {
+                personAck(
+                    "Ketch",
+                    "⚖️ Apache-2.0 license",
+                    R.drawable.ketch
+                )
+            }
+        }
     }
 }
