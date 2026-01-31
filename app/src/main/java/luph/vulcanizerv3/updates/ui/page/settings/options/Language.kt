@@ -28,6 +28,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.NavController
+import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.components.ClickableOverlay
@@ -115,6 +116,9 @@ fun LanguageOption(
             LanguageItem(languages[language]?:language, selectedLanguage.value == language) {
                 selectedLanguage.value = language
                 localeSelection(language)
+                MainActivity.getFirebaseAnalytics().logEvent("language") {
+                    param("language", languages[language] ?: language)
+                }
             }
         }
     }

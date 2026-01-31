@@ -4,11 +4,13 @@ import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import kotlinx.serialization.json.Json
+import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.R
 
 
-fun getModList(path: String = "Mods"): Map<String, String> {
+fun getModList(path: String = "mods"): Map<String, String> {
     val baseUrl =
-        "https://raw.githubusercontent.com/Luphaestus/UpdatesRepo/refs/heads/master/$path/list"
+        "${MainActivity.applicationContext().getString(R.string.github_link)}$path/list"
     val client = HttpClient(CIO) {
         engine {
             requestTimeout = 1000
@@ -20,7 +22,7 @@ fun getModList(path: String = "Mods"): Map<String, String> {
 
         return modVersions
     } catch (e: Exception) {
-        Log.e("Error getting mod list", e.toString())
+        Log.e("getModList", "$baseUrl $e")
         return emptyMap()
     } finally {
         client.close()

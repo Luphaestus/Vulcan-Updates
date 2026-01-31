@@ -49,3 +49,5 @@
 -dontwarn org.slf4j.impl.StaticLoggerBinder
 -keep class com.caverock.androidsvg.** { *; }
 -dontwarn com.caverock.androidsvg.**
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception

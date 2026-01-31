@@ -53,5 +53,10 @@
         <string name="update">Update</string>
         <string name="mod_size">Size</string>
         <string name="mod_source_code_link_button">Source Code</string>
+
+    <!-- Github -->
+    <string name="github_link" translatable="false">https://huggingface.co/datasets/Luphaestus/VulcanUpdates3Data/resolve/master/</string>
+
     <string name="acknowledgments_title">Acknowledgments</string>
+    <string name="feedback_title">Feedback</string>
 </resources>

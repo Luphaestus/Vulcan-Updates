@@ -28,6 +28,7 @@ import luph.vulcanizerv3.updates.ui.page.home.HomePage
 import luph.vulcanizerv3.updates.ui.page.settings.SettingsPage
 import luph.vulcanizerv3.updates.ui.page.settings.options.AcknowledgementOption
 import luph.vulcanizerv3.updates.ui.page.settings.options.ColorAndStyleOption
+import luph.vulcanizerv3.updates.ui.page.settings.options.FeedbackOption
 import luph.vulcanizerv3.updates.ui.page.settings.options.LanguageOption
 import luph.vulcanizerv3.updates.ui.page.updates.UpdatesPage
 
@@ -44,8 +45,7 @@ data class Route(
     val stringResource: Int = 0, )
 
 val Routes = listOf(
-    Route(
-        "Home",
+    Route("Home",
         Icons.Filled.Home,
         Icons.Outlined.Home,
         { navController, view -> HomePage(navController, view) },
@@ -56,18 +56,20 @@ val Routes = listOf(
         showInMenu = true,
         stringResource = R.string.home_title
     ),
+
     Route(
         "Home Details Expanded",
         content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
-
 
     Route(
         "Updates",
         Icons.Filled.Star,
         Icons.Outlined.Star,
         { navController, view -> UpdatesPage(navController, view) },
-        showBadge = { true },
-        badgeContent = { BadgeContent.Count(200) },
+        showBadge = {
+            ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value
+        },
+        badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) },
         showInMenu = true,
         stringResource = R.string.updates_title
     ),
@@ -80,10 +82,12 @@ val Routes = listOf(
         showInMenu = true,
         stringResource = R.string.settings_title
     ),
+
     Route(
         "Colour and Style",
         content = { navController, view -> ColorAndStyleOption(navController, view) }),
     Route("Language", content = { navController, view -> LanguageOption(navController, view) }),
+    Route("Feedback", content = { navController, view -> FeedbackOption(navController, view) }),
     Route("Acknowledgement", content = { navController, view -> AcknowledgementOption(navController, view) }),
 
 

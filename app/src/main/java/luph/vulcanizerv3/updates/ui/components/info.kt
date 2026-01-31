@@ -5,12 +5,16 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.View
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,7 +34,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.filled.WarningAmber
+import androidx.compose.material.icons.outlined.Error
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material.icons.twotone.Warning
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonElevation
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,10 +55,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
@@ -60,10 +79,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.google.firebase.analytics.logEvent
 import com.ketch.Status
 import getAPKUpdateStatus
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.flowOn
@@ -72,6 +94,7 @@ import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.DETAILFILE
 import luph.vulcanizerv3.updates.data.ModDetails
+import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.ModType
 import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.showNavigation
@@ -79,6 +102,7 @@ import luph.vulcanizerv3.updates.utils.apkmanager.installAPK
 import luph.vulcanizerv3.updates.utils.apkmanager.openAPK
 import luph.vulcanizerv3.updates.utils.apkmanager.uninstallAPK
 import luph.vulcanizerv3.updates.utils.download.getDownloadSize
+import org.w3c.dom.Text
 
 
 enum class UpdateStatus {
@@ -115,10 +139,36 @@ fun isInstallTwoButtons(updateStatus: UpdateStatus): Boolean {
     return updateStatus == UpdateStatus.INSTALLED || updateStatus == UpdateStatus.UPDATE_AVAILABLE || updateStatus == UpdateStatus.UPDATING
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
-fun ModInfo(navController: NavController, view: View) {
-    val initialModDetails: ModDetails = RouteParams.pop(ModDetails::class.java)
+fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>, negativeClick: () -> Unit = {}, positiveClick: () -> Unit = {}) {
+    if (!show.value) return
+    AlertDialog(
+        onDismissRequest = { show.value = false },
+        title = { Text(title) },
+        text = { Text(description) },
+        confirmButton = {
+            Button(onClick = {
+                show.value = false
+                positiveClick()}) {
+                Text("Fix")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = {
+                show.value = false
+                negativeClick()}) {
+                Text("Continue Anyway")
+            }
+        }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class, DelicateCoroutinesApi::class)
+@Composable
+fun ModInfo(navController: NavController = NavController(MainActivity.applicationContext()),
+            view: View = MainActivity.instance!!.window.decorView, passedModDetails: ModDetails? = null) {
+    val initialModDetails: ModDetails = passedModDetails ?: RouteParams.pop(ModDetails::class.java)
         ?: ModDetails()
     val modDetails = remember { initialModDetails }
     val downloadId = remember { mutableIntStateOf(0) }
@@ -134,6 +184,11 @@ fun ModInfo(navController: NavController, view: View) {
     val fileSize = remember { mutableFloatStateOf(-1f) }
 
     showNavigation.show = false
+
+    BackHandler {
+        ModDetailsStore.refresh()
+        navController.popBackStack()
+    }
 
     fun changeUpdateType(updateStatus: UpdateStatus) {
         infoState.value = updateStatus
@@ -184,17 +239,35 @@ fun ModInfo(navController: NavController, view: View) {
                 downloadModel.status.let {
                     var success = false
                     if (it == Status.SUCCESS) {
+                        MainActivity.getFirebaseAnalytics().logEvent("downloaded_mod") {
+                            param("mod_name", modDetails.name)
+                            param("mod_version", modDetails.version)
+                            param("mod_author", modDetails.author)
+                            modDetails.keywords.forEach {keyword ->
+                                param("keyword", keyword)
+                            }
+                        }
                         if (modDetails.updateType == ModType.APK) {
                             canCancel.value = false
                             GlobalScope.launch(Dispatchers.IO) {
                                 success = installAPK(downloadModel.path + "/${modDetails.name}")
                                 canCancel.value = true
-                                if (success) changeUpdateType(UpdateStatus.INSTALLED)
+                                if (success){
+                                    changeUpdateType(UpdateStatus.INSTALLED)
+                                }
                                 else changeUpdateType(UpdateStatus.NOT_INSTALLED)
                             }
                         }
                         if (success) {
                             changeUpdateType(UpdateStatus.INSTALLED)
+                            MainActivity.getFirebaseAnalytics().logEvent("installed_mod") {
+                                param("mod_name", modDetails.name)
+                                param("mod_version", modDetails.version)
+                                param("mod_author", modDetails.author)
+                                modDetails.keywords.forEach {keyword ->
+                                    param("keyword", keyword)
+                                }
+                            }
                         }
                     } else if (it in listOf(Status.FAILED, Status.CANCELLED, Status.PAUSED)) {
                         changeUpdateType(UpdateStatus.NOT_INSTALLED)
@@ -206,6 +279,38 @@ fun ModInfo(navController: NavController, view: View) {
             }
     }
 
+//    // Dialogs
+    val noRootAPKDialog = remember { mutableStateOf(false) }
+    UpdateAlert(
+        "No Root Access",
+        "Vulcan Updates works best with Root permissions!",
+        noRootAPKDialog
+    )
+
+    val noDetachDialog = remember { mutableStateOf(false) }
+    UpdateAlert(
+        "Detach module recommended",
+        "To prevent Google Play Store from overwriting ${modDetails.name}, it is recommended to install a detach module.",
+        noDetachDialog
+    )
+
+    val noLSPosedDialog = remember { mutableStateOf(false) }
+    UpdateAlert(
+        "LSPosed Required",
+        "${modDetails.name} requires LSPosed, and will not function without it.",
+        noLSPosedDialog
+    )
+
+    val noZygiskDialog = remember { mutableStateOf(false) }
+    UpdateAlert(
+        "Zygisk Required",
+        "${modDetails.name} requires Zygisk, and will not function without it.",
+        noZygiskDialog
+    )
+
+
+
+
 
     Column(
         modifier = Modifier
@@ -214,13 +319,22 @@ fun ModInfo(navController: NavController, view: View) {
             .padding(16.dp)
     ) {
 
+        Spacer(
+            modifier = Modifier
+                .height(16.dp)
+                .background(MaterialTheme.colorScheme.surface)
+        )
         PageNAv(stringResource(R.string.mod_info_title), navController)
+
 
         Spacer(
             modifier = Modifier
                 .height(16.dp)
                 .background(MaterialTheme.colorScheme.surface)
         )
+
+
+
         LazyColumn(Modifier.background(MaterialTheme.colorScheme.surface)) {
             item {
                 Column(
@@ -258,14 +372,6 @@ fun ModInfo(navController: NavController, view: View) {
                                 .clip(RoundedCornerShape(22.dp))
                         )
                         if (infoState.value == UpdateStatus.UPDATING) {
-                            Log.e(
-                                "downloadProgress",
-                                downloadProgressPercentage.intValue.toString()
-                            )
-                            Log.e(
-                                "determinate",
-                                (downloadProgressPercentage.intValue != 0 && downloadProgressPercentage.intValue != 100).toString()
-                            )
                             if (downloadProgressPercentage.intValue != 0 && downloadProgressPercentage.intValue != 100) {
                                 val animatedProgress by animateFloatAsState(
                                     targetValue = downloadProgressPercentage.intValue / 100f,
@@ -409,7 +515,7 @@ fun ModInfo(navController: NavController, view: View) {
                                 .weight(buttonAnimWeight)
                                 .padding(end = if (firstButtonVisible.value) 8.dp else 0.dp)
                                 .height(42.dp),
-                            enabled = canCancel.value
+                            enabled = canCancel.value && (infoState.value != UpdateStatus.UPDATING && modDetails.packageName != "luph.vulcanizerv3.updates")
                         ) {
                             Text(text = UpdateFirstButtonStrings.getButtonString(infoState.value))
                         }
@@ -417,6 +523,14 @@ fun ModInfo(navController: NavController, view: View) {
                     Button(
                         onClick = {
                             if (infoState.value == UpdateStatus.NOT_INSTALLED || infoState.value == UpdateStatus.UPDATE_AVAILABLE) {
+                                MainActivity.getFirebaseAnalytics().logEvent("download_mod") {
+                                    param("mod_name", modDetails.name)
+                                    param("mod_version", modDetails.version)
+                                    param("mod_author", modDetails.author)
+                                    modDetails.keywords.forEach {keyword ->
+                                        param("keyword", keyword)
+                                    }
+                                }
                                 changeUpdateType(UpdateStatus.UPDATING)
                                 downloadId.intValue = MainActivity.getKetch().download(
                                     modDetails.url + DETAILFILE.FILE.type,
@@ -467,52 +581,53 @@ fun ModInfo(navController: NavController, view: View) {
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
                     )
-                    Text(
-                        text = buildAnnotatedString {
-                            append(
-                                modDetails.READMEsummary.substring(
-                                    0,
-                                    modDetails.READMEsummary.length - 3
+                    if (modDetails.READMEsummary.length > 3)
+                        Text(
+                            text = buildAnnotatedString {
+                                append(
+                                    modDetails.READMEsummary.substring(
+                                        0,
+                                        modDetails.READMEsummary.length - 3
+                                    )
                                 )
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.5f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.READMEsummary[modDetails.READMEsummary.length - 3])
+                                }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.4f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.READMEsummary[modDetails.READMEsummary.length - 2])
+                                }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.2f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.READMEsummary[modDetails.READMEsummary.length - 1])
+                                }
+                                append("...more")
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                            modifier = Modifier.padding(
+                                start = 16.dp,
+                                top = 8.dp,
+                                bottom = 16.dp,
+                                end = 16.dp
                             )
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.5f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.READMEsummary[modDetails.READMEsummary.length - 3])
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.4f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.READMEsummary[modDetails.READMEsummary.length - 2])
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.2f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.READMEsummary[modDetails.READMEsummary.length - 1])
-                            }
-                            append("...more")
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                        modifier = Modifier.padding(
-                            start = 16.dp,
-                            top = 8.dp,
-                            bottom = 16.dp,
-                            end = 16.dp
                         )
-                    )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -532,54 +647,53 @@ fun ModInfo(navController: NavController, view: View) {
                         color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
                     )
-                    Text(
-                        text = buildAnnotatedString {
-                            append(
-                                modDetails.changeLogSummary.substring(
-                                    0,
-                                    modDetails.changeLogSummary.length - 3
+                    if (modDetails.changeLogSummary.length > 3)
+                        Text(
+                            text = buildAnnotatedString {
+                                append(
+                                    modDetails.changeLogSummary.substring(
+                                        0,
+                                        modDetails.changeLogSummary.length - 3
+                                    )
                                 )
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.5f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 3])
+                                }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.4f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 2])
+                                }
+                                withStyle(
+                                    style = SpanStyle(
+                                        color = MaterialTheme.colorScheme.onSurface.copy(
+                                            alpha = 0.2f
+                                        )
+                                    )
+                                ) {
+                                    append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 1])
+                                }
+                                append("...more")
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                            modifier = Modifier.padding(
+                                start = 16.dp,
+                                top = 8.dp,
+                                bottom = 16.dp,
+                                end = 16.dp
                             )
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.5f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 3])
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.4f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 2])
-                            }
-                            withStyle(
-                                style = SpanStyle(
-                                    color = MaterialTheme.colorScheme.onSurface.copy(
-                                        alpha = 0.2f
-                                    )
-                                )
-                            ) {
-                                append(modDetails.changeLogSummary[modDetails.changeLogSummary.length - 1])
-                            }
-                            append("...more")
-                        },
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                        modifier = Modifier.padding(
-                            start = 16.dp,
-                            top = 8.dp,
-                            bottom = 16.dp,
-                            end = 16.dp
                         )
-                    )
-
-
                     if (showDescription.value || showVersion.value) {
                         ModalBottomSheet(onDismissRequest = {
                             showDescription.value = false; showVersion.value = false
