@@ -121,8 +121,6 @@ dependencies {
     implementation(libs.firebase.perf)
     implementation(libs.firebase.dynamic.links)
 
-
-
     // Kotlin Libraries
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.android)

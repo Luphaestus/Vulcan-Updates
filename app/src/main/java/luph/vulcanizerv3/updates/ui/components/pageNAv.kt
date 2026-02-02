@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -33,14 +34,16 @@ fun PageNAv(title: String, navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(56.dp)
             .background(
                 MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp),
                 shape = ShapeDefaults.Large
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { navController.popBackStack() }) {
+        IconButton(onClick = {
+
+            navController.popBackStack()
+        }) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Back",
@@ -48,6 +51,7 @@ fun PageNAv(title: String, navController: NavController) {
             )
         }
         Text(
+            modifier = Modifier.padding(vertical = 16.dp).padding(end=16.dp),
             text = title,
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface

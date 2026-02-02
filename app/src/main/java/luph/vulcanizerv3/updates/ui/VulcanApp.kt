@@ -29,8 +29,6 @@ fun VulcanApp(
         return
     }
     NavBarHandler(windowSize)
-
-
 }
 
 

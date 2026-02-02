@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -41,6 +42,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -96,6 +98,8 @@ fun VersionCard(
     view: View
 ) {
     val timeAgoText = remember { mutableStateOf("") }
+    showNavigation.show = true
+    BackHandler {}
     Box() {
         if (modDetails != null) {
             LaunchedEffect(modDetails.timestamp) {
@@ -301,140 +305,145 @@ fun UpdatesPage(navController: NavController, view: View) {
     showNavigation.show = true
     RYScaffold(
         content = {
-            LazyColumn {
-                item {
-                    DisplayText(text = stringResource(R.string.updates_title), desc = "")
-                }
-                item {
-                    Subheading(stringResource(R.string.core_title))
-
-                    VersionCard(
-                        ModDetailsStore.getAppDetails().value,
-                        getAppVersion(view.context),
-                        navController,
-                        view
-                    )
-
-                    VersionCard(
-                        ModDetailsStore.getAppDetails().value,
-                        getAppVersion(view.context),
-                        navController,
-                        view
-                    )
-
-                    VersionCard(
-                        ModDetailsStore.getAppDetails().value,
-                        "1.0.0",
-                        navController,
-                        view
-                    )
-                }
-
-                if (ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty()) {
-
+            PullToRefreshBox(ModDetailsStore.isUpdating().value, {ModDetailsStore.refresh()}) {
+                LazyColumn {
                     item {
-                        val updatedModsList =
-                            remember { mutableStateOf<List<ModDetails>>(listOf()) }
-                        Box(Modifier.roundClick {
-                            RouteParams.push(
-                                MainActivity.applicationContext().getString(R.string.updates_title)
-                            )
-                            RouteParams.push(modList(updatedModsList.value))
-                            MainActivity.getFirebaseAnalytics().logEvent("opened_mod_category") {
-                                param(
-                                    "category",
+                        DisplayText(text = stringResource(R.string.updates_title), desc = "")
+                    }
+                    item {
+                        Subheading(stringResource(R.string.core_title))
+
+                        VersionCard(
+                            ModDetailsStore.getAppDetails().value,
+                            getAppVersion(view.context),
+                            navController,
+                            view
+                        )
+
+                        VersionCard(
+                            ModDetailsStore.getAppDetails().value,
+                            getAppVersion(view.context),
+                            navController,
+                            view
+                        )
+
+                        VersionCard(
+                            ModDetailsStore.getAppDetails().value,
+                            "1.0.0",
+                            navController,
+                            view
+                        )
+                    }
+
+                    if (ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty()) {
+
+                        item {
+                            val updatedModsList =
+                                remember { mutableStateOf<List<ModDetails>>(listOf()) }
+                            Box(Modifier.roundClick {
+                                RouteParams.push(
                                     MainActivity.applicationContext()
                                         .getString(R.string.updates_title)
                                 )
-                            }
-                            OpenRoute(
-                                "Home Details Expanded",
-                                navController,
-                                view,
-                                fadeIn(animationSpec = tween(700)),
-                                ExitTransition.None,
-                                EnterTransition.None,
-                                fadeOut(animationSpec = tween(500))
-                            )
-                        }) {
-                            Row(
-                                modifier = Modifier
-                                    .padding(20.dp)
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.updates_title),
-                                    style = MaterialTheme.typography.titleMedium,
-                                    modifier = Modifier.weight(1f)
+                                RouteParams.push(modList(updatedModsList.value))
+                                MainActivity.getFirebaseAnalytics()
+                                    .logEvent("opened_mod_category") {
+                                        param(
+                                            "category",
+                                            MainActivity.applicationContext()
+                                                .getString(R.string.updates_title)
+                                        )
+                                    }
+                                OpenRoute(
+                                    "Home Details Expanded",
+                                    navController,
+                                    view,
+                                    fadeIn(animationSpec = tween(700)),
+                                    ExitTransition.None,
+                                    EnterTransition.None,
+                                    fadeOut(animationSpec = tween(500))
                                 )
-                                Icon(
-                                    imageVector = Icons.Default.ArrowForward,
-                                    contentDescription = "Next"
-                                )
+                            }) {
+                                Row(
+                                    modifier = Modifier
+                                        .padding(20.dp)
+                                        .fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.updates_title),
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowForward,
+                                        contentDescription = "Next"
+                                    )
 
+                                }
                             }
+                            val updateMods by remember { ModDetailsStore.getInstalledModsUpdate() }
+                            updatedModsList.value =
+                                updateCarousel(updateMods, navController, view)
                         }
-                        val updateMods by remember { ModDetailsStore.getInstalledModsUpdate() }
-                        updatedModsList.value =
-                            updateCarousel(updateMods, navController, view)
                     }
-                }
-                if (ModDetailsStore.getInstalledMods().value.isNotEmpty()) {
-                    item {
-                        val installedDetailsList =
-                            remember { mutableStateOf<List<ModDetails>>(listOf()) }
-                        Box(Modifier.roundClick {
-                            RouteParams.push(
-                                MainActivity.applicationContext()
-                                    .getString(R.string.installed_title)
-                            )
-                            RouteParams.push(modList(installedDetailsList.value))
-                            MainActivity.getFirebaseAnalytics().logEvent("opened_mod_category") {
-                                param(
-                                    "category",
+                    if (ModDetailsStore.getInstalledMods().value.isNotEmpty()) {
+                        item {
+                            val installedDetailsList =
+                                remember { mutableStateOf<List<ModDetails>>(listOf()) }
+                            Box(Modifier.roundClick {
+                                RouteParams.push(
                                     MainActivity.applicationContext()
                                         .getString(R.string.installed_title)
                                 )
-                            }
-                            OpenRoute(
-                                "Home Details Expanded",
-                                navController,
-                                view,
-                                fadeIn(animationSpec = tween(700)),
-                                ExitTransition.None,
-                                EnterTransition.None,
-                                fadeOut(animationSpec = tween(500))
-                            )
-                        }) {
-                            Row(
-                                modifier = Modifier
-                                    .padding(20.dp)
-                                    .fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.installed_title),
-                                    style = MaterialTheme.typography.titleMedium,
-                                    modifier = Modifier.weight(1f)
+                                RouteParams.push(modList(installedDetailsList.value))
+                                MainActivity.getFirebaseAnalytics()
+                                    .logEvent("opened_mod_category") {
+                                        param(
+                                            "category",
+                                            MainActivity.applicationContext()
+                                                .getString(R.string.installed_title)
+                                        )
+                                    }
+                                OpenRoute(
+                                    "Home Details Expanded",
+                                    navController,
+                                    view,
+                                    fadeIn(animationSpec = tween(700)),
+                                    ExitTransition.None,
+                                    EnterTransition.None,
+                                    fadeOut(animationSpec = tween(500))
                                 )
-                                Icon(
-                                    imageVector = Icons.Default.ArrowForward,
-                                    contentDescription = "Next"
-                                )
+                            }) {
+                                Row(
+                                    modifier = Modifier
+                                        .padding(20.dp)
+                                        .fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically,
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.installed_title),
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.weight(1f)
+                                    )
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowForward,
+                                        contentDescription = "Next"
+                                    )
 
+                                }
                             }
+                            val installedMods by remember { ModDetailsStore.getInstalledMods() }
+                            installedDetailsList.value =
+                                updateCarousel(installedMods, navController, view)
                         }
-                        val installedMods by remember { ModDetailsStore.getInstalledMods() }
-                        installedDetailsList.value =
-                        updateCarousel(installedMods, navController, view)
                     }
-                }
-                item {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Spacer(modifier = Modifier.windowInsetsBottomHeight(WindowInsets.navigationBars))
+                    item {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Spacer(modifier = Modifier.windowInsetsBottomHeight(WindowInsets.navigationBars))
+                    }
                 }
             }
         }

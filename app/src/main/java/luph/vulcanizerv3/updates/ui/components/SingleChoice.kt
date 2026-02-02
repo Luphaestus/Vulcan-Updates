@@ -39,7 +39,6 @@ fun SingleOptionsSection(
 ) {
     options.options.forEach{(option, image) ->
         key(option) {
-            Log.e("SingleOptionsSection", "option: $option")
             RadioRow(title = option, image = image, selected = option == selected, onOptionSelected = {
                 onOptionSelected(option)
             })

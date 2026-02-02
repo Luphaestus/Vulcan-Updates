@@ -58,7 +58,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import luph.vulcanizerv3.updates.data.Options.SingleChoice
 import luph.vulcanizerv3.updates.data.SurveyQuestion
+import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
+import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.ui.components.SurveyTextINput
+import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 import nl.dionsegijn.konfetti.compose.KonfettiView
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.Position
@@ -342,6 +345,17 @@ fun FeedbackOption(
                 }
                 Button(
                     onClick = {
+
+                        var feedbackString = "New ${sharedForm[0].value.value}\n"
+                        for (question in sharedForm) {
+                            val prefix = if (question.question == "Telegram Username") "@" else ""
+                            feedbackString += "${question.question}: $prefix${question.value.value}\n"
+                        }
+                        for (question in formPage) {
+                            val newLine = if (question.options is Options.TextInput) "\n" else " "
+                            feedbackString += "${question.question}:$newLine${question.value.value}\n"
+                        }
+                        postTelegramMessage(feedbackString, TELEGRAM_FEEDBACK_CHANNEL, TELEGRAM_BOT_API)
                         navController.popBackStack()
                     }, modifier = Modifier.weight(1f).padding(16.dp)
                 ) {

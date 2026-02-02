@@ -64,52 +64,11 @@ import luph.vulcanizerv3.updates.ui.components.DisplayText
 import luph.vulcanizerv3.updates.ui.components.HomeModDetailsCardCarousel
 import luph.vulcanizerv3.updates.ui.components.NoInternet
 import luph.vulcanizerv3.updates.ui.components.RYScaffold
+import luph.vulcanizerv3.updates.ui.components.RandomIndicator
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 
 
-@Composable
-fun RandomIndicator() {
-    val indicators = listOf<@Composable () -> Unit>(
-        { PulsatingDot(color = MaterialTheme.colorScheme.primary) },
-        { GridPulsatingDot(color = MaterialTheme.colorScheme.primary) },
-        { CircularPulsatingIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallClipRotatePulseIndicator(color = MaterialTheme.colorScheme.primary) },
-        { SquareSpinIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallClipRotateMultipleIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallPulseRiseIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallRotateIndicator(color = MaterialTheme.colorScheme.primary) },
-        { CubeTransitionIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallZigZagIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallZigZagDeflectIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallTrianglePathIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallScaleIndicator(color = MaterialTheme.colorScheme.primary) },
-        {
-            LineScaleIndicator(
-                color = MaterialTheme.colorScheme.primary,
-                punchType = PunchType.RANDOM_PUNCH
-            )
-        },
-        { BallScaleMultipleIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallPulseSyncIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallBeatIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallScaleRippleIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallScaleRippleMultipleIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallSpinFadeLoaderIndicator(color = MaterialTheme.colorScheme.primary) },
-        { LineSpinFadeLoaderIndicator(color = MaterialTheme.colorScheme.primary) },
-        { TriangleSpinIndicator(color = MaterialTheme.colorScheme.primary) },
-        { PacmanIndicator(color = MaterialTheme.colorScheme.primary) },
-        { BallGridBeatIndicator(color = MaterialTheme.colorScheme.primary) },
-        { SemiCircleSpinIndicator(color = MaterialTheme.colorScheme.primary) },
-        { GridFadeDiagonal(color = MaterialTheme.colorScheme.primary) },
-        { GridFadeAntiDiagonal(color = MaterialTheme.colorScheme.primary) },
-        { BallRespectivelyExitIndicator(color = MaterialTheme.colorScheme.primary) },
-        { TriangleShapeIndicator(color = MaterialTheme.colorScheme.primary) },
-        { CircleShapeIndicator(color = MaterialTheme.colorScheme.primary) },
-        { PencilLoader(strokeWidth = 14.dp, modifier = Modifier.size(125.dp)) }
-    )
-    val randomIndicator = indicators.random()
-    randomIndicator()
-}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -120,6 +79,8 @@ fun HomePage(navController: NavController, view: View) {
     val am = MainActivity.applicationContext()
         .getSystemService(ACCESSIBILITY_SERVICE) as? AccessibilityManager
     val isExploreByTouchEnabled: Boolean = am?.isTouchExplorationEnabled ?: false
+
+    BackHandler {}
 
     RYScaffold(
         content = {
