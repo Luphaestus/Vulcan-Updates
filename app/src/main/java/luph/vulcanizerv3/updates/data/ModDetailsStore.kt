@@ -1,7 +1,9 @@
 package luph.vulcanizerv3.updates.data
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.util.Log
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import compareVersionNames
@@ -12,16 +14,18 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.ui.page.settings.options.NotificationAndInternetPreferences
+import luph.vulcanizerv3.updates.utils.SerializableManager
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
-import luph.vulcanizerv3.updates.utils.apkmanager.isAPKInstalled
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
-import luph.vulcanizerv3.updates.utils.download.getHelpList
 import luph.vulcanizerv3.updates.utils.download.getModDetails
 import luph.vulcanizerv3.updates.utils.download.getModList
 import luph.vulcanizerv3.updates.utils.download.parseModKeywords
 import luph.vulcanizerv3.updates.utils.modulemanager.getModuleInstalledList
 import luph.vulcanizerv3.updates.utils.modulemanager.getModuleVersions
-import luph.vulcanizerv3.updates.utils.root.isRooted
+import luph.vulcanizerv3.updates.utils.root.ROOTStatus
+import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 
 enum class ModType {
     APK, TWRP, MODULE
@@ -74,8 +78,8 @@ object ModDetailsStore {
 
     private var packageToModMap = mutableMapOf<String, ModDetails>()
     private var newMods = mutableStateOf<List<String>>(listOf())
-    private var installedMods = mutableStateOf<List<String>>(listOf())
-    private var installedModsUpdate =mutableStateOf<List<String>>(listOf())
+    private var installedMods = mutableStateOf<Set<String>>(setOf())
+    private var installedModsUpdate =mutableStateOf<Set<String>>(setOf())
     private var isUpdating = mutableStateOf(false)
 
     init {
@@ -99,6 +103,7 @@ object ModDetailsStore {
     }
 
     fun isAppUpdateForced(): State<Boolean> {
+        if (appDetails.value == null) return mutableStateOf(false)
         return mutableStateOf(appDetails.value?.require !=  getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value)
     }
 
@@ -121,15 +126,24 @@ object ModDetailsStore {
         return offline
     }
 
+    fun isUsingMobileData(): Boolean {
+        val context = MainActivity.applicationContext()
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCapabilities = connectivityManager.activeNetwork?.let {
+            connectivityManager.getNetworkCapabilities(it)
+        }
+        return networkCapabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true
+    }
+
     fun setOffline(value: Boolean) {
         offline.value = value
     }
 
-    fun getInstalledMods(): State<List<String>> {
+    fun getInstalledMods(): State<Set<String>> {
         return installedMods
     }
 
-    fun getInstalledModsUpdate(): State<List<String>> {
+    fun getInstalledModsUpdate(): State<Set<String>> {
         return installedModsUpdate
     }
 
@@ -161,15 +175,55 @@ object ModDetailsStore {
         return isUpdating
     }
 
+    fun updateInstalledMods(isAPK: Boolean = false) {
+        CoroutineScope(Dispatchers.Default).launch {
+            if (isAPK) {
+                getModKeywords().value.get("Apk")?.forEach {
+                    val status = getAPKUpdateStatus(it.packageName, it.version)
+                    if (status != APKUpdateStatus.NOT_INSTALLED) {
+                        installedMods.value += it.packageName
+                    } else {
+                        installedMods.value -= it.packageName
+                    }
+                    if (status == APKUpdateStatus.UPDATE_NEEDED) {
+                        installedModsUpdate.value += it.packageName
+                    }
+                }
+            } else {
+                val moduleList = getModuleVersions(getModuleInstalledList())
+
+                moduleList.forEach {
+                    if (it.key in packageToModMap.keys) {
+                        installedMods.value += it.key
+                        if (compareVersionNames(
+                                it.value,
+                                packageToModMap[it.key]?.version ?: "Not Found"
+                            )
+                        ) {
+                            installedModsUpdate.value += it.key
+                        }
+                    } else {
+                        installedMods.value -= it.key
+                    }
+                }
+            }
+        }
+    }
+
     fun refresh() {
         CoroutineScope(Dispatchers.Default).launch {
-            val hasRoot = isRooted()
+            if (NotificationAndInternetPreferences.useMobileDataDownload && isUsingMobileData()) {
+                offline.value = true
+                return@launch
+            }
+
+
+            val hasRoot = getROOTStatus() != ROOTStatus.NONE
 
             isUpdating.value = true
             modList.value = getModList()
             offline.value = modList.value.isEmpty()
             newMods.value = newMods()
-            saveModList()
 
             val tmpModDetails = emptyList<ModDetails>().toMutableList()
             getModDetails(modList.value).forEach {
@@ -182,41 +236,21 @@ object ModDetailsStore {
             if (modList.value.isEmpty()) {
                 offline.value = true
             }
+            else {
+                saveModList()
+            }
 
             appDetails.value = fetchModDetails("core/app")
-
 
             keywords.value = parseModKeywords(tmpModDetails)
             modDetails.value = tmpModDetails
 
             packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
 
-            installedMods.value = listOf()
-            installedModsUpdate.value = listOf()
-            getModKeywords().value.get("Apk")?.forEach() {
-                val status = getAPKUpdateStatus(it.packageName, it.version)
-                if (status != APKUpdateStatus.NOT_INSTALLED) {
-                    installedMods.value += it.packageName
-                }
-                if (status == APKUpdateStatus.UPDATE_NEEDED) {
-                    installedModsUpdate.value += it.packageName
-                }
-            }
+            updateInstalledMods()
+            updateInstalledMods(true)
 
-            val moduleList =   getModuleVersions(getModuleInstalledList())
-
-            moduleList.forEach {
-                if (it.key in packageToModMap.keys) {
-                    installedMods.value += it.key
-                    if (compareVersionNames(it.value,packageToModMap[it.key]?.version?: "Not Found")) {
-                        installedModsUpdate.value += it.key
-                    }
-                }
-            }
-
-
-
-            helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList()
+            CoroutineScope(Dispatchers.Main).launch{ helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList() }
 
             isUpdating.value = false
         }

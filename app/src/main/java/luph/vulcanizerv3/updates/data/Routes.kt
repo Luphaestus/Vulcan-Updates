@@ -24,19 +24,15 @@ import androidx.navigation.NavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 import luph.vulcanizerv3.updates.ui.components.BadgeContent
-import luph.vulcanizerv3.updates.ui.components.ModInfo
-import luph.vulcanizerv3.updates.ui.page.home.HomeModDetailsExpanded
-import luph.vulcanizerv3.updates.ui.page.home.HomePage
-import luph.vulcanizerv3.updates.ui.page.misc.MiscPage
-import luph.vulcanizerv3.updates.ui.page.misc.options.DeviceInfo
-import luph.vulcanizerv3.updates.ui.page.misc.options.HelpOption
-import luph.vulcanizerv3.updates.ui.page.misc.options.ShowHelp
-import luph.vulcanizerv3.updates.ui.page.settings.SettingsPage
-import luph.vulcanizerv3.updates.ui.page.settings.options.AcknowledgementOption
-import luph.vulcanizerv3.updates.ui.page.settings.options.ColorAndStyleOption
-import luph.vulcanizerv3.updates.ui.page.settings.options.FeedbackOption
-import luph.vulcanizerv3.updates.ui.page.settings.options.LanguageOption
-import luph.vulcanizerv3.updates.ui.page.updates.UpdatesPage
+import luph.vulcanizerv3.updates.ui.components.info.ModInfo
+
+import luph.vulcanizerv3.updates.ui.page.home.*
+import luph.vulcanizerv3.updates.ui.page.settings.*
+import luph.vulcanizerv3.updates.ui.page.settings.options.*
+import luph.vulcanizerv3.updates.ui.page.updates.*
+import luph.vulcanizerv3.updates.ui.page.misc.*
+import luph.vulcanizerv3.updates.ui.page.misc.options.*
+
 
 data class Route(
     val name: String,
@@ -78,6 +74,11 @@ val Routes = listOf(
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),
     Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
     Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
+    Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
+//    Route("Change Boot Animation", content = { navController, view -> ChangeBootAnimation(navController, view) }),
+//    Route("Change System Font", content = { navController, view -> ChangeSystemFont(navController, view) }),
+    Route("Advanced Reboot Options", content = { navController, view -> AdvancedReboot(navController, view) }),
+
 
     Route(
         "Updates",

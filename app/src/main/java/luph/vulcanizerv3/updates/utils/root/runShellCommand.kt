@@ -8,28 +8,32 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<String> {
-    val output = mutableStateOf("")
+fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<Pair<String, Boolean>> {
+    var output = ""
+    var success = true
     try {
         val process = Runtime.getRuntime().exec(command)
         if (waitForCompletion) {
             val reader = process.inputStream.bufferedReader()
             val result = reader.readText()
-            output.value = result
+            output = result
             Log.e("runShellCommand", result)
+            success = process.waitFor() == 0
         } else {
             GlobalScope.launch(Dispatchers.IO) {
                 val reader = process.inputStream.bufferedReader()
                 reader.forEachLine { line ->
-                    output.value += line + "\n"
+                    output += line + "\n"
                     Log.e("runShellCommand", line)
                 }
+                success = process.waitFor() == 0
             }
         }
     } catch (e: Exception) {
         val error = e.toString()
-        output.value = error
+        output = error
         Log.e("runShellCommand", error)
+        success = false
     }
-    return output
+    return mutableStateOf(Pair(output, success))
 }

@@ -49,7 +49,6 @@ import luph.vulcanizerv3.updates.data.NavigationAnimClass
 import luph.vulcanizerv3.updates.data.Route
 import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
-import luph.vulcanizerv3.updates.ui.components.ModInfo
 import luph.vulcanizerv3.updates.ui.page.misc.options.helpItem
 
 enum class NavigationType {

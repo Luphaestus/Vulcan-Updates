@@ -321,8 +321,7 @@ fun ColorAndStyleOption(
 
 
     MultipleExpandingCircleAnimations(displayAnimations)
-    Column(Modifier.padding(16.dp)) {
-        Spacer(modifier = Modifier.height(32.dp))
+    Column(Modifier.padding(start = 16.dp, end=16.dp, bottom=16.dp)) {
         PageNAv(stringResource(R.string.color_and_style), navController)
 
 

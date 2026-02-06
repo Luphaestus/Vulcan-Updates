@@ -385,7 +385,7 @@ fun UpdatesPage(navController: NavController, view: View) {
                             }
                             val updateMods by remember { ModDetailsStore.getInstalledModsUpdate() }
                             updatedModsList.value =
-                                updateCarousel(updateMods, navController, view)
+                                updateCarousel(updateMods.toList(), navController, view)
                         }
                     }
                     if (ModDetailsStore.getInstalledMods().value.isNotEmpty()) {
@@ -437,7 +437,7 @@ fun UpdatesPage(navController: NavController, view: View) {
                             }
                             val installedMods by remember { ModDetailsStore.getInstalledMods() }
                             installedDetailsList.value =
-                                updateCarousel(installedMods, navController, view)
+                                updateCarousel(installedMods.toList(), navController, view)
                         }
                     }
                     item {

@@ -48,15 +48,13 @@ fun SettingsPage(navController: NavController, view: View) {
                 }
                 item {
                     SelectableSettingGroupItem(
-                        "temp",
-                        title = " stringResource(R.string.interaction)",
+                        "Notifications & Internet",
+                        title = "Notifications & Internet",
                         navController,
                         view,
-                        desc = "stringResource(R.string.interaction_desc)",
+                        desc = "Manage your notification preferences and internet settings.",
                         icon = Icons.Outlined.TouchApp,
-                    ) {
-
-                    }
+                    )
                 }
                 item {
                     SelectableSettingGroupItem(
@@ -66,9 +64,7 @@ fun SettingsPage(navController: NavController, view: View) {
                         view,
                         desc = stringResource(R.string.language_desc),
                         icon = Icons.Outlined.Language,
-                    ) {
-
-                    }
+                    )
                 }
                 item {
                     SelectableSettingGroupItem(
@@ -78,9 +74,7 @@ fun SettingsPage(navController: NavController, view: View) {
                         view,
                         desc = "Report Bugs and request features.",
                         icon = Icons.Outlined.BugReport,
-                    ) {
-
-                    }
+                    )
                 }
                 item {
                     SelectableSettingGroupItem(
@@ -90,9 +84,7 @@ fun SettingsPage(navController: NavController, view: View) {
                         view,
                         desc = "Acknowledging resources and contributions.",
                         icon = Icons.Outlined.TipsAndUpdates,
-                    ) {
-
-                    }
+                    )
                 }
                 item {
                     Spacer(modifier = Modifier.height(24.dp))

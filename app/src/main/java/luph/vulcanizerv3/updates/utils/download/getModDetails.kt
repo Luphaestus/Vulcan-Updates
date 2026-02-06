@@ -1,7 +1,6 @@
 package luph.vulcanizerv3.updates.utils.download
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import luph.vulcanizerv3.updates.MainActivity
@@ -9,7 +8,7 @@ import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.ModType
-import luph.vulcanizerv3.updates.data.SerializableManager
+import luph.vulcanizerv3.updates.utils.SerializableManager
 
 fun getModJson(): Json {
     return Json { ignoreUnknownKeys = true }

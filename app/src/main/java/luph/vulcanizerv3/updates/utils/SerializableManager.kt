@@ -1,4 +1,4 @@
-package luph.vulcanizerv3.updates.data
+package luph.vulcanizerv3.updates.utils
 
 import android.content.Context
 import android.util.Log

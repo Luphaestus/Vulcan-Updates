@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "8.7.2"
+androidGradlePlugin = "8.7.3"
 androidx-activity-compose = "1.9.3"
 androidx-appcompat = "1.7.0"
 androidx-compose-bom = "2024.11.00"
@@ -23,6 +23,8 @@ konfettiCompose = "2.0.4"
 kotlin = "2.0.20"
 kotlinx-serialization-json = "1.7.3"
 kotlinxSerializationCore = "1.7.3"
+library = "1.1.1"
+lottieCompose = "6.0.0"
 minSdk = "30"
 pagingCompose = "3.3.4"
 pencilloader = "1.0.0"
@@ -61,11 +63,8 @@ coil-kt-compose = { module = "io.coil-kt:coil-base", version.ref = "coil" }
 compose-markdown = { module = "com.github.jeziellago:compose-markdown", version.ref = "composeMarkdown" }
 compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.ref = "composeShimmer" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
-firebase-appcheck-playintegrity = { module = "com.google.firebase:firebase-appcheck-playintegrity" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
-firebase-dynamic-links = { module = "com.google.firebase:firebase-dynamic-links" }
-firebase-perf = { module = "com.google.firebase:firebase-perf" }
 jetpack-loading = { module = "com.github.MahboubehSeyedpour:jetpack-loading", version.ref = "jetpackLoading" }
 ketch = { module = "com.github.khushpanchal:Ketch", version.ref = "ketch" }
 khttp = { module = "khttp:khttp", version.ref = "khttp" }
@@ -74,6 +73,8 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.re
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinxSerializationCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+library = { module = "me.zhanghai.compose.preference:library", version.ref = "library" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 pencilloader = { module = "io.github.m0coding:pencilloader", version.ref = "pencilloader" }
 photo-compos = { module = "io.github.fornewid:photo-compose", version.ref = "fornwid" }
 photo-zoomable = { module = "de.mr-pine.utils:zoomables", version.ref = "zoomable" }
@@ -82,7 +83,6 @@ ktor-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
-translate = { module = "com.google.mlkit:translate", version.ref = "translate" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -93,5 +93,4 @@ kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref =
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
 google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
-google-crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.2" }
-firebase-perf = { id = "com.google.firebase.firebase-perf", version = "1.4.2" }
+google-crashlytics = { id = "com.google.firebase.crashlytics", version = "latest.release" }
