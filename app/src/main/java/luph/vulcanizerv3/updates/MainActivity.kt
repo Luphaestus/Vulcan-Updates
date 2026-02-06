@@ -31,6 +31,7 @@ import android.net.Uri
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
 import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.utils.download.getHelpList
+import luph.vulcanizerv3.updates.utils.root.isRooted
 import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 
 

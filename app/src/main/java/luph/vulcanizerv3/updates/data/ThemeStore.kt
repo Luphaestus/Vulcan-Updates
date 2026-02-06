@@ -9,6 +9,7 @@ import luph.vulcanizerv3.updates.ui.theme.blue.blueTheme
 import luph.vulcanizerv3.updates.ui.theme.brown.brownTheme
 import luph.vulcanizerv3.updates.ui.theme.green.greenTheme
 import luph.vulcanizerv3.updates.ui.theme.red.redTheme
+import luph.vulcanizerv3.updates.ui.theme.red2.tmpTheme
 import luph.vulcanizerv3.updates.ui.theme.yellow.yellowTheme
 
 val Themes = mapOf(
@@ -17,6 +18,7 @@ val Themes = mapOf(
     "green" to greenTheme,
     "red" to redTheme,
     "yellow" to yellowTheme,
+    "red2" to tmpTheme
 )
 
 

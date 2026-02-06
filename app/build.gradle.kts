@@ -17,7 +17,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "v3a1"
+        versionName = "v3a2.000001"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -144,20 +144,15 @@ dependencies {
     implementation(libs.coil.kt.compose)
     implementation(libs.ketch)
 
-    // Markdown
-    implementation(libs.compose.markdown)
-
     // Ktor Libraries
     implementation(libs.ktor.core)
     implementation(libs.ktor.cio)
     implementation(libs.ktor.negotiation)
     implementation(libs.ktor.json)
 
-    //shimmer
     implementation(libs.compose.shimmer)
-
-
-    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+    implementation(libs.konfetti.compose)
+    implementation(libs.compose.markdown)
 
 
 }

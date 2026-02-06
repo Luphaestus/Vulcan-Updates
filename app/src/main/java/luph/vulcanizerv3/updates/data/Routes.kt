@@ -28,6 +28,7 @@ import luph.vulcanizerv3.updates.ui.components.ModInfo
 import luph.vulcanizerv3.updates.ui.page.home.HomeModDetailsExpanded
 import luph.vulcanizerv3.updates.ui.page.home.HomePage
 import luph.vulcanizerv3.updates.ui.page.misc.MiscPage
+import luph.vulcanizerv3.updates.ui.page.misc.options.DeviceInfo
 import luph.vulcanizerv3.updates.ui.page.misc.options.HelpOption
 import luph.vulcanizerv3.updates.ui.page.misc.options.ShowHelp
 import luph.vulcanizerv3.updates.ui.page.settings.SettingsPage
@@ -71,16 +72,12 @@ val Routes = listOf(
         Icons.Filled.Handyman,
         Icons.Outlined.Handyman,
         { navController, view -> MiscPage(navController, view) },
-        showBadge = {
-            ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value
-        },
-        badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) },
         showInMenu = true,
         stringResource = R.string.updates_title
     ),
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),
     Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
-
+    Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
 
     Route(
         "Updates",

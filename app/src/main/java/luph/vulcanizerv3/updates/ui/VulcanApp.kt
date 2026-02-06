@@ -17,6 +17,7 @@ import luph.vulcanizerv3.updates.ui.components.ModInfo
 import luph.vulcanizerv3.updates.ui.page.NavBarHandler
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
 import luph.vulcanizerv3.updates.ui.page.RouteParams
+import luph.vulcanizerv3.updates.ui.page.misc.options.DeviceInfo
 import luph.vulcanizerv3.updates.ui.page.settings.options.AcknowledgementOption
 import luph.vulcanizerv3.updates.ui.page.settings.options.FeedbackOption
 
@@ -29,6 +30,7 @@ fun VulcanApp(
         return
     }
     NavBarHandler(windowSize)
+//    DeviceInfo()
 }
 
 

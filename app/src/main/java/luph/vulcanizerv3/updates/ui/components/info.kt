@@ -102,6 +102,8 @@ import luph.vulcanizerv3.updates.utils.apkmanager.installAPK
 import luph.vulcanizerv3.updates.utils.apkmanager.openAPK
 import luph.vulcanizerv3.updates.utils.apkmanager.uninstallAPK
 import luph.vulcanizerv3.updates.utils.download.getDownloadSize
+import luph.vulcanizerv3.updates.utils.modulemanager.installModule
+import luph.vulcanizerv3.updates.utils.modulemanager.uninstallModule
 import org.w3c.dom.Text
 
 
@@ -205,13 +207,13 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
     }
 
     LaunchedEffect(Unit) {
-        if (modDetails.updateType == ModType.APK) {
-            val apkUpdateStatus = getAPKUpdateStatus(modDetails.packageName, modDetails.version)
-            if (apkUpdateStatus == APKUpdateStatus.NO_UPDATE_NEEDED) {
-                changeUpdateType(UpdateStatus.INSTALLED)
-            } else if (apkUpdateStatus == APKUpdateStatus.UPDATE_NEEDED) {
+        if (modDetails.packageName in ModDetailsStore.getInstalledMods().value) {
+            if (ModDetailsStore.getInstalledModsUpdate().value.contains(modDetails.packageName))
                 changeUpdateType(UpdateStatus.UPDATE_AVAILABLE)
-            }
+            else changeUpdateType(UpdateStatus.INSTALLED)
+        } else {
+            changeUpdateType(UpdateStatus.NOT_INSTALLED)
+
         }
 
         launch(Dispatchers.IO) {
@@ -237,37 +239,46 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                 Log.e("downloadStatus", downloadModel.toString())
                 downloadProgressPercentage.intValue = downloadModel.progress
                 downloadModel.status.let {
-                    var success = false
                     if (it == Status.SUCCESS) {
                         MainActivity.getFirebaseAnalytics().logEvent("downloaded_mod") {
                             param("mod_name", modDetails.name)
                             param("mod_version", modDetails.version)
                             param("mod_author", modDetails.author)
-                            modDetails.keywords.forEach {keyword ->
+                            modDetails.keywords.forEach { keyword ->
                                 param("keyword", keyword)
                             }
                         }
-                        if (modDetails.updateType == ModType.APK) {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            var success = false
+
                             canCancel.value = false
-                            GlobalScope.launch(Dispatchers.IO) {
-                                success = installAPK(downloadModel.path + "/${modDetails.name}")
-                                canCancel.value = true
-                                if (success){
-                                    changeUpdateType(UpdateStatus.INSTALLED)
+                            when (modDetails.updateType) {
+                                ModType.APK -> {
+                                    success = installAPK(downloadModel.path + "/${modDetails.name}")
+                                    Log.e("installAPK", success.toString())
+                                    canCancel.value = true
                                 }
-                                else changeUpdateType(UpdateStatus.NOT_INSTALLED)
-                            }
-                        }
-                        if (success) {
-                            changeUpdateType(UpdateStatus.INSTALLED)
-                            MainActivity.getFirebaseAnalytics().logEvent("installed_mod") {
-                                param("mod_name", modDetails.name)
-                                param("mod_version", modDetails.version)
-                                param("mod_author", modDetails.author)
-                                modDetails.keywords.forEach {keyword ->
-                                    param("keyword", keyword)
+
+                                ModType.MODULE -> {
+                                    success =
+                                        installModule(downloadModel.path + "/${modDetails.name}")
+                                    canCancel.value = true
+
                                 }
+
+                                else -> {}
                             }
+                            if (success) {
+                                changeUpdateType(UpdateStatus.INSTALLED)
+                                MainActivity.getFirebaseAnalytics().logEvent("installed_mod") {
+                                    param("mod_name", modDetails.name)
+                                    param("mod_version", modDetails.version)
+                                    param("mod_author", modDetails.author)
+                                    modDetails.keywords.forEach { keyword ->
+                                        param("keyword", keyword)
+                                    }
+                                }
+                            } else changeUpdateType(UpdateStatus.NOT_INSTALLED)
                         }
                     } else if (it in listOf(Status.FAILED, Status.CANCELLED, Status.PAUSED)) {
                         changeUpdateType(UpdateStatus.NOT_INSTALLED)
@@ -307,9 +318,6 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
         "${modDetails.name} requires Zygisk, and will not function without it.",
         noZygiskDialog
     )
-
-
-
 
 
     Column(
@@ -504,8 +512,15 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                                     MainActivity.getKetch().cancel(downloadId.intValue)
                                 } else if (infoState.value == UpdateStatus.INSTALLED || infoState.value == UpdateStatus.UPDATE_AVAILABLE) {
                                     var success = false
-                                    if (modDetails.updateType == ModType.APK) {
-                                        success = uninstallAPK(modDetails.packageName)
+                                    when (modDetails.updateType)
+                                    {
+                                        ModType.APK -> {
+                                            success = uninstallAPK(modDetails.packageName)
+                                        }
+                                        ModType.MODULE -> {
+                                            success = uninstallModule(modDetails.packageName)
+                                        }
+                                        else -> {}
                                     }
                                     if (success)
                                         changeUpdateType(UpdateStatus.NOT_INSTALLED)

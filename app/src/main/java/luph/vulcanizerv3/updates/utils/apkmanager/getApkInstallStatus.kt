@@ -8,13 +8,17 @@ enum class APKUpdateStatus {
     NOT_INSTALLED
 }
 
-fun getAPKUpdateStatus(packageName: String, newVersion: String): APKUpdateStatus {
-    var installedVersion: String =
-        getAPKVersion(packageName) ?: return APKUpdateStatus.NOT_INSTALLED
-    if (newVersion.startsWith("v") && !installedVersion.startsWith("v")) installedVersion = "v$installedVersion"
-    if (newVersion.startsWith("V") && !installedVersion.startsWith("V")) installedVersion = "V$installedVersion"
+fun compareVersionNames(installedVersion: String, newVersion: String): Boolean {
+    val adjustedInstalledVersion = installedVersion.trimStart('v', 'V').replace(".", "")
+    val adjustedNewVersion = newVersion.trimStart('v', 'V').replace(".", "")
 
-    return if (installedVersion != newVersion) {
+    Log.e("compareVersionNames", "Installed version: $adjustedInstalledVersion, New version: $adjustedNewVersion")
+    return adjustedInstalledVersion != adjustedNewVersion
+}
+
+fun getAPKUpdateStatus(packageName: String, newVersion: String): APKUpdateStatus {
+    val installedVersion: String = getAPKVersion(packageName) ?: return APKUpdateStatus.NOT_INSTALLED
+    return if (compareVersionNames(installedVersion, newVersion)) {
         Log.e("APKUpdateStatus", "Installed version: $installedVersion, New version: $newVersion")
         APKUpdateStatus.UPDATE_NEEDED
     } else {
