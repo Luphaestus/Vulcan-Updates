@@ -216,18 +216,18 @@ object ModDetailsStore {
                 offline.value = true
                 return@launch
             }
+            isUpdating.value = true
 
 
             val hasRoot = getROOTStatus() != ROOTStatus.NONE
 
-            isUpdating.value = true
             modList.value = getModList()
             offline.value = modList.value.isEmpty()
             newMods.value = newMods()
 
             val tmpModDetails = emptyList<ModDetails>().toMutableList()
             getModDetails(modList.value).forEach {
-                if (!(!hasRoot && "Module" in it.keywords))
+                if (!(!hasRoot && it.updateType == ModType.MODULE))
                 {
                     tmpModDetails.add(it)
                 }
@@ -240,7 +240,7 @@ object ModDetailsStore {
                 saveModList()
             }
 
-            appDetails.value = fetchModDetails("core/app")
+            appDetails.value = fetchModDetails("core/Vulcan-Updates")
 
             keywords.value = parseModKeywords(tmpModDetails)
             modDetails.value = tmpModDetails

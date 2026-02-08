@@ -26,6 +26,10 @@ import luph.vulcanizerv3.updates.ui.VulcanApp
 import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
+import androidx.core.app.OnNewIntentProvider
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
 import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.utils.download.getHelpList
@@ -37,7 +41,7 @@ import org.json.JSONArray
 class MainActivity : ComponentActivity() {
     private lateinit var ketch: Ketch
     private lateinit var firebaseAnalytics: FirebaseAnalytics
-    private var openMod: String? = null
+
 
     companion object {
         private const val REQUEST_CODE_POST_NOTIFICATIONS = 1
@@ -55,13 +59,6 @@ class MainActivity : ComponentActivity() {
             return instance!!.firebaseAnalytics
         }
 
-        fun getOpenMod(): String? {
-            return instance!!.openMod
-        }
-
-        fun resetOpenMod() {
-            instance!!.openMod = null
-        }
     }
 
     init {
@@ -92,6 +89,7 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(

@@ -37,6 +37,7 @@ workRuntimeKtx = "2.10.0"
 zoomable = "1.4.0"
 ktor = "2.1.1"
 uiTextGoogleFonts = "1.7.5"
+firebaseMessaging = "24.1.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
@@ -65,6 +66,7 @@ compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-inappmessaging-display = { module = "com.google.firebase:firebase-inappmessaging-display" }
 jetpack-loading = { module = "com.github.MahboubehSeyedpour:jetpack-loading", version.ref = "jetpackLoading" }
 ketch = { module = "com.github.khushpanchal:Ketch", version.ref = "ketch" }
 khttp = { module = "khttp:khttp", version.ref = "khttp" }
@@ -83,6 +85,7 @@ ktor-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

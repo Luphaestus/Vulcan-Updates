@@ -2,6 +2,8 @@ package luph.vulcanizerv3.updates.ui.page
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
+import android.util.Log
 import android.view.HapticFeedbackConstants
 import android.view.View
 import androidx.compose.animation.AnimatedVisibility
@@ -50,6 +52,7 @@ import luph.vulcanizerv3.updates.data.Route
 import luph.vulcanizerv3.updates.data.Routes
 import luph.vulcanizerv3.updates.ui.components.BadgeFormatter
 import luph.vulcanizerv3.updates.ui.page.misc.options.helpItem
+
 
 enum class NavigationType {
     BAR, RAIL
@@ -254,6 +257,9 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
         }
         navController.setLifecycleOwner(MainActivity.instance!!)
 
+
+
+
         // app link stuff
         var openMod by remember { mutableStateOf<String?>(null) }
         var lastNavigated = remember { mutableStateOf("null") }
@@ -274,11 +280,29 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                 }
             }
         }
+        val extraData: Bundle? = appLinkIntent.getExtras()
+        extraData?.let{
+            val segments = it.getString("open")?.split("/")
+            segments?.let {
+                if (segments.size > 1) {
+                    if (segments[0] == "mod") {
+                        openMod = segments[1]
+                    }
+                    else if (segments[0] == "help") {
+                        openHelp = segments[1]
+                    }
+                }
+            }
+        }
 
-        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value) {
-            if ( openMod!=null && lastNavigated.value != openMod) {
+        if (!ModDetailsStore.isOffline().value && !ModDetailsStore.isUpdating().value && ModDetailsStore.getAppDetails().value != null) {
+            if (openMod != null && lastNavigated.value != openMod) {
                 openMod?.let {
-                    ModDetailsStore.getModDetails(it)?.let {
+                    val modDetails = when (it) {
+                        "Vulcan-Updates" -> ModDetailsStore.getAppDetails().value
+                        else -> ModDetailsStore.getModDetails(it)
+                    }
+                    modDetails?.let {
                         RouteParams.push(it)
                         lastNavigated.value = openMod!!
                         OpenRoute(
@@ -291,6 +315,7 @@ fun NavBarHandler(windowSize: WindowSizeClass): NavController {
                     }
                 }
             }
+
             if ( openHelp!=null && lastNavigatedHelp.value != openHelp) {
                 openHelp?.let {
                     RouteParams.push(helpItem(it.replace("%20", " ") + ".md"))
