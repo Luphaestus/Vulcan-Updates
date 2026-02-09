@@ -224,7 +224,7 @@ fun InfoButtons(buttonData: buttonData, coreUpdates: Array<String>) {
                 .weight(1f)
                 .padding(start = if (buttonData.firstButtonVisible) 8.dp else 0.dp)
                 .height(42.dp),
-            enabled = buttonData.infoState.value != UpdateStatus.UPDATING && (buttonData.infoState.value != UpdateStatus.INSTALLED || buttonData.modDetails.updateType == ModType.APK)
+            enabled = buttonData.infoState.value != UpdateStatus.UPDATING && (buttonData.infoState.value != UpdateStatus.INSTALLED || buttonData.modDetails.updateType == ModType.APK) && coreUpdates.contains(buttonData.modDetails.packageName).not()
         ) {
             Text(text = buttonData.getSecondButtonStrings(buttonData.infoState.value))
         }

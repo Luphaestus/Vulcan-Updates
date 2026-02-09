@@ -17,6 +17,7 @@ import kotlinx.serialization.json.Json
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.ui.page.settings.options.NotificationAndInternetPreferences
 import luph.vulcanizerv3.updates.ui.page.settings.options.NotificationAndInternetPreferencesSerilizeable
+import luph.vulcanizerv3.updates.ui.page.settings.options.subscribe
 import luph.vulcanizerv3.updates.utils.SerializableManager
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
@@ -264,7 +265,7 @@ object ModDetailsStore {
                     }
                 }
             }
-
+            if (notificationAndInternetPreferences.value.notifyCoreUpdates.value) subscribe("Core")
             isUpdating.value = true
 
 

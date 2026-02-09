@@ -33,6 +33,7 @@ targetSdk = "33"
 translate = "17.0.3"
 version-catalog-update = "0.8.4"
 fornwid = "1.0.1"
+versioncompare = "1.5.0"
 workRuntimeKtx = "2.10.0"
 zoomable = "1.4.0"
 ktor = "2.1.1"
@@ -86,6 +87,7 @@ ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
