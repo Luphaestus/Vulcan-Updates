@@ -160,15 +160,16 @@ fun InfoBoxes(
                     end = 16.dp
                 )
             )
-        if (infoBoxesData.showDescription.value || infoBoxesData.showVersion.value) {
+        if (infoBoxesData.showDescription.value || infoBoxesData.showVersion.value || infoBoxesData.showErrorText.value.isNotEmpty()) {
             ModalBottomSheet(onDismissRequest = {
                 infoBoxesData.showDescription.value = false
                 infoBoxesData.showVersion.value = false
+                infoBoxesData.showErrorText.value = ""
             }) {
                 LazyColumn(modifier = Modifier.padding(16.dp)) {
                     if (infoBoxesData.showDescription.value)
                         item { MarkdownGenerator(markdown = infoBoxesData.modDetails.README) }
-                    else if (infoBoxesData.showVersion.value)
+                    else if (infoBoxesData.showVersion.value) {
                         item {
                             val versionHtml = """
 <h2 style="text-align:center;">Version ${infoBoxesData.modDetails.version}</h2>
@@ -177,6 +178,11 @@ fun InfoBoxes(
 """ + infoBoxesData.modDetails.changeLog
                             MarkdownGenerator(markdown = versionHtml)
                         }
+                    } else if (infoBoxesData.showErrorText.value.isNotEmpty()) {
+                        item {
+                            Text(infoBoxesData.showErrorText.value)
+                        }
+                    }
                 }
             }
 

@@ -16,6 +16,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.ui.page.settings.options.NotificationAndInternetPreferences
+import luph.vulcanizerv3.updates.ui.page.settings.options.NotificationAndInternetPreferencesSerilizeable
 import luph.vulcanizerv3.updates.utils.SerializableManager
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
@@ -78,9 +79,11 @@ object ModDetailsStore {
 
     private var packageToModMap = mutableMapOf<String, ModDetails>()
     private var newMods = mutableStateOf<List<String>>(listOf())
-    private var installedMods = mutableStateOf<Set<String>>(setOf())
-    private var installedModsUpdate =mutableStateOf<Set<String>>(setOf())
+    var installedMods = mutableStateOf<Set<String>>(setOf())
+    var installedModsUpdate =mutableStateOf<Set<String>>(setOf())
     private var isUpdating = mutableStateOf(false)
+
+    val notificationAndInternetPreferences = mutableStateOf(NotificationAndInternetPreferences())
 
     init {
         refresh()
@@ -175,47 +178,93 @@ object ModDetailsStore {
         return isUpdating
     }
 
-    fun updateInstalledMods(isAPK: Boolean = false) {
+    fun updateInstalledMods() {
         CoroutineScope(Dispatchers.Default).launch {
-            if (isAPK) {
-                getModKeywords().value.get("Apk")?.forEach {
-                    val status = getAPKUpdateStatus(it.packageName, it.version)
-                    if (status != APKUpdateStatus.NOT_INSTALLED) {
-                        installedMods.value += it.packageName
-                    } else {
-                        installedMods.value -= it.packageName
-                    }
+            installedMods.value = emptySet()
+            getModKeywords().value.get("Apk")?.forEach {
+                val status = getAPKUpdateStatus(it.packageName, it.version)
+                if (status != APKUpdateStatus.NOT_INSTALLED) {
+                    installedMods.value += it.packageName
                     if (status == APKUpdateStatus.UPDATE_NEEDED) {
                         installedModsUpdate.value += it.packageName
                     }
                 }
-            } else {
-                val moduleList = getModuleVersions(getModuleInstalledList())
-
-                moduleList.forEach {
-                    if (it.key in packageToModMap.keys) {
-                        installedMods.value += it.key
-                        if (compareVersionNames(
-                                it.value,
-                                packageToModMap[it.key]?.version ?: "Not Found"
-                            )
-                        ) {
-                            installedModsUpdate.value += it.key
-                        }
-                    } else {
-                        installedMods.value -= it.key
+            }
+            val moduleList = getModuleVersions(getModuleInstalledList())
+            moduleList.forEach {
+                if (it.key in packageToModMap.keys) {
+                    installedMods.value += it.key
+                    if (compareVersionNames(
+                            it.value,
+                            packageToModMap[it.key]?.version ?: "Not Found"
+                        )
+                    ) {
+                        installedModsUpdate.value += it.key
                     }
                 }
             }
         }
     }
 
+    fun loadNotificationAndInternetPreferences() {
+        SerializableManager<String>().load(NotificationAndInternetPreferencesSerilizeable().fileName)?.let {
+           val serilable:NotificationAndInternetPreferencesSerilizeable = Json.decodeFromString(it)
+            notificationAndInternetPreferences.value = NotificationAndInternetPreferences(
+                mutableStateOf(serilable.wifi),
+                mutableStateOf(serilable.data),
+                mutableStateOf(serilable.notifyCoreUpdates),
+                mutableStateOf(serilable.notifyAppUpdates)
+            )
+        }
+    }
+
+    fun saveNotificationAndInternetPreferences() {
+        SerializableManager<String>().save(
+            NotificationAndInternetPreferencesSerilizeable().fileName,
+            Json.encodeToString(NotificationAndInternetPreferencesSerilizeable(
+                notificationAndInternetPreferences.value.wifi.value,
+                notificationAndInternetPreferences.value.data.value,
+                notificationAndInternetPreferences.value.notifyCoreUpdates.value,
+                notificationAndInternetPreferences.value.notifyAppUpdates.value
+            ))
+        )
+    }
+
+    fun getNotificationAndInternetPreferences(): State<NotificationAndInternetPreferences> {
+        return notificationAndInternetPreferences
+    }
+
+    fun getAllPackages(): List<String> {
+        return packageToModMap.keys.toList()
+    }
+
+
     fun refresh() {
         CoroutineScope(Dispatchers.Default).launch {
-            if (NotificationAndInternetPreferences.useMobileDataDownload && isUsingMobileData()) {
-                offline.value = true
-                return@launch
+            loadNotificationAndInternetPreferences()
+            if (isUsingMobileData())
+            {
+                when (notificationAndInternetPreferences.value.data.value) {
+                    0f -> {
+                        offline.value = true
+                        return@launch
+                    }
+                    else -> {
+                        offline.value = false
+                    }
+                }
+            } else {
+                when (notificationAndInternetPreferences.value.wifi.value) {
+                    0f -> {
+                        offline.value = true
+                        return@launch
+                    }
+                    else -> {
+                        offline.value = false
+                    }
+                }
             }
+
             isUpdating.value = true
 
 
@@ -248,7 +297,6 @@ object ModDetailsStore {
             packageToModMap = getModDetails(modList.value).associateBy { it.packageName }.toMutableMap()
 
             updateInstalledMods()
-            updateInstalledMods(true)
 
             CoroutineScope(Dispatchers.Main).launch{ helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList() }
 

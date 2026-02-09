@@ -22,7 +22,6 @@ fun getModList(path: String = "mods"): Map<String, String> {
 
         return modVersions
     } catch (e: Exception) {
-        Log.e("getModList", "$baseUrl $e")
         return emptyMap()
     } finally {
         client.close()

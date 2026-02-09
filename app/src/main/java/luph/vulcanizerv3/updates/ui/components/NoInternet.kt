@@ -1,6 +1,9 @@
 package luph.vulcanizerv3.updates.ui.components
 
+import android.view.View
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,12 +31,32 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetailsStore
+import luph.vulcanizerv3.updates.data.ModDetailsStore.isUsingMobileData
+import luph.vulcanizerv3.updates.data.ModDetailsStore.notificationAndInternetPreferences
+import luph.vulcanizerv3.updates.ui.page.OpenRoute
 
 @Composable
-fun NoInternet() {
-    val shouldNotify = remember { mutableStateOf(false) }
+fun NoInternet(nav: NavController, view: View) {
+    val shouldShowSettingsButton = remember {
+        mutableStateOf(
+            if (isUsingMobileData()) {
+                when (notificationAndInternetPreferences.value.data.value) {
+                    0f -> true
+                    else -> false
+                }
+            } else {
+                when (notificationAndInternetPreferences.value.wifi.value) {
+                    0f -> true
+                    else -> false
+                }
+            }
+        )
+    }
+
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -62,7 +85,7 @@ fun NoInternet() {
                 style = MaterialTheme.typography.titleLarge,
             )
             Text(
-                text = if (shouldNotify.value) "You'll be notified when you're back online" else "Check your connection or get a notification when you're back online",
+                text = if (shouldShowSettingsButton.value) "Your network settings are..." else "Check your connection and try again",
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 4.dp)
@@ -79,20 +102,20 @@ fun NoInternet() {
                     },
                     modifier = Modifier
                         .weight(1f)
-                        .padding(horizontal = 16.dp)
+                        .padding(start = 16.dp, end=8.dp)
                 ) {
                     Text("Try again")
                 }
                 Button(
                     onClick = {
-                        shouldNotify.value = true
+                        OpenRoute("Notifications & Internet", nav, view, fadeIn(), fadeOut())
                     },
                     modifier = Modifier
-                        .weight(if (shouldNotify.value) 0.00001f else 1f)
+                        .weight(if (!shouldShowSettingsButton.value) 0.00001f else 1f)
                         .animateContentSize()
-                        .padding(horizontal = 16.dp)
+                        .padding(start = 16.dp, end=8.dp)
                 ) {
-                    Text("Notify me")
+                    Text("Network Settings")
                 }
             }
         }
@@ -102,5 +125,5 @@ fun NoInternet() {
 @Composable
 @Preview(showBackground = true)
 fun NoInternetPreview() {
-    NoInternet()
+    NoInternet(rememberNavController(), View(null))
 }

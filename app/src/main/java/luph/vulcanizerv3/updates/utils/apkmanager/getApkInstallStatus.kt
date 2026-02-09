@@ -12,14 +12,12 @@ fun compareVersionNames(installedVersion: String, newVersion: String): Boolean {
     val adjustedInstalledVersion = installedVersion.trimStart('v', 'V').replace(".", "")
     val adjustedNewVersion = newVersion.trimStart('v', 'V').replace(".", "")
 
-    Log.e("compareVersionNames", "Installed version: $adjustedInstalledVersion, New version: $adjustedNewVersion")
     return adjustedInstalledVersion != adjustedNewVersion
 }
 
 fun getAPKUpdateStatus(packageName: String, newVersion: String): APKUpdateStatus {
     val installedVersion: String = getAPKVersion(packageName) ?: return APKUpdateStatus.NOT_INSTALLED
     return if (compareVersionNames(installedVersion, newVersion)) {
-        Log.e("APKUpdateStatus", "Installed version: $installedVersion, New version: $newVersion")
         APKUpdateStatus.UPDATE_NEEDED
     } else {
         APKUpdateStatus.NO_UPDATE_NEEDED

@@ -21,15 +21,13 @@ fun postTelegramMessage(
             "text": "$message"
         }
     """.trimIndent()
-        Log.e("Telegram", url)
-        Log.e("Telegram", json)
+
         val body = json.toRequestBody("application/json".toMediaTypeOrNull())
         val request = Request.Builder()
             .url(url)
             .post(body)
             .build()
         val response = client.newCall(request).execute()
-        Log.e("Telegram", response.body.toString())
 
     }.start()
 }

@@ -56,7 +56,7 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
         remember { mutableStateOf(RouteParams.peek(String::class.java) ?: "All Mods") }
     val modDetails = remember {
         derivedStateOf {
-            modCategoriesState.value[modDetailString.value] ?: RouteParams.pop(modList::class.java)?.modlist ?:  emptyList()
+            modCategoriesState.value[modDetailString.value] ?: RouteParams.peek(modList::class.java)?.modlist ?:  emptyList()
         }
     }
 
@@ -70,6 +70,7 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
 
     BackHandler {
         RouteParams.pop(String::class.java)
+        RouteParams.pop(modList::class.java)
         NavigationAnim.popExit.value = shrinkVertically()
         navController.popBackStack()
     }
@@ -132,6 +133,7 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = {
                     RouteParams.pop(String::class.java)
+                    RouteParams.pop(modList::class.java)
                     NavigationAnim.popExit.value = shrinkVertically()
                     navController.popBackStack()
                 }) {

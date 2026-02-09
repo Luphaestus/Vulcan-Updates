@@ -32,7 +32,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 @Preview(showBackground = true)
-fun PageNAv(title: String="Title", navController: NavController=rememberNavController()) {
+fun PageNAv(title: String="Title", navController: NavController=rememberNavController(), goBack : ()->Unit = {navController.popBackStack()}) {
     Row(
         modifier = Modifier
             .padding(vertical = 16.dp)
@@ -45,7 +45,7 @@ fun PageNAv(title: String="Title", navController: NavController=rememberNavContr
     ) {
         IconButton(onClick = {
 
-            navController.popBackStack()
+            goBack()
         }) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
