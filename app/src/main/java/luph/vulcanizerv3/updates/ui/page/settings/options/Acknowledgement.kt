@@ -197,8 +197,8 @@ fun AcknowledgementOption(
                 )
             }
         }
-        item { personAck("Oskar", "Tester ● Translator ● File Hoster", R.drawable.oskar) }
-        item { personAck("Mesazane", "Tester ● Translator", R.drawable.mez) }
+        item { personAck("Oskar", "Tester ● Translator ● File Hoster ● ASS GAPER", R.drawable.oskar) }
+        item { personAck("Mesazane", "Tester ● Translator ● ASS GAPER", R.drawable.mez) }
         item { personAck("Ciprian Dinca", "Tester ● Translator") }
         item { personAck("Jaola Tymon", "Tester") }
         item { personAck("Vlad", "Tester") }
