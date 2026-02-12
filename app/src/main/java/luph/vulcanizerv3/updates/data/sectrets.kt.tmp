@@ -1,0 +1,4 @@
+package luph.vulcanizerv3.updates.data
+
+val TELEGRAM_BOT_API = ""
+val TELEGRAM_FEEDBACK_CHANNEL = ""
