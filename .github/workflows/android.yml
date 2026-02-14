@@ -31,3 +31,15 @@ jobs:
 
       - name: Build with Gradle (Debug)
         run: ./gradlew assembleDebug
+
+      - name: Get Firebase secret
+        run: echo "${{ secrets.FIREBASE_JSON }}" > /firebase.json
+
+      - name: Cloning Data Repo
+        run: git clone https://huggingface.co/datasets/Luphaestus/VulcanUpdates3Data
+
+      - name: Copy build into data Repo
+        run: cp -r app/build/outputs/apk/debug/app-debug.apk VulcanUpdates3Data/core/Vulcan-Updates/file
+
+      - name: Commit and push
+        run: python VulcanUpdates3Data/scripts/updateGithub.py
