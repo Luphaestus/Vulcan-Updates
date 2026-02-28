@@ -1,10 +1,13 @@
 package luph.vulcanizerv3.updates.ui.page.misc.options
 
 import android.content.ContentResolver
+import android.content.Context
 import android.graphics.drawable.Icon
+import android.hardware.display.DisplayManager
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateIntAsState
@@ -45,6 +48,7 @@ import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -66,12 +70,15 @@ import androidx.navigation.compose.rememberNavController
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import com.airbnb.lottie.compose.*
+import com.github.theapache64.twyper.Twyper
+import com.github.theapache64.twyper.rememberTwyperController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
 import kotlinx.coroutines.withContext
+import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
@@ -93,8 +100,7 @@ fun RefreshRateDemo(is60: Boolean = false) {
     var animateTarget by remember { mutableStateOf(0) }
     val animateScroll by animateDpAsState(targetValue = animateTarget.dp, animationSpec = tween(durationMillis = 5000 ))
 
-
-      LaunchedEffect(Unit) {
+    LaunchedEffect(Unit) {
           withContext(Dispatchers.Default) {
               while (true) {
                   if (animateTarget == 0) {
@@ -129,6 +135,7 @@ fun RefreshRateDemo(is60: Boolean = false) {
         .padding(horizontal = 4.dp, vertical = 8.dp)
 
     ) {
+
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.End) {
             Icon(
                 Icons.Outlined.Search,
@@ -198,11 +205,22 @@ private fun setRefreshRate(refreshRate: Int) {
 
 }
 
-fun getRefreshRates(contentResolver: ContentResolver) {
-    val minRefreshRate = Settings.System.getFloat(contentResolver, "min_refresh_rate", -1f)
-    val peakRefreshRate = Settings.System.getFloat(contentResolver, "peak_refresh_rate", -1f)
-    val refreshRateMode = Settings.Secure.getInt(contentResolver, "refresh_rate_mode", 0)
-    Log.d("RefreshRate", "minRefreshRate: $minRefreshRate, peakRefreshRate: $peakRefreshRate, refreshRateMode: $refreshRateMode")
+fun getRefreshRates(contentResolver: ContentResolver): Int {
+   return Settings.System.getFloat(contentResolver, "min_refresh_rate", -1f).toInt()
+}
+
+
+fun getSupportedRefreshRates(): List<Int> {
+    val refreshRates = mutableListOf(-1)
+    val context = MainActivity.applicationContext()
+    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val display = windowManager.defaultDisplay
+    val displayManager = context.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+    val supportedRefreshRates = displayManager.getDisplay(display.displayId).supportedRefreshRates
+    for (rate in supportedRefreshRates) {
+        refreshRates.add(rate.toInt())
+    }
+    return refreshRates
 }
 
 @Composable
@@ -212,7 +230,6 @@ fun ForceRefreshRate(
     view: View? = null
 ) {
     showNavigation.show = false
-
    LazyColumn(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(horizontal = 16.dp)) {
         item {
             PageNAv("Force Refresh Rate", navController)
@@ -231,9 +248,9 @@ fun ForceRefreshRate(
             }
         }
        item {
-           val refreshRates = arrayOf(-1, 48, 60, 96, 120)
+           val refreshRates = getSupportedRefreshRates()
            val contentResolver = LocalContext.current.contentResolver
-           var selectedRate by remember { mutableStateOf(-1) }
+           var selectedRate by remember { mutableStateOf(getRefreshRates(contentResolver)) }
            ProvidePreferenceLocals {
                refreshRates.forEach {
                    RadioButtonPreference(
@@ -248,7 +265,6 @@ fun ForceRefreshRate(
            Button(onClick = {
                getRefreshRates(contentResolver)
                setRefreshRate(selectedRate)
-               getRefreshRates(contentResolver)
            }, Modifier.padding(start = 16.dp).width(128.dp)) {
                 Text("Apply")
            }
