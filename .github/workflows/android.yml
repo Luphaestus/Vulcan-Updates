@@ -58,7 +58,6 @@ jobs:
         run: |
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag}" \
-              --body="${{ env.COMMIT_MESSAGES }}" \
+              -p \
               app/build/outputs/apk/debug/app-debug.apk \
               --generate-notes
