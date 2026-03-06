@@ -34,9 +34,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.google.common.reflect.TypeToken
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.NavigationAnim
@@ -75,7 +77,10 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
         navController.popBackStack()
     }
 
-    Column(Modifier.background(MaterialTheme.colorScheme.surface).fillMaxSize()) {
+    Column(
+        Modifier
+            .background(MaterialTheme.colorScheme.surface)
+            .fillMaxSize()) {
         Row(
             modifier = Modifier
                 .padding(16.dp)
@@ -111,7 +116,7 @@ fun HomeModDetailsExpanded(navController: NavController, view: View) {
                                 } //todo  || it.briefDescription.contains(query, ignoreCase = true)
                             }
                         },
-                        placeholder = { Text("Search") },
+                        placeholder = { Text(stringResource(R.string.search_placeholder)) },
                         colors = TextFieldDefaults.colors(
                             focusedIndicatorColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent,

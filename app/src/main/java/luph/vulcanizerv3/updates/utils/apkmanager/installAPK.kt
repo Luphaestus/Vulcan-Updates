@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.utils.root.ROOTStatus
 import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
@@ -14,7 +15,8 @@ import java.io.File
 fun installAPKNoRoot(path: String): Boolean {
     val file = File(path)
     if (!file.exists()) {
-        Toast.makeText(MainActivity.applicationContext(), "File does not exist", Toast.LENGTH_SHORT).show()
+        Toast.makeText(MainActivity.applicationContext(),
+            MainActivity.applicationContext().getString(R.string.file_does_not_exist), Toast.LENGTH_SHORT).show()
         return false
     }
     return try {

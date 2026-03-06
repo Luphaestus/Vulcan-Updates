@@ -10,7 +10,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.infoAlert
 import luph.vulcanizerv3.updates.ui.page.OpenRoute
@@ -18,7 +20,9 @@ import luph.vulcanizerv3.updates.ui.page.RouteParams
 
 
 @Composable
-fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>, negativeClickText: String = "Continue Anyway" , negativeClick: () -> Unit = {}, positiveClickText: String = "Fix",  positiveClick: () -> Unit = {}) {
+fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>, negativeClickText: String = stringResource(
+    R.string.continue_anyway
+), negativeClick: () -> Unit = {}, positiveClickText: String = "Fix", positiveClick: () -> Unit = {}) {
     if (!show.value) return
     AlertDialog(
         onDismissRequest = { show.value = false },
@@ -44,11 +48,11 @@ fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>,
 @Composable
 fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavController, view: android.view.View) {
     UpdateAlert(
-        "No Network",
-        "You may not have an active internet connection, or your network settings may be configured to restrict access. Please check your connection and try again.",
+        stringResource(R.string.no_network2),
+        stringResource(R.string.network_desc),
         infoAlert.noNetworkDialog,
-        "Cancel",
-        positiveClickText = "Network Settings",
+        stringResource(R.string.cancel),
+        positiveClickText = stringResource(R.string.network_settings),
         positiveClick = {
             RouteParams.push(modDetails)
             OpenRoute("Notifications & Internet", navController, view, enter = fadeIn(), exit = fadeOut())
@@ -58,8 +62,11 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
 
 
     UpdateAlert(
-        "Detach module recommended",
-        "To prevent Google Play Store from overwriting ${modDetails.name}, it is recommended to install a detach module.",
+        stringResource(R.string.detach_module_recommended),
+        stringResource(
+            R.string.to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module,
+            modDetails.name
+        ),
         infoAlert.noDetachDialog,
         negativeClick = {
             infoAlert.noDetachNegativeLambda.value()
@@ -67,12 +74,12 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         positiveClick = {
             infoAlert.noDetachPositiveLambda.value()
         },
-        positiveClickText = "Install Detach"
+        positiveClickText = stringResource(R.string.install_detach)
     )
 
     UpdateAlert(
-        "LSPosed Required",
-        "${modDetails.name} requires LSPosed, and will not function without it.",
+        stringResource(R.string.lsposed_required),
+        stringResource(R.string.requires_lsposed_and_will_not_function_without_it, modDetails.name),
         infoAlert.noLSPosedDialog,
         negativeClick = {
             infoAlert.noLsposedNegativeLambda.value()
@@ -80,12 +87,12 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         positiveClick = {
             infoAlert.noLsposedPositiveLambda.value()
         },
-        positiveClickText = "Install LSPosed"
+        positiveClickText = stringResource(R.string.install_lsposed)
     )
 
     UpdateAlert(
-        "ReZygisk Required",
-        "${modDetails.name} requires Zygisk, and will not function without it.",
+        stringResource(R.string.rezygisk_required),
+        stringResource(R.string.requires_zygisk_and_will_not_function_without_it, modDetails.name),
         infoAlert.noZygiskDialog,
         negativeClick = {
             infoAlert.noZygiskNegativeLambda.value()
@@ -93,6 +100,6 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         positiveClick = {
             infoAlert.noZygiskPositiveLambda.value()
         },
-        positiveClickText = "Install Zygisk"
+        positiveClickText = stringResource(R.string.install_zygisk)
     )
 }

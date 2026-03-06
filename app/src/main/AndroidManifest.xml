@@ -23,13 +23,20 @@
         </intent>
     </queries>
 
+
+
+
+
     <application
         android:icon="@drawable/animated_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/animated_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.vulcan"
-        tools:targetApi="31" >
+        android:theme="@style/Theme.Vulcan.Starting"
+        tools:targetApi="31"
+        >
+
+
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -53,12 +60,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.vulcan"
+            android:theme="@style/Theme.Vulcan.Starting"
             android:windowSoftInputMode="adjustResize">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter android:autoVerify="true" >

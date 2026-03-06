@@ -30,7 +30,7 @@ import luph.vulcanizerv3.updates.utils.root.ROOTStatus
 import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 
 enum class ModType {
-    APK, TWRP, MODULE
+    APK, TWRP, MODULE, SHELL
 }
 
 
@@ -52,6 +52,7 @@ data class ModDetails(
     val READMEsummary: String = "error: README summary not found",
     val changeLogSummary: String = "error: change log summary not found",
     val timestamp: Long = 0,
+    val shell: String = "",
 
     //Calculated
     var url: String = "error: url not found",
@@ -69,8 +70,8 @@ object ModDetailsStore {
     private var modDetails = mutableStateOf<MutableList<ModDetails>>(mutableListOf())
     private var keywords =
         mutableStateOf<MutableMap<String, MutableList<ModDetails>>>(mutableMapOf())
-    private var appDetails = mutableStateOf<ModDetails?>(null)
 
+    private var coreDetails = mutableStateOf<MutableMap<String, ModDetails?>>(mutableMapOf())
 
     private var modList = mutableStateOf<Map<String, String>>(emptyMap())
     private val serializableManager = SerializableManager<String>()
@@ -98,17 +99,17 @@ object ModDetailsStore {
         return keywords
     }
 
-    fun getAppDetails(): State<ModDetails?> {
-        return appDetails
+    fun getCoreDetails(): State<Map<String, ModDetails?>> {
+        return coreDetails
     }
 
     fun isAppUpdatedNeeded(): State<Boolean> {
-        return mutableStateOf(getAppVersion() != appDetails.value?.version && appDetails.value?.version != null)
+        return mutableStateOf(getAppVersion() != coreDetails.value.get("app")?.version && coreDetails.value.get("app")?.version != null)
     }
 
     fun isAppUpdateForced(): State<Boolean> {
-        if (appDetails.value == null) return mutableStateOf(false)
-        return mutableStateOf(appDetails.value?.require !=  getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value)
+        if (coreDetails.value.get("app") == null) return mutableStateOf(false)
+        return mutableStateOf(coreDetails.value.get("app")?.require !=  getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value)
     }
 
     fun getAllModKeywords(): State<Map<String, MutableList<ModDetails>>> {
@@ -290,7 +291,8 @@ object ModDetailsStore {
                 saveModList()
             }
 
-            appDetails.value = fetchModDetails("core/Vulcan-Updates")
+            coreDetails.value["app"] = fetchModDetails("core/Vulcan-Updates")
+            coreDetails.value["pif"] = fetchModDetails("core/Keybox")
 
             keywords.value = parseModKeywords(tmpModDetails)
             modDetails.value = tmpModDetails

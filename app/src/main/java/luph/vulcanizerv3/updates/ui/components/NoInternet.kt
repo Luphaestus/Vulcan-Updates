@@ -80,12 +80,14 @@ fun NoInternet(nav: NavController, view: View) {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                text = "You're offline",
+                text = stringResource(R.string.you_re_offline),
                 modifier = Modifier.padding(horizontal = 16.dp),
                 style = MaterialTheme.typography.titleLarge,
             )
             Text(
-                text = if (shouldShowSettingsButton.value) "Your network settings are..." else "Check your connection and try again",
+                text = if (shouldShowSettingsButton.value) stringResource(R.string.your_network_settings_are) else stringResource(
+                    R.string.check_your_connection_and_try_again
+                ),
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
                     .padding(top = 4.dp)
@@ -102,9 +104,9 @@ fun NoInternet(nav: NavController, view: View) {
                     },
                     modifier = Modifier
                         .weight(1f)
-                        .padding(start = 16.dp, end=8.dp)
+                        .padding(start = 16.dp, end = 8.dp)
                 ) {
-                    Text("Try again")
+                    Text(stringResource(R.string.try_again))
                 }
                 Button(
                     onClick = {
@@ -113,9 +115,9 @@ fun NoInternet(nav: NavController, view: View) {
                     modifier = Modifier
                         .weight(if (!shouldShowSettingsButton.value) 0.00001f else 1f)
                         .animateContentSize()
-                        .padding(start = 16.dp, end=8.dp)
+                        .padding(start = 16.dp, end = 8.dp)
                 ) {
-                    Text("Network Settings")
+                    Text(stringResource(R.string.network_settings))
                 }
             }
         }

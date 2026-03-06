@@ -54,10 +54,10 @@ fun MiscPage(
                 item {
                     SelectableSettingGroupItem(
                         "Force Refresh Rate",
-                        title = "Force Refresh Rate",
+                        title = stringResource(R.string.force_refresh_rate),
                         navController,
                         view,
-                        desc = "Force the refresh rate of the display.",
+                        desc = stringResource(R.string.force_the_refresh_rate_of_the_display),
                         icon = Icons.Outlined.Refresh,
                     )
                 }
@@ -65,10 +65,10 @@ fun MiscPage(
                 item {
                     SelectableSettingGroupItem(
                         "Change Boot Animation",
-                        title = "Change Boot Animation",
+                        title = stringResource(R.string.change_boot_animation),
                         navController,
                         view,
-                        desc = "Change the boot animation of the device.",
+                        desc = stringResource(R.string.change_the_boot_animation_of_the_device),
                         icon = Icons.Outlined.Palette,
                     )
                 }
@@ -76,10 +76,10 @@ fun MiscPage(
                 item {
                     SelectableSettingGroupItem(
                         "Device Info",
-                        title = "Device Info",
+                        title = stringResource(R.string.device_info),
                         navController,
                         view,
-                        desc = "Show hardware and software information.",
+                        desc = stringResource(R.string.show_hardware_and_software_information),
                         icon = Icons.Outlined.MonitorHeart,
                     )
                 }
@@ -88,10 +88,10 @@ fun MiscPage(
                     item {
                         SelectableSettingGroupItem(
                             "Advanced Reboot Options",
-                            title = "Advanced Reboot Options",
+                            title = stringResource(R.string.advanced_reboot_options),
                             navController,
                             view,
-                            desc = "Reboot into recovery, download, or system.",
+                            desc = stringResource(R.string.reboot_into_recovery_download_or_system),
                             icon = Icons.Outlined.TouchApp,
                         )
                     }
@@ -100,10 +100,10 @@ fun MiscPage(
                 item {
                     SelectableSettingGroupItem(
                         "Help",
-                        title = "Help",
+                        title = stringResource(R.string.help),
                         navController,
                         view,
-                        desc = "Help Documentation.",
+                        desc = stringResource(R.string.help_documentation),
                         icon = Icons.AutoMirrored.Outlined.HelpOutline,
                     )
                 }

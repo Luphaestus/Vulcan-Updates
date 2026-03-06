@@ -11,4 +11,8 @@
 <resources>
 
     <style name="Theme.vulcan" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.Vulcan.Starting" parent="Theme.SplashScreen">
+        <item name="postSplashScreenTheme">@style/Theme.vulcan</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/vulcanstartanim</item>
+    </style>
 </resources>

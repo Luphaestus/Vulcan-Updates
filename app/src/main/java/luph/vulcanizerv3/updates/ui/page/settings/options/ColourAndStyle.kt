@@ -314,7 +314,6 @@ fun ColorAndStyleOption(
     val isDynamic = remember { mutableStateOf(ThemeManager.theme == null) }
     val isDark = remember { mutableStateOf(ThemeManager.darkTheme ?: isSystemInDarkTheme) }
     val isSystemDark = remember { mutableStateOf(ThemeManager.darkTheme == null) }
-    val theme = remember { mutableStateOf(ThemeManager.theme) }
     val lastSelectectedColour = remember { mutableStateOf(ThemeManager.theme) }
 
 
@@ -522,7 +521,7 @@ fun ColorAndStyleOption(
                 title = stringResource(R.string.dark_theme_title),
                 desc = if (isDynamic.value) {
                     stringResource(R.string.apply_dark_theme_based_on_wallpaper)
-                } else stringResource(R.string.apply_dark_theme, theme.value?:"your Mum"),
+                } else stringResource(R.string.apply_dark_theme, ThemeManager.theme?:""),
                 icon = Icons.Outlined.DarkMode,
             )
             {
