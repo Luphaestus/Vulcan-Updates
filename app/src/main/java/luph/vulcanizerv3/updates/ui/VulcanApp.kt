@@ -18,6 +18,7 @@ fun VulcanApp(
         ModInfo(passedModDetails = ModDetailsStore.getAppDetails().value)
         return
     }
+
 //    FeedbackOption()
 //    ChangeBootOption()
     NavBarHandler(windowSize)
