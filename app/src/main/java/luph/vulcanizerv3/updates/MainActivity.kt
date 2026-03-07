@@ -2,8 +2,10 @@ package luph.vulcanizerv3.updates
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.ComponentCaller
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -26,8 +28,10 @@ import luph.vulcanizerv3.updates.data.ThemeManager
 import luph.vulcanizerv3.updates.ui.VulcanApp
 import luph.vulcanizerv3.updates.ui.theme.ContrastAwareTheme
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.BaseContextWrappingDelegate
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.runtime.getValue
@@ -36,26 +40,42 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import androidx.core.app.OnNewIntentProvider
+import androidx.work.NetworkType
 import com.crowdin.platform.Crowdin
 import com.crowdin.platform.CrowdinConfig
+import com.crowdin.platform.util.getLocaleForLanguageCode
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import luph.vulcanizerv3.updates.data.TELEGRAM_BOT_API
 import luph.vulcanizerv3.updates.data.TELEGRAM_FEEDBACK_CHANNEL
 import luph.vulcanizerv3.updates.ui.components.info.UpdateAlert
+import luph.vulcanizerv3.updates.ui.page.settings.options.getLocale
+import luph.vulcanizerv3.updates.ui.page.settings.options.localeSelection
 import luph.vulcanizerv3.updates.utils.download.getHelpList
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import luph.vulcanizerv3.updates.utils.telegram.postTelegramMessage
 import org.json.JSONArray
+import java.util.Locale
 import kotlin.collections.remove
 
 
-class MainActivity : ComponentActivity() {
-
+class MainActivity : AppCompatActivity() {
 
     private lateinit var ketch: Ketch
     private lateinit var firebaseAnalytics: FirebaseAnalytics
+    override fun getDelegate() = BaseContextWrappingDelegate(super.getDelegate())
 
+    fun Context.updateLocale(newLocaleCode: String): Context {
+        Log.e("hello", "Locale: $newLocaleCode")
+        val newLocale = newLocaleCode.getLocaleForLanguageCode()
+        Locale.setDefault(newLocale)
+        val configuration = Configuration(this.resources.configuration)
+        configuration.setLocale(newLocale)
+        return this.createConfigurationContext(configuration)
+    }
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(ContextWrapper(newBase.updateLocale(Locale.getDefault().toLanguageTag())))
+    }
 
     companion object {
         private const val REQUEST_CODE_POST_NOTIFICATIONS = 1
@@ -73,6 +93,10 @@ class MainActivity : ComponentActivity() {
             return instance!!.firebaseAnalytics
         }
 
+        fun getInstance(): Activity {
+            return instance!!
+        }
+
     }
 
     init {
@@ -83,14 +107,15 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("InlinedApi")
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen().apply {
 
-//            setKeepOnScreenCondition { true }
-
-        }
+        super.onCreate(savedInstanceState)
+        Log.e("hello", "L3ocale: ${getLocale()}")
+        Crowdin.init(this,
+            CrowdinConfig.Builder()
+                .withDistributionHash("705a4bb530c8bbe03ca1219wwip")
+                .build())
 
         enableEdgeToEdge()
-        super.onCreate(savedInstanceState)
         firebaseAnalytics = Firebase.analytics
         ketch = Ketch.builder().setNotificationConfig(
             config = NotificationConfig(
@@ -99,10 +124,7 @@ class MainActivity : ComponentActivity() {
             )
         ).build(this)
 
-        Crowdin.init(applicationContext,
-            CrowdinConfig.Builder()
-                .withDistributionHash("705a4bb530c8bbe03ca1219wwip")
-                .build())
+
 
         var showNotif = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -134,14 +156,11 @@ class MainActivity : ComponentActivity() {
             ) {
                 val windowSize = calculateWindowSizeClass(this)
                 VulcanApp(
-                    windowSize = windowSize,
+                     windowSize = windowSize,
                 )
             }
         }
     }
 
-    override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(Crowdin.wrapContext(newBase))
-    }
 
 }

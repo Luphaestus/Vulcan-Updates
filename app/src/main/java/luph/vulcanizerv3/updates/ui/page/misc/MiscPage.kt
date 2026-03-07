@@ -48,19 +48,19 @@ fun MiscPage(
         content = {
             LazyColumn {
                 item {
-                    DisplayText(text = "Misc", desc = "")
+                    DisplayText(text = stringResource(R.string.misc), desc = "")
                 }
 
-                item {
-                    SelectableSettingGroupItem(
-                        "Force Refresh Rate",
-                        title = stringResource(R.string.force_refresh_rate),
-                        navController,
-                        view,
-                        desc = stringResource(R.string.force_the_refresh_rate_of_the_display),
-                        icon = Icons.Outlined.Refresh,
-                    )
-                }
+//                item {
+//                    SelectableSettingGroupItem(
+//                        "Force Refresh Rate",
+//                        title = stringResource(R.string.force_refresh_rate),
+//                        navController,
+//                        view,
+//                        desc = stringResource(R.string.force_the_refresh_rate_of_the_display),
+//                        icon = Icons.Outlined.Refresh,
+//                    )
+//                }
 
                 item {
                     SelectableSettingGroupItem(

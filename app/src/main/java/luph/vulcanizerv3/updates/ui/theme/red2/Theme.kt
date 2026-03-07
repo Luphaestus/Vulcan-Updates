@@ -276,7 +276,7 @@ fun AppTheme(
   )
 }
 
-val tmpTheme = Theme(
+val red2 = Theme(
     dark = darkScheme,
     mediumContrastDark = mediumContrastDarkColorScheme,
     highContrastDark = highContrastDarkColorScheme,

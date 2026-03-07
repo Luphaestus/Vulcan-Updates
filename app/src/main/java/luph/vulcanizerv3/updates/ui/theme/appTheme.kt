@@ -24,6 +24,7 @@ import luph.vulcanizerv3.updates.ui.theme.brown.darkScheme
 import luph.vulcanizerv3.updates.ui.theme.brown.lightScheme
 import luph.vulcanizerv3.updates.ui.theme.brown.typography
 import luph.vulcanizerv3.updates.ui.theme.green.greenTheme
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 
 data class Theme(
     val dark: ColorScheme,
@@ -85,7 +86,7 @@ fun changeStatusBarColor(view: View, newColor: Int) {
 
     if (currentColor != newColor) {
         val colorAnimation = ObjectAnimator.ofArgb(currentColor, newColor)
-        colorAnimation.duration = 500
+        colorAnimation.duration = (getStandardAnimationSpeed()*0.7).toLong()
         colorAnimation.setEvaluator(ArgbEvaluator())
         colorAnimation.addUpdateListener { animator ->
             window.statusBarColor = animator.animatedValue as Int

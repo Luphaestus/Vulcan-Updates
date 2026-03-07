@@ -36,6 +36,7 @@ fun UpdateAlert(title: String, description: String, show: MutableState<Boolean>,
             }
         },
         dismissButton = {
+            if (negativeClickText.isEmpty()) return@AlertDialog
             TextButton(onClick = {
                 show.value = false
                 negativeClick()}) {
@@ -59,6 +60,19 @@ fun InfoPopup(infoAlert: infoAlert, modDetails: ModDetails, navController: NavCo
         }
     )
 
+    UpdateAlert(
+        stringResource(R.string.root_required),
+        stringResource(R.string.root_required_desc),
+        infoAlert.rootRequiredDialog,
+        stringResource(R.string.cancel),
+        positiveClickText = stringResource(R.string.root_required_guide),
+        positiveClick = {
+            infoAlert.rootRequiredPositiveLambda.value()
+        },
+        negativeClick = {
+            infoAlert.rootRequiredNegativeLambda.value()
+        }
+    )
 
 
     UpdateAlert(

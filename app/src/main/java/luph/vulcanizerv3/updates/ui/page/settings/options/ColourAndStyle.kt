@@ -76,6 +76,7 @@ import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.SettingsElementBase
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.ui.theme.getColourScheme
+import luph.vulcanizerv3.updates.utils.getAnimationScale
 
 data class TonalPalettes(val a1: Color, val a2: Color, val a3: Color)
 
@@ -100,10 +101,10 @@ fun ColorButtonRow(
     AnimatedVisibility(
         visible = !isDynamic,
         enter = expandVertically(
-            animationSpec = tween(durationMillis = 300)
+            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt())
         ),
         exit = shrinkVertically(
-            animationSpec = tween(durationMillis = 300)
+            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt())
         )
     ) {
         Column {
@@ -399,7 +400,7 @@ fun ColorAndStyleOption(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current
                         )
-                        .animateContentSize(animationSpec = tween(durationMillis = 300))
+                        .animateContentSize(animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()))
                         .fillMaxWidth()
                         .height(IntrinsicSize.Min)
                 ) {
@@ -410,7 +411,7 @@ fun ColorAndStyleOption(
                             .align(Alignment.Center),
                         color = animateColorAsState(
                             if (isDynamic.value) textSelected else textDeselected,
-                            animationSpec = tween(durationMillis = 300), label = ""
+                            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()), label = ""
                         ).value
                     )
                 }
@@ -449,7 +450,7 @@ fun ColorAndStyleOption(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current
                         )
-                        .animateContentSize(animationSpec = tween(durationMillis = 300))
+                        .animateContentSize(animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()))
                         .fillMaxWidth()
                         .height(IntrinsicSize.Min)
                 ) {
@@ -460,7 +461,7 @@ fun ColorAndStyleOption(
                             .align(Alignment.Center),
                         color = animateColorAsState(
                             if (!isDynamic.value) textSelected else textDeselected,
-                            animationSpec = tween(durationMillis = 300), label = ""
+                            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()), label = ""
                         ).value
                     )
                 }
@@ -510,11 +511,11 @@ fun ColorAndStyleOption(
         AnimatedVisibility(
             visible = !isSystemDark.value,
             enter = expandVertically(
-                animationSpec = tween(durationMillis = 300)
+                animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt())
 
             ),
             exit = shrinkVertically(
-                animationSpec = tween(durationMillis = 300),
+                animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()),
             )
         ) {
             SettingsElementBase(

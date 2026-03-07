@@ -79,6 +79,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
 import kotlinx.coroutines.withContext
 import luph.vulcanizerv3.updates.MainActivity
+import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
@@ -229,6 +230,9 @@ fun ForceRefreshRate(
     navController: NavController = rememberNavController(),
     view: View? = null
 ) {
+    EmptyComingSoon()
+    return
+
     showNavigation.show = false
    LazyColumn(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(horizontal = 16.dp)) {
         item {

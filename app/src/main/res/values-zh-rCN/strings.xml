@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan 更新</string>
+    <string name="no_network">无可用网络</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="color_and_style"><![CDATA[颜色和款式]]></string>
+    <string name="colour_and_style_desc">调整应用程序的外观和风格</string>
+    <string name="theme_preview">主题预览</string>
+    <string name="me_msg_1">你听说过吗Vulcan ROM？</string>
+    <string name="me_msg_2">我听说这很炸弹！ 🤯</string>
+    <string name="mez_msg_1">是的，非常炸弹ROM你是对的</string>
+    <string name="oskar_ahh_convo">“与奥斯卡的对话就像”</string>
+    <string name="dynamic_colours_option">动态色彩</string>
+    <string name="static_colours_option">静态颜色</string>
+    <string name="system_dark_theme_title">系统深色主题</string>
+    <string name="system_dark_theme_desc">根据系统设置应用深色主题</string>
+    <string name="dark_theme_title">黑暗主题</string>
+    <string name="apply_dark_theme_based_on_wallpaper">根据壁纸应用深色主题</string>
+    <string name="apply_dark_theme">应用 %1$s 深色主题</string>
+    <string name="contrast">%1$s 对比</string>
+    <string name="low_contrast">低的</string>
+    <string name="medium_contrast">中等的</string>
+    <string name="high_contrast">高的</string>
+    <string name="language">语言</string>
+    <string name="language_desc">更改应用语言。</string>
+    <!-- Home -->
+    <string name="home_title">主页</string>
+    <!-- Updates -->
+    <string name="updates_title">更新</string>
+    <string name="core_title">核心更新</string>
+    <string name="installed_title">已安装</string>
+    <string name="just_now">现在</string>
+    <string name="minutes_ago">%1$s 分钟前</string>
+    <string name="hours_ago">%1$s 小时前</string>
+    <string name="days_ago">%1$s 天前</string>
+    <string name="months_ago">%1$s 个月前</string>
+    <string name="years_ago">%1$s 年前</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">左边没有更多图像了。</string>
+    <string name="no_more_images_to_the_right">右侧不再有图像。</string>
+    <!-- Info -->
+    <string name="mod_info_title">模组信息</string>
+    <string name="uninstall">卸载</string>
+    <string name="cancel">取消</string>
+    <string name="install">安装</string>
+    <string name="open">打开</string>
+    <string name="update">更新</string>
+    <string name="mod_size">尺寸</string>
+    <string name="mod_source_code_link_button">源代码</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">致谢</string>
+    <string name="feedback_title">反馈</string>
+    <string name="search_placeholder">搜索</string>
+    <string name="please_enable_notifications">请启用通知</string>
+    <string name="notification_request_desc">打开通知以接收有关下载进度和 MOD 更新的更新。</string>
+    <string name="you_re_offline">你离线了</string>
+    <string name="your_network_settings_are">您的网络设置是...</string>
+    <string name="check_your_connection_and_try_again">检查您的连接并重试</string>
+    <string name="try_again">再试一次</string>
+    <string name="network_settings">网络设置</string>
+    <string name="change_log">变更日志</string>
+    <string name="more">...更多的</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">版本 %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">描述</string>
+    <string name="by">"经过 "</string>
+    <string name="version">版本</string>
+    <string name="no_network2">无网络</string>
+    <string name="network_desc">您可能没有有效的互联网连接，或者您的网络设置可能被配置为限制访问。请检查您的连接并重试。</string>
+    <string name="detach_module_recommended">建议分离模块</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">为了防止 Google Play 商店覆盖 %1$s，建议安装分离模块。</string>
+    <string name="install_detach">安装分离</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s 需要 LSPosed，没有它就无法运行。</string>
+    <string name="install_lsposed">安装LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s 需要 Zygisk，没有它就无法运行。</string>
+    <string name="install_zygisk">安装 Zygisk</string>
+    <string name="rezygisk_required">需要 ReZygisk</string>
+    <string name="lsposed_required">LSPosed 必需的</string>
+    <string name="continue_anyway">无论如何继续</string>
+    <string name="force_refresh_rate">强制刷新率</string>
+    <string name="force_the_refresh_rate_of_the_display">强制显示的刷新率。</string>
+    <string name="change_boot_animation">更改启动动画</string>
+    <string name="change_the_boot_animation_of_the_device">更改设备的开机动画。</string>
+    <string name="device_info">设备信息</string>
+    <string name="show_hardware_and_software_information">显示硬件和软件信息。</string>
+    <string name="advanced_reboot_options">高级重启选项</string>
+    <string name="reboot_into_recovery_download_or_system">重新启动进入恢复、下载或系统。</string>
+    <string name="help">帮助</string>
+    <string name="help_documentation">帮助文档。</string>
+    <string name="confirm_reboot">确认重启</string>
+    <string name="are_you_sure_you_want_to_reboot_to">您确定要重新启动到 %1$s 吗？</string>
+    <string name="reboot">重新启动</string>
+    <string name="file_does_not_exist">文件不存在</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">管理您的通知首选项和互联网设置。</string>
+    <string name="report_bugs_and_request_features">报告错误和请求功能。</string>
+    <string name="acknowledging_resources_and_contributions">确认资源和捐款。</string>
+    <string name="home">首页</string>
+    <string name="misc">其他</string>
+    <string name="updates">更新</string>
+    <string name="settings">设置</string>
+    <string name="over_wi_fi">通过 Wi-FI</string>
+    <string name="never_download_anything_using_wi_fi">不使用 Wi-Fi 下载任何内容</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">仅在下载模组信息时使用 Wi-FI</string>
+    <string name="always_use_wi_fi">总是使用 Wi-Fi</string>
+    <string name="mod_update_notifications">Mod更新通知</string>
+    <string name="get_notified_about_updates_for_installed_mods">获取已安装模组的更新通知。</string>
+</resources>

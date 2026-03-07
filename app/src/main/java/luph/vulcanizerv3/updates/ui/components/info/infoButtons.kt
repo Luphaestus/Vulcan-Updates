@@ -1,5 +1,7 @@
 package luph.vulcanizerv3.updates.ui.components.info
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -37,10 +39,10 @@ import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.settings.options.subscribe
 import luph.vulcanizerv3.updates.utils.apkmanager.openAPK
 import luph.vulcanizerv3.updates.utils.apkmanager.uninstallAPK
+import luph.vulcanizerv3.updates.utils.getAnimationScale
 import luph.vulcanizerv3.updates.utils.modulemanager.uninstallModule
-
-
-
+import luph.vulcanizerv3.updates.utils.root.ROOTStatus
+import luph.vulcanizerv3.updates.utils.root.getROOTStatus
 
 
 fun changeUpdateType(updateStatus: UpdateStatus, buttonData: buttonData) {
@@ -65,7 +67,7 @@ fun changeUpdateType(updateStatus: UpdateStatus, buttonData: buttonData) {
 fun InfoButtons(buttonData: buttonData, coreUpdates: Array<String>) {
     val buttonAnimWeight by animateFloatAsState(
         targetValue = buttonData.buttonAnimWeightValue,
-        animationSpec = tween(durationMillis = 1000),
+        animationSpec = tween(durationMillis = (1000* getAnimationScale()).toInt()),
         finishedListener = {
             if (buttonData.doToggleButtonVisibility) {
                 buttonData.firstButtonVisible = false
@@ -150,6 +152,15 @@ fun InfoButtons(buttonData: buttonData, coreUpdates: Array<String>) {
                             }
                         }
                     }
+                    if ((buttonData.modDetails.updateType == ModType.SHELL || buttonData.modDetails.updateType == ModType.MODULE) && getROOTStatus() == ROOTStatus.NONE)  {
+                        buttonData.infoAlert.rootRequiredDialog.value = true
+                        buttonData.infoAlert.rootRequiredNegativeLambda.value = {}
+                        buttonData.infoAlert.rootRequiredPositiveLambda.value = {
+                           MainActivity.instance!!.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://vulcanupdates.web.app/help/How%20to%20Provide%20ROOT%20Access%20for%20Vulcan%20Updates")))
+                        }
+                        return@Button
+                    }
+
                     if ( buttonData.modDetails.require == "lsposed" && !ModDetailsStore.getInstalledMods().value.contains("zygisk_lsposed")) {
                         buttonData.infoAlert.noLSPosedDialog.value = true
                         buttonData.infoAlert.noLsposedNegativeLambda.value = {

@@ -1,11 +1,14 @@
 package luph.vulcanizerv3.updates.ui.components
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 
 sealed class BadgeContent {
     data class Count(val value: Int) : BadgeContent()
@@ -27,13 +30,15 @@ class BadgeFormatter {
         enabled: Boolean,
         icon: ImageVector,
         contentDescription: String,
-        badgeContent: BadgeContent?
+        badgeContent: BadgeContent?,
+        iconSizeOffset: Float = 0f
     ): @Composable () -> Unit {
 
         if (!enabled || badgeContent == null) return {
-            Icon(
+           Icon(
                 imageVector = icon,
-                contentDescription = contentDescription
+                contentDescription = contentDescription,
+                modifier = Modifier.size(icon.defaultWidth + iconSizeOffset.dp, icon.defaultHeight + iconSizeOffset.dp)
             )
         }
 
@@ -45,13 +50,16 @@ class BadgeFormatter {
                     is BadgeContent.Image -> Badge {
                         Icon(
                             imageVector = badgeContent.imageVector,
-                            contentDescription = contentDescription
+                            contentDescription = contentDescription,
+                            modifier = Modifier.size(icon.defaultWidth + iconSizeOffset.dp, icon.defaultHeight + iconSizeOffset.dp)
                         )
                     }
                 }
 
             }) {
-                Icon(imageVector = icon, contentDescription = contentDescription)
+                Icon(imageVector = icon,
+                    contentDescription = contentDescription,
+                    modifier = Modifier.size(icon.defaultWidth + iconSizeOffset.dp, icon.defaultHeight + iconSizeOffset.dp))
             }
         }
     }

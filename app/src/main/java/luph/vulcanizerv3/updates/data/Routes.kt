@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 import luph.vulcanizerv3.updates.ui.components.BadgeContent
@@ -32,6 +33,7 @@ import luph.vulcanizerv3.updates.ui.page.settings.options.*
 import luph.vulcanizerv3.updates.ui.page.updates.*
 import luph.vulcanizerv3.updates.ui.page.misc.*
 import luph.vulcanizerv3.updates.ui.page.misc.options.*
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 
 
 data class Route(
@@ -44,13 +46,14 @@ data class Route(
     val badgeContent: () -> BadgeContent? = { null },
     val enterTransition: EnterTransition = EnterTransition.None,
     val exitTransition: EnterTransition = EnterTransition.None,
-    val stringResource: Int = 0, )
+    val stringResource: Int = 0,
+    val localName: String? = null)
 
 val Routes = listOf(
-    Route("Home", Icons.Filled.Home, Icons.Outlined.Home, { navController, view -> HomePage(navController, view) }, showBadge = { ModDetailsStore.getNewMods().value.isNotEmpty() }, badgeContent = { BadgeContent.Text("New") }, showInMenu = true, stringResource = R.string.home_title),
+    Route("Home", Icons.Filled.Home, Icons.Outlined.Home, { navController, view -> HomePage(navController, view) }, showBadge = { ModDetailsStore.getNewMods().value.isNotEmpty() }, badgeContent = { BadgeContent.Text("New") }, showInMenu = true, stringResource = R.string.home_title, localName = MainActivity.applicationContext().getString(R.string.home)),
     Route("Home Details Expanded", content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
 
-    Route("Misc", Icons.Filled.Handyman, Icons.Outlined.Handyman, { navController, view -> MiscPage(navController, view) }, showInMenu = true, stringResource = R.string.updates_title),
+    Route("Misc", Icons.Filled.Handyman, Icons.Outlined.Handyman, { navController, view -> MiscPage(navController, view) }, showInMenu = true, stringResource = R.string.updates_title, localName = MainActivity.applicationContext().getString(R.string.misc)),
     Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
     Route("Change Boot Animation", content = { navController, view -> ChangeBootOption(navController, view) }),
     Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
@@ -58,10 +61,9 @@ val Routes = listOf(
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),
     Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
 
-    Route("Updates", Icons.Filled.Star, Icons.Outlined.Star, { navController, view -> UpdatesPage(navController, view) }, showBadge = { ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value }, badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) }, showInMenu = true, stringResource = R.string.updates_title),
+    Route("Updates", Icons.Filled.Star, Icons.Outlined.Star, { navController, view -> UpdatesPage(navController, view) }, showBadge = { ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value }, badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) }, showInMenu = true, stringResource = R.string.updates_title, localName = MainActivity.applicationContext().getString(R.string.updates)),
 
-    Route("Settings", Icons.Filled.Settings, Icons.Outlined.Settings, content = { navController, view -> SettingsPage(navController, view) }, showInMenu = true, stringResource = R.string.settings_title),
-
+    Route("Settings", Icons.Filled.Settings, Icons.Outlined.Settings, content = { navController, view -> SettingsPage(navController, view) }, showInMenu = true, stringResource = R.string.settings_title, localName = MainActivity.applicationContext().getString(R.string.settings)),
     Route("Colour and Style", content = { navController, view -> ColorAndStyleOption(navController, view) }),
     Route("Notifications & Internet", content = { navController, view -> NotificationAndInternet(navController, view) }),
     Route("Language", content = { navController, view -> LanguageOption(navController, view) }),
@@ -72,16 +74,16 @@ val Routes = listOf(
 )
 
 data object NavigationAnim {
-    var enter = mutableStateOf(fadeIn(animationSpec = tween(700)))
-    var exit = mutableStateOf(fadeOut(animationSpec = tween(700)))
-    var popExit = mutableStateOf(fadeOut(animationSpec = tween(700)))
-    var popEnter = mutableStateOf(fadeIn(animationSpec = tween(700)))
+    var enter = mutableStateOf(fadeIn(animationSpec = tween(getStandardAnimationSpeed())))
+    var exit = mutableStateOf(fadeOut(animationSpec = tween(getStandardAnimationSpeed())))
+    var popExit = mutableStateOf(fadeOut(animationSpec = tween(getStandardAnimationSpeed())))
+    var popEnter = mutableStateOf(fadeIn(animationSpec = tween(getStandardAnimationSpeed())))
 }
 
 data class NavigationAnimClass(
 
-    var enter: EnterTransition = fadeIn(animationSpec = tween(700)),
-    var exit: ExitTransition = fadeOut(animationSpec = tween(700)),
-    var popExit: ExitTransition = fadeOut(animationSpec = tween(700)),
-    var popEnter: EnterTransition = fadeIn(animationSpec = tween(700))
+    var enter: EnterTransition = fadeIn(animationSpec = tween(getStandardAnimationSpeed())),
+    var exit: ExitTransition = fadeOut(animationSpec = tween(getStandardAnimationSpeed())),
+    var popExit: ExitTransition = fadeOut(animationSpec = tween(getStandardAnimationSpeed())),
+    var popEnter: EnterTransition = fadeIn(animationSpec = tween(getStandardAnimationSpeed()))
 )

@@ -88,6 +88,7 @@ import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.apkmanager.getAPKVersion
 import luph.vulcanizerv3.updates.utils.apkmanager.getAppVersion
 import luph.vulcanizerv3.updates.utils.download.fetchModDetails
+import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 import luph.vulcanizerv3.updates.utils.root.runShellCommand
 import java.time.Instant
 import kotlin.time.Duration
@@ -337,13 +338,9 @@ fun UpdatesPage(navController: NavController, view: View) {
                     }
                     item {
                         Subheading(stringResource(R.string.core_title))
-                        val modetails2 = ModDetailsStore.getCoreDetails().value["app"]?.copy()
-                        modetails2?.name  = "Vulcan ROM"
-
-
                         VersionCard(
-                            modetails2,
-                            "V3",
+                            ModDetailsStore.getCoreDetails().value["rom"],
+                            runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["rom"]?.packageName}").value.first,
                             navController,
                             view
                         )
@@ -386,10 +383,10 @@ fun UpdatesPage(navController: NavController, view: View) {
                                     "Home Details Expanded",
                                     navController,
                                     view,
-                                    fadeIn(animationSpec = tween(700)),
+                                    fadeIn(animationSpec = tween(getStandardAnimationSpeed())),
                                     ExitTransition.None,
                                     EnterTransition.None,
-                                    fadeOut(animationSpec = tween(500))
+                                    fadeOut(animationSpec = tween((getStandardAnimationSpeed()*0.7).toInt()))
                                 )
                             }) {
                                 Row(
@@ -438,10 +435,10 @@ fun UpdatesPage(navController: NavController, view: View) {
                                     "Home Details Expanded",
                                     navController,
                                     view,
-                                    fadeIn(animationSpec = tween(700)),
+                                    fadeIn(animationSpec = tween(getStandardAnimationSpeed())),
                                     ExitTransition.None,
                                     EnterTransition.None,
-                                    fadeOut(animationSpec = tween(500))
+                                    fadeOut(animationSpec = tween((getStandardAnimationSpeed()*0.7).toInt()))
                                 )
                             }) {
                                 Row(

@@ -16,7 +16,7 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
-        versionName = "v3a3.5b4"
+        versionName = "v3a3.5c5"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         resourceConfigurations.plus(listOf("en", "iw", "in", "de"))
@@ -157,9 +157,8 @@ dependencies {
     implementation(libs.lottie.compose)
     implementation(libs.versioncompare)
     implementation(libs.twyper)
-    implementation("com.github.jakhongirmadaminov:glassmorphic-composables:0.0.7")
     implementation("com.github.composeuisuite:ohteepee:1.1.0")
     implementation("com.github.crowdin.mobile-sdk-android:sdk:1.11.1")
-
-
+    implementation("dev.chrisbanes.haze:haze:1.3.0")
+    implementation("com.github.starry-shivam:FileUtils:1.0.0")
 }

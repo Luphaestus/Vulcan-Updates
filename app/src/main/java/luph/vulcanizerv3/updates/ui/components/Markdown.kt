@@ -7,8 +7,6 @@ import org.jetbrains.annotations.TestOnly
 
 @Composable
 fun MarkdownGenerator(markdown: String) {
-
-
     MarkdownText(markdown = markdown)
 }
 

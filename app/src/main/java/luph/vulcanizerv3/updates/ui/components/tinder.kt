@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
@@ -23,30 +24,39 @@ import androidx.compose.ui.unit.dp
 import com.github.theapache64.twyper.TwyperController
 import com.github.theapache64.twyper.rememberCardController
 import com.github.theapache64.twyper.rememberTwyperController
-
 @Composable
 inline fun <reified T> Tinder(
     items: MutableList<T>,
     twyperController: TwyperController = rememberTwyperController(),
+    currentCardIndex: MutableState<Int> = remember { mutableStateOf(0) },
     stackCount: Int = 5,
     paddingBetweenCards: Float = 40f,
     modifier: Modifier = Modifier,
     crossinline renderItem: @Composable (T, Int) -> Unit
 ) {
+
     Box(modifier = modifier) {
-        var currentCardIndex by remember{ mutableStateOf(0) }
-         val list = (currentCardIndex until currentCardIndex + stackCount).mapNotNull { i ->
-             items[i%items.size]
-         }.reversed()
+        val list = (currentCardIndex.value until currentCardIndex.value + stackCount).mapNotNull { i ->
+            items.getOrNull(i % items.size)
+        }.reversed()
 
         list.forEachIndexed { index, item ->
-            key(currentCardIndex) {
+            key(item.hashCode()) {
                 val cardController = rememberCardController()
                 if (index == list.lastIndex) {
                     twyperController.currentCardController = cardController
                 }
-                if (!(cardController.isCardOut()&&index==list.lastIndex)) {
-                    val paddingTop by animateFloatAsState(targetValue = (index * paddingBetweenCards))
+                if (!(cardController.isCardOut() && index == list.lastIndex)) {
+                    val paddingTop by animateFloatAsState(
+                        targetValue = (index * paddingBetweenCards),
+                        label = "paddingAnimation"
+                    )
+                    val targetScale = 1f + (stackCount - index).toFloat() / 30f
+                    val animatedScale by animateFloatAsState(
+                        targetValue = targetScale,
+                        label = "scaleAnimation"
+                    )
+
                     Card(
                         colors = CardColors(
                             contentColor = Color.Transparent,
@@ -72,17 +82,17 @@ inline fun <reified T> Tinder(
                             }
                             .graphicsLayer(
                                 translationX = cardController.cardX,
-                                translationY = cardController.cardY+paddingTop,
+                                translationY = cardController.cardY + paddingTop,
                                 rotationZ = cardController.rotation,
-                                scaleX = 1f +  (5f-index)/30,
+                                scaleX = animatedScale,
                             )
                     ) {
                         renderItem(item, index)
                     }
                 } else {
-                    Log.e("Tinder", "currentCardIndex: $currentCardIndex")
-                    if (index == list.lastIndex)
-                        currentCardIndex++
+                    if (index == list.lastIndex) {
+                        currentCardIndex.value++
+                    }
                 }
             }
         }

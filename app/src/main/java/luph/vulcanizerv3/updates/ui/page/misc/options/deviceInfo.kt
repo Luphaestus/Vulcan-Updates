@@ -23,6 +23,7 @@ import java.security.cert.X509Certificate
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 
 fun getCertificateChain(): Map<String, String> {
     val context = MainActivity.applicationContext()
@@ -113,7 +114,8 @@ fun InfoToComposable(title: String, info: Map<String, String>) {
 @Preview(showBackground = true)
 fun DeviceInfo(navController: NavController = rememberNavController(),
                view: View? = null) {
-
+    EmptyComingSoon()
+    return
     LazyColumn{
 
         item {
