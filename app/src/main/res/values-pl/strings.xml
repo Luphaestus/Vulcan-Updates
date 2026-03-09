@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Updates</string>
+    <string name="no_network">Brak dostępu do sieci</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="color_and_style"><![CDATA[Kolor i styl]]></string>
+    <string name="colour_and_style_desc">Dostosuj wygląd aplikacji</string>
+    <string name="theme_preview">Podgląd motywu</string>
+    <string name="me_msg_1">Słyszałeś może o Vulcan ROM-ie??</string>
+    <string name="me_msg_2">Słyszałem, jest bardzo bombowy! 🤯</string>
+    <string name="mez_msg_1">Tak, bardzo bombowy ROM fr</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh konwersacja\"</string>
+    <string name="dynamic_colours_option">Dynamiczne kolory</string>
+    <string name="static_colours_option">Statyczne kolory</string>
+    <string name="system_dark_theme_title">Systemowy tryb ciemny</string>
+    <string name="system_dark_theme_desc">Zastosuj tryb ciemny na podstawie ustawień systemu</string>
+    <string name="dark_theme_title">Tryb ciemny</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Zastosuj tryb ciemny na podstawie tapety</string>
+    <string name="apply_dark_theme">Zastosuj %1$s ciemny motyw</string>
+    <string name="contrast">%1$s Kontrast</string>
+    <string name="low_contrast">Niski</string>
+    <string name="medium_contrast">Średni</string>
+    <string name="high_contrast">Wysoki</string>
+    <string name="language">Język</string>
+    <string name="language_desc">Zmień język aplikacji</string>
+    <!-- Home -->
+    <string name="home_title">Strona główna</string>
+    <!-- Updates -->
+    <string name="updates_title">Aktualizacje</string>
+    <string name="core_title">Główne aktualizacje</string>
+    <string name="installed_title">Zainstalowano</string>
+    <string name="just_now">Przed chwilą</string>
+    <string name="minutes_ago">%1$s minut temu</string>
+    <string name="hours_ago">%1$s godzin temu</string>
+    <string name="days_ago">%1$s dni temu</string>
+    <string name="months_ago">%1$s miesięcy temu</string>
+    <string name="years_ago">%1$s lat temu</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Nie ma więcej obrazów po lewej stronie.</string>
+    <string name="no_more_images_to_the_right">Nie ma więcej obrazów po prawej stronie.</string>
+    <!-- Info -->
+    <string name="mod_info_title">O modyfikacji</string>
+    <string name="uninstall">Odinstaluj</string>
+    <string name="cancel">Anuluj</string>
+    <string name="install">Zainstaluj</string>
+    <string name="open">Otwórz</string>
+    <string name="update">Aktualizacja</string>
+    <string name="mod_size">Rozmiar</string>
+    <string name="mod_source_code_link_button">Kod źródłowy</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Podziękowania</string>
+    <string name="feedback_title">Opinia</string>
+    <string name="search_placeholder">Wyszukaj</string>
+    <string name="please_enable_notifications">Proszę włączyć powiadomienia</string>
+    <string name="notification_request_desc">Włącz powiadomienia, aby otrzymywać postęp pobierania i aktualizacji modyfikacji.</string>
+    <string name="you_re_offline">Jesteś w trybie offline</string>
+    <string name="your_network_settings_are">Twoje ustawienia sieci to...</string>
+    <string name="check_your_connection_and_try_again">Sprawdź połączenie sieciowe i spróbuj ponownie</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="network_settings">Ustawienia sieci</string>
+    <string name="change_log">Lista zmian</string>
+    <string name="more">...więcej</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Wersja %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Opis</string>
+    <string name="by">"Przez "</string>
+    <string name="version">Wersja</string>
+    <string name="no_network2">Brak sieci</string>
+    <string name="network_desc">Możesz nie mieć aktywnego połączenia z Internetem lub ustawienia sieci mogą być skonfigurowane tak, aby ograniczyć dostęp. Sprawdź swoje połączenie i spróbuj ponownie.</string>
+    <string name="detach_module_recommended">Moduł odłączający (zygisk-detach) zalecany</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Aby uniemożliwić Sklep Google Play od nadpisywania %1$s, zalecane jest zainstalowanie modułu zygisk-detach.</string>
+    <string name="install_detach">Zainstaluj zygisk-detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s wymaga LSPosed i nie będzie działał bez niego.</string>
+    <string name="install_lsposed">Zainstaluj LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s wymaga Zygiska i nie będzie działał bez niego.</string>
+    <string name="install_zygisk">Zainstaluj Zygiska</string>
+    <string name="rezygisk_required">ReZygisk wymagany</string>
+    <string name="lsposed_required">LSPosed wymagane</string>
+    <string name="continue_anyway">Kontynuuj mimo to</string>
+    <string name="force_refresh_rate">Wymuś częstotliwość odświeżania</string>
+    <string name="force_the_refresh_rate_of_the_display">Wymuś częstotliwość wyświetlania ekranu.</string>
+    <string name="change_boot_animation">Zmień animacje uruchamiania</string>
+    <string name="change_the_boot_animation_of_the_device">Zmień animacje uruchamiania urządzenia.</string>
+    <string name="device_info">Informacje o urządzeniu</string>
+    <string name="show_hardware_and_software_information">Wyświetl informacje o sprzęcie i oprogramowaniu.</string>
+    <string name="advanced_reboot_options">Zaawansowane opcje uruchamiania</string>
+    <string name="reboot_into_recovery_download_or_system">Uruchom ponownie to recovery, trybu download, lub systemu.</string>
+    <string name="help">Pomoc</string>
+    <string name="help_documentation">Dokumentacja pomocy.</string>
+    <string name="confirm_reboot">Potwierdź restart</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Czy chcesz uruchomić ponownie do %1$s?</string>
+    <string name="reboot">Uruchom ponownie</string>
+    <string name="file_does_not_exist">Plik nie istnieje</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Zarządzaj powiadomieniami i ustawieniami sieciowymi.</string>
+    <string name="report_bugs_and_request_features">Zgłoś błędy i zażądaj funkcje.</string>
+    <string name="acknowledging_resources_and_contributions">Uznanie zasobów i wkładów.</string>
+    <string name="home">Strona główna</string>
+    <string name="misc">Inne</string>
+    <string name="updates">Aktualizacje</string>
+    <string name="settings">Ustawienia</string>
+    <string name="over_wi_fi">Poprzez Wi-Fi</string>
+    <string name="never_download_anything_using_wi_fi">Nigdy nie pobieraj za pomocą Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Używaj tylko Wi-Fi przy pobieraniu modyfikacji</string>
+    <string name="always_use_wi_fi">Zawsze używaj Wi-Fi</string>
+    <string name="mod_update_notifications">Powiadomienia o modyfikacji</string>
+    <string name="get_notified_about_updates_for_installed_mods">Otrzymuj powiadomienia o aktualizacjach dla zainstalowanych modyfikacji.</string>
+</resources>

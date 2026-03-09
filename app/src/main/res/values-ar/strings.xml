@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Updates</string>
+    <string name="no_network">لا توجد شبكة</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="color_and_style"><![CDATA[اللون و الشكل]]></string>
+    <string name="colour_and_style_desc">تعديل مظهر التطبيق</string>
+    <string name="theme_preview">عرض السمات</string>
+    <string name="me_msg_1">هل سمعت ب \"Vulcan\" روم؟؟</string>
+    <string name="me_msg_2">سمعت بأنه قنبلة</string>
+    <string name="mez_msg_1">اجل، و هو كذلك</string>
+    <string name="oskar_ahh_convo">اوسكار أه كونڤو</string>
+    <string name="dynamic_colours_option">ألوان متغيره</string>
+    <string name="static_colours_option">ألوان ثابتة</string>
+    <string name="system_dark_theme_title">الوضع الليلي للنظام</string>
+    <string name="system_dark_theme_desc">تفعيل الوضع الليلي المتوافق مع إعدادات النظام</string>
+    <string name="dark_theme_title">الوضع الليلي</string>
+    <string name="apply_dark_theme_based_on_wallpaper">تفعيل الوضع الليلي المتوافق مع ورق الحائط</string>
+    <string name="apply_dark_theme">تفعيل %1$s وضع ليلي</string>
+    <string name="contrast">%1$s تباين</string>
+    <string name="low_contrast">منخفض</string>
+    <string name="medium_contrast">متوسط</string>
+    <string name="high_contrast">عالي</string>
+    <string name="language">اللغة</string>
+    <string name="language_desc">تغيير لغة التطبيق</string>
+    <!-- Home -->
+    <string name="home_title">الصفحة الأساسية</string>
+    <!-- Updates -->
+    <string name="updates_title">التحديثات</string>
+    <string name="core_title">تحديثات داخلية</string>
+    <string name="installed_title">تم التثبيت</string>
+    <string name="just_now">للتو</string>
+    <string name="minutes_ago">قبل %1$s دقائق</string>
+    <string name="hours_ago">قبل %1$s ساعات</string>
+    <string name="days_ago">قبل %1$s أيام</string>
+    <string name="months_ago">قبل %1$s شهور</string>
+    <string name="years_ago">قبل %1$s سنين</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">لا مزيد من الصور باليسار.</string>
+    <string name="no_more_images_to_the_right">لا مزيد من الصور باليمين.</string>
+    <!-- Info -->
+    <string name="mod_info_title">معلومات النموذج</string>
+    <string name="uninstall">حذف التثبيت</string>
+    <string name="cancel">إلغاء</string>
+    <string name="install">تثبيت</string>
+    <string name="open">فتح</string>
+    <string name="update">تحديث</string>
+    <string name="mod_size">حجم</string>
+    <string name="mod_source_code_link_button">كود المصدر</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">إقرار</string>
+    <string name="feedback_title">التعليق</string>
+    <string name="search_placeholder">بحث</string>
+    <string name="please_enable_notifications">يرجى تفعيل الإشعارات</string>
+    <string name="notification_request_desc">تفعيل إشعارات تحميل و تحديث البرامج.</string>
+    <string name="you_re_offline">لست متصل بالشبكة</string>
+    <string name="your_network_settings_are">إعدادات الشبكة لديك...</string>
+    <string name="check_your_connection_and_try_again">راجع اتصال الشبكة و حاول مجددا</string>
+    <string name="try_again">حاول مجددا</string>
+    <string name="network_settings">إعدادات الشبكة</string>
+    <string name="change_log">سجل التغييرات</string>
+    <string name="more">المزيد</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[الإصدار]]></string>
+    <string name="description">الوصف</string>
+    <string name="by">"ب "</string>
+    <string name="version">الإصدار</string>
+    <string name="no_network2">لا توجد شبكة</string>
+    <string name="network_desc">قد لا يوجد لديك اتصال بالشبكة، أو اتصالك محدود الوصول.
+الرجاء مراجعة الاتصال و المحاولة مجددا.</string>
+    <string name="detach_module_recommended">نموذج العزل الموصى به</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">لمنع Google Play Store من استبدال %1$s. يوصل بتثبيت نموذج العزل.</string>
+    <string name="install_detach">تثبيت نموذج العزل</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s يتطلب وجود LSPosed، و لن يعمل بدونه.</string>
+    <string name="install_lsposed">تثبيت LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s يتطلب وجود Zygisk، و لن يعمل بدونه.</string>
+    <string name="install_zygisk">تثبيت Zygisk</string>
+    <string name="rezygisk_required">ReZgisk مطلوب</string>
+    <string name="lsposed_required">LSPosed مطلوب</string>
+    <string name="continue_anyway">المتابعة بكل الأحوال</string>
+    <string name="force_refresh_rate">فرض معدل التحديث</string>
+    <string name="force_the_refresh_rate_of_the_display">فرض معدل تحديث الشاشة.</string>
+    <string name="change_boot_animation">تغيير الرسوم المتحركة عند بدأ التشغيل</string>
+    <string name="change_the_boot_animation_of_the_device">تغير الرسوم المتحركة المعروضة عند بدأ تشغيل الجهاز.</string>
+    <string name="device_info">معلومات الجهاز</string>
+    <string name="show_hardware_and_software_information">عرض معلومات الجهاز و نظام التشغيل.</string>
+    <string name="advanced_reboot_options">خيارات إعادة التشغيل المتقدم</string>
+    <string name="reboot_into_recovery_download_or_system">إعادة تشغيل لوضعية الاسترجاع، التحميل، أو النظام.</string>
+    <string name="help">المساعدة</string>
+    <string name="help_documentation">وثائق المساعدة.</string>
+    <string name="confirm_reboot">تأكيد إعادة التشغيل</string>
+    <string name="are_you_sure_you_want_to_reboot_to">هل أنت متأكد من إعادة التشغيل ل%1$s؟</string>
+    <string name="reboot">إعادة تشغيل</string>
+    <string name="file_does_not_exist">لا توجد ملفات</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">إدارة ضبط الإشعارات و إعدادات الشبكة.</string>
+    <string name="report_bugs_and_request_features">الإبلاغ عن الأخطاء و طلب الخاصيات.</string>
+    <string name="acknowledging_resources_and_contributions">إقرارات بالموارد و المساهمات.</string>
+    <string name="home">صفحة البداية</string>
+    <string name="misc">متفرقات</string>
+    <string name="updates">التحديثات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="over_wi_fi">عبر ال Wi-FI</string>
+    <string name="never_download_anything_using_wi_fi">عدم تنزيل أي شيء عن طريق ال Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">إستعمل ال Wi-FI فقط لتنزيل معلومات النموذج</string>
+    <string name="always_use_wi_fi">دائما استعمل الWi-Fi</string>
+    <string name="mod_update_notifications">إشعارات تحديث النموذج</string>
+    <string name="get_notified_about_updates_for_installed_mods">إرسال إشعار عند وجود تحديث لنموذج مثبت.</string>
+</resources>

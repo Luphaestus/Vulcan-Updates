@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Aktualizácie Vulcan</string>
+    <string name="no_network">Žiadne dostupné siete</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Nastavenia</string>
+    <string name="color_and_style"><![CDATA[Farby a štýl]]></string>
+    <string name="colour_and_style_desc">Uprav vzhľad a celkový pocit aplikácie</string>
+    <string name="theme_preview">Ukážka témy</string>
+    <string name="me_msg_1">Počul o Vulcan ROM??</string>
+    <string name="me_msg_2">Počul som že to je bomba! 🤯</string>
+    <string name="mez_msg_1">Áno, tá ROMka je strašná bomba fakt</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh konverzácia\"</string>
+    <string name="dynamic_colours_option">Dynamické Farby</string>
+    <string name="static_colours_option">Statické farby</string>
+    <string name="system_dark_theme_title">Systémový tmavý motív</string>
+    <string name="system_dark_theme_desc">Použiť systémový tmavý motív</string>
+    <string name="dark_theme_title">Tmavý motív</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Požiť tmaví motív v závislosti od pozadia</string>
+    <string name="apply_dark_theme">Použiť %1$s tmavý motív</string>
+    <string name="contrast">%1$s Kontrast</string>
+    <string name="low_contrast">Slabý</string>
+    <string name="medium_contrast">Stredný</string>
+    <string name="high_contrast">Vysoký</string>
+    <string name="language">Jazyk</string>
+    <string name="language_desc">Zmeniť jazyk aplikácie</string>
+    <!-- Home -->
+    <string name="home_title">Domov</string>
+    <!-- Updates -->
+    <string name="updates_title">Aktualizácie</string>
+    <string name="core_title">Základné Aktualizácie</string>
+    <string name="installed_title">Nainštalované</string>
+    <string name="just_now">Práve teraz</string>
+    <string name="minutes_ago">%1$s minút dozadu</string>
+    <string name="hours_ago">%1$s hodín dozadu</string>
+    <string name="days_ago">%1$s dní dozadu</string>
+    <string name="months_ago">%1$s mesiacov dozadu</string>
+    <string name="years_ago">%1$s rokov dozadu</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Žiadne ďalšie obrázky naľavo.</string>
+    <string name="no_more_images_to_the_right">Žiadne ďalšie obrázky napravo.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Informácie o Móde</string>
+    <string name="uninstall">Odinštalovať</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="install">Inštalovať</string>
+    <string name="open">Otvoriť</string>
+    <string name="update">Aktualizovať</string>
+    <string name="mod_size">Veľkosť</string>
+    <string name="mod_source_code_link_button">Zdrojový Kód</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Uvedomenia</string>
+    <string name="feedback_title">Odozva</string>
+    <string name="search_placeholder">Hľadať</string>
+    <string name="please_enable_notifications">Prosím Povoľte oznámenia</string>
+    <string name="notification_request_desc">Zapnite si prosím oznámenia aby ste dostali informácie o postupe sťahovania.</string>
+    <string name="you_re_offline">Ste offline</string>
+    <string name="your_network_settings_are">Vaše nastavenia siete sú...</string>
+    <string name="check_your_connection_and_try_again">Skontroluje vaše nastavenia siete a skúste to znovu</string>
+    <string name="try_again">Skúsiť znovu</string>
+    <string name="network_settings">Nastavenia Siete</string>
+    <string name="change_log">Záznamy Zmien</string>
+    <string name="more">...viac</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Verzie %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Popis</string>
+    <string name="by">"Od "</string>
+    <string name="version">Verzia</string>
+    <string name="no_network2">Žiadne Siete</string>
+    <string name="network_desc">Možno nemáte aktívny prístup k internetu, alebo vaše nastavenia siete môžu byť konfigurované na obmedzenie prístupu. Prosím skontrolujte vaše pripojenie a skúste to znovu.</string>
+    <string name="detach_module_recommended">Odporučené odpojenie modulu</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Pre zabránenie Google Play Store pred prepísaním %1$s, je odporúčané nainštalovať a odpojiť modul.</string>
+    <string name="install_detach">Inštalovať Odpojenie</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s požaduje LSPosed, a nebude bez neho fungovať.</string>
+    <string name="install_lsposed">Inštalovať LSPosed</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s požaduje Zygisk, a nebude bez neho fungovať.</string>
+    <string name="install_zygisk">Inštalovať Zygisk</string>
+    <string name="rezygisk_required">ReZygisk Požadovaný</string>
+    <string name="lsposed_required">LSPosed vyžadovaný</string>
+    <string name="continue_anyway">Pokračovať aj tak</string>
+    <string name="force_refresh_rate">Vynútená Frekvencia Obrazovky</string>
+    <string name="force_the_refresh_rate_of_the_display">Vynútiť frekvenciu obrazovky.</string>
+    <string name="change_boot_animation">Zmeniť Boot Animáciu</string>
+    <string name="change_the_boot_animation_of_the_device">Zmeniť Boot animáciu zariadenia.</string>
+    <string name="device_info">Informácie o zariadení</string>
+    <string name="show_hardware_and_software_information">Ukázať hardvérové a softvérové informácie.</string>
+    <string name="advanced_reboot_options">Pokročilé nastavenia reštartovania</string>
+    <string name="reboot_into_recovery_download_or_system">Reštartovať do recovery, download, alebo systém.</string>
+    <string name="help">Pomoc</string>
+    <string name="help_documentation">Dokumentácia Pomoci.</string>
+    <string name="confirm_reboot">Potvrdiť Reštartovanie</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Ste si istý že chcete reštartovať do %1$s?</string>
+    <string name="reboot">Reštartovať</string>
+    <string name="file_does_not_exist">Súbor neexistuje</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Spravovať vaše oznámenia a nastavenia internetu.</string>
+    <string name="report_bugs_and_request_features">Nahlásiť chybu a požiadať o funkcie.</string>
+    <string name="acknowledging_resources_and_contributions">Uznanie zdrojov a prispení.</string>
+    <string name="home">Domov</string>
+    <string name="misc">Rôzne</string>
+    <string name="updates">Aktualizácie</string>
+    <string name="settings">Nastavenia</string>
+    <string name="over_wi_fi">Cez WI-FI</string>
+    <string name="never_download_anything_using_wi_fi">Nikdy nesťahovať nič cez Wi-Fi</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Použiť WI-FI len vtedy keď sa sťahujú informácie o módoch</string>
+    <string name="always_use_wi_fi">Vždy použiť Wi-Fi</string>
+    <string name="mod_update_notifications">Upozornenia aktualizácii módov</string>
+    <string name="get_notified_about_updates_for_installed_mods">Buďte oznámený o aktualizáciách pre nainštalované módy.</string>
+</resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Güncellemeleri</string>
+    <string name="no_network">Mevcut ağ yok</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="color_and_style"><![CDATA[Renk ve tarz]]></string>
+    <string name="colour_and_style_desc">Uygulamanın görünüşünü ve hissiyatını ayarlayın</string>
+    <string name="theme_preview">Tema Önizlemesi</string>
+    <string name="me_msg_1">Daha önce Vulcan ROM\'u duydunuz mu??</string>
+    <string name="me_msg_2">Bomba gibi olduğunu duydum! 🤯</string>
+    <string name="mez_msg_1">Evet, gerçekten de bomba gibi ROM</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh konuşması\"</string>
+    <string name="dynamic_colours_option">Dinamik Renkler</string>
+    <string name="static_colours_option">Statik Renkler</string>
+    <string name="system_dark_theme_title">Sistem Koyu Teması</string>
+    <string name="system_dark_theme_desc">Sistem ayarlarına göre koyu tema uygulayın</string>
+    <string name="dark_theme_title">Koyu Tema</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Duvar kağıdına göre koyu tema uygulayın</string>
+    <string name="apply_dark_theme">%1$s koyu temayı uygula</string>
+    <string name="contrast">%1$s Kontrast</string>
+    <string name="low_contrast">Düşük</string>
+    <string name="medium_contrast">Orta</string>
+    <string name="high_contrast">Yüksek</string>
+    <string name="language">Dil</string>
+    <string name="language_desc">Uygulamanın dilini değiştir</string>
+    <!-- Home -->
+    <string name="home_title">Ana Sayfa</string>
+    <!-- Updates -->
+    <string name="updates_title">Güncellemeler</string>
+    <string name="core_title">Çekirdek Güncellemeler</string>
+    <string name="installed_title">Yüklenenler</string>
+    <string name="just_now">Az önce</string>
+    <string name="minutes_ago">%1$s dakika önce</string>
+    <string name="hours_ago">%1$s saat önce</string>
+    <string name="days_ago">%1$s gün önce</string>
+    <string name="months_ago">%1$s ay önce</string>
+    <string name="years_ago">%1$s yıl önce</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Solda daha fazla görüntü yok.</string>
+    <string name="no_more_images_to_the_right">Sağda daha fazla görüntü yok.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Mod Bilgileri</string>
+    <string name="uninstall">Kaldır</string>
+    <string name="cancel">İptal et</string>
+    <string name="install">Yükle</string>
+    <string name="open">Aç</string>
+    <string name="update">Güncelle</string>
+    <string name="mod_size">Boyut</string>
+    <string name="mod_source_code_link_button">Kaynak Kodu</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Teşekkürler</string>
+    <string name="feedback_title">Geri bildirim</string>
+    <string name="search_placeholder">Ara</string>
+    <string name="please_enable_notifications">Lütfen Bildirimleri Etkinleştirin</string>
+    <string name="notification_request_desc">Yükleme ilerlemesi ve MOD güncellemelerini almak için bildirimleri açın.</string>
+    <string name="you_re_offline">Çevrimdışısınız</string>
+    <string name="your_network_settings_are">Ağ ayarlarınız...</string>
+    <string name="check_your_connection_and_try_again">İnternet bağlantınızı kontrol edin ve tekrar deneyin</string>
+    <string name="try_again">Tekrar deneyin</string>
+    <string name="network_settings">Ağ Ayarları</string>
+    <string name="change_log">Değişiklik Kaydı</string>
+    <string name="more">... fazlası</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Versiyon%1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Açıklama</string>
+    <string name="by">"Tarafından "</string>
+    <string name="version">Versiyon</string>
+    <string name="no_network2">Ağ Yok</string>
+    <string name="network_desc">İnternet bağlantınız olmayabilir, ya da ağ ayarlarınız kısıtlı erişime ayarlanmış olabilir. Lütfen bağlantınızı kontrol edin ve tekrar deneyin.</string>
+    <string name="detach_module_recommended">Modülün ayrılması önerilir</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Google Play Store\'un %1$s\'ı üzerine yazmasını önlemek için, bir ayırma modulü yüklenmesi tavsiye edilir.</string>
+    <string name="install_detach">Ayırma Modülü Yükle</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s LSPosed\'u gerektirir ve onsuz düzgün çalışmayacaktır.</string>
+    <string name="install_lsposed">LSPosed Yükle</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s Zygisk\'i gerektirir ve onsuz düzgün çalışmayacaktır.</string>
+    <string name="install_zygisk">Zygisk Yükle</string>
+    <string name="rezygisk_required">ReZygisk Gereklidir</string>
+    <string name="lsposed_required">LSPosed Gereklidir</string>
+    <string name="continue_anyway">Yine de Devam Et</string>
+    <string name="force_refresh_rate">Yenileme Hızını Zorla</string>
+    <string name="force_the_refresh_rate_of_the_display">Ekranın tazeleme hızını zorla.</string>
+    <string name="change_boot_animation">Açılış Animasyonunu Değiştir</string>
+    <string name="change_the_boot_animation_of_the_device">Cihazın açılış animasyonunu değiştir.</string>
+    <string name="device_info">Cihaz bilgisi</string>
+    <string name="show_hardware_and_software_information">Donanım ve yazılım bilgilerini göster.</string>
+    <string name="advanced_reboot_options">Gelişmiş Yeniden Başlatma Seçenekleri</string>
+    <string name="reboot_into_recovery_download_or_system">Kurtarma, indirme ya da sisteme yeniden başlat.</string>
+    <string name="help">Yardım</string>
+    <string name="help_documentation">Yardım Sayfası.</string>
+    <string name="confirm_reboot">Yeniden Başlatmayı Onayla</string>
+    <string name="are_you_sure_you_want_to_reboot_to">%1$s sayfasına yeniden başlatmak istediğinizden emin misiniz?</string>
+    <string name="reboot">Yeniden Başlat</string>
+    <string name="file_does_not_exist">Dosya mevcut değil</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Bildirim tercihlerinizi ve internet ayarlarınızı yönetin.</string>
+    <string name="report_bugs_and_request_features">Hata bildir ve özellik talep et.</string>
+    <string name="acknowledging_resources_and_contributions">Kaynaklara ve katkılara teşekkür etme.</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="misc">Çeşitli</string>
+    <string name="updates">Güncellemeler</string>
+    <string name="settings">Ayarlar</string>
+    <string name="over_wi_fi">Wi-Fi üzerinden</string>
+    <string name="never_download_anything_using_wi_fi">Asla Wi-Fi kullanarak bir şey indirmeyin</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Mod bilgilerini indirirken yalnızca Wi-Fi kullanın</string>
+    <string name="always_use_wi_fi">Her zaman Wi-Fi kullanın</string>
+    <string name="mod_update_notifications">Mod Güncelleme Bildirimleri</string>
+    <string name="get_notified_about_updates_for_installed_mods">Yüklü modların güncellemeleri hakkında bildirim alın.</string>
+</resources>
