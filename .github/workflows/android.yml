@@ -50,12 +50,14 @@ jobs:
         run: |
           VERSION=$(grep 'version ' app/build.gradle | awk '{print $2}' | tr -d "'\"")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Extracted version: $VERSION"  # Debugging output
 
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.VERSION }}
         run: |
+          echo "Creating release with tag: $tag"  # Debugging output
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
               -p \
