@@ -42,13 +42,13 @@ jobs:
         id: get_commit_messages
         run: |
           echo "COMMIT_MESSAGES<<EOF" >> $GITHUB_ENV
-          git log --format="- %s" $(git describe --tags --abbrev=0)..HEAD >> $GITHUB_ENV
+          git log -1 --format="- %s" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Get version from build.gradle
         id: get_version
         run: |
-          VERSION=$(grep 'version ' app/build.gradle | awk '{print $2}' | tr -d "'\"")
+          VERSION=$(grep 'versionName = ' app/build.gradle.kts | awk '{print $3}' | tr -d "'\"")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Extracted version: $VERSION"  # Debugging output
 
