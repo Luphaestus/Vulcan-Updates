@@ -36,7 +36,8 @@ jobs:
           sed -i "s|val TELEGRAM_FEEDBACK_CHANNEL = \"\"|val TELEGRAM_FEEDBACK_CHANNEL = \"${{ secrets.TELEGRAM_FEEDBACK_CHANNEL }}\"|" app/src/main/java/luph/vulcanizerv3/updates/data/sectrets.kt
 
       - name: Build with Gradle (Debug)
-        run: ./gradlew assembleDebug
+      - working-directory: "./Vulcan V3"
+        run: ./gradlew assembleDebug --no-daemon   
 
       - name: Get commit messages
         id: get_commit_messages
