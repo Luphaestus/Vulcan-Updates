@@ -91,23 +91,22 @@ import luph.vulcanizerv3.updates.utils.download.fetchModDetails
 import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 import luph.vulcanizerv3.updates.utils.root.runShellCommand
 import java.time.Instant
+import kotlin.text.get
 import kotlin.time.Duration
 
 @Composable
 fun VersionCard(
-    modDetails: ModDetails?,
+    modDetails: MutableState<ModDetails?>,
     currentVersion: String = "null",
     navController: NavController,
     view: View
 ) {
     val timeAgoText = remember { mutableStateOf("") }
-    showNavigation.show = true
-    BackHandler {}
-    Box() {
-        if (modDetails != null) {
-            LaunchedEffect(modDetails.timestamp) {
+    Box{
+        if (modDetails.value != null) {
+            LaunchedEffect(modDetails.value!!.timestamp) {
                 while (true) {
-                    timeAgoText.value = "~${timeAgo(modDetails.timestamp)}"
+                    timeAgoText.value = "~${timeAgo(modDetails.value!!.timestamp)}"
                     delay(60000)
                 }
             }
@@ -124,7 +123,7 @@ fun VersionCard(
             ) {
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = modDetails.name,
+                        text = modDetails.value!!.name,
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
@@ -139,7 +138,7 @@ fun VersionCard(
                     "Mod Info",
                     navController = navController,
                     view = view,
-                    onClick = { RouteParams.push(modDetails) }) {
+                    onClick = { RouteParams.push(modDetails.value) }) {
                     Column(
                         verticalArrangement = Arrangement.Center,
                         modifier = Modifier
@@ -150,7 +149,7 @@ fun VersionCard(
                             .padding(vertical = 8.dp, horizontal = 16.dp)
                     ) {
                         Text(
-                            text = if (currentVersion.trim() == modDetails.version.trim()) "Info" else "Update",
+                            text = if (currentVersion.trim() == modDetails.value!!.version.trim()) "Info" else "Update",
                             color = MaterialTheme.colorScheme.secondary
                         )
                     }
@@ -158,7 +157,7 @@ fun VersionCard(
             }
         }
         AnimatedVisibility(
-            visible = modDetails == null,
+            visible = modDetails.value == null,
             exit = scaleOut(tween()),
         ) {
             Row(
@@ -300,6 +299,8 @@ fun ModUpdateCard(
 @Composable
 fun updateCarousel(modPackageNames: List<String>, navController: NavController, view: View, showInstalledVersion: Boolean): List<ModDetails>{
     showNavigation.show = true
+    BackHandler {}
+
     val modDetailsList = remember { mutableStateOf<List<ModDetails>>(listOf()) }
     Box {
         LazyRow {
@@ -339,21 +340,21 @@ fun UpdatesPage(navController: NavController, view: View) {
                     item {
                         Subheading(stringResource(R.string.core_title))
                         VersionCard(
-                            ModDetailsStore.getCoreDetails().value["rom"],
+                            remember { mutableStateOf(ModDetailsStore.getCoreDetails().value["rom"] ) },
                             runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["rom"]?.packageName}").value.first,
                             navController,
                             view
                         )
 
                         VersionCard(
-                            ModDetailsStore.getCoreDetails().value["app"],
+                            remember { mutableStateOf(ModDetailsStore.getCoreDetails().value["app"])},
                             getAppVersion(view.context),
                             navController,
                             view
                         )
 
                         VersionCard(
-                            ModDetailsStore.getCoreDetails().value["pif"],
+                            remember { mutableStateOf(ModDetailsStore.getCoreDetails().value["pif"])},
                             runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["pif"]?.packageName}").value.first,
                             navController,
                             view

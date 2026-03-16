@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.Help
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
+import androidx.compose.material.icons.outlined.Animation
 import androidx.compose.material.icons.outlined.BugReport
 import androidx.compose.material.icons.outlined.Help
 import androidx.compose.material.icons.outlined.Language
@@ -75,6 +76,28 @@ fun MiscPage(
 
                 item {
                     SelectableSettingGroupItem(
+                        "Change QMG Animation",
+                        title = "Change QMG Animation",
+                        navController,
+                        view,
+                        desc = "Change the QMG animation of the device",
+                        icon = Icons.Outlined.Animation,
+                    )
+                }
+
+                item {
+                    SelectableSettingGroupItem(
+                        "Advanced Reboot Options",
+                        title = stringResource(R.string.advanced_reboot_options),
+                        navController,
+                        view,
+                        desc = stringResource(R.string.reboot_into_recovery_download_or_system),
+                        icon = Icons.Outlined.TouchApp,
+                    )
+                }
+
+                item {
+                    SelectableSettingGroupItem(
                         "Device Info",
                         title = stringResource(R.string.device_info),
                         navController,
@@ -82,19 +105,6 @@ fun MiscPage(
                         desc = stringResource(R.string.show_hardware_and_software_information),
                         icon = Icons.Outlined.MonitorHeart,
                     )
-                }
-
-                if (isRooted) {
-                    item {
-                        SelectableSettingGroupItem(
-                            "Advanced Reboot Options",
-                            title = stringResource(R.string.advanced_reboot_options),
-                            navController,
-                            view,
-                            desc = stringResource(R.string.reboot_into_recovery_download_or_system),
-                            icon = Icons.Outlined.TouchApp,
-                        )
-                    }
                 }
 
                 item {

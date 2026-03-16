@@ -79,6 +79,9 @@
     <string name="install_zygisk">Zygisk Yükle</string>
     <string name="rezygisk_required">ReZygisk Gereklidir</string>
     <string name="lsposed_required">LSPosed Gereklidir</string>
+    <string name="root_required">Root Gerekli</string>
+    <string name="root_required_desc">Bu modülün yüklenmesi için root erişimi gerekli.</string>
+    <string name="root_required_guide">Root Rehberi</string>
     <string name="continue_anyway">Yine de Devam Et</string>
     <string name="force_refresh_rate">Yenileme Hızını Zorla</string>
     <string name="force_the_refresh_rate_of_the_display">Ekranın tazeleme hızını zorla.</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">Her zaman Wi-Fi kullanın</string>
     <string name="mod_update_notifications">Mod Güncelleme Bildirimleri</string>
     <string name="get_notified_about_updates_for_installed_mods">Yüklü modların güncellemeleri hakkında bildirim alın.</string>
+    <string name="notifications_internet"><![CDATA[Bildirimler ve İnternet]]></string>
+    <string name="upload">Yükle</string>
+    <string name="don_t_replace">Yer değiştirme</string>
+    <string name="or">veya</string>
+    <string name="overview">Genel Bakış</string>
+    <string name="custom_boot_animation">Sistem Önyükleme Animasyonu</string>
+    <string name="invalid_file_type">Geçersiz Dosya Türü</string>
+    <string name="dimension_mismatch">Yanlış Boyut Eşleşmesi</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Yüklediğiniz dosya bir JPEG dosyası değil.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Yüklediğiniz görsel beklenilen %1$sx%2$s boyutlarıyla eşleşmiyor. Yüklediğiniz dosya %3$sx%4$s boyutunda.</string>
+    <string name="ok">Tamam</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Özel bir imaj flaşlamak önyükleme döngülerine veya cihazınızın bozulmasına sebep olabilir. Ne yaptığınızı bildiğinizden emin olun. Eğer emin değilseniz, destek grubunda yardım isteyin. Özel imajlar flaşlamaktan oluşan zararlardan ben sorumluluk kabul etmeyeceğim.</string>
+    <string name="upload_warning">Yükleme Uyarısı</string>
+    <string name="i_understand">Anlıyorum</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Bu önyükleme animasyonunu yüklemek istediğinizden emin misiniz?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Bu sizin mevcut önyükleme animasyonunuzun yerini alacak. İlerlemeden önce mevcut önyükleme animasyonunuzun yedeğini aldığınızdan emin olun.</string>
+    <string name="install_and_reboot">Kur ve Yeniden Başlat</string>
+    <string name="boot_animation">Önyükleme animasyonu</string>
+    <string name="previous">Önceki</string>
+    <string name="next">Sonraki</string>
 </resources>

@@ -9,14 +9,20 @@ androidx-lifecycle-compose = "2.8.7"
 androidx-lifecycle-runtime-compose = "2.8.7"
 androidx-navigation = "2.8.4"
 androidx-window = "1.3.0"
+animationGraphics = "1.7.7"
 coil = "2.7.0"
+coilGif = "2.2.2"
 compileSdk = "35"
 composeMarkdown = "0.5.4"
 composeShimmer = "1.3.1"
+constraintlayoutCompose = "1.1.0"
 coreKtx = "2.2.5"
 coroutines = "1.9.0"
+fileutils = "1.0.0"
 firebaseBom = "33.6.0"
+foundation = "1.7.7"
 gradle-versions = "0.51.0"
+haze = "1.3.0"
 jetpackLoading = "1.1.0"
 ketch = "2.0.2"
 khttp = "1.0.0"
@@ -26,9 +32,11 @@ kotlinx-serialization-json = "1.7.3"
 kotlinxSerializationCore = "1.7.3"
 library = "1.1.1"
 lottieCompose = "6.0.0"
-minSdk = "30"
+minSdk = "33"
+ohteepee = "1.1.0"
 pagingCompose = "3.3.4"
 pencilloader = "1.0.0"
+sdk = "1.11.1"
 secrets = "2.0.1"
 targetSdk = "33"
 translate = "17.0.3"
@@ -44,6 +52,7 @@ firebaseMessaging = "24.1.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-animation-graphics = { module = "androidx.compose.animation:animation-graphics", version.ref = "animationGraphics" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-material-iconsExtended = { module = "androidx.compose.material:material-icons-extended" }
@@ -52,8 +61,10 @@ androidx-compose-material3-adaptive-navigationSuite = { module = "androidx.compo
 androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
+androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-compose" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle-runtime-compose" }
 androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-compose" }
@@ -61,16 +72,19 @@ androidx-navigation-compose = { module = "androidx.navigation:navigation-compose
 androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingCompose" }
 androidx-window = { module = "androidx.window:window", version.ref = "androidx-window" }
 androidx-work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "workRuntimeKtx" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilGif" }
 coil-kt = { module = "io.coil-kt:coil", version.ref = "coil" }
 coil-kt-base = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 coil-kt-compose = { module = "io.coil-kt:coil-base", version.ref = "coil" }
 compose-markdown = { module = "com.github.jeziellago:compose-markdown", version.ref = "composeMarkdown" }
 compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.ref = "composeShimmer" }
 core-ktx = { module = "com.github.prime-zs.toolkit:core-ktx", version.ref = "coreKtx" }
+fileutils = { module = "com.github.starry-shivam:FileUtils", version.ref = "fileutils" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-inappmessaging-display = { module = "com.google.firebase:firebase-inappmessaging-display" }
+haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 jetpack-loading = { module = "com.github.MahboubehSeyedpour:jetpack-loading", version.ref = "jetpackLoading" }
 ketch = { module = "com.github.khushpanchal:Ketch", version.ref = "ketch" }
 khttp = { module = "khttp:khttp", version.ref = "khttp" }
@@ -81,6 +95,7 @@ kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 library = { module = "me.zhanghai.compose.preference:library", version.ref = "library" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
+ohteepee = { module = "com.github.composeuisuite:ohteepee", version.ref = "ohteepee" }
 pencilloader = { module = "io.github.m0coding:pencilloader", version.ref = "pencilloader" }
 photo-compos = { module = "io.github.fornewid:photo-compose", version.ref = "fornwid" }
 photo-zoomable = { module = "de.mr-pine.utils:zoomables", version.ref = "zoomable" }
@@ -90,6 +105,7 @@ ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+sdk = { module = "com.github.crowdin.mobile-sdk-android:sdk", version.ref = "sdk" }
 twyper = { module = "com.github.theapache64:twyper", version.ref = "twyper" }
 versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
 

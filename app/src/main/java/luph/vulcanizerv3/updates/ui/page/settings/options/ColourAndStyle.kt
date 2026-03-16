@@ -400,7 +400,7 @@ fun ColorAndStyleOption(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current
                         )
-                        .animateContentSize(animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()))
+                        .animateContentSize(animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()))
                         .fillMaxWidth()
                         .height(IntrinsicSize.Min)
                 ) {
@@ -411,7 +411,8 @@ fun ColorAndStyleOption(
                             .align(Alignment.Center),
                         color = animateColorAsState(
                             if (isDynamic.value) textSelected else textDeselected,
-                            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()), label = ""
+                            animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()),
+                            label = ""
                         ).value
                     )
                 }
@@ -450,7 +451,7 @@ fun ColorAndStyleOption(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = LocalIndication.current
                         )
-                        .animateContentSize(animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()))
+                        .animateContentSize(animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()))
                         .fillMaxWidth()
                         .height(IntrinsicSize.Min)
                 ) {
@@ -461,7 +462,8 @@ fun ColorAndStyleOption(
                             .align(Alignment.Center),
                         color = animateColorAsState(
                             if (!isDynamic.value) textSelected else textDeselected,
-                            animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()), label = ""
+                            animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()),
+                            label = ""
                         ).value
                     )
                 }
@@ -511,18 +513,18 @@ fun ColorAndStyleOption(
         AnimatedVisibility(
             visible = !isSystemDark.value,
             enter = expandVertically(
-                animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt())
+                animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt())
 
             ),
             exit = shrinkVertically(
-                animationSpec = tween(durationMillis = (300*getAnimationScale()).toInt()),
+                animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()),
             )
         ) {
             SettingsElementBase(
                 title = stringResource(R.string.dark_theme_title),
                 desc = if (isDynamic.value) {
                     stringResource(R.string.apply_dark_theme_based_on_wallpaper)
-                } else stringResource(R.string.apply_dark_theme, ThemeManager.theme?:""),
+                } else stringResource(R.string.apply_dark_theme, ThemeManager.theme ?: ""),
                 icon = Icons.Outlined.DarkMode,
             )
             {
@@ -558,31 +560,41 @@ fun ColorAndStyleOption(
                 }
             }
         }
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .padding(end = 8.dp, start = 24.dp),
+        AnimatedVisibility(
+            visible = !isDynamic.value,
+            enter = expandVertically(
+                animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt())
+            ),
+            exit = shrinkVertically(
+                animationSpec = tween(durationMillis = (300 * getAnimationScale()).toInt()),
+            )
         ) {
-            Row {
-                Text(
-                    text = stringResource(
-                        R.string.contrast, when (ThemeManager.contrast ?: 0f) {
-                            in 0f..0.33f -> stringResource(R.string.low_contrast)
-                            in 0.34f..0.66f -> stringResource(R.string.medium_contrast)
-                            in 0.67f..1f -> stringResource(R.string.high_contrast)
-                            else -> "err"
-                        }
-                    ),
-                    color = MaterialTheme.colorScheme.onSurface,
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp)
+                    .padding(end = 8.dp, start = 24.dp),
+            ) {
+                Row {
+                    Text(
+                        text = stringResource(
+                            R.string.contrast, when (ThemeManager.contrast ?: 0f) {
+                                in 0f..0.33f -> stringResource(R.string.low_contrast)
+                                in 0.34f..0.66f -> stringResource(R.string.medium_contrast)
+                                in 0.67f..1f -> stringResource(R.string.high_contrast)
+                                else -> "err"
+                            }
+                        ),
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
+                Slider(
+                    value = ThemeManager.contrast ?: .0f,
+                    onValueChange = { ThemeManager.contrast = it },
+                    valueRange = 0f..1f,
+                    steps = 1,
                 )
             }
-            Slider(
-                value = ThemeManager.contrast ?: .0f,
-                onValueChange = { ThemeManager.contrast = it },
-                valueRange = 0f..1f,
-                steps = 1,
-            )
         }
     }
 }

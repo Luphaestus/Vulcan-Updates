@@ -2,8 +2,11 @@ package luph.vulcanizerv3.updates.ui.components.info
 
 import android.util.Log
 import android.view.View
+import android.window.BackEvent
 import android.window.OnBackInvokedCallback
+import androidx.activity.BackEventCompat
 import androidx.activity.compose.BackHandler
+import androidx.activity.compose.PredictiveBackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +20,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
@@ -24,9 +28,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.google.firebase.analytics.logEvent
 import com.ketch.Status
+
+
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import luph.vulcanizerv3.updates.MainActivity
 import luph.vulcanizerv3.updates.R
@@ -43,11 +52,12 @@ import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.page.RouteParams
 import luph.vulcanizerv3.updates.ui.page.settings.options.subscribe
 import luph.vulcanizerv3.updates.ui.page.showNavigation
-import luph.vulcanizerv3.updates.utils.apkmanager.installAPK
-import luph.vulcanizerv3.updates.utils.modulemanager.installModule
 import luph.vulcanizerv3.updates.utils.root.runShellCommand
 import java.io.File
+import kotlin.coroutines.cancellation.CancellationException
 
+
+@OptIn(DelicateCoroutinesApi::class)
 @Composable
 fun ModInfo(navController: NavController = NavController(MainActivity.applicationContext()),
             view: View = MainActivity.instance!!.window.decorView, passedModDetails: ModDetails? = null) {
@@ -59,23 +69,21 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
 
     val infoState = remember { mutableStateOf(UpdateStatus.NOT_INSTALLED) }
 
-
     showNavigation.show = false
 
-    val corePackages = arrayOf("luph.vulcanizerv3.updates", "persist.sys.vulcan.pif.version")
-
-    val infoAlert = infoAlert()
-    val buttonData = buttonData(modDetails, infoState, downloadId, changeUpdateType = { updateStatus, buttonData -> changeUpdateType(updateStatus, buttonData) }, infoAlert, navController, view)
-    val infoBoxesData = infoBoxesData(modDetails)
 
 
-    fun goBack(){
+
+    val corePackages = arrayOf("luph.vulcanizerv3.updates", "persist.sys.vulcan.pif.version", "persist.sys.vulcan.romversion")
+
+    fun updateModStatus(){
         if (ModDetailsStore.getAllPackages().contains(modDetails.packageName)) {
             when (infoState.value) {
                 UpdateStatus.INSTALLED -> {
                     ModDetailsStore.installedMods.value += modDetails.packageName
                     ModDetailsStore.installedModsUpdate.value -= modDetails.packageName
                 }
+
 
                 UpdateStatus.UPDATE_AVAILABLE -> {
                     ModDetailsStore.installedMods.value += modDetails.packageName
@@ -90,12 +98,13 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                 else -> {}
             }
         }
-        navController.popBackStack()
     }
-    OnBackInvokedCallback {
-        goBack()
-        true
-    }
+
+    val infoAlert = infoAlert()
+    val buttonData = buttonData(modDetails, infoState, downloadId, changeUpdateType = { updateStatus, buttonData -> changeUpdateType(updateStatus, buttonData) }, infoAlert, navController, view,  {updateModStatus()})
+    val infoBoxesData = infoBoxesData(modDetails)
+
+
 
     LaunchedEffect(downloadId.intValue) {
         if (infoState.value != UpdateStatus.UPDATING) {
@@ -111,7 +120,7 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
                     else -> {
                         when (modDetails.updateType) {
                             ModType.SHELL -> {
-                                if (runShellCommand("getprop ${ModDetailsStore.getCoreDetails().value["pif"]?.packageName}").value.first.trim() == modDetails.version.trim())
+                                if (runShellCommand("getprop ${modDetails.packageName}").value.first.trim() == modDetails.version.trim())
                                     changeUpdateType(UpdateStatus.INSTALLED, buttonData)
                                 else changeUpdateType(UpdateStatus.UPDATE_AVAILABLE, buttonData)
                             }
@@ -133,86 +142,19 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
             }
         }
 
-        MainActivity.getKetch().getAllDownloads().forEach { downloadModel ->
-            if (buttonData.modDetails.url + DETAILFILE.FILE.type == downloadModel.url)
-                downloadId.intValue = downloadModel.id
-        }
-        MainActivity.getKetch().observeDownloadById(downloadId.intValue)
-            .flowOn(Dispatchers.IO)
-            .collect { downloadModel ->
-                downloadProgressPercentage.intValue = downloadModel.progress
 
-                downloadModel.status.let {
-                    if (it == Status.SUCCESS) {
-                        if (modDetails.packageName in ModDetailsStore.getInstalledMods().value) {
-                            return@collect
-                        }
-                        buttonData.canCancel = false
+        downloadId.intValue = getDownloadID(modDetails.url) ?: -1
+        val downloadData = InfoDownloadData(
+            downloadId,
+            downloadProgressPercentage,
+            infoState,
+            corePackages,
+            modDetails,
+            buttonData,
+            infoBoxesData,
+        )
+        observeDownloadProgress(downloadData)
 
-
-                        MainActivity.getFirebaseAnalytics().logEvent("downloaded_mod") {
-                            param("mod_name", modDetails.name)
-                            param("mod_version", modDetails.version)
-                            param("mod_author", modDetails.author)
-                            modDetails.keywords.forEach { keyword ->
-                                param("keyword", keyword)
-                            }
-                        }
-                        GlobalScope.launch(Dispatchers.IO) {
-                            var success = false
-                            when (modDetails.updateType) {
-                                ModType.APK -> {
-                                    success = installAPK(downloadModel.path + "/${modDetails.name}")
-                                    buttonData.canCancel = true
-                                }
-
-                                ModType.MODULE -> {
-                                    val result = installModule(downloadModel.path + "/${modDetails.name}")
-                                    success = result.second
-                                    if (!success) infoBoxesData.showErrorText.value = result.first
-                                    buttonData.canCancel = true
-                                }
-
-                                ModType.SHELL -> {
-                                    val shellFile = File(downloadModel.path, "shell.sh")
-                                    shellFile.writeText("FILEPATH=\"${downloadModel.path + "/${modDetails.name}"}\"\n" + modDetails.shell)
-                                    val res = runShellCommand("sh ${shellFile.absolutePath}").value
-                                    success = res.second
-                                    buttonData.canCancel = true
-                                }
-
-                                else -> {}
-                            }
-                            if (success) {
-                                changeUpdateType(UpdateStatus.INSTALLED, buttonData)
-
-                                if (ModDetailsStore.getNotificationAndInternetPreferences().value.notifyAppUpdates.value)
-                                    if (corePackages.contains(modDetails.packageName))
-                                        subscribe("Core")
-                                    else
-                                        subscribe(modDetails.packageName)
-                                MainActivity.getFirebaseAnalytics().logEvent("installed_mod") {
-                                    param("mod_name", modDetails.name)
-                                    param("mod_version", modDetails.version)
-                                    param("mod_author", modDetails.author)
-                                    modDetails.keywords.forEach { keyword ->
-                                        param("keyword", keyword)
-                                    }
-                                }
-                            }
-                            else changeUpdateType(UpdateStatus.NOT_INSTALLED, buttonData)
-                            MainActivity.getKetch().clearDb(downloadId.intValue)
-                        }
-
-                    } else if (it in listOf(Status.FAILED, Status.CANCELLED, Status.PAUSED)) {
-                        changeUpdateType(UpdateStatus.NOT_INSTALLED, buttonData)
-                        MainActivity.getKetch().clearDb(downloadId.intValue)
-                    } else {
-                        changeUpdateType(UpdateStatus.UPDATING, buttonData)
-                        buttonData.canCancel = true
-                    }
-                }
-            }
     }
 
     InfoPopup(infoAlert, modDetails, navController, view)
@@ -224,7 +166,7 @@ fun ModInfo(navController: NavController = NavController(MainActivity.applicatio
             .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
     ) {
 
-        PageNAv(stringResource(R.string.mod_info_title), navController, { goBack() })
+        PageNAv(stringResource(R.string.mod_info_title), navController)
 
 
         LazyColumn(Modifier.background(MaterialTheme.colorScheme.surface)) {

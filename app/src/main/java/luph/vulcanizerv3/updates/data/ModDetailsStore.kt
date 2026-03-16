@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
+import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import compareVersionNames
@@ -28,6 +29,12 @@ import luph.vulcanizerv3.updates.utils.modulemanager.getModuleInstalledList
 import luph.vulcanizerv3.updates.utils.modulemanager.getModuleVersions
 import luph.vulcanizerv3.updates.utils.root.ROOTStatus
 import luph.vulcanizerv3.updates.utils.root.getROOTStatus
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import luph.vulcanizerv3.updates.ui.page.oobe.OOBEDataPreference
+import luph.vulcanizerv3.updates.ui.page.oobe.OOBEDataSerializable
+import luph.vulcanizerv3.updates.utils.getprop
 
 enum class ModType {
     APK, TWRP, MODULE, SHELL
@@ -85,7 +92,13 @@ object ModDetailsStore {
     var installedModsUpdate =mutableStateOf<Set<String>>(setOf())
     private var isUpdating = mutableStateOf(false)
 
+    private var isUpdateForced = mutableStateOf(false)
+    var showUpdateForceDialog = mutableStateOf(false)
+
     val notificationAndInternetPreferences = mutableStateOf(NotificationAndInternetPreferences())
+
+    val loadedOOBE = mutableStateOf(false)
+    val oobeData = mutableStateOf(OOBEDataPreference())
 
     init {
         refresh()
@@ -107,9 +120,19 @@ object ModDetailsStore {
         return mutableStateOf(getAppVersion() != coreDetails.value.get("app")?.version && coreDetails.value.get("app")?.version != null)
     }
 
+    fun numbCoreUpdatesNeeded(): State<Int> {
+        var numbCoreUpdatesNeeded = mutableStateOf(0)
+        if (isAppUpdatedNeeded().value) numbCoreUpdatesNeeded.value++
+        arrayOf("rom", "pif").forEach {
+            coreDetails.value.get(it)?.let {
+                if (compareVersionNames(it.version, getprop(it.packageName))) numbCoreUpdatesNeeded.value++
+            }
+        }
+        return numbCoreUpdatesNeeded
+    }
+
     fun isAppUpdateForced(): State<Boolean> {
-        if (coreDetails.value.get("app") == null) return mutableStateOf(false)
-        return mutableStateOf(coreDetails.value.get("app")?.require !=  getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value)
+        return isUpdateForced
     }
 
     fun getAllModKeywords(): State<Map<String, MutableList<ModDetails>>> {
@@ -210,7 +233,7 @@ object ModDetailsStore {
 
     fun loadNotificationAndInternetPreferences() {
         SerializableManager<String>().load(NotificationAndInternetPreferencesSerilizeable().fileName)?.let {
-           val serilable:NotificationAndInternetPreferencesSerilizeable = Json.decodeFromString(it)
+            val serilable:NotificationAndInternetPreferencesSerilizeable = Json.decodeFromString(it)
             notificationAndInternetPreferences.value = NotificationAndInternetPreferences(
                 mutableStateOf(serilable.wifi),
                 mutableStateOf(serilable.data),
@@ -228,6 +251,29 @@ object ModDetailsStore {
                 notificationAndInternetPreferences.value.data.value,
                 notificationAndInternetPreferences.value.notifyCoreUpdates.value,
                 notificationAndInternetPreferences.value.notifyAppUpdates.value
+            ))
+        )
+    }
+
+    fun getOOBEPreferences(): State<OOBEDataPreference> {
+        if (!loadedOOBE.value) loadOOBEPreferences()
+        return oobeData
+    }
+
+    fun loadOOBEPreferences() {
+        SerializableManager<String>().load(OOBEDataSerializable().fileName)?.let {
+            val serilable: OOBEDataSerializable = Json.decodeFromString(it)
+            oobeData.value = OOBEDataPreference(
+                mutableStateOf(serilable.version),
+            )
+        }
+    }
+
+    fun saveOOBEPreferences() {
+        SerializableManager<String>().save(
+            OOBEDataSerializable().fileName,
+            Json.encodeToString(OOBEDataSerializable(
+                oobeData.value.version.value,
             ))
         )
     }
@@ -275,7 +321,7 @@ object ModDetailsStore {
 
             val tmpModDetails = emptyList<ModDetails>().toMutableList()
             getModDetails(modList.value).forEach {
-                    tmpModDetails.add(it)
+                tmpModDetails.add(it)
             }
 
             if (modList.value.isEmpty()) {
@@ -297,6 +343,15 @@ object ModDetailsStore {
             updateInstalledMods()
 
             CoroutineScope(Dispatchers.Main).launch{ helpList.value = luph.vulcanizerv3.updates.utils.download.getHelpList() }
+
+            val updateForceValueBefore = isUpdateForced.value
+            if (coreDetails.value.get("app") != null) {
+                isUpdateForced.value =
+                    coreDetails.value.get("app")?.require != getAppVersion().filter { it.isLetter() } && isAppUpdatedNeeded().value
+                if (isUpdateForced.value && !updateForceValueBefore) {
+                    showUpdateForceDialog.value = true
+                }
+            }
 
             isUpdating.value = false
         }

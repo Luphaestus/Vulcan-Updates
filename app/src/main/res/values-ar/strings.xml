@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Information -->
-    <string name="app_name">Vulcan Updates</string>
+    <string name="app_name">تحديثات فولكان</string>
     <string name="no_network">لا توجد شبكة</string>
     <!-- Navigation -->
     <!-- Settings -->
@@ -80,6 +80,9 @@
     <string name="install_zygisk">تثبيت Zygisk</string>
     <string name="rezygisk_required">ReZgisk مطلوب</string>
     <string name="lsposed_required">LSPosed مطلوب</string>
+    <string name="root_required">Root مطلوب</string>
+    <string name="root_required_desc">هذا التعديل يتطلب تثبيت صلاحيات الجذر.</string>
+    <string name="root_required_guide">دليل ال Root</string>
     <string name="continue_anyway">المتابعة بكل الأحوال</string>
     <string name="force_refresh_rate">فرض معدل التحديث</string>
     <string name="force_the_refresh_rate_of_the_display">فرض معدل تحديث الشاشة.</string>
@@ -108,4 +111,24 @@
     <string name="always_use_wi_fi">دائما استعمل الWi-Fi</string>
     <string name="mod_update_notifications">إشعارات تحديث النموذج</string>
     <string name="get_notified_about_updates_for_installed_mods">إرسال إشعار عند وجود تحديث لنموذج مثبت.</string>
+    <string name="notifications_internet"><![CDATA[الإشعارات و الإنترنت]]></string>
+    <string name="upload">تحميل</string>
+    <string name="don_t_replace">لا تستبدل</string>
+    <string name="or">أو</string>
+    <string name="overview">نظرة عامة</string>
+    <string name="custom_boot_animation">رسمة بدأ التشغيل المعدلة</string>
+    <string name="invalid_file_type">نوع الملف غير صالح</string>
+    <string name="dimension_mismatch">عدم تطابق البُعد</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">الملف الذي قمت بتحميله ليس ملف JPEG.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">الصورة التي رفعتها لا تتطابق مع الأبعاد المتوقعة من %1$sx%2$s. الصورة التي رفعتها لها أبعاد %3$sx%4$s.</string>
+    <string name="ok">حسناً</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">قد يؤدي إلصاق صورة نظام معدل إلى التعرض لدوامة تشغيل و ربما قد تعطل جهازك. تأكد من معرفة ما تفعله. إذا كنت غير متأکد، فاطلب المساعدة في مجموعة الدعم. لن أكون مسؤولا عن أي ضرر ناجم عن هذه العملية.</string>
+    <string name="upload_warning">تحذير تحميل</string>
+    <string name="i_understand">أنا أفهم</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">هل أنت واثق من أنك تريد تثبيت رسمة بدأ التشغيل هذه؟</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">سيؤدي هذا إلى استبدال رسمة بدأ التشغيل الحالية. يرجى التأكد من النسخ الاحتياطي لرسمة بدأ التشغيل الحالية قبل المتابعة.</string>
+    <string name="install_and_reboot">تثبيت وإعادة تشغيل</string>
+    <string name="boot_animation">رسمة بدأ التشغيل</string>
+    <string name="previous">السابق</string>
+    <string name="next">التالي</string>
 </resources>

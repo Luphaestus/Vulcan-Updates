@@ -80,6 +80,9 @@
     <string name="install_zygisk">Установить Zygisk</string>
     <string name="rezygisk_required">Требуется ReZygisk</string>
     <string name="lsposed_required">Требуется LSPosed</string>
+    <string name="root_required">Требуется корневой доступ</string>
+    <string name="root_required_desc">Для установки данного мода требуется корневой доступ.</string>
+    <string name="root_required_guide">Руководитель по корневому доступу</string>
     <string name="continue_anyway">Продолжить в любом случае</string>
     <string name="force_refresh_rate">Принудительная Частота Обновления</string>
     <string name="force_the_refresh_rate_of_the_display">Принудительная частота обновления дисплея.</string>
@@ -108,4 +111,24 @@
     <string name="always_use_wi_fi">Всегда использовать Wi-Fi</string>
     <string name="mod_update_notifications">Уведомления об обновлении мода</string>
     <string name="get_notified_about_updates_for_installed_mods">Получайте уведомления об обновлении установленных модов.</string>
+    <string name="notifications_internet"><![CDATA[Уведомления и Интернет]]></string>
+    <string name="upload">Загрузить</string>
+    <string name="don_t_replace">Не заменять</string>
+    <string name="or">или</string>
+    <string name="overview">Обзор</string>
+    <string name="custom_boot_animation">Своя Анимация загрузки</string>
+    <string name="invalid_file_type">Неверный тип файла</string>
+    <string name="dimension_mismatch">Несоответствие размера</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Загруженный файл не является JPEG файлом.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Загруженное Вами изображение не соответствует размеру %1$sx%2$s. Загруженное изображение имеет размеры %3$sx%4$s.</string>
+    <string name="ok">Ок</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Прошивка кастомного образа может привести к bootloop или окирпичить ваше устройство. Убедитесь, что Вы знаете, что делаете. Если Вы не уверены, спросите об этом в группе поддержки. Я не буду нести ответственность за ущерб, причинённый кастомными образами.</string>
+    <string name="upload_warning">Предупреждение о загрузке</string>
+    <string name="i_understand">Я понимаю</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Вы уверены, что хотите установить эту анимацию загрузки?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Это заменит текущую анимацию загрузки. Перед продолжением убедитесь, что сделайте резервную копию текущей анимации загрузки.</string>
+    <string name="install_and_reboot">Установить и перезагрузить</string>
+    <string name="boot_animation">Анимация загрузки</string>
+    <string name="previous">Назад</string>
+    <string name="next">Вперёд</string>
 </resources>

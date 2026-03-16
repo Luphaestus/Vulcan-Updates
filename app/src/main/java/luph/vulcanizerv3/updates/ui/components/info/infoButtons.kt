@@ -14,20 +14,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableIntState
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.firebase.analytics.logEvent
 import luph.vulcanizerv3.updates.MainActivity
-import luph.vulcanizerv3.updates.R
 import luph.vulcanizerv3.updates.data.DETAILFILE
-import luph.vulcanizerv3.updates.data.ModDetails
 import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.data.ModDetailsStore.isUsingMobileData
 import luph.vulcanizerv3.updates.data.ModDetailsStore.notificationAndInternetPreferences
@@ -61,6 +55,7 @@ fun changeUpdateType(updateStatus: UpdateStatus, buttonData: buttonData) {
         buttonData.doToggleButtonVisibility = true
         buttonData.buttonAnimWeightValue = 0.00000001f
     }
+    buttonData.updateModStatus()
 }
 
 @Composable
@@ -86,11 +81,7 @@ fun InfoButtons(buttonData: buttonData, coreUpdates: Array<String>) {
             }
         }
         buttonData.changeUpdateType(UpdateStatus.UPDATING, buttonData)
-        buttonData.downloadId.intValue = MainActivity.getKetch().download(
-            buttonData.modDetails.url + DETAILFILE.FILE.type,
-            MainActivity.applicationContext().cacheDir.absolutePath,
-            buttonData.modDetails.name
-        )
+        startDownload(buttonData.downloadId,  buttonData.modDetails.url + DETAILFILE.FILE.type, buttonData.modDetails.name)
     }
 
 
@@ -101,7 +92,7 @@ fun InfoButtons(buttonData: buttonData, coreUpdates: Array<String>) {
             OutlinedButton(
                 onClick = {
                     if (buttonData.infoState.value == UpdateStatus.UPDATING) {
-                        MainActivity.getKetch().cancel(buttonData.downloadId.intValue)
+                        cancelDownload(buttonData.downloadId)
                     } else if (buttonData.infoState.value == UpdateStatus.INSTALLED || buttonData.infoState.value == UpdateStatus.UPDATE_AVAILABLE) {
                         var success = false
                         when (buttonData.modDetails.updateType)

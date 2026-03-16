@@ -4,15 +4,19 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
+import android.app.Service.START_NOT_STICKY
 import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat.getSystemService
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import kotlin.or
 
 
 class MessageService : FirebaseMessagingService() {
@@ -73,4 +77,36 @@ class MessageService : FirebaseMessagingService() {
         // message, here is where that should be initiated. See sendNotification method below.
     }
 
+}
+
+
+class WelcomeNotificationService : Service() {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        postNotification()
+        return START_NOT_STICKY
+    }
+
+    private fun postNotification() {
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        val channelId = "your_channel_id"
+
+        val channel = NotificationChannel(channelId, "Channel Name", NotificationManager.IMPORTANCE_DEFAULT)
+        notificationManager.createNotificationChannel(channel)
+
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE)
+
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setContentTitle("Welcome to Vulcan ROM!")
+            .setContentText("Thank you for installing Vulcan ROM! Click here to learn more.")
+            .setSmallIcon(R.drawable.logo)
+            .setContentIntent(pendingIntent)
+            .build()
+
+        notificationManager.notify(1, notification)
+    }
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
 }

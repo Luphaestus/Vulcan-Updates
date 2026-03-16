@@ -33,6 +33,7 @@ import luph.vulcanizerv3.updates.ui.page.settings.options.*
 import luph.vulcanizerv3.updates.ui.page.updates.*
 import luph.vulcanizerv3.updates.ui.page.misc.*
 import luph.vulcanizerv3.updates.ui.page.misc.options.*
+import luph.vulcanizerv3.updates.ui.page.oobe.OOBE
 import luph.vulcanizerv3.updates.utils.getStandardAnimationSpeed
 
 
@@ -50,18 +51,21 @@ data class Route(
     val localName: String? = null)
 
 val Routes = listOf(
+    Route("OOBE", content = { navController, view -> OOBE(navController, view) }),
+
     Route("Home", Icons.Filled.Home, Icons.Outlined.Home, { navController, view -> HomePage(navController, view) }, showBadge = { ModDetailsStore.getNewMods().value.isNotEmpty() }, badgeContent = { BadgeContent.Text("New") }, showInMenu = true, stringResource = R.string.home_title, localName = MainActivity.applicationContext().getString(R.string.home)),
     Route("Home Details Expanded", content = { navController, view -> HomeModDetailsExpanded(navController, view) }),
 
     Route("Misc", Icons.Filled.Handyman, Icons.Outlined.Handyman, { navController, view -> MiscPage(navController, view) }, showInMenu = true, stringResource = R.string.updates_title, localName = MainActivity.applicationContext().getString(R.string.misc)),
     Route("Force Refresh Rate", content = { navController, view -> ForceRefreshRate(navController, view) }),
     Route("Change Boot Animation", content = { navController, view -> ChangeBootOption(navController, view) }),
+    Route("Change QMG Animation", content = { navController, view -> ChangeQMGOption(navController, view) }),
     Route("Device Info", content = { navController, view -> DeviceInfo(navController, view) }),
     Route("Advanced Reboot Options", content = { navController, view -> AdvancedReboot(navController, view) }),
     Route("Help", content = { navController, view -> HelpOption(navController, view) }),
     Route("ShowHelp", content = { navController, view -> ShowHelp(navController, view) }),
 
-    Route("Updates", Icons.Filled.Star, Icons.Outlined.Star, { navController, view -> UpdatesPage(navController, view) }, showBadge = { ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.isAppUpdatedNeeded().value }, badgeContent = { BadgeContent.Count(ModDetailsStore.getInstalledModsUpdate().value.size+if (ModDetailsStore.isAppUpdatedNeeded().value) 1 else 0) }, showInMenu = true, stringResource = R.string.updates_title, localName = MainActivity.applicationContext().getString(R.string.updates)),
+    Route("Updates", Icons.Filled.Star, Icons.Outlined.Star, { navController, view -> UpdatesPage(navController, view) }, showBadge = { ModDetailsStore.getInstalledModsUpdate().value.isNotEmpty() || ModDetailsStore.numbCoreUpdatesNeeded().value != 0 }, badgeContent = { BadgeContent.Text("${ModDetailsStore.getInstalledModsUpdate().value.size+ModDetailsStore.numbCoreUpdatesNeeded().value}${"*".repeat(ModDetailsStore.numbCoreUpdatesNeeded().value)}") }, showInMenu = true, stringResource = R.string.updates_title, localName = MainActivity.applicationContext().getString(R.string.updates)),
 
     Route("Settings", Icons.Filled.Settings, Icons.Outlined.Settings, content = { navController, view -> SettingsPage(navController, view) }, showInMenu = true, stringResource = R.string.settings_title, localName = MainActivity.applicationContext().getString(R.string.settings)),
     Route("Colour and Style", content = { navController, view -> ColorAndStyleOption(navController, view) }),

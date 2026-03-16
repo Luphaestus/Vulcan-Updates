@@ -35,6 +35,7 @@ import luph.vulcanizerv3.updates.data.ModDetailsStore
 import luph.vulcanizerv3.updates.ui.EmptyComingSoon
 import luph.vulcanizerv3.updates.ui.components.PageNAv
 import luph.vulcanizerv3.updates.ui.components.info.UpdateAlert
+import luph.vulcanizerv3.updates.ui.components.rootRequiredAlert
 import luph.vulcanizerv3.updates.ui.page.showNavigation
 import luph.vulcanizerv3.updates.utils.root.runRootShellCommand
 import me.zhanghai.compose.preference.Preference
@@ -47,7 +48,10 @@ fun AdvancedReboot(
     view: View? = null)
 {
     showNavigation.show = false
-
+    val rootRequired = rootRequiredAlert(
+        negativeClickLambda = { navController.popBackStack() },
+        positiveClickLambda = { navController.popBackStack() })
+    if (rootRequired.value) return
 
 
     val bootLocations =

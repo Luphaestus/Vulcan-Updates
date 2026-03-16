@@ -79,6 +79,9 @@
     <string name="install_zygisk">Install Zygisk</string>
     <string name="rezygisk_required">ReZygisk necesar</string>
     <string name="lsposed_required">LSPPierdut Necesar</string>
+    <string name="root_required">Rădăcină necesară</string>
+    <string name="root_required_desc">Acest mod necesită acces root pentru a fi instalat.</string>
+    <string name="root_required_guide">Ghid rădăcină</string>
     <string name="continue_anyway">Continuă oricum</string>
     <string name="force_refresh_rate">Rata de reîmprospătare forţată</string>
     <string name="force_the_refresh_rate_of_the_display">Forțează rata de reîmprospătare a afișajului.</string>
@@ -107,4 +110,24 @@
     <string name="always_use_wi_fi">Utilizaţi întotdeauna Wi-Fi</string>
     <string name="mod_update_notifications">Notificări actualizări mod</string>
     <string name="get_notified_about_updates_for_installed_mods">Primește notificări despre actualizările modurilor instalate.</string>
+    <string name="notifications_internet"><![CDATA[Notificări & Internet]]></string>
+    <string name="upload">Incarca</string>
+    <string name="don_t_replace">Nu înlocui</string>
+    <string name="or">sau</string>
+    <string name="overview">Prezentare generală</string>
+    <string name="custom_boot_animation">Animație de pornire personalizată</string>
+    <string name="invalid_file_type">Tip de fișier nevalid</string>
+    <string name="dimension_mismatch">Dimensiune nepotrivită</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Fișierul pe care l-ați încărcat nu este un fișier JPEG.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Imaginea pe care ați încărcat-o nu se potrivește cu dimensiunile preconizate de %1$sx%2$s. Imaginea pe care ați încărcat-o are dimensiuni de %3$sx%4$s.</string>
+    <string name="ok">Ok</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Instalarea unei imagini personalizate poate provoca bootloops sau brick dispozitivul dvs. Asigurați-vă că știți ce faceți. Dacă nu ești sigur, cere ajutor în grupul de sprijin. Nu voi fi responsabil pentru orice daune cauzate de instalarea imaginilor personalizate.</string>
+    <string name="upload_warning">Avertisment de încărcare</string>
+    <string name="i_understand">Am înțeles</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Ești sigur că vrei să instalezi această animație de pornire?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Aceasta va înlocui animația curentă de pornire. Asigurați-vă că ați făcut backup la animația curentă de pornire înainte de a continua.</string>
+    <string name="install_and_reboot">Instalează și repornește</string>
+    <string name="boot_animation">Animaţie de pornire</string>
+    <string name="previous">Anterior</string>
+    <string name="next">Următoarea</string>
 </resources>
