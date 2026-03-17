@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name">Vulcan Updates</string>
+    <string name="no_network">Keine Netzwerke verfügbar</string>
+    <!-- Navigation -->
+    <!-- Settings -->
+    <string name="settings_title">Einstelllungen</string>
+    <string name="color_and_style"><![CDATA[Farbe & Stil]]></string>
+    <string name="colour_and_style_desc">Look-and-Feel der App anpassen</string>
+    <string name="theme_preview">Theme-Vorschau</string>
+    <string name="me_msg_1">Hast du von Vulcan ROM gehört?</string>
+    <string name="me_msg_2">Ich habe gehört, es ist sehr Bombe! 🤯</string>
+    <string name="mez_msg_1">Ja, sehr Bombe ROM fr</string>
+    <string name="oskar_ahh_convo">\"Oskar ahh convo\"</string>
+    <string name="dynamic_colours_option">Dynamische Farben</string>
+    <string name="static_colours_option">Statische Farben</string>
+    <string name="system_dark_theme_title">System Dunkles Theme</string>
+    <string name="system_dark_theme_desc">Dunkles Theme basierend auf Systemeinstellungen anwenden</string>
+    <string name="dark_theme_title">Dunkles Theme</string>
+    <string name="apply_dark_theme_based_on_wallpaper">Dunkles Theme basierend auf Hintergrund anwenden</string>
+    <string name="apply_dark_theme">%1$s dunkles Theme anwenden</string>
+    <string name="contrast">%1$s Contrast</string>
+    <string name="low_contrast">Niedrig</string>
+    <string name="medium_contrast">Mittel</string>
+    <string name="high_contrast">Hoch</string>
+    <string name="language">Sprache</string>
+    <string name="language_desc">Sprache der App ändern</string>
+    <!-- Home -->
+    <string name="home_title">Zuhause</string>
+    <!-- Updates -->
+    <string name="updates_title">Updates</string>
+    <string name="core_title">Core Updates</string>
+    <string name="installed_title">Installiert</string>
+    <string name="just_now">Gerade jetzt</string>
+    <string name="minutes_ago">Vor %1$s Minuten</string>
+    <string name="hours_ago">vor %1$s stunden</string>
+    <string name="days_ago">vor %1$s tagen</string>
+    <string name="months_ago">Vor %1$s Monaten</string>
+    <string name="years_ago">Vor %1$s Jahren</string>
+    <!-- Components -->
+    <!-- Image Preview -->
+    <string name="no_more_images_to_the_left">Keine weiteren Bilder auf der linken Seite.</string>
+    <string name="no_more_images_to_the_right">Keine weiteren Bilder auf der rechten Seite.</string>
+    <!-- Info -->
+    <string name="mod_info_title">Mod Info</string>
+    <string name="uninstall">Deinstallieren</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="install">Installieren</string>
+    <string name="open">Öffnen</string>
+    <string name="update">Aktualisieren</string>
+    <string name="mod_size">Größe</string>
+    <string name="mod_source_code_link_button">Quellcode</string>
+    <!-- Github -->
+    <string name="acknowledgments_title">Danksagungen</string>
+    <string name="feedback_title">Feedback</string>
+    <string name="search_placeholder">Suchen</string>
+    <string name="please_enable_notifications">Bitte Benachrichtigungen aktivieren</string>
+    <string name="notification_request_desc">Schalten Sie Benachrichtigungen ein, um Updates über den Download-Fortschritt und MOD-Updates zu erhalten.</string>
+    <string name="you_re_offline">Du bist offline</string>
+    <string name="your_network_settings_are">Ihre Netzwerkeinstellungen sind...</string>
+    <string name="check_your_connection_and_try_again">Überprüfe deine Verbindung und versuche es erneut</string>
+    <string name="try_again">Erneut versuchen</string>
+    <string name="network_settings">Netzwerkeinstellungen</string>
+    <string name="change_log">Log ändern</string>
+    <string name="more">...mehr</string>
+    <string name="h2_style_text_align_center_version_h2_hr_br"><![CDATA[\n<h2 style=\"text-align:center;\">Version %1$s</h2>\n<hr>\n<br>\n]]></string>
+    <string name="description">Beschreibung</string>
+    <string name="by">"Von "</string>
+    <string name="version">Version</string>
+    <string name="no_network2">Kein Netzwerk</string>
+    <string name="network_desc">Sie haben möglicherweise keine aktive Internetverbindung, oder Ihre Netzwerkeinstellungen sind möglicherweise so konfiguriert, dass sie den Zugriff einschränken. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.</string>
+    <string name="detach_module_recommended">Detach module recommended</string>
+    <string name="to_prevent_google_play_store_from_overwriting_it_is_recommended_to_install_a_detach_module">Um zu verhindern, dass Google Play Store %1$süberschreibt, wird empfohlen, ein Abtrennungsmodul zu installieren.</string>
+    <string name="install_detach">Install Detach</string>
+    <string name="requires_lsposed_and_will_not_function_without_it">%1$s benötigt LSPosed, und wird ohne LSPosed nicht funktionieren.</string>
+    <string name="install_lsposed">LSPosed installieren</string>
+    <string name="requires_zygisk_and_will_not_function_without_it">%1$s benötigt Zygisk und wird ohne ihn nicht funktionieren.</string>
+    <string name="install_zygisk">Install Zygisk</string>
+    <string name="rezygisk_required">ReZygisk erforderlich</string>
+    <string name="lsposed_required">LSPosed benötigt</string>
+    <string name="root_required">Root erforderlich</string>
+    <string name="root_required_desc">Diese Mod benötigt Root um installiert zu werden.</string>
+    <string name="root_required_guide">Root-Anleitung</string>
+    <string name="continue_anyway">Trotzdem fortfahren</string>
+    <string name="force_refresh_rate">Aktualisierungsrate erzwingen</string>
+    <string name="force_the_refresh_rate_of_the_display">Erzwinge die Aktualisierungsrate des Displays.</string>
+    <string name="change_boot_animation">Boot Animation ändern</string>
+    <string name="change_the_boot_animation_of_the_device">Ändern Sie die Boot-Animation des Geräts.</string>
+    <string name="device_info">Geräte-Info</string>
+    <string name="show_hardware_and_software_information">Hardware- und Software-Informationen anzeigen.</string>
+    <string name="advanced_reboot_options">Erweiterte Neustart-Optionen</string>
+    <string name="reboot_into_recovery_download_or_system">Neustart in Recovery, Download oder System.</string>
+    <string name="help">Hilfe</string>
+    <string name="help_documentation">Hilfe-Dokumentation.</string>
+    <string name="confirm_reboot">Neustart bestätigen</string>
+    <string name="are_you_sure_you_want_to_reboot_to">Sind Sie sicher, dass Sie auf %1$s neustarten möchten?</string>
+    <string name="reboot">Reboot</string>
+    <string name="file_does_not_exist">Datei existiert nicht</string>
+    <string name="manage_your_notification_preferences_and_internet_settings">Verwalten Sie Ihre Benachrichtigungseinstellungen und Internet-Einstellungen.</string>
+    <string name="report_bugs_and_request_features">Melde Bugs und beantrage Funktionen.</string>
+    <string name="acknowledging_resources_and_contributions">Anerkennung von Ressourcen und Beiträgen.</string>
+    <string name="home">Zuhause</string>
+    <string name="misc">Sonst</string>
+    <string name="updates">Updates</string>
+    <string name="settings">Einstellungen</string>
+    <string name="over_wi_fi">Über WLAN</string>
+    <string name="never_download_anything_using_wi_fi">Nie irgendetwas über Wi-Fi herunterladen</string>
+    <string name="only_use_wi_fi_when_downloading_mod_information">Verwende nur WLAN beim Herunterladen von Mod-Informationen</string>
+    <string name="always_use_wi_fi">Immer Wi-Fi verwenden</string>
+    <string name="mod_update_notifications">Mod Update Benachrichtigungen</string>
+    <string name="get_notified_about_updates_for_installed_mods">Erhalten Sie Benachrichtigungen über Updates für installierte Mods.</string>
+    <string name="notifications_internet"><![CDATA[Benachrichtigungen & Internet]]></string>
+    <string name="upload">Hochladen</string>
+    <string name="don_t_replace">Nicht ersetzen</string>
+    <string name="or">oder</string>
+    <string name="overview">Übersicht</string>
+    <string name="custom_boot_animation">Eigene Boot-Animation</string>
+    <string name="invalid_file_type">Ungültiger Dateityp</string>
+    <string name="dimension_mismatch">Größe des Bildes stimmt nicht mit der des Gerätes überein</string>
+    <string name="the_file_you_uploaded_is_not_a_jpeg_file">Die hochgeladene Datei ist keine JPEG-Datei.</string>
+    <string name="the_image_you_uploaded_does_not_match_the_expected_dimensions_of_x_the_image_you_uploaded_has_dimensions_of_x">Das hochgeladene Bild entspricht nicht den erwarteten Abmessungen von %1$sx%2$s. Das hochgeladene Bild hat Dimensionen von %3$sx%4$s.</string>
+    <string name="ok">Ok</string>
+    <string name="flashing_a_custom_image_may_cause_bootloops_or_brick_your_device_make_sure_you_know_what_you_are_doing_if_you_are_unsure_ask_for_help_in_the_support_group_i_will_not_be_responsible_for_any_damage_caused_by_flashing_custom_images">Ein benutzerdefiniertes Image zu flashen kann Bootloops oder Brick dein Gerät verursachen. Vergewissern Sie sich, dass du weißt, was du tust. Wenn du dir nicht sicher bist, bitte um Hilfe in der Unterstützungsgruppe. Ich bin nicht verantwortlich für Schäden, die durch das Flashen von benutzerdefinierten Bildern verursacht wurden.</string>
+    <string name="upload_warning">Upload-Warnung</string>
+    <string name="i_understand">Zur Kenntnis genommen</string>
+    <string name="are_you_sure_you_want_to_install_this_boot_animation">Sind Sie sicher, dass Sie diese Boot-Animation installieren möchten?</string>
+    <string name="this_will_replace_your_current_boot_animation_make_sure_to_backup_your_current_boot_animation_before_proceeding">Dies wird deine aktuelle Boot-Animation ersetzen. Stelle sicher, dass du die aktuelle Boot-Animation sichern kannst, bevor du fortfährst.</string>
+    <string name="install_and_reboot">Installieren und Neustart</string>
+    <string name="boot_animation">Boot-Animation</string>
+    <string name="previous">Vorherige</string>
+    <string name="next">Nächste</string>
+</resources>

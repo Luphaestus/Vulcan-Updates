@@ -41,5 +41,9 @@ fun runShellCommand(command: String, waitForCompletion: Boolean = true): State<P
         Log.e("runShellCommand", error)
         success = false
     }
+    if (!success) {
+        Log.e("runShellCommand", "Failed to run command: $command output: $output")
+    }
+    Log.e("runShellCommand", "Command: $command output: $output")
     return mutableStateOf(Pair(output, success))
 }

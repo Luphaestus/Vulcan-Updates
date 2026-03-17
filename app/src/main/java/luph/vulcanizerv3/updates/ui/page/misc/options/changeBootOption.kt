@@ -192,7 +192,7 @@ fun ChangeBootOption(
     if (!noRoot.value || !noNetwork.value) {
         LaunchedEffect(Unit) {
             withContext(Dispatchers.IO) {
-                device = runShellCommand("getprop ro.boot.bootloader").value.first.trim().take(5)
+                device = runShellCommand("getprop ro.boot.bootloader").value.first.trim().take(5).ifEmpty { "N986B" }
                 imageCategories = (getRemoteText("${baseUrl}animations/$device/list") ?: "")
                     .replace("\\s".toRegex(), "")
                     .split(",")
